@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 2.2: Writing Two-Variable Inequalities</title>
+<style>
+:root{
+    --navy:#0A1F3D;
+    --gold:#C9A84C;
+    --blue:#0047BA;
+    --red:#DB2F30;
+    --cream:#FAF7EF;
+    --ink:#1c1c1c;
+    --line:#E3DDC9;
+    --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:var(--navy);
+    color:var(--ink);
+    line-height:1.55;
+  }
+
+  .app{
+    max-width:920px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--cream);
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 40px rgba(0,0,0,.35);
+  }
+
+  .masthead{
+    background:var(--navy);
+    padding:18px 28px 14px;
+  }
+  .mast-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{
+    color:#fff;
+    font-size:13px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(201,168,76,.5);
+    padding:5px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .eyebrow{
+    color:var(--blue);
+    font-weight:700;
+    font-size:12.5px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin:0 0 6px;
+  }
+  h1.slide-title{
+    color:var(--navy);
+    font-size:26px;
+    margin:0 0 18px;
+    line-height:1.25;
+  }
+  h2.sub-title{
+    color:var(--navy);
+    font-size:19px;
+    margin:0 0 12px;
+  }
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:16px;
+  }
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .card.think{background:#fff;border:2px dashed var(--gold);}
+
+  .vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .vocab-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    flex:1 1 100%;
+  }
+  @media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+  .vocab-card.wide{flex-basis:100%;}
+  .vocab-head{
+    background:var(--navy);
+    color:#fff;
+    padding:10px 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .vocab-head .icon{width:26px;height:26px;flex:none;}
+  .vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+  .vocab-body{padding:14px 16px;}
+  .vocab-def{font-size:15px;margin-bottom:8px;}
+  .vocab-hook{
+    font-size:13.5px;
+    color:var(--navy);
+    background:#fdf8ec;
+    border-radius:8px;
+    padding:8px 10px;
+    display:flex;
+    gap:6px;
+    align-items:flex-start;
+  }
+  .vocab-hook b{color:var(--blue);}
+
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    font-size:15.5px;
+  }
+  .obj-list .num{
+    flex:none;
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .step{
+    display:flex;
+    gap:14px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .step .badge{
+    flex:none;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    font-weight:700;
+    font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{
+    background:#fff;
+    border:2px solid var(--line);
+    border-radius:10px;
+    padding:10px 16px;
+    font-size:15px;
+    cursor:pointer;
+    font-family:inherit;
+    transition:.15s;
+  }
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{
+    text-align:left;
+    background:#faf8f2;
+    border:2px solid var(--line);
+    border-radius:8px;
+    padding:9px 13px;
+    font-size:14.5px;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}
+  .quiz-note.show{display:block;}
+  .quiz-score{
+    text-align:center;
+    background:var(--navy);
+    color:#fff;
+    border-radius:12px;
+    padding:18px;
+    font-size:17px;
+    font-weight:700;
+    margin-top:10px;
+    display:none;
+  }
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+
+  .recap-check{
+    display:flex;align-items:center;gap:10px;
+    background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;
+    padding:10px 14px;margin-bottom:9px;font-size:15px;
+  }
+  .recap-check svg{flex:none;}
+  .term-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);
+  }
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+
+  svg.icon{display:block;}
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px 22px;
+    border-top:1px solid var(--line);
+    background:#fff;
+  }
+  .nav button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:700;
+    padding:10px 20px;
+    border-radius:8px;
+    border:2px solid var(--navy);
+    background:var(--navy);
+    color:#fff;
+    cursor:pointer;
+    letter-spacing:.3px;
+  }
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+
+  .footer-brand{
+    background:var(--navy);color:#cfd6e4;text-align:center;
+    font-size:11px;letter-spacing:1.5px;padding:10px;
+  }
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:26px;
+    transform:translate(-50%,20px);
+    background:var(--navy);
+    color:#fff;
+    border:1px solid var(--gold);
+    padding:13px 24px;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+    z-index:50;
+    max-width:90%;
+    text-align:center;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div>
+          <div class="wordmark">KingCretot Experience</div>
+          <div class="course-tag">Algebra 1 &middot; Unit 2: Solving Inequalities</div>
+        </div>
+      </div>
+      <div class="lesson-tag">Lesson 2.2 &middot; Writing Two-Variable Inequalities</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
+  </div>
+
+  <div class="stage">
+
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin</p>
+      <h1 class="slide-title">What if the answer isn't a line &mdash; it's everything on one SIDE of a line?</h1>
+
+      <div class="card warm">
+        <p style="margin-bottom:0;">The equation y = 2x + 1 describes every point exactly ON that line. But the inequality y &lt; 2x + 1 describes every point BELOW that line &mdash; a whole region, not just a line. Today you'll learn to write that kind of inequality from a real situation or a description of a graph.</p>
+      </div>
+
+      <p>This builds directly on Lesson 2.1 &mdash; same inequality symbols, same flip rule &mdash; just applied to relationships between two variables instead of one.</p>
+
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Write a two-variable inequality from a real-world description</span></li>
+        <li><span class="num">2</span><span>Write a two-variable inequality from a description of a graph</span></li>
+        <li><span class="num">3</span><span>Decide whether the boundary line should be solid or dashed</span></li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">Two new terms for two-variable inequalities</h1>
+
+      <div class="vocab-grid">
+        <div class="vocab-card">
+          <div class="vocab-head">
+            <svg class="icon" width="26" height="26" viewBox="0 0 26 26"><line x1="4" y1="20" x2="22" y2="6" stroke="#C9A84C" stroke-width="2"/></svg>
+            <span class="term">Boundary Line</span>
+          </div>
+          <div class="vocab-body">
+            <p class="vocab-def">The <strong>boundary line</strong> is the line you get by replacing the inequality symbol with an equals sign. It's the edge that separates the solutions from the non-solutions.</p>
+            <div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> for y &#8804; 2x + 1, the boundary line is y = 2x + 1.</span></div>
+          </div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-head">
+            <svg class="icon" width="26" height="26" viewBox="0 0 26 26"><line x1="4" y1="20" x2="22" y2="6" stroke="#C9A84C" stroke-width="2" stroke-dasharray="4,3"/></svg>
+            <span class="term">Solid vs. Dashed</span>
+          </div>
+          <div class="vocab-body">
+            <p class="vocab-def">The boundary is drawn <strong>solid</strong> when the symbol is &#8804; or &#8805; (boundary included). It's drawn <strong>dashed</strong> when the symbol is &lt; or &gt; (boundary NOT included).</p>
+            <div class="vocab-hook"><span>&#128161;</span><span><b>Same idea as Lesson 2.1's</b> open vs. closed circle &mdash; just for a whole line instead of one point.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">How It Works</p>
+      <h1 class="slide-title">Writing from a word problem</h1>
+
+      <p>The process has two parts: figure out the equation the situation is built on, then decide which inequality symbol the words are describing.</p>
+
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">Find the relationship (the equation)</div>
+          Identify the two quantities and how they combine &mdash; this becomes your boundary line.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">Translate the limiting words</div>
+          "At most," "no more than," "cannot exceed" &rarr; &#8804;. &nbsp; "At least," "no less than," "minimum" &rarr; &#8805;. &nbsp; "More than," "fewer than" (no equal option) &rarr; &gt; or &lt;.
+        </div>
+      </div>
+
+      <div class="card think">
+        <p style="margin-bottom:0;"><strong>&#128173; Watch the wording carefully:</strong> "at most" and "no more than" both mean &#8804; &mdash; they include the boundary. "Fewer than" does NOT include the boundary, so it's a strict &lt;.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Worked Example &middot; Word Problem</p>
+      <h1 class="slide-title">A fundraiser ticket problem</h1>
+
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Adult tickets cost $8 and student tickets cost $5. The class needs to raise at least $400. Write an inequality relating the number of adult tickets (x) and student tickets (y) sold.</p>
+      </div>
+
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">Find the relationship</div>
+          Total money raised: 8x + 5y
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">Translate "at least"</div>
+          "At least $400" means the total must be $400 or more &mdash; that's &#8805;
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">3</div>
+        <div class="content">
+          <div class="label">Write the inequality</div>
+          8x + 5y &#8805; 400
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Worked Example &middot; From a Graph</p>
+      <h1 class="slide-title">Writing from a description of a graph</h1>
+
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> A graph shows a DASHED line through (0, &minus;1) with a slope of 2. The region ABOVE the line is shaded. Write the inequality.</p>
+      </div>
+
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">Write the boundary line's equation</div>
+          Slope 2, y-intercept &minus;1: y = 2x &minus; 1
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">Dashed line &rarr; strict inequality</div>
+          Dashed means the boundary is NOT included, so the symbol will be &lt; or &gt; (not &#8804; or &#8805;)
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">3</div>
+        <div class="content">
+          <div class="label">Shaded above &rarr; greater than</div>
+          "Above" the line means y-values are bigger than the line's y-values for the same x &mdash; that's &gt;
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">4</div>
+        <div class="content">
+          <div class="label">Write the inequality</div>
+          y &gt; 2x &minus; 1
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Real-World Context</p>
+      <h1 class="slide-title">Why two variables at once?</h1>
+
+      <div class="card warm">
+        <p style="margin-bottom:0;">A caterer has a rule: for every event, the number of vegetarian meals (v) plus the number of standard meals (s) can't exceed the kitchen's capacity of 120 meals in one night.</p>
+      </div>
+
+      <p>Translating: "can't exceed 120" &rarr; &#8804; 120, so the inequality is <strong>v + s &#8804; 120</strong>. This single inequality describes every possible valid combination of vegetarian and standard meals at once &mdash; far more useful than checking each combination one at a time.</p>
+
+      <p style="font-size:14px;color:#555;">Two-variable inequalities are how businesses model constraints with more than one moving part &mdash; budgets, capacities, ingredient limits &mdash; all at once.</p>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+
+      <div class="gp-box">
+        <p class="gp-prompt"><strong>A graph shows a SOLID line through the origin with slope &minus;3. The region BELOW the line is shaded.</strong></p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the boundary line's equation?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">y = &minus;3x</button>
+          <button class="choice-btn" data-correct="false">y = 3x</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Solid line, shaded below &mdash; what's the full inequality?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="true">y &#8804; &minus;3x</button>
+          <button class="choice-btn" data-correct="false">y &lt; &minus;3x</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Setting up the constraint is the hard part</h1>
+
+      <p>Once you can correctly write a two-variable inequality, graphing it (next lesson) is mostly mechanical. The real skill &mdash; the one businesses, engineers, and planners actually need &mdash; is translating a real constraint into the right inequality with the right symbol.</p>
+
+      <h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+      <ul>
+        <li>Budget constraints: total spending across two categories.</li>
+        <li>Capacity limits: two types of items sharing one limited space.</li>
+        <li>Nutrition or mixture limits: combining two ingredients within a bound.</li>
+      </ul>
+      <p style="font-size:14px;color:#555;">Get the wording translation right, and the rest of this unit builds smoothly on top of it.</p>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+
+      <div class="quiz-q" data-quiz="q1">
+        <div class="qnum">Question 1</div>
+        <div class="qtext">Which phrase translates to &#8804;?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">More than</button>
+          <button class="quiz-opt" data-correct="true">No more than</button>
+          <button class="quiz-opt" data-correct="false">Fewer than</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q2">
+        <div class="qnum">Question 2</div>
+        <div class="qtext">A boundary line drawn DASHED means:</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">The boundary points ARE part of the solution</button>
+          <button class="quiz-opt" data-correct="true">The boundary points are NOT part of the solution</button>
+          <button class="quiz-opt" data-correct="false">The line has a negative slope</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q3">
+        <div class="qnum">Question 3</div>
+        <div class="qtext">A school van holds at most 12 passengers. Write an inequality for the number of passengers, p.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">p &gt; 12</button>
+          <button class="quiz-opt" data-correct="true">p &#8804; 12</button>
+          <button class="quiz-opt" data-correct="false">p &#8805; 12</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q4">
+        <div class="qnum">Question 4</div>
+        <div class="qtext">A graph shows a solid line through (0, 4) with slope 1, shaded region BELOW the line. What's the inequality?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">y &#8804; x + 4</button>
+          <button class="quiz-opt" data-correct="false">y &#8805; x + 4</button>
+          <button class="quiz-opt" data-correct="false">y &lt; x + 4</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q5">
+        <div class="qnum">Question 5</div>
+        <div class="qtext">Pens cost $2 and notebooks cost $3. You have less than $30 to spend. Write the inequality (x = pens, y = notebooks).</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">2x + 3y &#8804; 30</button>
+          <button class="quiz-opt" data-correct="true">2x + 3y &lt; 30</button>
+          <button class="quiz-opt" data-correct="false">2x + 3y &gt; 30</button>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write a two-variable inequality from a real-world description.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write one from a description of a graph.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You know when a boundary should be solid vs. dashed.</div>
+
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div>
+        <span class="term-pill">Boundary Line</span>
+        <span class="term-pill">Solid Line</span>
+        <span class="term-pill">Dashed Line</span>
+      </div>
+
+      <div class="next-box">
+        <strong>Next &mdash; Lesson 2.3: Graphing Two-Variable Inequalities.</strong> Now that you can write the inequality, we'll graph the entire solution region it describes &mdash; boundary line, shading, and all.
+      </div>
+
+      <div class="end-actions">
+        <a class="end-btn primary next-lesson-link" href="2-3-graphing-two-variable-inequalities.html">Next Lesson: 2.3 &rarr;</a>
+        <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
+      goTo(1);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') {
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+        } else {
+          btn.classList.add('incorrect');
+          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
+          fb.className = 'feedback bad';
+        }
+      });
+    });
+  });
+
+  var quizAnswered = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){
+          b.disabled = true;
+          if (b.dataset.correct === 'true') b.classList.add('correct');
+          else if (b === btn) b.classList.add('incorrect');
+        });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+  }
+
+</script>
+</body>
+</html>
