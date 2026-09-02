@@ -34,5 +34,8 @@ can match a lesson to a student's classwork by standard code alone.
 ## Build status
 
 Unit 1 (Solving Equations & Literal Equations) complete — 3 of 3 lessons live.
-Units 2–10 not yet started. Standing build rule: one full unit at a time,
-verified before the next begins.
+Unit 2 (Solving Inequalities) complete — 3 of 3 lessons live, covering
+MA.912.AR.2.6 (one-variable and compound inequalities), MA.912.AR.2.7
+(writing two-variable inequalities), and MA.912.AR.2.8 (graphing two-variable
+inequalities). Units 3–10 not yet started. Standing build rule: one full
+unit at a time, verified before the next begins.
