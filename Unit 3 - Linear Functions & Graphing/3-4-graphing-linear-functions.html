@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 3.4: Graphing Linear Functions & Key Features</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .card.think{background:#fff;border:2px dashed var(--gold);}
+  .vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+  @media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+  .vocab-card.wide{flex-basis:100%;}
+  .vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+  .vocab-head .icon{width:26px;height:26px;flex:none;}
+  .vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+  .vocab-body{padding:14px 16px;}
+  .vocab-def{font-size:15px;margin-bottom:8px;}
+  .vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+  .vocab-hook b{color:var(--blue);}
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}
+  .quiz-note.show{display:block;}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .recap-check svg{flex:none;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  svg.icon{display:block;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 3: Linear Functions &amp; Graphing</div></div></div><div class="lesson-tag">Lesson 3.4 &middot; Graphing Linear Functions</div></div></div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+  <div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+  <div class="stage">
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin</p>
+      <h1 class="slide-title">A graph tells you everything about a linear function, if you know where to look.</h1>
+      <div class="card warm"><p style="margin-bottom:0;">You already know how to plot a line from slope and a y-intercept. Today's job is different: given a table, equation, or written description, you'll build the graph <em>and</em> pull out its <strong>key features</strong> &mdash; domain, range, intercepts, and rate of change &mdash; and explain what each one means.</p></div>
+      <p>These four features are the standard vocabulary for describing any function's behavior, and you'll use these exact same words for every function type for the rest of the course.</p>
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Graph a linear function from a table, equation, or written description</span></li>
+        <li><span class="num">2</span><span>Identify a graph's domain, range, and intercepts</span></li>
+        <li><span class="num">3</span><span>Determine rate of change directly from a graph, table, or equation</span></li>
+      </ul>
+    </section>
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">Four features, four meanings</h1>
+      <div class="vocab-grid">
+        <div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><line x1="4" y1="13" x2="22" y2="13" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Domain &amp; Range</span></div><div class="vocab-body"><p class="vocab-def">The <strong>domain</strong> is all allowed x-values; the <strong>range</strong> is all resulting y-values. For a full line with no restrictions, both are "all real numbers."</p><div class="vocab-hook"><span>&#128161;</span><span><b>Real-world graphs</b> often restrict the domain &mdash; you can't have negative hours worked, for example.</span></div></div></div>
+        <div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="3" fill="#C9A84C"/><circle cx="6" cy="20" r="3" fill="#C9A84C"/></svg><span class="term">Intercepts</span></div><div class="vocab-body"><p class="vocab-def">The <strong>x-intercept</strong> is where the line crosses the x-axis (y = 0); the <strong>y-intercept</strong> is where it crosses the y-axis (x = 0).</p><div class="vocab-hook"><span>&#128161;</span><span><b>In context,</b> the y-intercept is usually a starting value, and the x-intercept is when something reaches zero.</span></div></div></div>
+      </div>
+    </section>
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">How It Works</p>
+      <h1 class="slide-title">Reading each feature off a graph</h1>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Y-intercept</div>Find where the line crosses the y-axis. Its y-value is the y-intercept.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">X-intercept</div>Find where the line crosses the x-axis. Its x-value is the x-intercept.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Rate of change (slope)</div>Pick two clear points on the line and compute rise over run &mdash; the same average rate of change formula from last lesson.</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">Domain and range</div>Ask: how far left/right does the line extend (domain)? How far up/down (range)? For an unrestricted line, both are all real numbers.</div></div>
+      <div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Order matters less than completeness:</strong> as long as you report all four features, the order you find them in doesn't matter.</p></div>
+    </section>
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Real-World Context</p>
+      <h1 class="slide-title">Why domain restrictions matter most in real problems</h1>
+      <p>The pure algebra of a line extends forever in both directions. Real situations almost never do. A graph of "money earned versus hours worked" can't have negative hours, and probably can't exceed the hours in a day &mdash; so the domain gets restricted to match reality, even though the equation itself would allow more.</p>
+      <div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> f(h) = 15h models pay for h hours worked at $15/hour. Algebraically, h could be any real number. In context, the domain should really be restricted to 0 &#8804; h &#8804; 12 or so, since a shift has a realistic maximum length.</p></div>
+    </section>
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Worked Example &middot; From an Equation</p>
+      <h1 class="slide-title">Graphing and describing f(x) = &minus;2x + 6</h1>
+      <div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Graph f(x) = &minus;2x + 6 and state all four key features.</p></div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Y-intercept</div>Set x = 0: f(0) = 6. Y-intercept is (0, 6).</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">X-intercept</div>Set f(x) = 0: 0 = &minus;2x + 6 &rarr; x = 3. X-intercept is (3, 0).</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Rate of change</div>The coefficient of x is &minus;2, so the rate of change is &minus;2 &mdash; the line falls 2 units for every 1 unit right.</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">Domain and range</div>No restrictions given, so both domain and range are all real numbers.</div></div>
+    </section>
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Worked Example &middot; From a Table with a Restricted Domain</p>
+      <h1 class="slide-title">A phone plan's cost function</h1>
+      <div class="card blue"><p style="margin-bottom:0;"><strong>Table:</strong> gigabytes used (g): 0, 2, 4 &nbsp;&rarr;&nbsp; cost in dollars: 20, 30, 40. A plan tops out at 10 GB.</p></div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Rate of change</div>From g=0 to g=2, cost rises $10 over 2 GB &rarr; $5 per GB. Check g=2 to g=4: also $5 per GB. Confirmed linear.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Y-intercept</div>At g = 0, cost = $20 &mdash; this is the base monthly fee before any data is used.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Domain, restricted by context</div>Since the plan tops out at 10 GB, the realistic domain is 0 &#8804; g &#8804; 10, not "all real numbers."</div></div>
+      <div class="card think"><p style="margin-bottom:0;"><strong>&#128173; This is the case Lesson 3.5 focuses on entirely:</strong> real-world constraints shrinking a domain that algebra alone wouldn't restrict.</p></div>
+    </section>
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt"><strong>f(x) = 4x &minus; 8</strong></p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the y-intercept?</p>
+        <div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">(0, &minus;8)</button><button class="choice-btn" data-correct="false">(8, 0)</button></div>
+        <p class="feedback" id="fb-gp1"></p>
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the rate of change?</p>
+        <div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">4</button><button class="choice-btn" data-correct="false">&minus;8</button></div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">These four features describe every function you'll ever graph</h1>
+      <p>Domain, range, intercepts, and rate of change aren't specific to linear functions &mdash; you'll use these exact same four words to describe quadratic, exponential, and every other function type later in the course. Mastering the vocabulary here pays off for the rest of Algebra 1.</p>
+      <h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+      <ul>
+        <li>Reading a graph in the news &mdash; identifying trends, starting points, and where a value hits zero.</li>
+        <li>Business dashboards &mdash; a revenue line's intercept shows fixed costs; its slope shows marginal profit.</li>
+        <li>Any word problem that gives you a graph and asks you to explain what it means.</li>
+      </ul>
+      <p style="font-size:14px;color:#555;">Next lesson focuses entirely on real-world applications and setting realistic domain constraints.</p>
+    </section>
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+      <div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the y-intercept of f(x) = 3x + 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(3, 0)</button><button class="quiz-opt" data-correct="true">(0, 9)</button><button class="quiz-opt" data-correct="false">(9, 0)</button></div></div>
+      <div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">What is the x-intercept of f(x) = 3x + 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(&minus;3, 0)</button><button class="quiz-opt" data-correct="false">(0, 9)</button><button class="quiz-opt" data-correct="false">(3, 0)</button></div></div>
+      <div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">For an unrestricted linear function, what are the domain and range?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Both are all real numbers</button><button class="quiz-opt" data-correct="false">Both are exactly zero</button><button class="quiz-opt" data-correct="false">Domain is positive numbers only</button></div></div>
+      <div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A pay function can't have negative hours worked. What does this restrict?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">The realistic domain</button><button class="quiz-opt" data-correct="false">The y-intercept</button><button class="quiz-opt" data-correct="false">The slope</button></div></div>
+      <div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">A table shows cost rising $6 for every 1 unit increase in x, every time. What is the rate of change?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">6</button><button class="quiz-opt" data-correct="false">1</button><button class="quiz-opt" data-correct="false">Cannot be determined</button></div></div>
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can graph a linear function from a table, equation, or written description.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can identify a graph's domain, range, and intercepts.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can determine rate of change from a graph, table, or equation.</div>
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div><span class="term-pill">Domain</span><span class="term-pill">Range</span><span class="term-pill">Intercepts</span><span class="term-pill">Rate of Change</span></div>
+      <div class="next-box"><strong>Next &mdash; Lesson 3.5: Real-World Linear Function Applications.</strong> You'll put every skill from this unit together on full real-world problems, including setting realistic constraints on the domain.</div>
+      <div class="end-actions"><a class="end-btn primary next-lesson-link" href="3-5-real-world-linear-applications.html">Next Lesson: 3.5 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+    </section>
+  </div>
+  <div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+  function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q; var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') { btn.classList.add('correct'); fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+        else { btn.classList.add('incorrect'); row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); }); fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+      });
+    });
+  });
+  var quizAnswered = {}; var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; if (b.dataset.correct === 'true') b.classList.add('correct'); else if (b === btn) b.classList.add('incorrect'); });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){ var answeredCount = Object.keys(quizAnswered).length; if (answeredCount < quizTotal) return; var score = 0; for (var k in quizAnswered) if (quizAnswered[k]) score++; var scoreBox = document.getElementById('quizScore'); document.getElementById('scoreText').textContent = score + ' / ' + quizTotal; scoreBox.classList.add('show'); }
+</script>
+</body>
+</html>
