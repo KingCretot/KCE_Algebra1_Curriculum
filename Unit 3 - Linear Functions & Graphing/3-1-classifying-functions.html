@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 3.1: Classifying Functions</title>
+<style>
+:root{
+    --navy:#0A1F3D;
+    --gold:#C9A84C;
+    --blue:#0047BA;
+    --red:#DB2F30;
+    --cream:#FAF7EF;
+    --ink:#1c1c1c;
+    --line:#E3DDC9;
+    --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:var(--navy);
+    color:var(--ink);
+    line-height:1.55;
+  }
+
+  .app{
+    max-width:920px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--cream);
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 40px rgba(0,0,0,.35);
+  }
+
+  .masthead{
+    background:var(--navy);
+    padding:18px 28px 14px;
+  }
+  .mast-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{
+    color:#fff;
+    font-size:13px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(201,168,76,.5);
+    padding:5px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .eyebrow{
+    color:var(--blue);
+    font-weight:700;
+    font-size:12.5px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin:0 0 6px;
+  }
+  h1.slide-title{
+    color:var(--navy);
+    font-size:26px;
+    margin:0 0 18px;
+    line-height:1.25;
+  }
+  h2.sub-title{
+    color:var(--navy);
+    font-size:19px;
+    margin:0 0 12px;
+  }
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px 22px;
+    margin-bottom:16px;
+  }
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .card.think{background:#fff;border:2px dashed var(--gold);}
+
+  .vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+  .vocab-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    flex:1 1 100%;
+  }
+  @media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+  .vocab-card.wide{flex-basis:100%;}
+  .vocab-head{
+    background:var(--navy);
+    color:#fff;
+    padding:10px 16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .vocab-head .icon{width:26px;height:26px;flex:none;}
+  .vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+  .vocab-body{padding:14px 16px;}
+  .vocab-def{font-size:15px;margin-bottom:8px;}
+  .vocab-hook{
+    font-size:13.5px;
+    color:var(--navy);
+    background:#fdf8ec;
+    border-radius:8px;
+    padding:8px 10px;
+    display:flex;
+    gap:6px;
+    align-items:flex-start;
+  }
+  .vocab-hook b{color:var(--blue);}
+
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:12px 14px;
+    margin-bottom:10px;
+    font-size:15.5px;
+  }
+  .obj-list .num{
+    flex:none;
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .step{
+    display:flex;
+    gap:14px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .step .badge{
+    flex:none;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    font-weight:700;
+    font-size:14px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{
+    background:#fff;
+    border:2px solid var(--line);
+    border-radius:10px;
+    padding:10px 16px;
+    font-size:15px;
+    cursor:pointer;
+    font-family:inherit;
+    transition:.15s;
+  }
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opts{display:flex;flex-direction:column;gap:8px;}
+  .quiz-opt{
+    text-align:left;
+    background:#faf8f2;
+    border:2px solid var(--line);
+    border-radius:8px;
+    padding:9px 13px;
+    font-size:14.5px;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}
+  .quiz-note.show{display:block;}
+  .quiz-score{
+    text-align:center;
+    background:var(--navy);
+    color:#fff;
+    border-radius:12px;
+    padding:18px;
+    font-size:17px;
+    font-weight:700;
+    margin-top:10px;
+    display:none;
+  }
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+
+  .recap-check{
+    display:flex;align-items:center;gap:10px;
+    background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;
+    padding:10px 14px;margin-bottom:9px;font-size:15px;
+  }
+  .recap-check svg{flex:none;}
+  .term-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);
+  }
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+
+  svg.icon{display:block;}
+
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px 22px;
+    border-top:1px solid var(--line);
+    background:#fff;
+  }
+  .nav button{
+    font-family:inherit;
+    font-size:14px;
+    font-weight:700;
+    padding:10px 20px;
+    border-radius:8px;
+    border:2px solid var(--navy);
+    background:var(--navy);
+    color:#fff;
+    cursor:pointer;
+    letter-spacing:.3px;
+  }
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+
+  .footer-brand{
+    background:var(--navy);color:#cfd6e4;text-align:center;
+    font-size:11px;letter-spacing:1.5px;padding:10px;
+  }
+
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:26px;
+    transform:translate(-50%,20px);
+    background:var(--navy);
+    color:#fff;
+    border:1px solid var(--gold);
+    padding:13px 24px;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+    z-index:50;
+    max-width:90%;
+    text-align:center;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div>
+          <div class="wordmark">KingCretot Experience</div>
+          <div class="course-tag">Algebra 1 &middot; Unit 3: Linear Functions &amp; Graphing</div>
+        </div>
+      </div>
+      <div class="lesson-tag">Lesson 3.1 &middot; Classifying Functions</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
+  </div>
+
+  <div class="stage">
+
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin</p>
+      <h1 class="slide-title">Not every input-output relationship is a function &mdash; and not every function looks the same.</h1>
+
+      <div class="card warm">
+        <p style="margin-bottom:0;">You've spent two units solving equations and inequalities with one type of pattern: constant change. Starting today, you'll meet several different <strong>types</strong> of functions &mdash; and the first skill is simply telling them apart, from an equation, a graph, or a table of values.</p>
+      </div>
+
+      <p>This is the foundation for the rest of Algebra 1. Every unit from here on introduces a new function type &mdash; and you'll always start by asking the same question: what kind of pattern is this?</p>
+
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Explain what makes a relationship a function, using the vertical line test</span></li>
+        <li><span class="num">2</span><span>Classify a function as linear, quadratic, or exponential from a table of differences</span></li>
+        <li><span class="num">3</span><span>Recognize the same function types from an equation or a graph</span></li>
+      </ul>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">Two ideas before we classify anything</h1>
+
+      <div class="vocab-grid">
+        <div class="vocab-card">
+          <div class="vocab-head">
+            <svg class="icon" width="26" height="26" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10" fill="none" stroke="#C9A84C" stroke-width="2"/><circle cx="13" cy="13" r="2.5" fill="#C9A84C"/></svg>
+            <span class="term">Function</span>
+          </div>
+          <div class="vocab-body">
+            <p class="vocab-def">A <strong>function</strong> is a relationship where every input has exactly one output. No input is ever paired with two different outputs.</p>
+            <div class="vocab-hook"><span>&#128161;</span><span><b>Vertical line test:</b> on a graph, if any vertical line crosses the curve more than once, it's not a function.</span></div>
+          </div>
+        </div>
+
+        <div class="vocab-card">
+          <div class="vocab-head">
+            <svg class="icon" width="26" height="26" viewBox="0 0 26 26"><path d="M4 20 L11 12 L15 16 L22 6" stroke="#C9A84C" stroke-width="2" fill="none"/></svg>
+            <span class="term">Function Type</span>
+          </div>
+          <div class="vocab-body">
+            <p class="vocab-def">A function's <strong>type</strong> (linear, quadratic, exponential, and others you'll meet later) describes the pattern of change in its outputs &mdash; and that pattern is what you can read directly from a table.</p>
+            <div class="vocab-hook"><span>&#128161;</span><span><b>The shortcut:</b> you almost never need to graph a function to classify it &mdash; a table of values tells you everything.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">How It Works</p>
+      <h1 class="slide-title">Read the pattern of change in a table</h1>
+
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>The rule:</strong> for evenly-spaced x-values, look at how the y-values change from row to row.</p>
+      </div>
+
+      <div class="step">
+        <div class="badge">A</div>
+        <div class="content">
+          <div class="label">Linear</div>
+          The differences between consecutive y-values are constant. Same amount added every time.
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">B</div>
+        <div class="content">
+          <div class="label">Quadratic</div>
+          The first differences change, but the <em>differences of the differences</em> (second differences) are constant.
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">C</div>
+        <div class="content">
+          <div class="label">Exponential</div>
+          Neither set of differences is constant &mdash; but the <em>ratio</em> between consecutive y-values is constant. Same amount multiplied every time.
+        </div>
+      </div>
+
+      <div class="card think">
+        <p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> you'll build full toolkits for quadratic and exponential functions in later units. Right now you only need to recognize the pattern well enough to name it &mdash; not solve or graph it yet.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Real-World Context</p>
+      <h1 class="slide-title">Why the type matters before you do anything else</h1>
+
+      <p>Every real situation grows in one of these patterns. A savings account earning simple interest grows <strong>linearly</strong> &mdash; the same dollar amount every year. A ball tossed in the air follows a <strong>quadratic</strong> path &mdash; up, then back down, curving the whole way. A population doubling every decade grows <strong>exponentially</strong> &mdash; slow at first, then explosive.</p>
+
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Example:</strong> $100 growing by $5 every year is linear (100, 105, 110, 115&hellip;). $100 growing by 5% every year is exponential (100, 105, 110.25, 115.76&hellip;) &mdash; it only looks similar for the first couple of years.</p>
+      </div>
+
+      <p>Misidentifying the type leads to picking the wrong tool later &mdash; using a linear equation to predict something that's actually exploding exponentially will give a wildly wrong answer.</p>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Worked Example &middot; Table</p>
+      <h1 class="slide-title">Classifying a table of values</h1>
+
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Table:</strong> x = 0, 1, 2, 3 &nbsp;&rarr;&nbsp; y = 3, 9, 27, 81</p>
+      </div>
+
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">Check first differences</div>
+          9 &minus; 3 = 6, then 27 &minus; 9 = 18, then 81 &minus; 27 = 54. Not constant &mdash; not linear.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">Check second differences</div>
+          18 &minus; 6 = 12, then 54 &minus; 18 = 36. Still not constant &mdash; not quadratic either.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">3</div>
+        <div class="content">
+          <div class="label">Check the ratio instead</div>
+          9/3 = 3, 27/9 = 3, 81/27 = 3. Constant ratio of 3 &mdash; this is <strong>exponential</strong>.
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Worked Example &middot; Equation &amp; Graph</p>
+      <h1 class="slide-title">Classifying by equation shape</h1>
+
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Goal:</strong> classify y = 4x &minus; 7, y = x&sup2; + 2, and y = 3(2)<sup>x</sup> without building a table.</p>
+      </div>
+
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">y = 4x &minus; 7</div>
+          x appears to the first power only, with no exponent on the variable &mdash; <strong>linear</strong>. Its graph is a straight line.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">y = x&sup2; + 2</div>
+          x is squared &mdash; <strong>quadratic</strong>. Its graph is a curve called a parabola.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="badge">3</div>
+        <div class="content">
+          <div class="label">y = 3(2)<sup>x</sup></div>
+          The variable x is in the <em>exponent</em>, not the base &mdash; <strong>exponential</strong>. Its graph starts slow and curves upward sharply.
+        </div>
+      </div>
+
+      <div class="card think">
+        <p style="margin-bottom:0;"><strong>&#128173; The tell:</strong> where the variable sits in the equation (by itself, squared, or in an exponent) usually identifies the type faster than building a table.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+
+      <div class="gp-box">
+        <p class="gp-prompt"><strong>Table:</strong> x = 0, 1, 2, 3 &nbsp;&rarr;&nbsp; y = 2, 5, 8, 11</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What are the first differences?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">3, 3, 3 &mdash; constant</button>
+          <button class="choice-btn" data-correct="false">2.5, 1.6, 1.375 &mdash; a constant ratio</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; So what type of function is this?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="true">Linear</button>
+          <button class="choice-btn" data-correct="false">Quadratic</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">This one skill previews the rest of the course</h1>
+
+      <p>Every remaining unit in this course builds tools for one specific function type. Recognizing the type first is what tells you which toolkit to reach for &mdash; and it's a skill you'll use constantly, not just on a single quiz.</p>
+
+      <h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+      <ul>
+        <li>Finance: simple interest (linear) versus compound interest (exponential).</li>
+        <li>Physics: constant speed (linear) versus a falling or thrown object (quadratic).</li>
+        <li>Biology: steady population growth (linear) versus doubling growth, like bacteria (exponential).</li>
+      </ul>
+      <p style="font-size:14px;color:#555;">The rest of Unit 3 focuses specifically on linear functions &mdash; the type with constant rate of change.</p>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+
+      <div class="quiz-q" data-quiz="q1">
+        <div class="qnum">Question 1</div>
+        <div class="qtext">What makes a relationship a function?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Every output has exactly one input</button>
+          <button class="quiz-opt" data-correct="true">Every input has exactly one output</button>
+          <button class="quiz-opt" data-correct="false">The graph must be a straight line</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q2">
+        <div class="qnum">Question 2</div>
+        <div class="qtext">A table has constant first differences. What type of function is it?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Linear</button>
+          <button class="quiz-opt" data-correct="false">Quadratic</button>
+          <button class="quiz-opt" data-correct="false">Exponential</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q3">
+        <div class="qnum">Question 3</div>
+        <div class="qtext">A table has a constant ratio between consecutive y-values, but the differences aren't constant. What type is it?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Linear</button>
+          <button class="quiz-opt" data-correct="false">Quadratic</button>
+          <button class="quiz-opt" data-correct="true">Exponential</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q4">
+        <div class="qnum">Question 4</div>
+        <div class="qtext">In the equation y = 6x&sup2; &minus; 1, what identifies it as quadratic?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">The coefficient 6</button>
+          <button class="quiz-opt" data-correct="true">x is raised to the second power</button>
+          <button class="quiz-opt" data-correct="false">The subtraction of 1</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q5">
+        <div class="qnum">Question 5</div>
+        <div class="qtext">Why does it matter to classify a function type before modeling a real situation?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Using the wrong type's tools gives a wrong prediction, especially over time</button>
+          <button class="quiz-opt" data-correct="false">It doesn't matter &mdash; all functions behave the same way eventually</button>
+          <button class="quiz-opt" data-correct="false">Only exponential functions can be graphed</button>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain what makes a relationship a function, using the vertical line test.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can classify linear, quadratic, and exponential functions from a table of differences.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize the same function types from an equation.</div>
+
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div>
+        <span class="term-pill">Function</span>
+        <span class="term-pill">Function Type</span>
+        <span class="term-pill">First / Second Differences</span>
+      </div>
+
+      <div class="next-box">
+        <strong>Next &mdash; Lesson 3.2: Function Notation &amp; Evaluating Functions.</strong> Now that you can name a function's type, you'll learn the notation mathematicians use to work with functions &mdash; f(x) &mdash; and how to evaluate one for a given input.
+      </div>
+
+      <div class="end-actions">
+        <a class="end-btn primary next-lesson-link" href="3-2-function-notation.html">Next Lesson: 3.2 &rarr;</a>
+        <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
+      goTo(1);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') {
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+        } else {
+          btn.classList.add('incorrect');
+          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
+          fb.className = 'feedback bad';
+        }
+      });
+    });
+  });
+
+  var quizAnswered = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){
+          b.disabled = true;
+          if (b.dataset.correct === 'true') b.classList.add('correct');
+          else if (b === btn) b.classList.add('incorrect');
+        });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+  }
+
+</script>
+</body>
+</html>
