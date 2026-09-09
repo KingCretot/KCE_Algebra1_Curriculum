@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 3.5: Real-World Linear Function Applications</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 3: Linear Functions &amp; Graphing</div></div></div><div class="lesson-tag">Lesson 3.5 &middot; Real-World Applications</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Every skill in this unit, applied to one full problem.</h1>
+<div class="card warm"><p style="margin-bottom:0;">This is the capstone lesson for Unit 3. You'll take a real-world situation, build the linear function that models it, graph it, identify its key features, and &mdash; the piece that's genuinely new today &mdash; decide on a <strong>realistic domain</strong> that reflects the actual constraints of the situation.</p></div>
+<p>By the end, you'll have the complete workflow for turning a word problem into a fully analyzed linear model.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Build a linear function from a real-world description</span></li><li><span class="num">2</span><span>Solve and graph the resulting real-world problem</span></li><li><span class="num">3</span><span>Determine realistic constraints on the domain and interpret key features in context</span></li></ul>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">One idea, applied</h1>
+<div class="vocab-grid"><div class="vocab-card wide"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><path d="M4 4 L22 4 L22 22 L4 22 Z" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Constraint</span></div><div class="vocab-body"><p class="vocab-def">A <strong>constraint</strong> is a real-world limit on a variable &mdash; something that keeps the math honest about what's actually possible. Common constraints: no negative time, quantity, or money; a maximum capacity; a fixed budget.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Finding constraints</b> is really just re-reading the word problem for anything that limits what a variable is allowed to be.</span></div></div></div></div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">The four-step workflow</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Build the function</div>Identify the starting value (y-intercept) and the rate of change from the description, then write f(x).</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Solve what's asked</div>Evaluate the function for a given input, or set it equal to a target output and solve for the input.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Identify constraints</div>Re-read the problem for any limits: can the variable be negative? Is there a maximum?</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Graph within that domain</div>Draw only the portion of the line that fits the realistic domain &mdash; not the full infinite line.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; This workflow never changes:</strong> these same four steps apply to every real-world linear problem you'll ever see, in this course or beyond it.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Why constraints are the step people skip</h1>
+<p>It's tempting to stop once you've solved the equation. But a linear function without its constraints can produce nonsense: negative hours worked, negative dollars owed, more items sold than exist. Setting the realistic domain is what separates "solved the algebra" from "actually understood the problem."</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A parking garage charges f(h) = 5 + 2h for h hours. The algebra allows any h. But the garage closes after 12 hours &mdash; so the honest domain is 0 &#8804; h &#8804; 12, and any answer outside that range should be flagged as unrealistic, not just reported.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Full Workflow</p><h1 class="slide-title">A water tank being drained</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Problem:</strong> A 500-gallon tank drains at 25 gallons per minute. Model the volume, and find when it's empty.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Build the function</div>Starting volume 500, decreasing 25 per minute: V(t) = 500 &minus; 25t</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Solve for when it's empty</div>Set V(t) = 0: 0 = 500 &minus; 25t &rarr; t = 20 minutes</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Identify constraints</div>Volume can't be negative, and time can't be negative: 0 &#8804; t &#8804; 20 and 0 &#8804; V &#8804; 500.</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Interpreting an Unrealistic Answer</p><h1 class="slide-title">When the algebra gives you a nonsense input</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Problem:</strong> Using V(t) = 500 &minus; 25t from the last slide, what does V(30) mean?</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Evaluate anyway</div>V(30) = 500 &minus; 25(30) = 500 &minus; 750 = &minus;250</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Check it against the domain</div>t = 30 is outside the realistic domain of 0 to 20 minutes &mdash; the tank was already empty by t = 20.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; The negative answer isn't wrong math &mdash; it's a signal.</strong> "&minus;250 gallons" is meaningless in real life. This tells you t = 30 falls outside where the model applies, not that the tank has negative water.</p></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>A 40-gallon aquarium is being filled at 4 gallons per minute, starting empty: V(t) = 4t.</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; How many minutes until it's full?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">10 minutes</button><button class="choice-btn" data-correct="false">4 minutes</button></div><p class="feedback" id="fb-gp1"></p>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the realistic domain for t?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">0 &#8804; t &#8804; 10</button><button class="choice-btn" data-correct="false">All real numbers</button></div><p class="feedback" id="fb-gp2"></p>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">Unit 3, complete</h1>
+<p>Across this unit you've classified function types, learned function notation, measured average rate of change, graphed linear functions with their key features, and now applied all of it to full real-world problems with realistic constraints. That's the complete linear-functions toolkit &mdash; and it's the foundation Unit 4 builds on next, when you write your own linear equations from scratch.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Budgeting: modeling savings or spending over time, with realistic time limits.</li><li>Business: modeling inventory, staffing costs, or fuel usage.</li><li>Any word problem that describes a starting value and a steady rate of change.</li></ul>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">A tank starts with 200 gallons and drains at 10 gallons/minute. What's the function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">V(t) = 200 &minus; 10t</button><button class="quiz-opt" data-correct="false">V(t) = 10t &minus; 200</button><button class="quiz-opt" data-correct="false">V(t) = 200 + 10t</button></div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Using V(t) = 200 &minus; 10t, when is the tank empty?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">t = 20 minutes</button><button class="quiz-opt" data-correct="false">t = 200 minutes</button><button class="quiz-opt" data-correct="false">t = 10 minutes</button></div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">What's the realistic domain for V(t) = 200 &minus; 10t, a draining tank?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">0 &#8804; t &#8804; 20</button><button class="quiz-opt" data-correct="false">All real numbers</button><button class="quiz-opt" data-correct="false">t &#8805; 20 only</button></div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">You calculate V(25) = &minus;50 for a draining-tank problem with domain 0&ndash;20. What does that tell you?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">t = 25 is outside where the model applies &mdash; the tank was already empty</button><button class="quiz-opt" data-correct="false">The tank now has &minus;50 gallons of water</button><button class="quiz-opt" data-correct="false">There was an arithmetic error somewhere</button></div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Why is identifying constraints an important step, not an optional extra?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Without them, the model can produce answers that are algebraically valid but meaningless in reality</button><button class="quiz-opt" data-correct="false">It's only needed when the problem explicitly asks for it</button><button class="quiz-opt" data-correct="false">It changes the slope of the function</button></div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can build a linear function from a real-world description.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can solve and graph the resulting real-world problem.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can determine realistic constraints and interpret key features in context.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Constraint</span><span class="term-pill">Realistic Domain</span></div>
+<div class="next-box"><strong>Unit 3 complete!</strong> You now have the full toolkit for linear functions: classifying, notation, rate of change, graphing key features, and real-world application. Unit 4 flips the direction &mdash; you'll write your own linear equations from a graph, table, or description.</div>
+<div class="end-actions"><a class="end-btn primary" href="../KCE_Algebra1_Unit4.html">Start Unit 4 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section>
+</div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+  var q = row.dataset.q; var fb = document.getElementById('fb-' + q);
+  row.querySelectorAll('.choice-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+      if (btn.dataset.correct === 'true') { btn.classList.add('correct'); fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+      else { btn.classList.add('incorrect'); row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); }); fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+    });
+  });
+});
+var quizAnswered = {}; var quizTotal = document.querySelectorAll('.quiz-q').length;
+document.querySelectorAll('.quiz-q').forEach(function(q){
+  var qid = q.dataset.quiz;
+  q.querySelectorAll('.quiz-opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (quizAnswered[qid] !== undefined) return;
+      quizAnswered[qid] = (btn.dataset.correct === 'true');
+      q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; if (b.dataset.correct === 'true') b.classList.add('correct'); else if (b === btn) b.classList.add('incorrect'); });
+      updateScore();
+    });
+  });
+});
+function updateScore(){ var answeredCount = Object.keys(quizAnswered).length; if (answeredCount < quizTotal) return; var score = 0; for (var k in quizAnswered) if (quizAnswered[k]) score++; var scoreBox = document.getElementById('quizScore'); document.getElementById('scoreText').textContent = score + ' / ' + quizTotal; scoreBox.classList.add('show'); }
+</script>
+</body>
+</html>
