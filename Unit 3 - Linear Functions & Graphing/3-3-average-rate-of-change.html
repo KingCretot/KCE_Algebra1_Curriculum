@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Calculate the average rate of change over a specified interval</span></li>
         <li><span class="num">3</span><span>Interpret the result in a real-world context, with correct units</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -496,6 +510,7 @@
           <button class="choice-btn" data-correct="false">120</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Average rate of change is just 'total change in output' divided by 'total change in input' &mdash; here, (150&minus;30)/(3&minus;1) = 120/2 = 60. It's the exact same idea as calculating your average speed on a road trip: total distance covered divided by total time it took.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What does that answer mean, with correct units?</p>
         <div class="choice-row" data-q="gp2">
@@ -503,6 +518,7 @@
           <button class="choice-btn" data-correct="false">The car traveled exactly 60 miles total</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> 60 by itself is meaningless without units and context &mdash; but '60 miles per hour, averaged between hour 1 and hour 3' tells the full story. Always attach the real-world units and timeframe to a rate-of-change answer, not just the bare number.</div>
       </div>
     </section>
 
@@ -533,6 +549,8 @@
           <button class="quiz-opt" data-correct="false">f(b) + f(a)</button>
           <button class="quiz-opt" data-correct="false">(b &minus; a) / [f(b) &minus; f(a)]</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The average rate of change formula is [f(b) &minus; f(a)] / (b &minus; a) &mdash; change in output over change in input, exactly like calculating a car's average speed: (ending mile marker &minus; starting mile marker) &divide; (ending time &minus; starting time).</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -543,6 +561,8 @@
           <button class="quiz-opt" data-correct="false">20</button>
           <button class="quiz-opt" data-correct="false">10</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> If a plant grows from 3 inches to 13 inches over 2 weeks: (13&minus;3)/2 = 10/2 = 5 inches per week &mdash; that's the average rate of change, treating the whole 2-week stretch as one steady climb even if some days it may have grown more or less.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -553,6 +573,8 @@
           <button class="quiz-opt" data-correct="false">It's always different on every interval</button>
           <button class="quiz-opt" data-correct="false">It can't be calculated for linear functions</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> For a genuinely linear function, the average rate of change comes out to the EXACT same number no matter which two points you pick &mdash; because a straight line's steepness (its slope) never changes anywhere along it. That constant value IS the slope.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -563,6 +585,8 @@
           <button class="quiz-opt" data-correct="false">You made an arithmetic error</button>
           <button class="quiz-opt" data-correct="false">The function has no domain</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> If you calculate the rate of change over two different intervals of the SAME function and get two different answers, that's actually a clue the function ISN'T linear &mdash; a true straight line gives you the identical rate everywhere, so differing rates mean the graph is curving.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -573,9 +597,12 @@
           <button class="quiz-opt" data-correct="false">8 feet per hour</button>
           <button class="quiz-opt" data-correct="false">2 hours per foot</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> A pool draining from 24 feet deep to 8 feet deep over 8 hours: (8&minus;24)/8 = &minus;16/8 = &minus;2 feet per hour. The negative sign matters &mdash; it's telling you the depth is DECREASING, 2 feet lost every hour, not gained.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -662,37 +689,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -704,8 +768,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-3-3-average-rate-of-change',
+        lesson: '3.3: Average Rate of Change',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Write a two-variable inequality from a description of a graph</span></li>
         <li><span class="num">3</span><span>Decide whether the boundary line should be solid or dashed</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -513,6 +527,7 @@
           <button class="choice-btn" data-correct="false">y = 3x</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> A line through the origin always has the form y = mx (no separate number added, since it passes through (0,0)). With slope &minus;3, that's y = &minus;3x &mdash; the y = 3x option would have the wrong direction, sloping the opposite way.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Solid line, shaded below &mdash; what's the full inequality?</p>
         <div class="choice-row" data-q="gp2">
@@ -520,6 +535,7 @@
           <button class="choice-btn" data-correct="false">y &lt; &minus;3x</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> SOLID line means the boundary IS included, so you need &#8804; or &#8805;, not a strict < or >. 'Shaded below' the line means the y-values are less than or equal to the line's y-values: y &#8804; &minus;3x. Missing the equals sign is the #1 way to get graphing inequalities wrong.</div>
       </div>
     </section>
 
@@ -550,6 +566,8 @@
           <button class="quiz-opt" data-correct="true">No more than</button>
           <button class="quiz-opt" data-correct="false">Fewer than</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> 'No more than' is real-world phrasing for 'at the max, this much, but never over' &mdash; which is &#8804;, not a strict <. If a rollercoaster says 'no more than 6 riders,' 6 riders is still fine &mdash; the limit itself is allowed.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -560,6 +578,8 @@
           <button class="quiz-opt" data-correct="true">The boundary points are NOT part of the solution</button>
           <button class="quiz-opt" data-correct="false">The line has a negative slope</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> A strict inequality (< or >) always means the boundary line itself is the cutoff, NOT part of the answer &mdash; shown as a dashed line on a graph. If y &#8804; or y &#8805; had been used instead, the boundary WOULD be included.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -570,6 +590,8 @@
           <button class="quiz-opt" data-correct="true">p &#8804; 12</button>
           <button class="quiz-opt" data-correct="false">p &#8805; 12</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> 'A tutoring service charges $12/hour, and you can spend no more than that per session' translates to p &#8804; 12 &mdash; 'no more than' is the real-world signal for &#8804;, and p (price) has to stay at or under the 12 limit.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -580,6 +602,8 @@
           <button class="quiz-opt" data-correct="false">y &#8805; x + 4</button>
           <button class="quiz-opt" data-correct="false">y &lt; x + 4</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> 'A shows y is always at most 4 more than x' means y can equal x + 4 or be smaller &mdash; that's y &#8804; x + 4. Reading &#8805; here would flip the actual meaning of 'at most' into 'at least,' which is the opposite real-world statement.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -590,9 +614,12 @@
           <button class="quiz-opt" data-correct="true">2x + 3y &lt; 30</button>
           <button class="quiz-opt" data-correct="false">2x + 3y &gt; 30</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> 'Spending strictly under $30 combined on candy (2x) and drinks (3y)' is a strict cutoff &mdash; you must stay UNDER 30, not equal to it &mdash; so 2x + 3y < 30, using the strict < instead of &#8804;, matching the real-world 'under' language exactly.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -680,37 +707,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -722,8 +786,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-2-2-writing-two-variable-inequalities',
+        lesson: '2.2: Writing Two-Variable Inequalities',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

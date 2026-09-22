@@ -88,6 +88,15 @@ svg.icon{display:block;}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
 .toast.show{opacity:1;transform:translate(-50%,0);}
 @media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -101,6 +110,11 @@ svg.icon{display:block;}
 <p>By the end, you'll have the complete workflow for turning a word problem into a fully analyzed linear model.</p>
 <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
 <ul class="obj-list"><li><span class="num">1</span><span>Build a linear function from a real-world description</span></li><li><span class="num">2</span><span>Solve and graph the resulting real-world problem</span></li><li><span class="num">3</span><span>Determine realistic constraints on the domain and interpret key features in context</span></li></ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
 </section>
 <section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">One idea, applied</h1>
 <div class="vocab-grid"><div class="vocab-card wide"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><path d="M4 4 L22 4 L22 22 L4 22 Z" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Constraint</span></div><div class="vocab-body"><p class="vocab-def">A <strong>constraint</strong> is a real-world limit on a variable &mdash; something that keeps the math honest about what's actually possible. Common constraints: no negative time, quantity, or money; a maximum capacity; a fixed budget.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Finding constraints</b> is really just re-reading the word problem for anything that limits what a variable is allowed to be.</span></div></div></div></div>
@@ -132,8 +146,10 @@ svg.icon{display:block;}
 <div class="gp-box"><p class="gp-prompt"><strong>A 40-gallon aquarium is being filled at 4 gallons per minute, starting empty: V(t) = 4t.</strong></p>
 <p style="font-weight:600;font-size:15px;">Question 1 &mdash; How many minutes until it's full?</p>
 <div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">10 minutes</button><button class="choice-btn" data-correct="false">4 minutes</button></div><p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> A 40-gallon aquarium filling at 4 gallons/minute starting from empty builds as: starting amount (0) plus rate &times; time &mdash; V(t) = 4t. If it had started already partly full, that starting number would be added on too, the same way the phone-plan's flat fee got added earlier in the course.</div>
 <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the realistic domain for t?</p>
 <div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">0 &#8804; t &#8804; 10</button><button class="choice-btn" data-correct="false">All real numbers</button></div><p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Set V(t) = 40 to find when it's full: 4t = 40, so t = 10 minutes. This is the reverse-lookup skill again &mdash; given the output you're aiming for (a full tank), solve backward for the input (time) that gets you there.</div>
 </div></section>
 <section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">Unit 3, complete</h1>
 <p>Across this unit you've classified function types, learned function notation, measured average rate of change, graphed linear functions with their key features, and now applied all of it to full real-world problems with realistic constraints. That's the complete linear-functions toolkit &mdash; and it's the foundation Unit 4 builds on next, when you write your own linear equations from scratch.</p>
@@ -141,12 +157,23 @@ svg.icon{display:block;}
 <ul><li>Budgeting: modeling savings or spending over time, with realistic time limits.</li><li>Business: modeling inventory, staffing costs, or fuel usage.</li><li>Any word problem that describes a starting value and a steady rate of change.</li></ul>
 </section>
 <section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
-<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">A tank starts with 200 gallons and drains at 10 gallons/minute. What's the function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">V(t) = 200 &minus; 10t</button><button class="quiz-opt" data-correct="false">V(t) = 10t &minus; 200</button><button class="quiz-opt" data-correct="false">V(t) = 200 + 10t</button></div></div>
-<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Using V(t) = 200 &minus; 10t, when is the tank empty?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">t = 20 minutes</button><button class="quiz-opt" data-correct="false">t = 200 minutes</button><button class="quiz-opt" data-correct="false">t = 10 minutes</button></div></div>
-<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">What's the realistic domain for V(t) = 200 &minus; 10t, a draining tank?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">0 &#8804; t &#8804; 20</button><button class="quiz-opt" data-correct="false">All real numbers</button><button class="quiz-opt" data-correct="false">t &#8805; 20 only</button></div></div>
-<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">You calculate V(25) = &minus;50 for a draining-tank problem with domain 0&ndash;20. What does that tell you?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">t = 25 is outside where the model applies &mdash; the tank was already empty</button><button class="quiz-opt" data-correct="false">The tank now has &minus;50 gallons of water</button><button class="quiz-opt" data-correct="false">There was an arithmetic error somewhere</button></div></div>
-<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Why is identifying constraints an important step, not an optional extra?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Without them, the model can produce answers that are algebraically valid but meaningless in reality</button><button class="quiz-opt" data-correct="false">It's only needed when the problem explicitly asks for it</button><button class="quiz-opt" data-correct="false">It changes the slope of the function</button></div></div>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">A tank starts with 200 gallons and drains at 10 gallons/minute. What's the function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">V(t) = 200 &minus; 10t</button><button class="quiz-opt" data-correct="false">V(t) = 10t &minus; 200</button><button class="quiz-opt" data-correct="false">V(t) = 200 + 10t</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> A car's value dropping from $20,000 by $1,500 every year builds as: starting value MINUS the rate times time &mdash; V(t) = 20000 &minus; 1500t. The minus sign matters here since the value is going DOWN, not up, every year.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Using V(t) = 200 &minus; 10t, when is the tank empty?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">t = 20 minutes</button><button class="quiz-opt" data-correct="false">t = 200 minutes</button><button class="quiz-opt" data-correct="false">t = 10 minutes</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Using the depreciation model V(t) = 20000 &minus; 1500t, if you want to know when the car is worth $5,000: 5000 = 20000 &minus; 1500t. Solving backward: &minus;15000 = &minus;1500t, so t = 10 years.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">What's the realistic domain for V(t) = 200 &minus; 10t, a draining tank?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">0 &#8804; t &#8804; 20</button><button class="quiz-opt" data-correct="false">All real numbers</button><button class="quiz-opt" data-correct="false">t &#8805; 20 only</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> A tank starting at 60 gallons and draining at 5 gallons/minute hits empty at exactly t = 12 minutes (60&divide;5) &mdash; so the realistic domain stops there: 0 &#8804; t &#8804; 12. The math formula would happily give negative tank volume beyond that, but that's physically impossible, so the domain has to be capped.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">You calculate V(25) = &minus;50 for a draining-tank problem with domain 0&ndash;20. What does that tell you?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">t = 25 is outside where the model applies &mdash; the tank was already empty</button><button class="quiz-opt" data-correct="false">The tank now has &minus;50 gallons of water</button><button class="quiz-opt" data-correct="false">There was an arithmetic error somewhere</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> If a formula predicts a NEGATIVE amount of something that can't physically go negative (water in a drained tank, money in an empty account, distance already traveled), that's the model being asked a question outside its realistic domain &mdash; the math still 'works' on paper, but the real-world answer stops meaning anything.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Why is identifying constraints an important step, not an optional extra?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Without them, the model can produce answers that are algebraically valid but meaningless in reality</button><button class="quiz-opt" data-correct="false">It's only needed when the problem explicitly asks for it</button><button class="quiz-opt" data-correct="false">It changes the slope of the function</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Without a realistic domain, a linear model will cheerfully spit out answers like 'negative gallons of water' or 'negative years old' &mdash; technically correct algebra, completely meaningless in reality. Defining the realistic domain is what keeps a math model tied to the actual situation it's supposed to describe.</div>
+      </div>
 <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
 </section>
 <section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
 <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can build a linear function from a real-world description.</div>
@@ -187,28 +214,118 @@ document.getElementById('nextBtn').addEventListener('click', function(){ goTo(cu
 function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
 document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
 document.querySelectorAll('.choice-row').forEach(function(row){
-  var q = row.dataset.q; var fb = document.getElementById('fb-' + q);
-  row.querySelectorAll('.choice-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
-      if (btn.dataset.correct === 'true') { btn.classList.add('correct'); fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
-      else { btn.classList.add('incorrect'); row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); }); fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
     });
   });
-});
-var quizAnswered = {}; var quizTotal = document.querySelectorAll('.quiz-q').length;
-document.querySelectorAll('.quiz-q').forEach(function(q){
-  var qid = q.dataset.quiz;
-  q.querySelectorAll('.quiz-opt').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      if (quizAnswered[qid] !== undefined) return;
-      quizAnswered[qid] = (btn.dataset.correct === 'true');
-      q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; if (b.dataset.correct === 'true') b.classList.add('correct'); else if (b === btn) b.classList.add('incorrect'); });
-      updateScore();
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
     });
   });
-});
-function updateScore(){ var answeredCount = Object.keys(quizAnswered).length; if (answeredCount < quizTotal) return; var score = 0; for (var k in quizAnswered) if (quizAnswered[k]) score++; var scoreBox = document.getElementById('quizScore'); document.getElementById('scoreText').textContent = score + ' / ' + quizTotal; scoreBox.classList.add('show'); }
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-3-5-real-world-linear-applications',
+        lesson: '3.5: Real-World Linear Applications',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

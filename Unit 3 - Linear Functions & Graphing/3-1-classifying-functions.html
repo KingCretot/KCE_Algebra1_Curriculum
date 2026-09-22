@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Classify a function as linear, quadratic, or exponential from a table of differences</span></li>
         <li><span class="num">3</span><span>Recognize the same function types from an equation or a graph</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -517,6 +531,7 @@
           <button class="choice-btn" data-correct="false">2.5, 1.6, 1.375 &mdash; a constant ratio</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> First differences are just 'how much does y jump each time x goes up by 1?' Here: 5&minus;2=3, 8&minus;5=3, 11&minus;8=3 &mdash; the SAME jump every time. A constant first difference is the fingerprint of a linear function &mdash; it's adding the same amount every step, like a savings account that gets exactly $3 deposited every week.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; So what type of function is this?</p>
         <div class="choice-row" data-q="gp2">
@@ -524,6 +539,7 @@
           <button class="choice-btn" data-correct="false">Quadratic</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Since the differences are constant (always +3), this table represents a <b>linear</b> function &mdash; y is increasing by the same fixed amount for every step in x, which is exactly what a straight line does.</div>
       </div>
     </section>
 
@@ -554,6 +570,8 @@
           <button class="quiz-opt" data-correct="true">Every input has exactly one output</button>
           <button class="quiz-opt" data-correct="false">The graph must be a straight line</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> A function is a strict promise: put in one specific input, and you always get exactly ONE output back &mdash; like a vending machine where pressing B4 always gives you the same snack, never two different snacks on different days. It's fine for two different inputs to give the same output (like two buttons giving the same candy) &mdash; that's still a function.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -564,6 +582,8 @@
           <button class="quiz-opt" data-correct="false">Quadratic</button>
           <button class="quiz-opt" data-correct="false">Exponential</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Constant first differences (the SAME jump every single step, like +4, +4, +4) is the signature of a linear function &mdash; each step adds the exact same amount, just like a taxi meter ticking up the same fare per mile.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -574,6 +594,8 @@
           <button class="quiz-opt" data-correct="false">Quadratic</button>
           <button class="quiz-opt" data-correct="true">Exponential</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> When the RATIO between consecutive outputs stays the same (not the difference), that's exponential growth &mdash; think of a rumor doubling every day, or money compounding in an account. Each step multiplies rather than adds.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -584,6 +606,8 @@
           <button class="quiz-opt" data-correct="true">x is raised to the second power</button>
           <button class="quiz-opt" data-correct="false">The subtraction of 1</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> In y = 6x&minus;1&sup2;, x being raised to the second power (squared) is the dead giveaway of a quadratic function &mdash; squaring creates that curved, U-shaped pattern instead of a straight line, no matter what number is multiplying it.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -594,9 +618,12 @@
           <button class="quiz-opt" data-correct="false">It doesn't matter &mdash; all functions behave the same way eventually</button>
           <button class="quiz-opt" data-correct="false">Only exponential functions can be graphed</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Picture predicting a viral TikTok's views using a straight-line (linear) model when it's actually growing exponentially &mdash; you'd wildly underestimate the real numbers within days. Using the wrong function family doesn't just give a slightly-off answer, it can be dramatically wrong, especially the further out you predict.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -684,37 +711,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -726,8 +790,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-3-1-classifying-functions',
+        lesson: '3.1: Classifying Functions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

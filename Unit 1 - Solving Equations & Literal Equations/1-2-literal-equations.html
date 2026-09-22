@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Isolate a chosen variable using the same steps you use to solve any equation</span></li>
         <li><span class="num">3</span><span>Rearrange real formulas &mdash; temperature, geometry, and interest &mdash; to solve for a different quantity</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -521,6 +535,7 @@
           <button class="choice-btn" data-correct="false">Divide both sides by b first</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> You can't isolate h while it's still trapped under a fraction (&#189;). The very first move has to clear that fraction &mdash; multiplying both sides by 2 does exactly that, turning &#189;bh into bh. Dividing by b first would strand h next to the fraction with nothing gained.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; After clearing the &#189;, you have 2A = bh. What's the correct final answer for h?</p>
         <div class="choice-row" data-q="gp2">
@@ -528,6 +543,7 @@
           <button class="choice-btn" data-correct="false">h = A / 2b</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Once you're at 2A = bh, h is still stuck being multiplied by b. To free it, divide both sides by b &mdash; that's the inverse operation of multiplication. h = A / 2b is a trap: it comes from dividing only part of the 2A instead of the whole thing.</div>
       </div>
     </section>
 
@@ -558,6 +574,8 @@
           <button class="quiz-opt" data-correct="true">An equation with two or more variables, like a formula</button>
           <button class="quiz-opt" data-correct="false">An equation with no solution</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> A literal equation is just a formula with more than one letter in it &mdash; like a recipe with multiple ingredients instead of a single equation with one unknown. Distance = rate &times; time (d = rt) is a classic example: three letters, one relationship.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -568,6 +586,8 @@
           <button class="quiz-opt" data-correct="true">Treat every other letter like a number, using inverse operations</button>
           <button class="quiz-opt" data-correct="false">Substitute in a value first</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> The golden rule for literal equations: whatever letter you're NOT solving for, treat it exactly like a plain number, and use the same inverse-operation moves you'd use on any equation (undo addition with subtraction, undo multiplication with division).</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -578,6 +598,8 @@
           <button class="quiz-opt" data-correct="true">t = d / r</button>
           <button class="quiz-opt" data-correct="false">t = r / d</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Starting from d = rt and solving for t: divide both sides by r (the thing multiplying t) to isolate it, giving t = d / r &mdash; which matches your everyday sense that time = distance &divide; speed.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -588,6 +610,8 @@
           <button class="quiz-opt" data-correct="true">w = (P &minus; 2l) / 2</button>
           <button class="quiz-opt" data-correct="false">w = P / 2 &minus; l</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Perimeter of a rectangle is P = 2l + 2w. To isolate w: first subtract 2l from both sides (P &minus; 2l = 2w), then divide everything by 2 &mdash; not just part of it. w = (P &minus; 2l) / 2 divides the WHOLE left side by 2, which is the move that keeps the equation balanced.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -598,9 +622,12 @@
           <button class="quiz-opt" data-correct="false">Because the original formula is always wrong</button>
           <button class="quiz-opt" data-correct="false">It isn't useful &mdash; it's just practice</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> This is the entire point of solving a literal equation once: after you've done the algebra to isolate w = (P &minus; 2l)/2, you never have to repeat those steps again &mdash; you just drop in numbers for P and l every time and get an answer instantly. That's why formulas exist.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -688,37 +715,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -730,8 +794,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-1-2-literal-equations',
+        lesson: '1.2: Literal Equations',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

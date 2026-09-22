@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Use a test point to decide which side to shade</span></li>
         <li><span class="num">3</span><span>Graph a two-variable inequality from a real-world context</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -512,6 +526,7 @@
           <button class="choice-btn" data-correct="false">False</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Plugging (0,0) into x + y &lt; 5 gives 0 + 0 &lt; 5, which is 0 &lt; 5 &mdash; a TRUE statement. This is why (0,0) is the most popular test point in the whole unit: it's usually the easiest number to plug in fast.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; So what do you do: shade the side WITH (0,0), or the side WITHOUT it? And is the line solid or dashed?</p>
         <div class="choice-row" data-q="gp2">
@@ -519,6 +534,7 @@
           <button class="choice-btn" data-correct="false">Shade the side WITHOUT (0,0); solid line</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Since the test point (0,0) made the inequality TRUE, that tells you (0,0) is inside the solution region &mdash; so you shade the side that contains it. And because the inequality is strict (&lt;, not &#8804;), the boundary line itself is dashed, meaning it's not part of the answer.</div>
       </div>
     </section>
 
@@ -549,6 +565,8 @@
           <button class="quiz-opt" data-correct="false">(1, 1) &mdash; always, no exceptions</button>
           <button class="quiz-opt" data-correct="false">(0, 0) &mdash; always, no exceptions</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> (0,0) is the go-to test point because plugging in two zeros is almost always the fastest arithmetic &mdash; but only when the line doesn't pass directly through the origin (if it did, testing (0,0) would just tell you about the line itself, not which side to shade).</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -559,6 +577,8 @@
           <button class="quiz-opt" data-correct="true">Shade the side NOT containing (0, 0)</button>
           <button class="quiz-opt" data-correct="false">There is no solution</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> If your test point makes the inequality come out FALSE, that tells you the test point is on the WRONG side &mdash; so you shade the opposite side, the one that does NOT contain your test point.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -569,6 +589,8 @@
           <button class="quiz-opt" data-correct="false">False &mdash; shade the side NOT containing (1, 0)</button>
           <button class="quiz-opt" data-correct="false">True &mdash; shade the side NOT containing (1, 0)</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Any point that makes the inequality a TRUE statement when substituted in is telling you 'I'm inside the shaded region.' If plugging in (1,0) gives a true statement, then yes &mdash; shade the side containing (1,0).</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -579,6 +601,8 @@
           <button class="quiz-opt" data-correct="false">Solid horizontal line at y = 4, shading below it</button>
           <button class="quiz-opt" data-correct="false">Dashed horizontal line at y = 4, shading below it</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A strict inequality (like &lt; or &gt;, no 'or equal to') always gets a DASHED boundary line, since the line itself isn't included in the answer. 'y is less than 4' at every x-value means everything BELOW that horizontal line, dashed because y = 4 exactly doesn't count.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -589,9 +613,12 @@
           <button class="quiz-opt" data-correct="true">Every point on the same side of a line gives the same true/false result</button>
           <button class="quiz-opt" data-correct="false">Because (0,0) is always a special point</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Here's the shortcut that makes test points work at all: every single point on the same side of a boundary line gives you the SAME true/false result when you plug it in &mdash; so you only ever need to test ONE point per side, never every point in the whole region.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -678,37 +705,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -720,8 +784,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-2-3-graphing-two-variable-inequalities',
+        lesson: '2.3: Graphing Two-Variable Inequalities',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

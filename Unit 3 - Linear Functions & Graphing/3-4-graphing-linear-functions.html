@@ -99,6 +99,15 @@
   .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
   .toast.show{opacity:1;transform:translate(-50%,0);}
   @media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -118,6 +127,11 @@
         <li><span class="num">2</span><span>Identify a graph's domain, range, and intercepts</span></li>
         <li><span class="num">3</span><span>Determine rate of change directly from a graph, table, or equation</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
     <section class="slide" data-slide="2">
       <p class="eyebrow">Vocabulary</p>
@@ -168,9 +182,11 @@
         <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the y-intercept?</p>
         <div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">(0, &minus;8)</button><button class="choice-btn" data-correct="false">(8, 0)</button></div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The y-intercept is where the graph crosses the y-axis &mdash; which happens exactly when x = 0. Plug x = 0 into f(x) = 4x &minus; 8: f(0) = 4(0) &minus; 8 = &minus;8, so the point is (0, &minus;8). Writing the point backward as (8, 0) is a common slip &mdash; y-intercepts are always written (0, y).</div>
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the rate of change?</p>
         <div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">4</button><button class="choice-btn" data-correct="false">&minus;8</button></div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> The rate of change of a linear function f(x) = mx + b is always the number multiplying x &mdash; here, that's 4. It's the same number people usually call 'slope,' and it tells you how much the output changes for every 1-unit increase in the input.</div>
       </div>
     </section>
     <section class="slide" data-slide="8">
@@ -188,12 +204,23 @@
     <section class="slide" data-slide="9">
       <p class="eyebrow">Mini Knowledge Test</p>
       <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
-      <div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the y-intercept of f(x) = 3x + 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(3, 0)</button><button class="quiz-opt" data-correct="true">(0, 9)</button><button class="quiz-opt" data-correct="false">(9, 0)</button></div></div>
-      <div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">What is the x-intercept of f(x) = 3x + 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(&minus;3, 0)</button><button class="quiz-opt" data-correct="false">(0, 9)</button><button class="quiz-opt" data-correct="false">(3, 0)</button></div></div>
-      <div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">For an unrestricted linear function, what are the domain and range?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Both are all real numbers</button><button class="quiz-opt" data-correct="false">Both are exactly zero</button><button class="quiz-opt" data-correct="false">Domain is positive numbers only</button></div></div>
-      <div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A pay function can't have negative hours worked. What does this restrict?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">The realistic domain</button><button class="quiz-opt" data-correct="false">The y-intercept</button><button class="quiz-opt" data-correct="false">The slope</button></div></div>
-      <div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">A table shows cost rising $6 for every 1 unit increase in x, every time. What is the rate of change?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">6</button><button class="quiz-opt" data-correct="false">1</button><button class="quiz-opt" data-correct="false">Cannot be determined</button></div></div>
+      <div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the y-intercept of f(x) = 3x + 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(3, 0)</button><button class="quiz-opt" data-correct="true">(0, 9)</button><button class="quiz-opt" data-correct="false">(9, 0)</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> f(x) = 3x + 9: the y-intercept is found by setting x = 0, giving f(0) = 3(0) + 9 = 9, so the point is (0, 9). It's tempting to grab the 3 (that's the rate of change instead) or flip the coordinate order &mdash; always set x = 0 first, then compute.</div>
+      </div>
+      <div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">What is the x-intercept of f(x) = 3x + 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(&minus;3, 0)</button><button class="quiz-opt" data-correct="false">(0, 9)</button><button class="quiz-opt" data-correct="false">(3, 0)</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> To find the x-intercept, set the OUTPUT to zero instead (since that's where the graph crosses the x-axis) and solve for x: 0 = 3x + 9 &rarr; &minus;9 = 3x &rarr; x = &minus;3, giving the point (&minus;3, 0). Swap which variable you set to zero depending on which intercept you want.</div>
+      </div>
+      <div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">For an unrestricted linear function, what are the domain and range?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Both are all real numbers</button><button class="quiz-opt" data-correct="false">Both are exactly zero</button><button class="quiz-opt" data-correct="false">Domain is positive numbers only</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> For a straight-line function with no real-world restrictions attached, BOTH the domain (allowed inputs) and range (possible outputs) stretch out to all real numbers in both directions &mdash; the line just keeps going forever both ways, unlike a real-world model that might stop, like a tank that can't go below empty.</div>
+      </div>
+      <div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A pay function can't have negative hours worked. What does this restrict?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">The realistic domain</button><button class="quiz-opt" data-correct="false">The y-intercept</button><button class="quiz-opt" data-correct="false">The slope</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A rocket's height model might be mathematically valid for negative time or after it's landed, but those numbers don't make PHYSICAL sense &mdash; the 'realistic domain' is the trimmed-down set of inputs that actually correspond to something real happening, like time only counting from launch until landing.</div>
+      </div>
+      <div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">A table shows cost rising $6 for every 1 unit increase in x, every time. What is the rate of change?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">6</button><button class="quiz-opt" data-correct="false">1</button><button class="quiz-opt" data-correct="false">Cannot be determined</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> f(x) = 2x &minus; 4, solve for f(x) = 8: 8 = 2x &minus; 4 &rarr; 12 = 2x &rarr; x = 6. This is working the function backward &mdash; given an output you want, find the input that produces it, the reverse direction of a normal plug-in problem.</div>
+      </div>
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
     <section class="slide" data-slide="10">
       <p class="eyebrow">Debrief</p>
@@ -236,28 +263,118 @@
   function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
   document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
   document.querySelectorAll('.choice-row').forEach(function(row){
-    var q = row.dataset.q; var fb = document.getElementById('fb-' + q);
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
-        if (btn.dataset.correct === 'true') { btn.classList.add('correct'); fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
-        else { btn.classList.add('incorrect'); row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); }); fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
       });
     });
   });
-  var quizAnswered = {}; var quizTotal = document.querySelectorAll('.quiz-q').length;
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; if (b.dataset.correct === 'true') b.classList.add('correct'); else if (b === btn) b.classList.add('incorrect'); });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
-  function updateScore(){ var answeredCount = Object.keys(quizAnswered).length; if (answeredCount < quizTotal) return; var score = 0; for (var k in quizAnswered) if (quizAnswered[k]) score++; var scoreBox = document.getElementById('quizScore'); document.getElementById('scoreText').textContent = score + ' / ' + quizTotal; scoreBox.classList.add('show'); }
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-3-4-graphing-linear-functions',
+        lesson: '3.4: Graphing Linear Functions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

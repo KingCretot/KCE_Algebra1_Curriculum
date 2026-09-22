@@ -88,6 +88,15 @@ svg.icon{display:block;}
 .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
 .toast.show{opacity:1;transform:translate(-50%,0);}
 @media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -101,6 +110,11 @@ svg.icon{display:block;}
 <p>This single test works no matter what the function's exact nonlinear type turns out to be.</p>
 <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
 <ul class="obj-list"><li><span class="num">1</span><span>State the test that distinguishes linear from nonlinear functions</span></li><li><span class="num">2</span><span>Apply that test to a table, graph, or equation</span></li><li><span class="num">3</span><span>Compare key features of a linear and a nonlinear function side by side</span></li></ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
 </section>
 <section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">One word, defined by what it's not</h1>
 <div class="vocab-grid"><div class="vocab-card wide"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><path d="M4 20 Q13 4 22 20" stroke="#C9A84C" stroke-width="2" fill="none"/></svg><span class="term">Nonlinear Function</span></div><div class="vocab-body"><p class="vocab-def">A <strong>nonlinear</strong> function is any function whose rate of change is NOT constant &mdash; its graph is a curve, not a straight line. Quadratic and exponential functions (from Lesson 3.1) are both nonlinear.</p><div class="vocab-hook"><span>&#128161;</span><span><b>The single test:</b> is the rate of change the same everywhere? Yes &rarr; linear. No &rarr; nonlinear.</span></div></div></div></div>
@@ -133,8 +147,10 @@ svg.icon{display:block;}
 <div class="gp-box"><p class="gp-prompt"><strong>Table: x = 0, 1, 2, 3 &nbsp;&rarr;&nbsp; y = 5, 8, 13, 20</strong></p>
 <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Are the first differences constant?</p>
 <div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">No &mdash; they are 3, 5, 7</button><button class="choice-btn" data-correct="false">Yes &mdash; they are all 3</button></div><p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> First differences are found by subtracting each y-value from the next: 8&minus;5=3, 13&minus;8=5, 20&minus;13=7. Since 3, 5, and 7 are not all the same number, the first differences are NOT constant.</div>
 <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; So is this function linear or nonlinear?</p>
 <div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">Nonlinear</button><button class="choice-btn" data-correct="false">Linear</button></div><p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> A function is linear only when its first differences (the amount y changes each time x goes up by 1) stay exactly the same every time. Since this table's differences change (3, then 5, then 7), the function is nonlinear.</div>
 </div></section>
 <section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">This question comes before every modeling decision</h1>
 <p>Whenever you're handed real data and asked to model it, "is this linear?" is always the first question to answer &mdash; because it determines every tool you reach for next. Getting this wrong early means every later step is built on the wrong foundation.</p>
@@ -143,12 +159,23 @@ svg.icon{display:block;}
 <p style="font-size:14px;color:#555;">Next lesson takes this one step further &mdash; choosing which specific nonlinear model fits best.</p>
 </section>
 <section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
-<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the universal test for linear versus nonlinear?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Whether the rate of change is constant</button><button class="quiz-opt" data-correct="false">Whether the y-intercept is positive</button><button class="quiz-opt" data-correct="false">Whether the graph passes through the origin</button></div></div>
-<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">A graph is a straight line. Is the function linear or nonlinear?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Linear</button><button class="quiz-opt" data-correct="false">Nonlinear</button><button class="quiz-opt" data-correct="false">Cannot be determined from a graph</button></div></div>
-<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Is y = &minus;6x + 10 linear or nonlinear?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Linear</button><button class="quiz-opt" data-correct="false">Nonlinear</button><button class="quiz-opt" data-correct="false">Cannot be determined</button></div></div>
-<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A table's first differences are 4, 4, 4, 4. What type is the function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Linear</button><button class="quiz-opt" data-correct="false">Nonlinear</button><button class="quiz-opt" data-correct="false">Cannot be determined from differences alone</button></div></div>
-<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Why does it matter whether real data is linear or nonlinear before modeling it?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">The wrong model type gives inaccurate predictions, especially far into the future</button><button class="quiz-opt" data-correct="false">It doesn't matter, since all functions look similar close up</button><button class="quiz-opt" data-correct="false">Only nonlinear data can be graphed</button></div></div>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the universal test for linear versus nonlinear?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Whether the rate of change is constant</button><button class="quiz-opt" data-correct="false">Whether the y-intercept is positive</button><button class="quiz-opt" data-correct="false">Whether the graph passes through the origin</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The single test that always works: is the rate of change (how much y changes per unit of x) constant? If yes, it's linear; if the rate speeds up or slows down, it's nonlinear.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">A graph is a straight line. Is the function linear or nonlinear?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Linear</button><button class="quiz-opt" data-correct="false">Nonlinear</button><button class="quiz-opt" data-correct="false">Cannot be determined from a graph</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> A straight line has the same steepness the whole way across, which is exactly what "constant rate of change" means graphically. So a straight-line graph always represents a linear function.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Is y = &minus;6x + 10 linear or nonlinear?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Linear</button><button class="quiz-opt" data-correct="false">Nonlinear</button><button class="quiz-opt" data-correct="false">Cannot be determined</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> y = &minus;6x + 10 has the form y = mx + b with no exponent on x and no x multiplied by another variable, which is the signature of a linear function. The slope here is a constant &minus;6.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A table's first differences are 4, 4, 4, 4. What type is the function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Linear</button><button class="quiz-opt" data-correct="false">Nonlinear</button><button class="quiz-opt" data-correct="false">Cannot be determined from differences alone</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> First differences of 4, 4, 4, 4 are all identical, meaning y changes by the same amount every single step &mdash; the definition of a constant rate of change, and therefore a linear function.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Why does it matter whether real data is linear or nonlinear before modeling it?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">The wrong model type gives inaccurate predictions, especially far into the future</button><button class="quiz-opt" data-correct="false">It doesn't matter, since all functions look similar close up</button><button class="quiz-opt" data-correct="false">Only nonlinear data can be graphed</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Picking the wrong model type (linear when the real pattern is curving) gives predictions that look fine for the first few steps but drift further and further off as you go &mdash; especially costly when you're forecasting far into the future.</div>
+      </div>
 <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
 </section>
 <section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
 <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can state the test that distinguishes linear from nonlinear functions.</div>
@@ -189,28 +216,118 @@ document.getElementById('nextBtn').addEventListener('click', function(){ goTo(cu
 function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
 document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
 document.querySelectorAll('.choice-row').forEach(function(row){
-  var q = row.dataset.q; var fb = document.getElementById('fb-' + q);
-  row.querySelectorAll('.choice-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
-      if (btn.dataset.correct === 'true') { btn.classList.add('correct'); fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
-      else { btn.classList.add('incorrect'); row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); }); fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
     });
   });
-});
-var quizAnswered = {}; var quizTotal = document.querySelectorAll('.quiz-q').length;
-document.querySelectorAll('.quiz-q').forEach(function(q){
-  var qid = q.dataset.quiz;
-  q.querySelectorAll('.quiz-opt').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      if (quizAnswered[qid] !== undefined) return;
-      quizAnswered[qid] = (btn.dataset.correct === 'true');
-      q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; if (b.dataset.correct === 'true') b.classList.add('correct'); else if (b === btn) b.classList.add('incorrect'); });
-      updateScore();
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
     });
   });
-});
-function updateScore(){ var answeredCount = Object.keys(quizAnswered).length; if (answeredCount < quizTotal) return; var score = 0; for (var k in quizAnswered) if (quizAnswered[k]) score++; var scoreBox = document.getElementById('quizScore'); document.getElementById('scoreText').textContent = score + ' / ' + quizTotal; scoreBox.classList.add('show'); }
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'F.1.6',
+        lesson: '4.4: Linear vs. Nonlinear Functions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

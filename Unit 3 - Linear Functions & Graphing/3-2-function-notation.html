@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Evaluate a function for a given input value</span></li>
         <li><span class="num">3</span><span>Interpret the output of a function in a real-world context</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -509,6 +523,7 @@
           <button class="choice-btn" data-correct="false">28</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> f(3) means 'plug 3 in for t': f(3) = 20 + 5(3) = 20 + 15 = 35. The parentheses notation f( ) isn't multiplication &mdash; it's telling you which input to substitute, like ordering size '3' at a smoothie counter and getting back exactly what that size costs.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What does f(3) = 35 mean in this situation?</p>
         <div class="choice-row" data-q="gp2">
@@ -516,6 +531,7 @@
           <button class="choice-btn" data-correct="false">The gym membership costs $3</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> f(3) = 35 translates directly to English: 'when you use 3 guest passes, your total cost is $35.' Function notation is just a compact way to write 'here's the input, here's the resulting output' &mdash; always read it as a real situation, not just symbols.</div>
       </div>
     </section>
 
@@ -546,6 +562,8 @@
           <button class="quiz-opt" data-correct="true">The output of function f when the input is x</button>
           <button class="quiz-opt" data-correct="false">A coordinate point</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> f(x) doesn't mean f times x &mdash; that's the single most common function-notation mix-up. f(x) means 'the output the function f produces when you feed it the input x,' the same way a vending machine code produces a specific snack, not a multiplication problem.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -556,6 +574,8 @@
           <button class="quiz-opt" data-correct="true">18</button>
           <button class="quiz-opt" data-correct="false">22</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> f(x) = 4x + 6 at x = 3: f(3) = 4(3) + 6 = 12 + 6 = 18. Plug the input directly in for every x in the formula, then do the arithmetic in order &mdash; multiply before you add.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -566,6 +586,8 @@
           <button class="quiz-opt" data-correct="false">The cost is always $5</button>
           <button class="quiz-opt" data-correct="false">x must equal 30</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> If f(5) = 30 in a cost formula, that reads as 'when the input is 5, the cost comes out to $30' &mdash; the 5 went IN, the 30 came OUT. Mixing up which number is the input and which is the output is an easy trap.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -576,6 +598,8 @@
           <button class="quiz-opt" data-correct="true">The set of all allowed inputs</button>
           <button class="quiz-opt" data-correct="false">The name of the function</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Domain is the complete list of inputs you're ALLOWED to put into a function &mdash; think of it as the list of valid sizes at a coffee shop. You can't order a size that isn't on the menu, and you can't plug in an x-value that isn't in the domain.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -586,9 +610,12 @@
           <button class="quiz-opt" data-correct="false">&minus;5</button>
           <button class="quiz-opt" data-correct="false">&minus;7</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> If f(x) = 2x &minus; 3 and f(x) = 11, set 2x &minus; 3 = 11, then solve: add 3 to both sides (2x = 14), divide by 2 (x = 7). This flips the usual direction &mdash; instead of finding the output from a given input, you're working backward from the output to find the input.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -676,37 +703,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -718,8 +782,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-3-2-function-notation',
+        lesson: '3.2: Function Notation',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

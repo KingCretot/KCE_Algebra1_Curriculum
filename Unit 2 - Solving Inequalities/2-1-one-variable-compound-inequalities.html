@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Know exactly when &mdash; and why &mdash; you must flip the inequality sign</span></li>
         <li><span class="num">3</span><span>Solve a compound inequality (a range with two bounds) at once</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -502,6 +516,7 @@
           <button class="choice-btn" data-correct="false">&minus;4x &#8805; 6</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Adding 3 is a same-direction move &mdash; it never flips an inequality. &minus;4x &minus; 3 &#8805; 9 becomes &minus;4x &#8805; 12 by simply adding 3 to both sides, no sign flip needed yet. The flip only happens at the NEXT step.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Now divide both sides by &minus;4. What's the final answer?</p>
         <div class="choice-row" data-q="gp2">
@@ -509,6 +524,7 @@
           <button class="choice-btn" data-correct="true">x &#8804; &minus;3</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Here's the rule that trips up almost everyone: dividing (or multiplying) both sides by a NEGATIVE number flips the inequality sign. &minus;4x &#8805; 12 divided by &minus;4 becomes x &#8804; &minus;3 &mdash; the &#8805; had to flip to &#8804; because you divided by a negative.</div>
       </div>
     </section>
 
@@ -539,6 +555,8 @@
           <button class="quiz-opt" data-correct="true">When you multiply or divide both sides by a negative number</button>
           <button class="quiz-opt" data-correct="false">Whenever the variable is negative</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Think of it like a mirror: flipping to the other side of zero reverses which direction is 'bigger.' 2 < 5 is true, but multiply both sides by &minus;1 and you'd need &minus;2 > &minus;5 to stay true &mdash; the inequality HAD to flip. That's why the negative-multiply/divide rule exists.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -549,6 +567,8 @@
           <button class="quiz-opt" data-correct="false">x &gt; 19</button>
           <button class="quiz-opt" data-correct="false">x &lt; 5</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> 3x &minus; 4 > 11: add 4 to both sides (3x > 15), then divide by 3, a POSITIVE number, so no flip: x > 5. Skip the flip logic entirely here since you never multiplied or divided by a negative.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -559,6 +579,8 @@
           <button class="quiz-opt" data-correct="true">x &#8805; &minus;4</button>
           <button class="quiz-opt" data-correct="false">x &#8805; 4</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Starting from &minus;2x &#8804; 8, divide both sides by &minus;2 (a negative), which flips &#8804; into &#8805;, giving x &#8805; &minus;4. Forgetting to flip is the single most common inequality mistake in all of Algebra 1 &mdash; always double check when you divide by a negative.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -569,6 +591,8 @@
           <button class="quiz-opt" data-correct="false">Closed circle at 3, shading left</button>
           <button class="quiz-opt" data-correct="true">Closed circle at 3, shading right</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> &#8805; (greater than OR EQUAL to) means the boundary point itself IS included, shown with a solid/closed circle, not an open one. And 'greater than' points right, toward bigger numbers &mdash; so closed circle at 3, shading right.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -579,9 +603,12 @@
           <button class="quiz-opt" data-correct="false">&minus;4 &#8804; x &lt; 6</button>
           <button class="quiz-opt" data-correct="false">3 &#8804; x &lt; 8</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> A compound inequality like &minus;2 &#8804; x < 3 describes ALL the numbers caught between two boundaries at once &mdash; picture it as a fenced-in range on the number line, closed on the left (&#8804; includes &minus;2) and open on the right (< excludes 3).</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -669,37 +696,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -711,8 +775,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-2-1-one-variable-compound-inequalities',
+        lesson: '2.1: One-Variable & Compound Inequalities',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

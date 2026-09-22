@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Solve a multi-step one-variable equation in the correct order</span></li>
         <li><span class="num">3</span><span>Write and solve your own equation from a real-world word problem</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -513,6 +527,7 @@
           <button class="choice-btn" data-correct="false">4x &minus; 2 + 3x = 27</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Distributing means multiplying the 4 by EVERY term inside the parentheses, not just the first one. 4(x &minus; 2) becomes 4x &minus; 8 &mdash; the second option only multiplied the x and forgot to multiply the &minus;2 too, which is the single most common distributing mistake.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; After combining like terms, you get 7x &minus; 8 = 27. What is x?</p>
         <div class="choice-row" data-q="gp2">
@@ -520,6 +535,7 @@
           <button class="choice-btn" data-correct="true">x = 5</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> 7x &minus; 8 = 27: add 8 to both sides to get 7x = 35, then divide both sides by 7 to get x = 5. If you stop after adding 8 and forget to divide, you'd wrongly land on x = 3 (which is actually 35/7 rounded wrong, or a division slip) &mdash; always finish both inverse operations.</div>
       </div>
     </section>
 
@@ -550,6 +566,8 @@
           <button class="quiz-opt" data-correct="false">Divide both sides by the coefficient</button>
           <button class="quiz-opt" data-correct="false">Guess and check</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Whenever you see a number sitting right outside parentheses, that's your signal to distribute FIRST, clearing the parentheses before anything else touches those terms. Skipping straight to dividing would leave numbers still trapped inside the group.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -560,6 +578,8 @@
           <button class="quiz-opt" data-correct="true">7y and 2y</button>
           <button class="quiz-opt" data-correct="false">3x and 3x&sup2;</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Like terms need the exact same variable raised to the exact same power &mdash; 7y and 2y both have plain y to the first power, so they combine into 9y. 3x and 3x&sup2; look similar but x and x&sup2; are different powers, so they can NEVER be combined, no matter how tempting it looks.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -570,6 +590,8 @@
           <button class="quiz-opt" data-correct="false">x = 8</button>
           <button class="quiz-opt" data-correct="false">x = 11</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Working it through: 4(x&minus;2)+3x=27 &rarr; 4x&minus;8+3x=27 &rarr; 7x&minus;8=27 &rarr; 7x=35 &rarr; x=5. Each step undoes exactly one operation at a time &mdash; distribute, combine, add, divide.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -580,6 +602,8 @@
           <button class="quiz-opt" data-correct="false">60h + 45 = 195</button>
           <button class="quiz-opt" data-correct="false">45h &minus; 60 = 195</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A rideshare with a $60 flat pickup fee plus $45 per hour, totaling $195, translates piece by piece: 60 (flat fee, no variable) + 45h (rate times hours) = 195 (the total). The order matters for READING it correctly, even though addition can be written either way &mdash; matching each number to its real-world job is the actual skill being tested.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -590,9 +614,12 @@
           <button class="quiz-opt" data-correct="false">Divide both sides by 5 first</button>
           <button class="quiz-opt" data-correct="false">Add 9 to both sides</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> 5x + 9 = 24 type problems: your first move should undo whatever is NOT attached to x by multiplication &mdash; that's the +9, so subtract 9 from both sides first. Dividing by 5 too early would divide the 9 as well, which breaks the equation.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -679,37 +706,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -721,8 +785,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-1-3-multistep-linear-equations',
+        lesson: '1.3: Multi-Step Linear Equations',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>

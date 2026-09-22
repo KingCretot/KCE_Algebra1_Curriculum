@@ -314,6 +314,15 @@
     .nav .dots{display:none;}
   }
 
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -356,6 +365,11 @@
         <li><span class="num">2</span><span>Point to a specific part of a real-world formula and say what it means</span></li>
         <li><span class="num">3</span><span>Treat a group of symbols as a single "chunk" when that's useful</span></li>
       </ul>
+      <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+
     </section>
 
     <section class="slide" data-slide="2">
@@ -521,6 +535,7 @@
           <button class="choice-btn" data-correct="false">The number of texts sent</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Think of it like a Netflix bill: the 25 doesn't change no matter how many episodes you watch that month &mdash; it's the base subscription price. Same here: n (texts) can be 0 or 500, but the 25 stays exactly 25. That's the definition of a constant &mdash; it's not attached to a variable, so nothing about it changes.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What does 0.10 represent?</p>
         <div class="choice-row" data-q="gp2">
@@ -528,6 +543,7 @@
           <button class="choice-btn" data-correct="true">The cost per extra text, in dollars</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> 0.10 is sitting right next to n (the variable), which makes it the <b>coefficient</b>. In context, a coefficient tells you the rate per unit &mdash; here, 10 cents for every extra text. If you sent 10 extra texts, that's 10 &times; $0.10 = $1.00 added to your bill.</div>
       </div>
     </section>
 
@@ -558,6 +574,8 @@
           <button class="quiz-opt" data-correct="false">x</button>
           <button class="quiz-opt" data-correct="false">3</button>
         </div>
+      
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The coefficient is always the number glued to the variable &mdash; here, the 8 sitting right in front of x. It's tempting to pick 'x' since it looks important, but x is the variable itself, not the coefficient.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -568,6 +586,8 @@
           <button class="quiz-opt" data-correct="true">2</button>
           <button class="quiz-opt" data-correct="false">3</button>
         </div>
+      
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> A term is one chunk, separated from the next chunk by a + or &minus; sign. 8x + 3 has exactly one + sign splitting it into two pieces: 8x and 3. Count the plus/minus signs outside of parentheses, add 1, and you've got your term count.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -578,6 +598,8 @@
           <button class="quiz-opt" data-correct="true">6 and y</button>
           <button class="quiz-opt" data-correct="false">y only</button>
         </div>
+      
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Factors are things being multiplied together. In 6y, that's really 6 &times; y, so both 6 and y are factors &mdash; neither one stands alone. It's easy to grab just the number (6) and forget that the variable is also a factor.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -588,6 +610,8 @@
           <button class="quiz-opt" data-correct="false">Just 4</button>
           <button class="quiz-opt" data-correct="true">The whole quantity (x + 1)</button>
         </div>
+      
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> The parentheses are doing a job here: everything inside, x + 1, is being treated as one single package being multiplied by 4 &mdash; like a burrito with two ingredients wrapped in one tortilla. You can't just grab 'x' by itself, because the parentheses are holding the whole group together as one factor.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -598,9 +622,12 @@
           <button class="quiz-opt" data-correct="true">A flat fee charged no matter how many visits</button>
           <button class="quiz-opt" data-correct="false">The number of visits</button>
         </div>
+      
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Picture a gym membership: 15v is what changes with how many times you visit (v), but 40 is the flat sign-up fee you'd pay even with zero visits. That's exactly what a constant is &mdash; the part of the formula that doesn't move.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <section class="slide" data-slide="10">
@@ -690,37 +717,74 @@
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           fb.textContent = '\u2713 Correct!';
           fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.';
-          fb.className = 'feedback bad';
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
         }
       });
     });
   });
-
-  var quizAnswered = {};
+var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -732,8 +796,37 @@
     var scoreBox = document.getElementById('quizScore');
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
   }
 
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/mvkpkngb', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'algebra1-1-1-parts-of-expressions',
+        lesson: '1.1: Parts of Expressions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
 </script>
 </body>
 </html>
