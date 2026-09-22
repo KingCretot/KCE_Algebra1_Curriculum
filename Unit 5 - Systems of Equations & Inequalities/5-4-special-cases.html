@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 5.4: Special Cases — No Solution & Infinite Solutions</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 5: Systems of Equations &amp; Inequalities</div></div></div><div class="lesson-tag">Lesson 5.4 &middot; Special Cases</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">What if the variable doesn't just disappear &mdash; the whole equation does?</h1>
+<div class="card warm"><p style="margin-bottom:0;">So far, every system you've solved landed on one clean point. But sometimes, working through substitution or elimination gives you a statement that's completely false, like 0 = 6 &mdash; or completely true no matter what, like 5 = 5. Neither of those is a mistake. Each one tells you something real about the two lines.</p></div>
+<p>Today you'll learn to read what these results actually mean, both algebraically and on a graph.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Recognize when a system produces a false statement, meaning no solution</span></li><li><span class="num">2</span><span>Recognize when a system produces a true statement, meaning infinitely many solutions</span></li><li><span class="num">3</span><span>Connect each case to what the two lines look like on a graph</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">Two lines that never agree, or always agree</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><line x1="4" y1="9" x2="22" y2="9" stroke="#C9A84C" stroke-width="2"/><line x1="4" y1="17" x2="22" y2="17" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">No Solution</span></div><div class="vocab-body"><p class="vocab-def">Occurs when the two lines are <strong>parallel</strong> &mdash; same slope, different y-intercepts. They never cross, so no point satisfies both equations. Solving algebraically produces a false statement, like 0 = 4.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Also called:</b> an inconsistent system.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><line x1="4" y1="13" x2="22" y2="13" stroke="#C9A84C" stroke-width="3"/></svg><span class="term">Infinitely Many Solutions</span></div><div class="vocab-body"><p class="vocab-def">Occurs when the two equations describe the <strong>exact same line</strong>, just written differently. Every point on the line is a solution. Solving algebraically produces a true statement, like 5 = 5.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Also called:</b> a dependent system.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Read the result of your last step</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Solve the system normally</div>Use substitution or elimination exactly like you've been doing.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Watch what happens to the variables</div>If both variables cancel out completely, you're left with just numbers on each side.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">If the numbers make a FALSE statement</div>Something like 0 = 6 or 3 = 9 &mdash; the system has <strong>no solution</strong>. The lines are parallel.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">If the numbers make a TRUE statement</div>Something like 5 = 5 or 0 = 0 &mdash; the system has <strong>infinitely many solutions</strong>. The lines are identical.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> a fast way to predict which case you're in before solving &mdash; put both equations in slope-intercept form. Same slope, different b: no solution. Same slope, same b: infinite solutions.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">When two "different" options are secretly the same &mdash; or never match</h1>
+<p>These special cases aren't just algebra oddities. If two pricing plans have the exact same rate but different starting fees, they'll never be equal no matter how long you use them &mdash; that's a real no-solution situation. And if a company advertises two plans that are actually mathematically identical, every point matches &mdash; infinitely many solutions.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> Two rideshare apps both charge $2/mile with different base fees: y = 2x + 5 and y = 2x + 8. Same slope, different intercepts &mdash; these two costs will never be equal, no matter how far you ride.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; No Solution</p><h1 class="slide-title">Solving y = 2x + 5 and y = 2x + 8</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Solve by substitution and see what happens.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Substitute the first equation into the second</div>2x + 5 = 2x + 8</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Subtract 2x from both sides</div>5 = 8</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Read the result</div>5 = 8 is <strong>false</strong> &mdash; it's never true, for any x. This means the system has no solution.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Confirm on a graph</div>Both lines have slope 2 but different y-intercepts (5 and 8) &mdash; they're parallel and never cross.</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Infinitely Many Solutions</p><h1 class="slide-title">Solving y = 3x + 2 and 2y = 6x + 4</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Solve by substitution and see what happens.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Substitute the first equation into the second</div>2(3x + 2) = 6x + 4</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Distribute and simplify</div>6x + 4 = 6x + 4</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Read the result</div>6x + 4 = 6x + 4 is <strong>always true</strong>, for every value of x. This means infinitely many solutions.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Confirm the reason</div>Divide the second equation by 2: y = 3x + 2 &mdash; it's the exact same line as the first equation, just written with every term doubled.</div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>System:</strong> y = 4x &minus; 1 &nbsp;&amp;&nbsp; y = 4x + 6</p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; Substituting and simplifying, what statement do you get?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">&minus;1 = 6 (false)</button><button class="choice-btn" data-correct="false">4x = 4x (true)</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> Substitute: 4x &minus; 1 = 4x + 6. Subtract 4x from both sides: &minus;1 = 6. This statement is false for any value of x, since &minus;1 never equals 6.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What does this tell you about the system?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">No solution &mdash; the lines are parallel</button><button class="choice-btn" data-correct="false">Infinitely many solutions</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> A false statement after both variables cancel means the system has no solution. Both lines have slope 4 but different y-intercepts (&minus;1 and 6), confirming they're parallel and never intersect.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">Not every system has exactly one answer</h1>
+<p>Every system you solved before today had one clean solution, which can quietly teach you that ALL systems work that way. They don't. Learning to recognize false and true statements protects you from chasing a solution that was never going to exist &mdash; or missing that a "different-looking" equation was the same line all along.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Comparing two pricing plans that turn out to never be equal, no matter how long you use them.</li><li>Spotting when a company presents the same offer twice, dressed up in different numbers.</li><li>Chemistry and physics systems where "no solution" tells you two conditions genuinely can't both happen.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: a different kind of system entirely &mdash; graphing systems of inequalities.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Solving a system, you end up with the statement 0 = 7. What does this mean?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">The system has no solution</button><button class="quiz-opt" data-correct="false">The system has infinitely many solutions</button><button class="quiz-opt" data-correct="false">You made an arithmetic mistake and should start over</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> 0 = 7 is a false statement &mdash; it's never true for any value of the variables. Reaching a false statement after both variables cancel is the algebraic signal for no solution, not a mistake.</div>
+</div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Solving a system, you end up with 12 = 12. What does this mean?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">The system has no solution</button><button class="quiz-opt" data-correct="true">The system has infinitely many solutions</button><button class="quiz-opt" data-correct="false">The solution is x = 12</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> 12 = 12 is always true, no matter what x and y are. That means the two equations describe the exact same line, so every point on the line is a solution.</div>
+</div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Two lines have the same slope but different y-intercepts. What kind of system do they form?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">No solution (parallel lines)</button><button class="quiz-opt" data-correct="false">Infinitely many solutions</button><button class="quiz-opt" data-correct="false">Exactly one solution</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> Same slope means the lines rise at the same rate and never converge; different y-intercepts means they start at different heights. Lines like this run parallel forever and never cross.</div>
+</div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">y = 5x + 3 and 2y = 10x + 6. How are these two lines related?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">They are the same line, just scaled</button><button class="quiz-opt" data-correct="false">They are parallel but different lines</button><button class="quiz-opt" data-correct="false">They intersect at exactly one point</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> Dividing the second equation by 2 gives y = 5x + 3 &mdash; identical to the first equation. Multiplying or dividing an entire equation by a constant never changes the line it represents.</div>
+</div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">What is another name for a system with no solution?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Inconsistent</button><button class="quiz-opt" data-correct="false">Dependent</button><button class="quiz-opt" data-correct="false">Linear</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> A system with no solution is called inconsistent, because the two equations make conflicting (inconsistent) demands that can never be satisfied together. A system with infinitely many solutions is called dependent.</div>
+</div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+<div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize a false statement as meaning no solution.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize a true statement as meaning infinitely many solutions.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can connect each case to what the two lines look like on a graph.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">No Solution</span><span class="term-pill">Infinitely Many Solutions</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 5.5: Graphing Systems of Inequalities.</strong> Instead of one point, you'll now be graphing an entire shaded region that satisfies two inequalities at once.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="5-5-graphing-systems-of-inequalities.html">Next Lesson: 5.5 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'AR.9.1',
+        lesson: '5.4: Special Cases — No Solution & Infinite Solutions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

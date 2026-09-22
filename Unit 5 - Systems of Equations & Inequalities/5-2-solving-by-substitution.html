@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 5.2: Solving Systems by Substitution</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 5: Systems of Equations &amp; Inequalities</div></div></div><div class="lesson-tag">Lesson 5.2 &middot; Solving Systems by Substitution</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">An exact answer, no graph needed</h1>
+<div class="card warm"><p style="margin-bottom:0;">Graphing works, but it has a weak spot: if the solution isn't a nice whole-number point, you can only estimate where the lines cross. Substitution solves that problem completely &mdash; it gets you the exact solution every time, using pure algebra.</p></div>
+<p>The idea is simple: if one equation already tells you what y equals, swap that expression into the other equation wherever you see y.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Solve a system by substituting one equation into another</span></li><li><span class="num">2</span><span>Isolate a variable first when neither equation is already solved for one</span></li><li><span class="num">3</span><span>Find both coordinates of the solution and check them</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">The move behind substitution</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><text x="13" y="18" font-size="14" fill="#C9A84C" text-anchor="middle" font-family="Georgia,serif">&#8776;</text></svg><span class="term">Substitution Method</span></div><div class="vocab-body"><p class="vocab-def">Solving a system by replacing a variable in one equation with an equivalent expression from the other equation, reducing two unknowns to one.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Best for:</b> when one equation is already solved for a variable, like y = 3x + 2.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><text x="13" y="18" font-size="11" fill="#C9A84C" text-anchor="middle" font-family="Georgia,serif">x=?</text></svg><span class="term">Isolate a Variable</span></div><div class="vocab-body"><p class="vocab-def">Rearranging an equation so one variable sits alone on one side, ready to be substituted into the other equation.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Pick the easy one:</b> isolate whichever variable already has a coefficient of 1, when possible.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Four steps, every time</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Isolate one variable in one equation</div>If it's not already done for you, solve one equation for x or y &mdash; pick whichever is easiest.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Substitute that expression into the OTHER equation</div>This replaces one variable with an expression made entirely of the other variable, leaving one equation with one unknown.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Solve for the remaining variable</div>Now it's a regular one-variable equation &mdash; solve it like any other.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Substitute back to find the other variable</div>Plug your answer into either original equation to find the second coordinate.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> you substitute into the equation you <em>didn't</em> use in step 1 &mdash; substituting into the same one you already solved just gives you a true-but-useless statement.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">When "exactly" is the requirement</h1>
+<p>Graphing a break-even point on paper is fine for estimating, but a business making a real decision needs the exact number &mdash; not "somewhere around 4.2 months." Substitution is how you get an exact, defensible answer when the outcome actually matters.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A catering company charges $8 per guest plus a $150 setup fee: y = 8x + 150. A competitor charges a flat $11 per guest: y = 11x. A client wants to know the exact guest count where both quotes match &mdash; not an estimate off a graph.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Already Isolated</p><h1 class="slide-title">Solving y = 8x + 150 and y = 11x</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Find the exact guest count where both catering quotes are equal.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Both equations already isolate y</div>Substitute the first expression for y directly into the second equation.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Substitute and solve for x</div>8x + 150 = 11x &rarr; 150 = 3x &rarr; x = 50</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Substitute back to find y</div>y = 11(50) = 550</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Check in both equations</div>8(50)+150 = 550 &check; &nbsp;&nbsp; 11(50) = 550 &check; &nbsp;&nbsp; Solution: (50, 550)</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Isolating First</p><h1 class="slide-title">Solving x + y = 12 and 2x &minus; y = 3</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Neither equation</strong> is already solved for a variable &mdash; you isolate one first.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Isolate y in the first equation</div>x + y = 12 &rarr; y = 12 &minus; x</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Substitute into the second equation</div>2x &minus; (12 &minus; x) = 3</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Distribute the negative and solve</div>2x &minus; 12 + x = 3 &rarr; 3x = 15 &rarr; x = 5</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Substitute back</div>y = 12 &minus; 5 = 7 &nbsp;&nbsp; Solution: (5, 7)</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Watch the sign:</strong> substituting (12 &minus; x) for y means every term inside those parentheses gets the negative sign distributed across it &mdash; a very common slip-up spot.</p></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>System:</strong> y = 4x &nbsp;&amp;&nbsp; y = 2x + 10</p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; Substituting 4x for y in the second equation, what does solving for x give you?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">x = 5</button><button class="choice-btn" data-correct="false">x = 10</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> Substitute: 4x = 2x + 10. Subtract 2x from both sides: 2x = 10. Divide by 2: x = 5. Forgetting to move the 2x term to the other side is the most common way to lose this one.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the full solution point?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">(5, 20)</button><button class="choice-btn" data-correct="false">(5, 5)</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> Substitute x = 5 back into the simplest equation, y = 4x: y = 4(5) = 20. Check the second equation too: 2(5)+10 = 20 &check;. The solution is (5, 20).</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">Precision when estimation isn't good enough</h1>
+<p>Substitution is the first tool in your kit that turns "solving a system" from a visual estimate into an exact algebraic answer. Any situation where a fraction or an irrational number is the true solution &mdash; something a graph could never show precisely &mdash; substitution handles without hesitation.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Pricing and break-even analysis that requires an exact number, not an estimate.</li><li>Mixing two solutions of different concentrations to hit a precise target.</li><li>Any two-condition problem where one condition can be rewritten and dropped into the other.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: elimination &mdash; the method that shines when both equations are already in standard form.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the core move in the substitution method?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Graphing both equations and estimating</button><button class="quiz-opt" data-correct="true">Replacing a variable with an equivalent expression from the other equation</button><button class="quiz-opt" data-correct="false">Adding the two equations together</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> Substitution works by swapping in an expression for a variable, collapsing the system down to one equation with one unknown you can solve directly.</div>
+</div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">System: y = 5x and y = 2x + 9. What is x?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">3</button><button class="quiz-opt" data-correct="false">9</button><button class="quiz-opt" data-correct="false">15</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> 5x = 2x + 9 &rarr; 3x = 9 &rarr; x = 3. Substituting one full expression for y turns this into a simple one-variable equation.</div>
+</div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">If neither equation is solved for a variable, what should you do first?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Substitution can't be used &mdash; switch to graphing</button><button class="quiz-opt" data-correct="true">Isolate a variable in one equation before substituting</button><button class="quiz-opt" data-correct="false">Add the two equations together instead</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> Substitution requires one variable to be alone on one side before you can swap it into the other equation, so if neither equation starts that way, you isolate one first.</div>
+</div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">In x + y = 12 solved for y, what expression replaces y?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">12 &minus; x</button><button class="quiz-opt" data-correct="false">x &minus; 12</button><button class="quiz-opt" data-correct="false">12x</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> Subtracting x from both sides of x + y = 12 gives y = 12 &minus; x. That full expression, parentheses and all, is what gets substituted into the other equation.</div>
+</div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">After finding x in a system, how do you find the matching y-value?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Substitute the x-value back into either original equation</button><button class="quiz-opt" data-correct="false">Graph the system again</button><button class="quiz-opt" data-correct="false">y is always equal to x</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> Once you know x, plugging it into either original equation (whichever is simpler) gives you y directly &mdash; and checking it in the other equation confirms your full solution point.</div>
+</div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+<div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can solve a system by substituting one equation into another.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can isolate a variable first when neither equation is already solved for one.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find and check both coordinates of the solution.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Substitution Method</span><span class="term-pill">Isolate a Variable</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 5.3: Solving Systems by Elimination.</strong> A third method that's often the fastest when both equations are already lined up in standard form.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="5-3-solving-by-elimination.html">Next Lesson: 5.3 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'AR.9.1',
+        lesson: '5.2: Solving Systems of Equations by Substitution',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>
