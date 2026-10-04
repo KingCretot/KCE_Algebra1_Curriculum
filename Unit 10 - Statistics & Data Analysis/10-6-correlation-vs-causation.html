@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 10.6: Correlation vs. Causation</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 10: Statistics &amp; Data Analysis</div></div></div><div class="lesson-tag">Lesson 10.6 &middot; Correlation vs. Causation</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Ice cream and sunburns</h1>
+<div class="card warm"><p style="margin-bottom:0;">Over a year, ice cream sales and sunburns rise and fall together &mdash; a strong positive correlation. Does ice cream cause sunburns? Of course not. Hot, sunny weather drives both. Spotting that hidden third factor is one of the most useful skills in all of statistics.</p></div>
+<p>Today you'll separate correlation from causation, look for lurking variables, and learn what kind of study can actually show cause and effect.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Explain the difference between correlation and causation</span></li><li><span class="num">2</span><span>Identify lurking variables</span></li><li><span class="num">3</span><span>Recognize which kind of study can support a claim of causation</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">Two words that change the claim</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Causation</span></div><div class="vocab-body"><p class="vocab-def">One variable directly produces a change in another. Only a well-designed experiment with random assignment can establish it.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> a randomized trial showing that a medicine lowers blood pressure.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Lurking Variable</span></div><div class="vocab-body"><p class="vocab-def">A third variable that affects both variables in a study, creating a correlation between them even though neither causes the other.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> summer heat lurks behind both ice cream sales and sunburns.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Question every link</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Spot the claim</div>Is someone saying X is linked to Y, or that X causes Y?</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Look for a lurking variable</div>Could something else drive both? Age, income, weather, and time are common culprits.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Check the type of study</div>Observational study (recording what happens) → association only. Randomized experiment → can support causation.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Word it carefully</div>Say "is associated with" unless an experiment supports "causes."</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> Correlation can still be useful for prediction without causation. Ice cream sales really do predict sunburns &mdash; they just don't cause them.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Reading headlines critically</h1>
+<p>Headlines often turn a correlation into a cause: "Students who eat breakfast get better grades." Before believing it, ask what else those students might have in common.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> Fires with more firefighters tend to cause more damage. The lurking variable is the size of the fire: bigger fires bring more firefighters and cause more damage.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Lurking Variables</p><h1 class="slide-title">Shoe size and reading level</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Among elementary students, shoe size and reading level are strongly correlated. Do bigger feet improve reading?</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Look for a third factor</div>Age (or grade level) affects both.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Explain the link</div>Older children have bigger feet, and they've also had more years of reading practice.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Conclude</div>The correlation is real, but it isn't causation. Age is the lurking variable.</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Study Design</p><h1 class="slide-title">Observational study vs. experiment</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Can each study show that a tutoring program raises test scores?</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Study A</div>Compare students who chose tutoring with students who didn't. This is observational: motivated students may be the ones who choose tutoring, so motivation could be lurking. It shows association only.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Study B</div>Randomly assign 100 students to tutoring or no tutoring, then compare their scores. Random assignment balances motivation and other factors between the groups.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Conclude</div>Only Study B can support the claim that tutoring causes higher scores.</div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>A study finds that people who carry lighters are more likely to develop lung disease.</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is a likely lurking variable?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">Smoking</button><button class="choice-btn" data-correct="false">The brand of lighter</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> People who smoke are more likely to carry lighters and more likely to develop lung disease. Smoking drives both.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Which conclusion is correct?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">Carrying a lighter is associated with lung disease but doesn't cause it</button><button class="choice-btn" data-correct="false">Carrying a lighter causes lung disease</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> The data show an association. The lurking variable, smoking, explains it, so there's no evidence that lighters themselves cause anything.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">The most useful question in statistics</h1>
+<p>"Correlation is not causation" may be the most useful idea in statistics. It protects you from misleading headlines, flawed advertising, and your own quick conclusions.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Evaluating health and science news.</li><li>Judging advertising claims.</li><li>Designing a fair experiment for a science project.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: estimating a whole population from a sample.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">A strong correlation between two variables means…</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">one causes the other</button><button class="quiz-opt" data-correct="true">they tend to change together, but one doesn't necessarily cause the other</button><button class="quiz-opt" data-correct="false">there must be a lurking variable</button><button class="quiz-opt" data-correct="false">the data came from an experiment</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Correlation describes how two variables move together. Causation needs more evidence, usually a randomized experiment.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Towns with more libraries have more crime. What is a likely lurking variable?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Crime rate</button><button class="quiz-opt" data-correct="true">Population size</button><button class="quiz-opt" data-correct="false">Library hours</button><button class="quiz-opt" data-correct="false">Number of books</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Bigger towns have more libraries and more crime. Population drives both.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Which kind of study can show causation?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">A randomized experiment with a treatment group and a control group</button><button class="quiz-opt" data-correct="false">A study of past records</button><button class="quiz-opt" data-correct="false">An observational study with a strong correlation</button><button class="quiz-opt" data-correct="false">A survey of 10,000 people</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Random assignment balances lurking variables between the groups, so a difference in results can be credited to the treatment.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Students who sleep more tend to have higher grades. Which statement is best supported?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">There is no relationship</button><button class="quiz-opt" data-correct="false">Higher grades cause more sleep</button><button class="quiz-opt" data-correct="true">More sleep is associated with higher grades</button><button class="quiz-opt" data-correct="false">More sleep causes higher grades</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Without an experiment, the data support only an association. Lurking variables, such as schedules or stress, could explain the link.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Why does random assignment matter in an experiment?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">It lets participants choose their group</button><button class="quiz-opt" data-correct="false">It guarantees a strong correlation</button><button class="quiz-opt" data-correct="false">It makes the sample larger</button><button class="quiz-opt" data-correct="true">It balances lurking variables between the groups</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> When chance decides who gets the treatment, other factors tend to even out between the groups.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain the difference between correlation and causation.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can identify a lurking variable.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can tell which study designs can support causation.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Correlation</span><span class="term-pill">Causation</span><span class="term-pill">Lurking Variable</span><span class="term-pill">Observational Study</span><span class="term-pill">Randomized Experiment</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 10.7: Sampling &amp; Margin of Error.</strong> Learning about many from a few.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="10-7-sampling-margin-of-error.html">Next Lesson: 10.7 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'DP.1.3',
+        lesson: '10.6: Correlation vs. Causation',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

@@ -45,8 +45,8 @@ to self-report it.
 
 ## Build status
 
-Units 1–9 are built (46 lessons). Unit 10 not yet started; the locked
-standard sequence for them is in `KCE_Algebra1_10Unit_Scope_v1.2.html`.
+**All 10 units are built (53 lessons + 10 unit reviews), covering all 46
+benchmarks** in `KCE_Algebra1_10Unit_Scope_v1.2.html`.
 Standing build rule: one full unit at a time, verified before the next begins.
 
 **October 2026 audit (Units 1–5):**
@@ -67,6 +67,8 @@ Standing build rule: one full unit at a time, verified before the next begins.
 **Unit 8 (Oct 2026):** Quadratic Functions & Equations, 7 lessons — 8.1 Graphing (AR.3.7), 8.2 Vertex & Zeros (AR.3.6), 8.3 Factoring & Square Roots, 8.4 Completing the Square, 8.5 Quadratic Formula (AR.3.1), 8.6 Writing Quadratics (AR.3.4 + AR.3.5), 8.7 Quadratics in Context (AR.3.8), plus `unit-8-review.html`.
 
 **Unit 9 (Oct 2026):** Absolute Value & Function Transformations, 4 lessons — 9.1 Absolute Value Equations (AR.4.1), 9.2 Graphing Absolute Value (AR.4.3), 9.3 Shifts and 9.4 Stretches & Reflections (F.2.1), plus `unit-9-review.html`.
+
+**Unit 10 (Oct 2026):** Statistics & Data Analysis, 7 lessons — 10.1 Representing Data (DP.1.1), 10.2 Distributions (DP.1.2), 10.3 Two-Way Tables (DP.3.1), 10.4 Lines of Fit (DP.2.4), 10.5 Correlation & Residuals (DP.2.6), 10.6 Correlation vs. Causation (DP.1.3), 10.7 Sampling & Margin of Error (DP.1.4), plus `unit-10-review.html`.
 
 **Unit reviews (Oct 2026):** every unit ends with `unit-N-review.html` in its folder: key ideas from each lesson, common mistakes, a printable one-page cheat sheet, and a 10-question mixed practice test that reports to Formspree as `Unit N Review`. The last lesson of each unit links to its review, and the review links on to the next unit. New units ship with their review.
 

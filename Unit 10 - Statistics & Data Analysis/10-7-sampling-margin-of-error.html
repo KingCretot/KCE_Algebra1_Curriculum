@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 10.7: Sampling & Margin of Error</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 10: Statistics &amp; Data Analysis</div></div></div><div class="lesson-tag">Lesson 10.7 &middot; Sampling &amp; Margin of Error</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Learning about many from a few</h1>
+<div class="card warm"><p style="margin-bottom:0;">No one surveys all 330 million Americans before an election, yet polls estimate results within a few percentage points. The trick is a random sample &mdash; and an honest margin of error that says how far off the estimate might be.</p></div>
+<p>Today you'll estimate a population total, mean, or percentage from a random sample, and use simulation to see how much a sample estimate can vary.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Use sample data to estimate a population mean, total, or percentage</span></li><li><span class="num">2</span><span>Explain why a sample should be random</span></li><li><span class="num">3</span><span>Develop and interpret a margin of error using simulation</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">Samples and their uncertainty</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Population and Sample</span></div><div class="vocab-body"><p class="vocab-def">The <strong>population</strong> is everyone you want to know about. The <strong>sample</strong> is the part you actually measure. A <strong>random sample</strong> gives every individual an equal chance of being chosen.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> population: all 1,200 students; sample: 80 of them chosen at random.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Margin of Error</span></div><div class="vocab-body"><p class="vocab-def">How far a sample estimate is likely to be from the true population value. Estimates are reported as estimate ± margin of error.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> 52% ± 3% means the true value is likely between 49% and 55%.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Sample, estimate, measure the wobble</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Take a random sample</div>Random selection avoids bias, like surveying only your friends.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Compute the sample statistic</div>The sample mean or the sample proportion (percentage).</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Scale up to estimate a total</div>Population total ≈ sample proportion × population size.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Simulate to find a margin of error</div>Take many random samples, or simulate them, and record each result. About 95% of the results fall within the margin of error of the center.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> Larger random samples give smaller margins of error. But doubling the sample doesn't halve the margin; you need about four times the sample to cut it in half.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Estimates everywhere</h1>
+<p>Polls, factory quality checks, and wildlife counts all estimate a whole population from a sample.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> In a random sample of 200 of a school's 1,500 students, 48 want a later start time. That's 24%, so an estimate for the school is 0.24 × 1,500 = 360 students. If simulations show sample percentages vary by about ±6%, the estimate is 24% ± 6%: roughly 270 to 450 students.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Estimating</p><h1 class="slide-title">Estimating a population total</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> A random sample of 50 of a farm's 2,000 apple trees finds 8 with a disease. Estimate how many trees are diseased.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Sample proportion</div>8 ÷ 50 = 0.16, or 16%</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Scale up</div>0.16 × 2,000 = 320 trees</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Interpret</div>About 320 trees are likely diseased. Because this is an estimate from a sample, the true number could be somewhat higher or lower.</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Simulation</p><h1 class="slide-title">Building a margin of error</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> A computer drew 100 random samples of 50 trees each from an orchard where 16% are diseased, and recorded each sample's percentage.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Find the center</div>The sample percentages center on about 16%.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Find the spread</div>95 of the 100 results fell between 6% and 26% &mdash; within about 10 percentage points of the center.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">State the margin of error</div>16% ± 10%: the true percentage is likely between 6% and 26%, or about 120 to 520 of the 2,000 trees.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">100 simulated samples of 50 trees</div><svg viewBox="0 0 320 210" width="320" height="210" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif"><line x1="40" y1="170.0" x2="310" y2="170.0" stroke="#e5e7eb"/><text x="34" y="174.0" text-anchor="end" font-size="10" fill="#555">0</text><line x1="40" y1="141.875" x2="310" y2="141.875" stroke="#e5e7eb"/><text x="34" y="145.875" text-anchor="end" font-size="10" fill="#555">6</text><line x1="40" y1="113.75" x2="310" y2="113.75" stroke="#e5e7eb"/><text x="34" y="117.75" text-anchor="end" font-size="10" fill="#555">12</text><line x1="40" y1="85.625" x2="310" y2="85.625" stroke="#e5e7eb"/><text x="34" y="89.625" text-anchor="end" font-size="10" fill="#555">18</text><line x1="40" y1="57.5" x2="310" y2="57.5" stroke="#e5e7eb"/><text x="34" y="61.5" text-anchor="end" font-size="10" fill="#555">24</text><line x1="40" y1="29.375" x2="310" y2="29.375" stroke="#e5e7eb"/><text x="34" y="33.375" text-anchor="end" font-size="10" fill="#555">30</text><rect x="41.0" y="160.625" width="36.57142857142857" height="9.375" fill="#0047BA" fill-opacity="0.75"/><text x="59.285714285714285" y="184" text-anchor="middle" font-size="10" fill="#555">4</text><rect x="79.57142857142857" y="118.4375" width="36.57142857142857" height="51.5625" fill="#0047BA" fill-opacity="0.75"/><text x="97.85714285714286" y="184" text-anchor="middle" font-size="10" fill="#555">8</text><rect x="118.14285714285714" y="66.875" width="36.57142857142857" height="103.125" fill="#0047BA" fill-opacity="0.75"/><text x="136.42857142857142" y="184" text-anchor="middle" font-size="10" fill="#555">12</text><rect x="156.71428571428572" y="29.375" width="36.57142857142857" height="140.625" fill="#0047BA" fill-opacity="0.75"/><text x="175.0" y="184" text-anchor="middle" font-size="10" fill="#555">16</text><rect x="195.28571428571428" y="71.5625" width="36.57142857142857" height="98.4375" fill="#0047BA" fill-opacity="0.75"/><text x="213.57142857142856" y="184" text-anchor="middle" font-size="10" fill="#555">20</text><rect x="233.85714285714283" y="118.4375" width="36.57142857142857" height="51.5625" fill="#0047BA" fill-opacity="0.75"/><text x="252.1428571428571" y="184" text-anchor="middle" font-size="10" fill="#555">24</text><rect x="272.42857142857144" y="155.9375" width="36.57142857142857" height="14.0625" fill="#0047BA" fill-opacity="0.75"/><text x="290.7142857142857" y="184" text-anchor="middle" font-size="10" fill="#555">28</text><line x1="40" y1="170" x2="310" y2="170" stroke="#0A1F3D" stroke-width="1.5"/><text x="175.0" y="204" text-anchor="middle" font-size="11" fill="#555">% diseased in the sample</text><text x="4" y="12" font-size="11" fill="#555">samples</text></svg></div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> With only 50 trees per sample, the margin of error is wide. A sample of 200 trees would cut it roughly in half.</p></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>A random sample of 80 students at a school of 1,000 finds 20 who walk to school.</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; What percent of the sample walks?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">25%</button><button class="choice-btn" data-correct="false">20%</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> 20 ÷ 80 = 0.25, or 25%. 20% treats the count of 20 as if it were already a percentage.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; About how many students at the whole school walk?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">250</button><button class="choice-btn" data-correct="false">20</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> Scale up: 0.25 × 1,000 = 250. 20 is only the count in the sample.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">Honest estimates</h1>
+<p>Every poll and survey you read is an estimate from a sample. Knowing whether the sample was random, and how big the margin of error is, tells you how much to trust it.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Reading election polls with their margins of error.</li><li>Quality control in manufacturing.</li><li>Estimating wildlife populations.</li></ul>
+<p style="font-size:14px;color:#555;">That's every lesson in Unit 10 &mdash; and in Algebra 1. Next: the Unit 10 Review.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Why should a sample be chosen at random?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">To avoid bias, so the sample represents the population</button><button class="quiz-opt" data-correct="false">To make the sample bigger</button><button class="quiz-opt" data-correct="false">Because random samples have no margin of error</button><button class="quiz-opt" data-correct="false">To guarantee the exact answer</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Random selection gives every individual the same chance of being chosen, so the sample doesn't systematically favor one group.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">A poll reports 58% ± 4%. Which interval likely contains the true percentage?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">4% to 58%</button><button class="quiz-opt" data-correct="false">58% to 62%</button><button class="quiz-opt" data-correct="true">54% to 62%</button><button class="quiz-opt" data-correct="false">56% to 60%</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Subtract and add the margin: 58 − 4 = 54 and 58 + 4 = 62.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">A random sample of 40 of 600 phones finds 3 defective. Estimate the number of defective phones.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">120</button><button class="quiz-opt" data-correct="true">45</button><button class="quiz-opt" data-correct="false">75</button><button class="quiz-opt" data-correct="false">3</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> 3 ÷ 40 = 0.075, and 0.075 × 600 = 45. 3 is only the count in the sample.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">How does a larger random sample affect the margin of error?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">It makes the margin of error smaller</button><button class="quiz-opt" data-correct="false">It makes the margin of error larger</button><button class="quiz-opt" data-correct="false">It makes the margin of error zero</button><button class="quiz-opt" data-correct="false">It has no effect</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Larger random samples vary less from sample to sample, so the margin of error shrinks &mdash; but it never reaches zero.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">A survey of only basketball team members finds 90% want a new gym. Why is this a poor estimate for the whole school?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">The sample is too large</button><button class="quiz-opt" data-correct="true">The sample isn't random; it's biased toward students who use the gym</button><button class="quiz-opt" data-correct="false">Surveys can't estimate percentages</button><button class="quiz-opt" data-correct="false">90% is too high to be real</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Team members are much more likely to want a new gym than a typical student, so this sample doesn't represent the school.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can estimate a population total, mean, or percentage from a sample.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain why samples should be random.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can use a simulation to find and interpret a margin of error.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Population</span><span class="term-pill">Sample</span><span class="term-pill">Random Sample</span><span class="term-pill">Margin of Error</span><span class="term-pill">Simulation</span></div>
+<div class="next-box"><strong>Unit 10 complete &mdash; and so is Algebra 1!</strong> You can represent and interpret data, read two-way tables, fit and judge linear models, separate correlation from causation, and estimate from samples. <strong>Next up: the Unit 10 Review.</strong></div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="unit-10-review.html">Unit 10 Review &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'DP.1.4',
+        lesson: '10.7: Sampling & Margin of Error',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>
