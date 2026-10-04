@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 8.5: The Quadratic Formula</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 8: Quadratic Functions &amp; Equations</div></div></div><div class="lesson-tag">Lesson 8.5 &middot; Quadratic Formula</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">One formula for every quadratic</h1>
+<div class="card warm"><p style="margin-bottom:0;">Complete the square on ax² + bx + c = 0 using letters instead of numbers, and you get one formula that solves every quadratic equation ever written. Factoring can fail; the formula never does.</p></div>
+<p>Today you'll use the quadratic formula and the discriminant &mdash; the part under the square root that tells you how many real solutions to expect.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Solve a quadratic equation with the quadratic formula</span></li><li><span class="num">2</span><span>Use the discriminant to find the number of real solutions</span></li><li><span class="num">3</span><span>Choose an efficient method for a given equation</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">The formula and its preview</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Quadratic Formula</span></div><div class="vocab-body"><p class="vocab-def">For ax² + bx + c = 0: x = (−b ± √(b² − 4ac)) / (2a).</p><div class="vocab-hook"><span>&#128161;</span><span><b>Tip:</b> write down a, b, and c with their signs before you substitute.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Discriminant</span></div><div class="vocab-body"><p class="vocab-def">b² − 4ac, the expression under the square root. Positive: 2 real solutions. Zero: 1. Negative: none.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Picture it:</b> it tells you whether the parabola crosses the x-axis twice, touches it once, or misses it.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Standard form, then substitute</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Write in standard form</div>Everything on one side, equal to 0: 2x² = 3 − 5x becomes 2x² + 5x − 3 = 0.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Identify a, b, and c with their signs</div>a = 2, b = 5, c = −3</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Compute the discriminant first</div>b² − 4ac = 25 + 24 = 49</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Substitute and simplify</div>x = (−5 ± 7)/4, so x = 1/2 or x = −3</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> Put negative values of b in parentheses when you square them: if b = −4, then b² = (−4)² = 16, not −16.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Messy numbers, clean method</h1>
+<p>When an equation comes from real data, the numbers rarely factor nicely. The quadratic formula handles decimals and awkward coefficients just as well as whole numbers.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A diver's height is h = −4.9t² + 3t + 10 meters. Solving −4.9t² + 3t + 10 = 0 with the formula gives t ≈ 1.77 or t ≈ −1.15. The negative time didn't happen, so she reaches the water after about 1.77 seconds.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Two Solutions</p><h1 class="slide-title">Solving 2x² + 5x − 3 = 0</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Solve with the quadratic formula.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Identify</div>a = 2, b = 5, c = −3</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Discriminant</div>5² − 4(2)(−3) = 25 + 24 = 49</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Formula</div>x = (−5 ± 7)/4 → x = 2/4 = 1/2 or x = −12/4 = −3</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; The Discriminant</p><h1 class="slide-title">How many real solutions?</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Use the discriminant to count the real solutions of each equation.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">x² − 2x − 4 = 0</div>4 + 16 = 20 &gt; 0 → 2 real solutions: x = (2 ± √20)/2 = 1 ± √5</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">x² − 6x + 9 = 0</div>36 − 36 = 0 → exactly 1 real solution, x = 3</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">x² + 2x + 5 = 0</div>4 − 20 = −16 &lt; 0 → no real solutions</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Two crossings, one touch, no crossing</div><svg width="300" height="484" viewBox="0 0 300 484" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="61.8" y1="14" x2="61.8" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="89.6" y1="14" x2="89.6" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="117.3" y1="14" x2="117.3" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="145.1" y1="14" x2="145.1" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="172.9" y1="14" x2="172.9" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="200.7" y1="14" x2="200.7" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="228.4" y1="14" x2="228.4" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="256.2" y1="14" x2="256.2" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="284.0" y1="14" x2="284.0" y2="458" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="458.0" x2="284" y2="458.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="430.2" x2="284" y2="430.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="402.5" x2="284" y2="402.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="374.8" x2="284" y2="374.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="347.0" x2="284" y2="347.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="319.2" x2="284" y2="319.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="291.5" x2="284" y2="291.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="263.8" x2="284" y2="263.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="236.0" x2="284" y2="236.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="208.2" x2="284" y2="208.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="180.5" x2="284" y2="180.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="152.8" x2="284" y2="152.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="125.0" x2="284" y2="125.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="97.2" x2="284" y2="97.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="69.5" x2="284" y2="69.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="41.8" x2="284" y2="41.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="284" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="38.2,18.9 39.2,26.9 40.2,34.8 41.3,42.6 42.3,50.4 43.4,58.0 44.4,65.6 45.5,73.1 46.5,80.5 47.5,87.9 48.6,95.2 49.6,102.3 50.7,109.5 51.7,116.5 52.8,123.5 53.8,130.3 54.8,137.1 55.9,143.9 56.9,150.5 58.0,157.1 59.0,163.6 60.0,170.0 61.1,176.3 62.1,182.6 63.2,188.8 64.2,194.9 65.2,200.9 66.3,206.8 67.3,212.7 68.4,218.5 69.4,224.2 70.5,229.8 71.5,235.4 72.5,240.9 73.6,246.3 74.6,251.6 75.7,256.8 76.7,262.0 77.8,267.1 78.8,272.1 79.8,277.0 80.9,281.9 81.9,286.6 83.0,291.3 84.0,295.9 85.0,300.5 86.1,304.9 87.1,309.3 88.2,313.6 89.2,317.9 90.2,322.0 91.3,326.1 92.3,330.1 93.4,334.0 94.4,337.8 95.5,341.6 96.5,345.3 97.5,348.9 98.6,352.4 99.6,355.8 100.7,359.2 101.7,362.5 102.8,365.7 103.8,368.8 104.8,371.9 105.9,374.9 106.9,377.8 108.0,380.6 109.0,383.4 110.0,386.0 111.1,388.6 112.1,391.1 113.2,393.6 114.2,395.9 115.2,398.2 116.3,400.4 117.3,402.5 118.4,404.5 119.4,406.5 120.5,408.4 121.5,410.2 122.5,411.9 123.6,413.6 124.6,415.2 125.7,416.7 126.7,418.1 127.8,419.4 128.8,420.7 129.8,421.9 130.9,423.0 131.9,424.0 133.0,424.9 134.0,425.8 135.0,426.6 136.1,427.3 137.1,428.0 138.2,428.5 139.2,429.0 140.2,429.4 141.3,429.7 142.3,430.0 143.4,430.1 144.4,430.2 145.5,430.2 146.5,430.2 147.5,430.0 148.6,429.8 149.6,429.5 150.7,429.1 151.7,428.7 152.8,428.2 153.8,427.5 154.8,426.9 155.9,426.1 156.9,425.2 158.0,424.3 159.0,423.3 160.0,422.2 161.1,421.1 162.1,419.8 163.2,418.5 164.2,417.1 165.2,415.7 166.3,414.1 167.3,412.5 168.4,410.8 169.4,409.0 170.5,407.1 171.5,405.2 172.5,403.2 173.6,401.1 174.6,398.9 175.7,396.7 176.7,394.3 177.8,391.9 178.8,389.5 179.8,386.9 180.9,384.3 181.9,381.5 183.0,378.7 184.0,375.9 185.0,372.9 186.1,369.9 187.1,366.8 188.2,363.6 189.2,360.3 190.2,357.0 191.3,353.6 192.3,350.1 193.4,346.5 194.4,342.8 195.5,339.1 196.5,335.3 197.5,331.4 198.6,327.4 199.6,323.4 200.7,319.2 201.7,315.0 202.8,310.8 203.8,306.4 204.8,302.0 205.9,297.5 206.9,292.9 208.0,288.2 209.0,283.5 210.0,278.6 211.1,273.7 212.1,268.7 213.2,263.7 214.2,258.5 215.3,253.3 216.3,248.0 217.3,242.7 218.4,237.2 219.4,231.7 220.5,226.1 221.5,220.4 222.5,214.6 223.6,208.8 224.6,202.9 225.7,196.9 226.7,190.8 227.7,184.6 228.8,178.4 229.8,172.1 230.9,165.7 231.9,159.3 233.0,152.7 234.0,146.1 235.0,139.4 236.1,132.6 237.1,125.8 238.2,118.8 239.2,111.8 240.2,104.7 241.3,97.6 242.3,90.3 243.4,83.0 244.4,75.6 245.5,68.1 246.5,60.6 247.5,52.9 248.6,45.2 249.6,37.4 250.7,29.5 251.7,21.6" fill="none" stroke="#0047BA" stroke-width="2.5"/><polyline points="113.2,16.2 114.2,22.7 115.2,29.1 116.3,35.5 117.3,41.8 118.4,48.0 119.4,54.1 120.5,60.1 121.5,66.1 122.5,72.0 123.6,77.8 124.6,83.5 125.7,89.2 126.7,94.8 127.8,100.3 128.8,105.7 129.8,111.1 130.9,116.3 131.9,121.5 133.0,126.6 134.0,131.7 135.0,136.6 136.1,141.5 137.1,146.3 138.2,151.0 139.2,155.7 140.2,160.2 141.3,164.7 142.3,169.1 143.4,173.5 144.4,177.7 145.5,181.9 146.5,186.0 147.5,190.0 148.6,193.9 149.6,197.8 150.7,201.6 151.7,205.3 152.8,208.9 153.8,212.5 154.8,216.0 155.9,219.3 156.9,222.7 158.0,225.9 159.0,229.1 160.0,232.1 161.1,235.2 162.1,238.1 163.2,240.9 164.2,243.7 165.2,246.4 166.3,249.0 167.3,251.5 168.4,254.0 169.4,256.4 170.5,258.7 171.5,260.9 172.5,263.1 173.6,265.1 174.6,267.1 175.7,269.0 176.7,270.9 177.8,272.6 178.8,274.3 179.8,275.9 180.9,277.4 181.9,278.9 183.0,280.2 184.0,281.5 185.0,282.7 186.1,283.9 187.1,284.9 188.2,285.9 189.2,286.8 190.2,287.6 191.3,288.3 192.3,289.0 193.4,289.6 194.4,290.1 195.5,290.5 196.5,290.9 197.5,291.1 198.6,291.3 199.6,291.5 200.7,291.5 201.7,291.5 202.8,291.3 203.8,291.1 204.8,290.9 205.9,290.5 206.9,290.1 208.0,289.6 209.0,289.0 210.0,288.3 211.1,287.6 212.1,286.8 213.2,285.9 214.2,284.9 215.3,283.9 216.3,282.7 217.3,281.5 218.4,280.2 219.4,278.9 220.5,277.4 221.5,275.9 222.5,274.3 223.6,272.6 224.6,270.9 225.7,269.0 226.7,267.1 227.7,265.1 228.8,263.1 229.8,260.9 230.9,258.7 231.9,256.4 233.0,254.0 234.0,251.5 235.0,249.0 236.1,246.4 237.1,243.7 238.2,240.9 239.2,238.1 240.2,235.2 241.3,232.1 242.3,229.1 243.4,225.9 244.4,222.7 245.5,219.3 246.5,216.0 247.5,212.5 248.6,208.9 249.6,205.3 250.7,201.6 251.7,197.8 252.8,193.9 253.8,190.0 254.8,186.0 255.9,181.9 256.9,177.7 258.0,173.5 259.0,169.1 260.0,164.7 261.1,160.2 262.1,155.7 263.2,151.0 264.2,146.3 265.2,141.5 266.3,136.6 267.3,131.7 268.4,126.6 269.4,121.5 270.5,116.3 271.5,111.1 272.5,105.7 273.6,100.3 274.6,94.8 275.7,89.2 276.7,83.5 277.8,77.8 278.8,72.0 279.8,66.1 280.9,60.1 281.9,54.1 283.0,48.0 284.0,41.8" fill="none" stroke="#1a7a3c" stroke-width="2.5"/><polyline points="34.0,69.5 35.0,73.6 36.1,77.7 37.1,81.6 38.2,85.5 39.2,89.3 40.2,93.1 41.3,96.7 42.3,100.3 43.4,103.8 44.4,107.2 45.5,110.6 46.5,113.8 47.5,117.0 48.6,120.1 49.6,123.2 50.7,126.1 51.7,129.0 52.8,131.8 53.8,134.5 54.8,137.1 55.9,139.7 56.9,142.2 58.0,144.6 59.0,146.9 60.0,149.2 61.1,151.3 62.1,153.4 63.2,155.5 64.2,157.4 65.2,159.3 66.3,161.0 67.3,162.7 68.4,164.4 69.4,165.9 70.5,167.4 71.5,168.8 72.5,170.1 73.6,171.3 74.6,172.5 75.7,173.6 76.7,174.6 77.8,175.5 78.8,176.3 79.8,177.1 80.9,177.8 81.9,178.4 83.0,178.9 84.0,179.4 85.0,179.8 86.1,180.1 87.1,180.3 88.2,180.4 89.2,180.5 90.2,180.5 91.3,180.4 92.3,180.2 93.4,180.0 94.4,179.7 95.5,179.2 96.5,178.8 97.5,178.2 98.6,177.6 99.6,176.9 100.7,176.1 101.7,175.2 102.8,174.2 103.8,173.2 104.8,172.1 105.9,170.9 106.9,169.7 108.0,168.3 109.0,166.9 110.0,165.4 111.1,163.8 112.1,162.2 113.2,160.5 114.2,158.6 115.2,156.8 116.3,154.8 117.3,152.8 118.4,150.6 119.4,148.4 120.5,146.2 121.5,143.8 122.5,141.4 123.6,138.9 124.6,136.3 125.7,133.6 126.7,130.9 127.8,128.0 128.8,125.1 129.8,122.2 130.9,119.1 131.9,116.0 133.0,112.8 134.0,109.5 135.0,106.1 136.1,102.6 137.1,99.1 138.2,95.5 139.2,91.8 140.2,88.1 141.3,84.2 142.3,80.3 143.4,76.3 144.4,72.3 145.5,68.1 146.5,63.9 147.5,59.6 148.6,55.2 149.6,50.7 150.7,46.2 151.7,41.6 152.8,36.9 153.8,32.1 154.8,27.3 155.9,22.3 156.9,17.3" fill="none" stroke="#DB2F30" stroke-width="2.5"/><text x="36.8" y="55.6" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">x² + 2x + 5</text><text x="234.0" y="230.4" font-size="11.5" font-weight="700" fill="#1a7a3c" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">x² − 6x + 9</text><text x="211.8" y="419.1" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">x² − 2x − 4</text><line x1="34" y1="291.5" x2="284" y2="291.5" stroke="#7a869a" stroke-width="1.6"/><line x1="117.3" y1="14" x2="117.3" y2="458" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="61.8" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="89.6" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="145.1" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="172.9" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="200.7" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="228.4" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="256.2" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="284.0" y="305.5" font-size="10" fill="#7a869a" text-anchor="middle">6</text><text x="112.3" y="461.5" font-size="10" fill="#7a869a" text-anchor="end">−6</text><text x="112.3" y="433.8" font-size="10" fill="#7a869a" text-anchor="end">−5</text><text x="112.3" y="406.0" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="112.3" y="378.2" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="112.3" y="350.5" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="112.3" y="322.8" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="112.3" y="267.2" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="112.3" y="239.5" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="112.3" y="211.8" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="112.3" y="184.0" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="112.3" y="156.2" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="112.3" y="128.5" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="112.3" y="100.8" font-size="10" fill="#7a869a" text-anchor="end">7</text><text x="112.3" y="73.0" font-size="10" fill="#7a869a" text-anchor="end">8</text><text x="112.3" y="45.2" font-size="10" fill="#7a869a" text-anchor="end">9</text><text x="112.3" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">10</text><text x="112.3" y="304.5" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="284" y="286.5" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="122.3" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>Solve: x² − 4x − 1 = 0</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the discriminant?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">20</button><button class="choice-btn" data-correct="false">12</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> b² − 4ac = (−4)² − 4(1)(−1) = 16 + 4 = 20. 12 comes from 16 − 4, which mishandles c = −1.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What are the solutions?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">x = 2 ± √5</button><button class="choice-btn" data-correct="false">x = −2 ± √5</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> x = (4 ± √20)/2 = (4 ± 2√5)/2 = 2 ± √5. The −b in the formula makes the first term +4, not −4.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">The universal method</h1>
+<p>The quadratic formula always works: if you remember nothing else from this unit, it will still solve the equation. The discriminant even tells you ahead of time whether a real-world answer exists.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Solving equations from real data with decimal coefficients.</li><li>Checking whether a projectile ever reaches a given height.</li><li>Exact answers in radical form, using Unit 7 skills.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: writing a quadratic function from its graph, a table, or its intercepts.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">In 3x² − 7x + 2 = 0, what are a, b, and c?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">a = 3, b = −7, c = 2</button><button class="quiz-opt" data-correct="false">a = 3, b = 7, c = 2</button><button class="quiz-opt" data-correct="false">a = 2, b = −7, c = 3</button><button class="quiz-opt" data-correct="false">a = 3, b = −7, c = 0</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Read the coefficients from standard form, signs included: a = 3, b = −7, c = 2.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">What is the discriminant of x² + 3x − 10 = 0?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">31</button><button class="quiz-opt" data-correct="false">−31</button><button class="quiz-opt" data-correct="false">7</button><button class="quiz-opt" data-correct="true">49</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> b² − 4ac = 9 − 4(1)(−10) = 9 + 40 = 49. A positive discriminant means two real solutions.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">How many real solutions does 2x² + x + 4 = 0 have?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">One</button><button class="quiz-opt" data-correct="false">Two</button><button class="quiz-opt" data-correct="false">Infinitely many</button><button class="quiz-opt" data-correct="true">None</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> b² − 4ac = 1 − 32 = −31. A negative discriminant means the parabola never reaches the x-axis: no real solutions.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Use the quadratic formula to solve x² + 3x − 10 = 0.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x = 5 or x = −5</button><button class="quiz-opt" data-correct="false">x = −2 or x = 5</button><button class="quiz-opt" data-correct="true">x = 2 or x = −5</button><button class="quiz-opt" data-correct="false">x = 2 or x = 5</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> x = (−3 ± 7)/2, so x = 4/2 = 2 or x = −10/2 = −5.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Solve: x² − 2x − 1 = 0.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x = 2 ± √2</button><button class="quiz-opt" data-correct="false">x = −1 ± √2</button><button class="quiz-opt" data-correct="true">x = 1 ± √2</button><button class="quiz-opt" data-correct="false">x = 1 ± 2√2</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> The discriminant is 4 + 4 = 8. x = (2 ± √8)/2 = (2 ± 2√2)/2 = 1 ± √2.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can solve any quadratic with the quadratic formula.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can use the discriminant to count real solutions.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can choose an efficient method for an equation.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Quadratic Formula</span><span class="term-pill">Discriminant</span><span class="term-pill">Real Solutions</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 8.6: Writing Quadratic Functions.</strong> Pick the form that fits the clues.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="8-6-writing-quadratic-functions.html">Next Lesson: 8.6 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'AR.3.1',
+        lesson: '8.5: The Quadratic Formula',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

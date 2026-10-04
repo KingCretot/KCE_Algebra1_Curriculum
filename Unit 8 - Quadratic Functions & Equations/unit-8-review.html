@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Unit 8 Review: Quadratic Functions & Equations</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 8: Quadratic Functions &amp; Equations</div></div></div><div class="lesson-tag">Unit 8 Review</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 8</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Unit Review</p><h1 class="slide-title">Unit 8: Quadratic Functions &amp; Equations — the whole unit in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Unit 8 was all about quadratics: reading their graphs, finding the vertex and zeros, solving quadratic equations four different ways, writing quadratic functions, and using them to answer real questions.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">8.1</span><span>Graphing Quadratic Functions</span></li><li><span class="num">8.2</span><span>Vertex &amp; Zeros from the Equation</span></li><li><span class="num">8.3</span><span>Solving by Factoring &amp; Square Roots</span></li><li><span class="num">8.4</span><span>Completing the Square</span></li><li><span class="num">8.5</span><span>The Quadratic Formula</span></li><li><span class="num">8.6</span><span>Writing Quadratic Functions</span></li><li><span class="num">8.7</span><span>Quadratics in Context</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real unit test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lessons 8.1–8.2</p><h1 class="slide-title">Graphs and key features</h1>
+<div class="rc"><div class="tagl">Lesson 8.1</div><h3>Read the parabola</h3><p>a &gt; 0 opens up (minimum); a &lt; 0 opens down (maximum). The axis of symmetry passes through the vertex. Domain is all real numbers; range starts at the vertex's y-value.</p><div class="ex"><strong>Example:</strong> f(x) = x² − 2x − 3: vertex (1, −4), axis x = 1, zeros −1 and 3, range y ≥ −4.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">f(x) = x² − 2x − 3</div><svg width="250" height="315" viewBox="0 0 250 315" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="59.0" y1="14" x2="59.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="84.0" y1="14" x2="84.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="109.0" y1="14" x2="109.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="134.0" y1="14" x2="134.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="159.0" y1="14" x2="159.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="184.0" y1="14" x2="184.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="209.0" y1="14" x2="209.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="234.0" y1="14" x2="234.0" y2="289" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="289.0" x2="234" y2="289.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="264.0" x2="234" y2="264.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="239.0" x2="234" y2="239.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="214.0" x2="234" y2="214.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="189.0" x2="234" y2="189.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="164.0" x2="234" y2="164.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="139.0" x2="234" y2="139.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="114.0" x2="234" y2="114.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="89.0" x2="234" y2="89.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="64.0" x2="234" y2="64.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="39.0" x2="234" y2="39.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="234" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><line x1="134.0" y1="289.0" x2="134.0" y2="14.0" stroke="#C9A84C" stroke-width="2.5" stroke-dasharray="7,5"/><polyline points="55.7,18.6 56.5,23.8 57.3,28.9 58.2,34.0 59.0,39.0 59.8,44.0 60.7,48.9 61.5,53.8 62.3,58.6 63.2,63.3 64.0,68.0 64.8,72.6 65.7,77.2 66.5,81.8 67.3,86.2 68.2,90.6 69.0,95.0 69.8,99.3 70.7,103.6 71.5,107.8 72.3,111.9 73.2,116.0 74.0,120.0 74.8,124.0 75.7,127.9 76.5,131.8 77.3,135.6 78.2,139.3 79.0,143.0 79.8,146.6 80.7,150.2 81.5,153.8 82.3,157.2 83.2,160.6 84.0,164.0 84.8,167.3 85.7,170.6 86.5,173.8 87.3,176.9 88.2,180.0 89.0,183.0 89.8,186.0 90.7,188.9 91.5,191.8 92.3,194.6 93.2,197.3 94.0,200.0 94.8,202.6 95.7,205.2 96.5,207.8 97.3,210.2 98.2,212.6 99.0,215.0 99.8,217.3 100.7,219.6 101.5,221.8 102.3,223.9 103.2,226.0 104.0,228.0 104.8,230.0 105.7,231.9 106.5,233.7 107.3,235.6 108.2,237.3 109.0,239.0 109.8,240.6 110.7,242.2 111.5,243.8 112.3,245.2 113.2,246.6 114.0,248.0 114.8,249.3 115.7,250.6 116.5,251.8 117.3,252.9 118.2,254.0 119.0,255.0 119.8,256.0 120.7,256.9 121.5,257.8 122.3,258.6 123.2,259.3 124.0,260.0 124.8,260.6 125.7,261.2 126.5,261.8 127.3,262.2 128.2,262.6 129.0,263.0 129.8,263.3 130.7,263.6 131.5,263.8 132.3,263.9 133.2,264.0 134.0,264.0 134.8,264.0 135.7,263.9 136.5,263.8 137.3,263.6 138.2,263.3 139.0,263.0 139.8,262.6 140.7,262.2 141.5,261.8 142.3,261.2 143.2,260.6 144.0,260.0 144.8,259.3 145.7,258.6 146.5,257.8 147.3,256.9 148.2,256.0 149.0,255.0 149.8,254.0 150.7,252.9 151.5,251.8 152.3,250.6 153.2,249.3 154.0,248.0 154.8,246.6 155.7,245.2 156.5,243.8 157.3,242.2 158.2,240.6 159.0,239.0 159.8,237.3 160.7,235.6 161.5,233.8 162.3,231.9 163.2,230.0 164.0,228.0 164.8,226.0 165.7,223.9 166.5,221.8 167.3,219.6 168.2,217.3 169.0,215.0 169.8,212.6 170.7,210.2 171.5,207.8 172.3,205.2 173.2,202.6 174.0,200.0 174.8,197.3 175.7,194.6 176.5,191.8 177.3,188.9 178.2,186.0 179.0,183.0 179.8,180.0 180.7,176.9 181.5,173.7 182.3,170.6 183.2,167.3 184.0,164.0 184.8,160.6 185.7,157.2 186.5,153.8 187.3,150.2 188.2,146.6 189.0,143.0 189.8,139.3 190.7,135.6 191.5,131.8 192.3,127.9 193.2,124.0 194.0,120.0 194.8,116.0 195.7,111.9 196.5,107.8 197.3,103.6 198.2,99.3 199.0,95.0 199.8,90.6 200.7,86.2 201.5,81.7 202.3,77.2 203.2,72.6 204.0,68.0 204.8,63.3 205.7,58.6 206.5,53.7 207.3,48.9 208.2,44.0 209.0,39.0 209.8,34.0 210.7,28.9 211.5,23.8 212.3,18.6" fill="none" stroke="#0047BA" stroke-width="2.5"/><circle cx="134.0" cy="264.0" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="142.0" y="268.0" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(1, −4)</text><circle cx="84.0" cy="164.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><circle cx="184.0" cy="164.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><line x1="34" y1="164.0" x2="234" y2="164.0" stroke="#7a869a" stroke-width="1.6"/><line x1="109.0" y1="14" x2="109.0" y2="289" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="59.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="84.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="134.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="159.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="184.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="209.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="234.0" y="178.0" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="104.0" y="292.5" font-size="10" fill="#7a869a" text-anchor="end">−5</text><text x="104.0" y="267.5" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="104.0" y="242.5" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="104.0" y="217.5" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="104.0" y="192.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="104.0" y="142.5" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="104.0" y="117.5" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="104.0" y="92.5" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="104.0" y="67.5" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="104.0" y="42.5" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="104.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="104.0" y="177.0" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="234" y="159.0" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="114.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+<div class="rc"><div class="tagl">Lesson 8.2</div><h3>Vertex and zeros from the equation</h3><p>Vertex form a(x − h)² + k → vertex (h, k). Factored form a(x − p)(x − q) → zeros p and q. Standard form → vertex at x = −b/(2a).</p><div class="ex"><strong>Example:</strong> y = 2x² − 8x + 5: x = 8/4 = 2, y = −3, so the vertex is (2, −3).</div></div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 8.3–8.5</p><h1 class="slide-title">Solving quadratic equations</h1>
+<div class="rc"><div class="tagl">Lesson 8.3</div><h3>Factoring and square roots</h3><p>Set the equation to 0, factor, and set each factor to 0. When there's no x term, isolate the square and take ± the root.</p><div class="ex"><strong>Example:</strong> x² − x = 12 → (x − 4)(x + 3) = 0 → x = 4 or −3. (x + 3)² = 25 → x = 2 or −8.</div></div><div class="rc"><div class="tagl">Lesson 8.4</div><h3>Completing the square</h3><p>Move the constant, add (b/2)² to both sides, write a square, and take ± the root. It also turns standard form into vertex form.</p><div class="ex"><strong>Example:</strong> x² − 8x = −3 → (x − 4)² = 13 → x = 4 ± √13</div></div><div class="rc"><div class="tagl">Lesson 8.5</div><h3>The quadratic formula</h3><p>x = (−b ± √(b² − 4ac)) / (2a). The discriminant b² − 4ac tells you: positive → 2 solutions, zero → 1, negative → none.</p><div class="ex"><strong>Example:</strong> 2x² + 5x − 3 = 0: discriminant 49, so x = (−5 ± 7)/4 = 1/2 or −3</div></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Key Ideas &middot; Lessons 8.6–8.7</p><h1 class="slide-title">Writing and applying quadratics</h1>
+<div class="rc"><div class="tagl">Lesson 8.6</div><h3>Write from the clues</h3><p>Vertex known → vertex form; zeros known → factored form. Then substitute one more point to find a. Quadratic tables have constant second differences.</p><div class="ex"><strong>Example:</strong> Zeros −2 and 4 through (0, −16): −16 = a(2)(−4), so a = 2 and y = 2(x + 2)(x − 4).</div></div><div class="rc"><div class="tagl">Lesson 8.7</div><h3>Interpret in context</h3><p>Vertex → maximum or minimum; zeros → when the quantity is 0; y-intercept → the starting value. Reject answers outside the realistic domain.</p><div class="ex"><strong>Example:</strong> h(t) = −16t² + 64t peaks at 64 feet when t = 2 and lands at t = 4.</div></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Wrong sign on the vertex: (x + 3)² + 2 → vertex (3, 2)</td><td>Vertex form has x − h, so x + 3 means h = −3: vertex (−3, 2).</td></tr><tr><td>Forgetting ± with square roots</td><td>x² = 64 has two solutions: 8 and −8.</td></tr><tr><td>Dividing both sides by x</td><td>x² = 5x → x(x − 5) = 0 → x = 0 or 5. Dividing by x loses x = 0.</td></tr><tr><td>Factoring before the equation equals 0</td><td>x² + 5x = 14 must become x² + 5x − 14 = 0 first.</td></tr><tr><td>Sign slips in the formula</td><td>Use −b, and square negatives in parentheses: (−4)² = 16.</td></tr><tr><td>Adding (b/2)² to only one side</td><td>Whatever you add to complete the square goes on both sides.</td></tr><tr><td>Keeping a negative time or length</td><td>Check every answer against the realistic domain and reject the ones that can't happen.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a unit test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="6"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this unit on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Algebra 1 &middot; Unit 8: Quadratic Functions &amp; Equations</h2><div class="csub">KingCretot Experience &middot; Unit 8 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Direction</td><td>a &gt; 0 opens up (min); a &lt; 0 opens down (max)</td><td>y = −3x² + 6x opens down</td></tr><tr><td>Vertex form</td><td>a(x − h)² + k → vertex (h, k)</td><td>(x + 4)² + 7 → (−4, 7)</td></tr><tr><td>Factored form</td><td>a(x − p)(x − q) → zeros p, q</td><td>(x + 1)(x − 5) → −1 and 5</td></tr><tr><td>Standard form vertex</td><td>x = −b/(2a)</td><td>2x² − 8x + 5 → x = 2</td></tr><tr><td>Zero Product Property</td><td>If AB = 0, then A = 0 or B = 0</td><td>(x − 4)(x + 3) = 0 → 4, −3</td></tr><tr><td>Square roots</td><td>Isolate the square; take ±</td><td>(x − 2)² = 9 → 5, −1</td></tr><tr><td>Completing the square</td><td>Add (b/2)² to both sides</td><td>x² + 4x = 12 → (x + 2)² = 16</td></tr><tr><td>Quadratic formula</td><td>x = (−b ± √(b² − 4ac)) / (2a)</td><td>x² − 4x − 1 = 0 → 2 ± √5</td></tr><tr><td>Discriminant</td><td>b² − 4ac: + → 2, 0 → 1, − → 0 solutions</td><td>x² + 2x + 5: −16 → none</td></tr><tr><td>In context</td><td>Vertex = max/min; zeros = when it's 0; check the domain</td><td>Reject t = −1</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the vertex of y = 2(x + 1)² − 8?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(−1, −8)</button><button class="quiz-opt" data-correct="false">(1, −8)</button><button class="quiz-opt" data-correct="false">(−1, 8)</button><button class="quiz-opt" data-correct="false">(2, −8)</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> Vertex form a(x − h)² + k: x + 1 means h = −1, and k = −8.</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">What is the axis of symmetry of y = x² − 8x + 12?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x = 8</button><button class="quiz-opt" data-correct="false">x = −4</button><button class="quiz-opt" data-correct="true">x = 4</button><button class="quiz-opt" data-correct="false">x = 6</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> x = −b/(2a) = 8/2 = 4. It's also halfway between the zeros, 2 and 6.</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Solve: x² + 2x − 15 = 0.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x = 15 or x = −1</button><button class="quiz-opt" data-correct="true">x = 3 or x = −5</button><button class="quiz-opt" data-correct="false">x = 3 or x = 5</button><button class="quiz-opt" data-correct="false">x = −3 or x = 5</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> (x + 5)(x − 3) = 0, so x = −5 or x = 3. Check: 9 + 6 − 15 = 0 ✓</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Solve: 3x² = 48.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">x = 4 or x = −4</button><button class="quiz-opt" data-correct="false">x = 8 or x = −8</button><button class="quiz-opt" data-correct="false">x = 4</button><button class="quiz-opt" data-correct="false">x = 16 or x = −16</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> Divide by 3: x² = 16, so x = ±4. Stopping at x² = 16 gives ±16 by mistake.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">What number completes the square for x² − 12x?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">−36</button><button class="quiz-opt" data-correct="false">6</button><button class="quiz-opt" data-correct="true">36</button><button class="quiz-opt" data-correct="false">144</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> (−12/2)² = (−6)² = 36, and x² − 12x + 36 = (x − 6)².</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">How many real solutions does x² − 4x + 7 = 0 have?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Infinitely many</button><button class="quiz-opt" data-correct="false">One</button><button class="quiz-opt" data-correct="false">Two</button><button class="quiz-opt" data-correct="true">None</button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> b² − 4ac = 16 − 28 = −12. A negative discriminant means no real solutions.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">Solve: 2x² − 3x − 2 = 0.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x = 1 or x = −4</button><button class="quiz-opt" data-correct="true">x = 2 or x = −1/2</button><button class="quiz-opt" data-correct="false">x = 2 or x = 1/2</button><button class="quiz-opt" data-correct="false">x = −2 or x = 1/2</button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> Discriminant 9 + 16 = 25. x = (3 ± 5)/4, so x = 2 or x = −1/2. It also factors: (2x + 1)(x − 2) = 0.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">Which function has zeros 2 and 6 and passes through (4, 8)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y = −2(x + 2)(x + 6)</button><button class="quiz-opt" data-correct="false">y = 2(x − 2)(x − 6)</button><button class="quiz-opt" data-correct="true">y = −2(x − 2)(x − 6)</button><button class="quiz-opt" data-correct="false">y = −(x − 2)(x − 6)</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> Start with y = a(x − 2)(x − 6). At (4, 8): 8 = a(2)(−2) = −4a, so a = −2.</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">For x = 0, 1, 2, 3, which y-values could come from a quadratic?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">1, 2, 4, 8</button><button class="quiz-opt" data-correct="false">0, 2, 4, 6</button><button class="quiz-opt" data-correct="false">0, 1, 3, 4</button><button class="quiz-opt" data-correct="true">0, 1, 4, 9</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> 0, 1, 4, 9 has first differences 1, 3, 5 and constant second differences of 2. 0, 2, 4, 6 is linear and 1, 2, 4, 8 is exponential.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">h(t) = −16t² + 64t + 80. When does the object hit the ground?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">t = 4 seconds</button><button class="quiz-opt" data-correct="false">t = 2 seconds</button><button class="quiz-opt" data-correct="true">t = 5 seconds</button><button class="quiz-opt" data-correct="false">t = −1 second</button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> −16(t² − 4t − 5) = −16(t − 5)(t + 1) = 0, so t = 5 or t = −1. Reject the negative time. (t = 2 is when it reaches its maximum, 144 feet.)</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="8"><p class="eyebrow">Debrief</p><h1 class="slide-title">Unit 8, reviewed</h1>
+<p>You can graph quadratics, find their vertex and zeros, solve quadratic equations four ways, write quadratic functions, and interpret them in real situations. That's the biggest unit in Algebra 1, and the one the EOC weighs most heavily.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole unit.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../index.html">Back to Course Home &rarr;</a><a class="end-btn secondary" href="../KCE_Algebra1_Unit8.html">Back to Unit 8</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'Unit 8 Review',
+        lesson: 'Unit 8 Review: Quadratic Functions & Equations',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>
