@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 6.4: Writing Exponential Functions</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 6: Exponential Functions &amp; Financial Literacy</div></div></div><div class="lesson-tag">Lesson 6.4 &middot; Writing Exponential Functions</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Two numbers are all you need</h1>
+<div class="card warm"><p style="margin-bottom:0;">Every exponential function y = a(b)<sup>x</sup> is pinned down by just two numbers: where it starts (a) and what it multiplies by (b). Today you'll pull those two numbers out of tables, graphs, and descriptions.</p></div>
+<p>This is Lesson 4.1 again, for a new function family. With lines you found a starting value and a constant difference. With exponentials you find a starting value and a constant ratio.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Write an exponential function from a table of values</span></li><li><span class="num">2</span><span>Write an exponential function from a graph</span></li><li><span class="num">3</span><span>Write an exponential function from a written description</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">The key to reading tables</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Common Ratio</span></div><div class="vocab-body"><p class="vocab-def">In a table with evenly spaced x-values, divide each output by the one before it. If the ratio is always the same, that ratio is b.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> 5, 15, 45, 135: each output ÷ the previous one = 3, so b = 3.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Working Back to a</span></div><div class="vocab-body"><p class="vocab-def">If the value at x = 0 isn't given, step backward: divide by b to move from x = 1 back to x = 0.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> f(1) = 12 and b = 3 → a = 12 ÷ 3 = 4.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Find a, find b, write it</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Check that it's exponential</div>Confirm a constant ratio between consecutive outputs, with evenly spaced inputs.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Find b</div>b is that constant ratio, per 1-unit step in x.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Find a</div>a is the output at x = 0. If it isn't shown, divide backward by b.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Write it and check</div>Write y = a(b)<sup>x</sup> and test one more point from the table or graph.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> If the x-values jump by 2, the ratio you see is b<sup>2</sup>, not b. Always keep track of the step size.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Building a model from data</h1>
+<p>Real data arrives as a table or a graph, not as an equation. Writing the function yourself lets you predict values you haven't measured yet &mdash; next year's population, the balance after 10 years, or when a medicine level drops below a safe threshold.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A nature reserve counted 40 deer, then 60, then 90 in three straight years. The ratio is 1.5 each year, so D(t) = 40(1.5)<sup>t</sup> predicts 40(1.5)<sup>5</sup> ≈ 304 deer in year 5 if the trend holds.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; From a Table</p><h1 class="slide-title">Table: x = 0, 1, 2, 3 → y = 6, 18, 54, 162</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Write the exponential function for the table.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Find the ratio</div>18 ÷ 6 = 3, 54 ÷ 18 = 3, 162 ÷ 54 = 3, so b = 3.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Read a</div>At x = 0, y = 6, so a = 6.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Write it and check</div>y = 6(3)<sup>x</sup>. Check x = 3: 6(27) = 162 ✓</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; From a Graph</p><h1 class="slide-title">A decay curve through (0, 64) and (1, 16)</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Write the function for the graph below.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Read a</div>The graph crosses the y-axis at 64, so a = 64.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Find b</div>From x = 0 to x = 1 the output goes from 64 to 16: b = 16 ÷ 64 = 0.25.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Write it and check</div>y = 64(0.25)<sup>x</sup>. Check x = 2: 64(0.0625) = 4, which matches the point (2, 4) ✓</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">y = 64(0.25)<sup>x</sup></div><svg width="260" height="230" viewBox="0 0 260 230" style="max-width:100%;height:auto"><line x1="34.0" y1="26" x2="34.0" y2="190" stroke="#e3e8f0" stroke-width="1"/><line x1="86.5" y1="26" x2="86.5" y2="190" stroke="#e3e8f0" stroke-width="1"/><line x1="139.0" y1="26" x2="139.0" y2="190" stroke="#e3e8f0" stroke-width="1"/><line x1="191.5" y1="26" x2="191.5" y2="190" stroke="#e3e8f0" stroke-width="1"/><line x1="244.0" y1="26" x2="244.0" y2="190" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="190.0" x2="244" y2="190.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="171.8" x2="244" y2="171.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="153.6" x2="244" y2="153.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="135.3" x2="244" y2="135.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="117.1" x2="244" y2="117.1" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="98.9" x2="244" y2="98.9" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="80.7" x2="244" y2="80.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="62.4" x2="244" y2="62.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="44.2" x2="244" y2="44.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="26.0" x2="244" y2="26.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="34.0,44.2 34.9,47.6 35.8,50.8 36.6,54.0 37.5,57.1 38.4,60.1 39.2,63.1 40.1,66.0 41.0,68.8 41.9,71.6 42.8,74.3 43.6,76.9 44.5,79.5 45.4,82.0 46.2,84.5 47.1,86.9 48.0,89.3 48.9,91.6 49.8,93.8 50.6,96.0 51.5,98.2 52.4,100.3 53.2,102.3 54.1,104.3 55.0,106.3 55.9,108.2 56.8,110.1 57.6,111.9 58.5,113.7 59.4,115.4 60.2,117.1 61.1,118.8 62.0,120.4 62.9,122.0 63.8,123.5 64.6,125.1 65.5,126.5 66.4,128.0 67.2,129.4 68.1,130.8 69.0,132.1 69.9,133.5 70.8,134.8 71.6,136.0 72.5,137.3 73.4,138.5 74.2,139.6 75.1,140.8 76.0,141.9 76.9,143.0 77.8,144.1 78.6,145.1 79.5,146.2 80.4,147.2 81.2,148.1 82.1,149.1 83.0,150.0 83.9,150.9 84.8,151.8 85.6,152.7 86.5,153.6 87.4,154.4 88.2,155.2 89.1,156.0 90.0,156.8 90.9,157.5 91.8,158.3 92.6,159.0 93.5,159.7 94.4,160.4 95.2,161.1 96.1,161.7 97.0,162.4 97.9,163.0 98.8,163.6 99.6,164.2 100.5,164.8 101.4,165.4 102.2,166.0 103.1,166.5 104.0,167.0 104.9,167.6 105.8,168.1 106.6,168.6 107.5,169.1 108.4,169.5 109.2,170.0 110.1,170.5 111.0,170.9 111.9,171.4 112.8,171.8 113.6,172.2 114.5,172.6 115.4,173.0 116.2,173.4 117.1,173.8 118.0,174.1 118.9,174.5 119.8,174.9 120.6,175.2 121.5,175.5 122.4,175.9 123.2,176.2 124.1,176.5 125.0,176.8 125.9,177.1 126.8,177.4 127.6,177.7 128.5,178.0 129.4,178.3 130.2,178.5 131.1,178.8 132.0,179.0 132.9,179.3 133.8,179.5 134.6,179.8 135.5,180.0 136.4,180.2 137.2,180.5 138.1,180.7 139.0,180.9 139.9,181.1 140.8,181.3 141.6,181.5 142.5,181.7 143.4,181.9 144.2,182.1 145.1,182.2 146.0,182.4 146.9,182.6 147.8,182.8 148.6,182.9 149.5,183.1 150.4,183.3 151.2,183.4 152.1,183.6 153.0,183.7 153.9,183.8 154.8,184.0 155.6,184.1 156.5,184.3 157.4,184.4 158.2,184.5 159.1,184.6 160.0,184.8 160.9,184.9 161.8,185.0 162.6,185.1 163.5,185.2 164.4,185.3 165.2,185.4 166.1,185.5 167.0,185.7 167.9,185.7 168.8,185.8 169.6,185.9 170.5,186.0 171.4,186.1 172.2,186.2 173.1,186.3 174.0,186.4 174.9,186.5 175.8,186.5 176.6,186.6 177.5,186.7 178.4,186.8 179.2,186.9 180.1,186.9 181.0,187.0 181.9,187.1 182.8,187.1 183.6,187.2 184.5,187.3 185.4,187.3 186.2,187.4 187.1,187.4 188.0,187.5 188.9,187.6 189.8,187.6 190.6,187.7 191.5,187.7 192.4,187.8 193.2,187.8 194.1,187.9 195.0,187.9 195.9,188.0 196.8,188.0 197.6,188.1 198.5,188.1 199.4,188.1 200.2,188.2 201.1,188.2 202.0,188.3 202.9,188.3 203.8,188.4 204.6,188.4 205.5,188.4 206.4,188.5 207.2,188.5 208.1,188.5 209.0,188.6 209.9,188.6 210.8,188.6 211.6,188.7 212.5,188.7 213.4,188.7 214.2,188.8 215.1,188.8 216.0,188.8 216.9,188.8 217.8,188.9 218.6,188.9 219.5,188.9 220.4,188.9 221.2,189.0 222.1,189.0 223.0,189.0 223.9,189.0 224.8,189.1 225.6,189.1 226.5,189.1 227.4,189.1 228.2,189.1 229.1,189.2 230.0,189.2 230.9,189.2 231.8,189.2 232.6,189.2 233.5,189.2 234.4,189.3 235.2,189.3 236.1,189.3 237.0,189.3 237.9,189.3 238.8,189.3 239.6,189.4 240.5,189.4 241.4,189.4 242.2,189.4 243.1,189.4 244.0,189.4" fill="none" stroke="#0047BA" stroke-width="2.5"/><circle cx="34.0" cy="44.2" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="42.0" y="48.2" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, 64)</text><circle cx="86.5" cy="153.6" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="94.5" y="147.6" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(1, 16)</text><circle cx="139.0" cy="180.9" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="145.0" y="172.9" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(2, 4)</text><line x1="34" y1="190.0" x2="244" y2="190.0" stroke="#7a869a" stroke-width="1.6"/><line x1="34.0" y1="26" x2="34.0" y2="190" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="204.0" font-size="10" fill="#7a869a" text-anchor="middle">0</text><text x="86.5" y="204.0" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="139.0" y="204.0" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="191.5" y="204.0" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="244.0" y="204.0" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="29.0" y="157.1" font-size="10" fill="#7a869a" text-anchor="end">16</text><text x="29.0" y="120.6" font-size="10" fill="#7a869a" text-anchor="end">32</text><text x="29.0" y="84.2" font-size="10" fill="#7a869a" text-anchor="end">48</text><text x="29.0" y="47.7" font-size="10" fill="#7a869a" text-anchor="end">64</text><text x="29.0" y="193.5" font-size="10" fill="#7a869a" text-anchor="end"></text><text x="139.0" y="224" font-size="11" font-style="italic" fill="#7a869a" text-anchor="middle">x →</text><text x="34.0" y="17" font-size="11" font-style="italic" fill="#7a869a" text-anchor="middle">↑ y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>A table shows x: 1, 2, 3 and y: 10, 20, 40.</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the common ratio b?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">2</button><button class="choice-btn" data-correct="false">10</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> 20 ÷ 10 = 2 and 40 ÷ 20 = 2, so b = 2. 10 is the difference between the first two outputs, which is what a linear table would use.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; The table starts at x = 1. What is a, the value at x = 0?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">5</button><button class="choice-btn" data-correct="false">10</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> Step back from x = 1 to x = 0 by dividing by b: 10 ÷ 2 = 5. So y = 5(2)<sup>x</sup>. Check: 5(2)<sup>3</sup> = 40 ✓</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">From data to prediction</h1>
+<p>Writing an exponential model from a few data points is how scientists, businesses, and public-health officials make forecasts. It's also how you can tell early whether something is growing by a steady amount or speeding up.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Forecasting population or sales growth from a few years of data.</li><li>Estimating how long a substance takes to break down.</li><li>Comparing a percent-based raise to a flat raise over time.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: graphing exponential functions and reading their key features.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">A table has x: 0, 1, 2, 3 and y: 2, 8, 32, 128. Which function fits?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y = 2 + 6x</button><button class="quiz-opt" data-correct="true">y = 2(4)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 4(2)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 2(6)<sup>x</sup></button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The ratio is 8 ÷ 2 = 4 each step, and the value at x = 0 is 2: y = 2(4)<sup>x</sup>. Check: 2(4)<sup>3</sup> = 128 ✓</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">A table has x: 0, 1, 2 and y: 1000, 800, 640. What is b?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">−200</button><button class="quiz-opt" data-correct="false">0.2</button><button class="quiz-opt" data-correct="false">1.25</button><button class="quiz-opt" data-correct="true">0.8</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> 800 ÷ 1000 = 0.8 and 640 ÷ 800 = 0.8. A factor of 0.8 means 20% decay each step. −200 is the first difference, which a linear table would use.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">A graph passes through (0, 3) and (1, 12). What is the function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y = 4(3)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 12(3)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 3(9)<sup>x</sup></button><button class="quiz-opt" data-correct="true">y = 3(4)<sup>x</sup></button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> a is the y-intercept, 3. b = 12 ÷ 3 = 4. So y = 3(4)<sup>x</sup>. The choice 3(9)<sup>x</sup> uses the difference 9 instead of the ratio.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A $2,000 laptop loses 25% of its value each year. Which function gives its value after t years?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">V(t) = 2000(0.75)<sup>t</sup></button><button class="quiz-opt" data-correct="false">V(t) = 2000(1.25)<sup>t</sup></button><button class="quiz-opt" data-correct="false">V(t) = 2000(0.25)<sup>t</sup></button><button class="quiz-opt" data-correct="false">V(t) = 2000 − 25t</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Losing 25% keeps 75%, so b = 0.75 and a = 2000. Using 0.25 would mean losing 75% each year.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">An exponential function has f(1) = 15 and f(2) = 45. What is f(0)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">45</button><button class="quiz-opt" data-correct="false">−15</button><button class="quiz-opt" data-correct="false">0</button><button class="quiz-opt" data-correct="true">5</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> The ratio is 45 ÷ 15 = 3. Step back from x = 1 to x = 0 by dividing by 3: 15 ÷ 3 = 5, so f(x) = 5(3)<sup>x</sup>. −15 subtracts the difference, which is the linear way.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write an exponential function from a table.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write an exponential function from a graph.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write an exponential function from a written description.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Common Ratio</span><span class="term-pill">Initial Value</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 6.5: Graphing Exponential Functions.</strong> You'll graph these functions and describe their key features &mdash; including one that lines don't have.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="6-5-graphing-exponential-functions.html">Next Lesson: 6.5 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'AR.5.4',
+        lesson: '6.4: Writing Exponential Functions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 6.6: Simple & Compound Interest</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 6: Exponential Functions &amp; Financial Literacy</div></div></div><div class="lesson-tag">Lesson 6.6 &middot; Simple &amp; Compound Interest</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Interest on your interest</h1>
+<div class="card warm"><p style="margin-bottom:0;">Two friends each put $1,000 away for 30 years at 6%. One earns simple interest: $60 a year, every year, for a final balance of $2,800. The other earns interest compounded yearly, so the interest itself earns interest, for a final balance of about $5,743. Same deposit, same rate &mdash; the only difference is how the interest is calculated.</p></div>
+<p>Today you'll calculate both kinds of interest and see why one is a linear function and the other is exponential &mdash; the exact link between this unit and Units 3 and 4.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Calculate simple interest with I = Prt</span></li><li><span class="num">2</span><span>Calculate compound interest with A = P(1 + r/n)<sup>nt</sup></span></li><li><span class="num">3</span><span>Explain why simple interest grows linearly and compound interest grows exponentially</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">Two ways to earn interest</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Simple Interest</span></div><div class="vocab-body"><p class="vocab-def">Interest earned only on the original amount, the <strong>principal</strong>. I = Prt, where P is the principal, r is the yearly rate as a decimal, and t is the time in years.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> $500 at 4% for 3 years: I = 500(0.04)(3) = $60.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Compound Interest</span></div><div class="vocab-body"><p class="vocab-def">Interest earned on the principal <em>and</em> on interest already earned. A = P(1 + r/n)<sup>nt</sup>, where n is the number of times interest is added per year.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> $500 at 4% compounded yearly for 3 years: A = 500(1.04)<sup>3</sup> ≈ $562.43.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Pick the formula, then plug in carefully</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Convert the rate</div>Write the percent as a decimal: 5% → 0.05.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Simple interest</div>I = Prt gives the interest; the balance is P + I. The balance grows by the same amount, Pr, every year &mdash; that's linear.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Compound interest</div>A = P(1 + r/n)<sup>nt</sup> gives the balance directly. Yearly: n = 1. Quarterly: n = 4. Monthly: n = 12.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Compare</div>Simple interest adds a constant amount each year. Compound interest multiplies by a constant factor each period &mdash; that's exponential.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> Simple interest: A = P + Prt is a line with slope Pr. Compounded yearly: A = P(1 + r)<sup>t</sup> is exponential with factor 1 + r.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Interest works both ways</h1>
+<p>Interest makes savings grow &mdash; and it makes debt grow, too. Credit cards and many loans compound interest, often monthly, so an unpaid balance grows exponentially. Knowing the formulas shows you the real cost of borrowing and the real reward of saving early.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A $1,200 credit card balance at 24% yearly interest, compounded monthly, with no payments: A = 1200(1 + 0.24/12)<sup>12</sup> = 1200(1.02)<sup>12</sup> ≈ $1,521.89 after one year &mdash; more than $320 in interest.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Simple Interest</p><h1 class="slide-title">Simple interest on a $2,500 deposit</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Find the interest and the balance on $2,500 at 3% simple interest for 4 years.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Identify the values</div>P = 2500, r = 0.03, t = 4</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">Apply I = Prt</div>I = 2500(0.03)(4) = $300</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Find the balance</div>A = 2500 + 300 = $2,800. The balance rises $75 every year &mdash; a straight line with slope 75.</div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Compound Interest</p><h1 class="slide-title">The same deposit, compounded quarterly</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Find the balance on $2,500 at 3% compounded quarterly for 4 years.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Identify the values</div>P = 2500, r = 0.03, n = 4, t = 4</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Set up the formula</div>A = 2500(1 + 0.03/4)<sup>4 · 4</sup> = 2500(1.0075)<sup>16</sup></div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Evaluate</div>(1.0075)<sup>16</sup> ≈ 1.12699, so A ≈ $2,817.48 &mdash; about $17 more than simple interest.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">$1,000 at 6% for 30 years: simple vs. compounded yearly</div><svg width="300" height="240" viewBox="0 0 300 240" style="max-width:100%;height:auto"><line x1="34.0" y1="26" x2="34.0" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="75.7" y1="26" x2="75.7" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="117.3" y1="26" x2="117.3" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="159.0" y1="26" x2="159.0" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="200.7" y1="26" x2="200.7" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="242.3" y1="26" x2="242.3" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="284.0" y1="26" x2="284.0" y2="200" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="200.0" x2="284" y2="200.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="173.2" x2="284" y2="173.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="146.5" x2="284" y2="146.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="119.7" x2="284" y2="119.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="92.9" x2="284" y2="92.9" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="66.2" x2="284" y2="66.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="39.4" x2="284" y2="39.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34.0" y1="173.2" x2="284.0" y2="125.0" stroke="#0047BA" stroke-width="2.5"/><polyline points="34.0,173.2 35.0,173.0 36.1,172.8 37.1,172.6 38.2,172.4 39.2,172.2 40.2,172.0 41.3,171.8 42.3,171.6 43.4,171.4 44.4,171.2 45.5,171.0 46.5,170.8 47.5,170.6 48.6,170.4 49.6,170.1 50.7,169.9 51.7,169.7 52.8,169.5 53.8,169.3 54.8,169.0 55.9,168.8 56.9,168.6 58.0,168.3 59.0,168.1 60.0,167.9 61.1,167.6 62.1,167.4 63.2,167.2 64.2,166.9 65.2,166.7 66.3,166.4 67.3,166.2 68.4,166.0 69.4,165.7 70.5,165.5 71.5,165.2 72.5,165.0 73.6,164.7 74.6,164.4 75.7,164.2 76.7,163.9 77.8,163.7 78.8,163.4 79.8,163.1 80.9,162.8 81.9,162.6 83.0,162.3 84.0,162.0 85.0,161.7 86.1,161.5 87.1,161.2 88.2,160.9 89.2,160.6 90.2,160.3 91.3,160.0 92.3,159.7 93.4,159.5 94.4,159.2 95.5,158.9 96.5,158.6 97.5,158.3 98.6,158.0 99.6,157.6 100.7,157.3 101.7,157.0 102.8,156.7 103.8,156.4 104.8,156.1 105.9,155.8 106.9,155.4 108.0,155.1 109.0,154.8 110.0,154.4 111.1,154.1 112.1,153.8 113.2,153.4 114.2,153.1 115.2,152.8 116.3,152.4 117.3,152.1 118.4,151.7 119.4,151.4 120.5,151.0 121.5,150.6 122.5,150.3 123.6,149.9 124.6,149.6 125.7,149.2 126.7,148.8 127.8,148.4 128.8,148.1 129.8,147.7 130.9,147.3 131.9,146.9 133.0,146.5 134.0,146.1 135.0,145.7 136.1,145.3 137.1,144.9 138.2,144.5 139.2,144.1 140.2,143.7 141.3,143.3 142.3,142.9 143.4,142.5 144.4,142.1 145.5,141.6 146.5,141.2 147.5,140.8 148.6,140.4 149.6,139.9 150.7,139.5 151.7,139.0 152.8,138.6 153.8,138.1 154.8,137.7 155.9,137.2 156.9,136.8 158.0,136.3 159.0,135.8 160.0,135.4 161.1,134.9 162.1,134.4 163.2,133.9 164.2,133.5 165.2,133.0 166.3,132.5 167.3,132.0 168.4,131.5 169.4,131.0 170.5,130.5 171.5,130.0 172.5,129.5 173.6,129.0 174.6,128.4 175.7,127.9 176.7,127.4 177.8,126.9 178.8,126.3 179.8,125.8 180.9,125.2 181.9,124.7 183.0,124.1 184.0,123.6 185.0,123.0 186.1,122.5 187.1,121.9 188.2,121.3 189.2,120.8 190.2,120.2 191.3,119.6 192.3,119.0 193.4,118.4 194.4,117.8 195.5,117.2 196.5,116.6 197.5,116.0 198.6,115.4 199.6,114.8 200.7,114.1 201.7,113.5 202.8,112.9 203.8,112.3 204.8,111.6 205.9,111.0 206.9,110.3 208.0,109.7 209.0,109.0 210.0,108.3 211.1,107.7 212.1,107.0 213.2,106.3 214.2,105.6 215.2,104.9 216.3,104.2 217.3,103.5 218.4,102.8 219.4,102.1 220.5,101.4 221.5,100.7 222.5,100.0 223.6,99.2 224.6,98.5 225.7,97.7 226.7,97.0 227.8,96.2 228.8,95.5 229.8,94.7 230.9,94.0 231.9,93.2 233.0,92.4 234.0,91.6 235.0,90.8 236.1,90.0 237.1,89.2 238.2,88.4 239.2,87.6 240.2,86.8 241.3,85.9 242.3,85.1 243.4,84.3 244.4,83.4 245.5,82.6 246.5,81.7 247.5,80.8 248.6,80.0 249.6,79.1 250.7,78.2 251.7,77.3 252.8,76.4 253.8,75.5 254.8,74.6 255.9,73.7 256.9,72.8 258.0,71.8 259.0,70.9 260.0,70.0 261.1,69.0 262.1,68.1 263.2,67.1 264.2,66.1 265.2,65.1 266.3,64.2 267.3,63.2 268.4,62.2 269.4,61.2 270.5,60.1 271.5,59.1 272.5,58.1 273.6,57.1 274.6,56.0 275.7,55.0 276.7,53.9 277.8,52.8 278.8,51.7 279.8,50.7 280.9,49.6 281.9,48.5 283.0,47.4 284.0,46.3" fill="none" stroke="#DB2F30" stroke-width="2.5"/><circle cx="284.0" cy="125.0" r="4.5" fill="#0047BA" stroke="#0047BA" stroke-width="2"/><text x="276.0" y="117.0" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="end">$2,800</text><circle cx="284.0" cy="46.3" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="276.0" y="40.3" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="end">$5,743</text><text x="134.0" y="166.5" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">simple (linear)</text><text x="50.7" y="79.5" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">compound (exponential)</text><line x1="34" y1="200.0" x2="284" y2="200.0" stroke="#7a869a" stroke-width="1.6"/><line x1="34.0" y1="26" x2="34.0" y2="200" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">0</text><text x="75.7" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="117.3" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">10</text><text x="159.0" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">15</text><text x="200.7" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">20</text><text x="242.3" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">25</text><text x="284.0" y="214.0" font-size="10" fill="#7a869a" text-anchor="middle">30</text><text x="29.0" y="176.7" font-size="10" fill="#7a869a" text-anchor="end">1000</text><text x="29.0" y="150.0" font-size="10" fill="#7a869a" text-anchor="end">2000</text><text x="29.0" y="123.2" font-size="10" fill="#7a869a" text-anchor="end">3000</text><text x="29.0" y="96.4" font-size="10" fill="#7a869a" text-anchor="end">4000</text><text x="29.0" y="69.7" font-size="10" fill="#7a869a" text-anchor="end">5000</text><text x="29.0" y="42.9" font-size="10" fill="#7a869a" text-anchor="end">6000</text><text x="29.0" y="203.5" font-size="10" fill="#7a869a" text-anchor="end"></text><text x="159.0" y="234" font-size="11" font-style="italic" fill="#7a869a" text-anchor="middle">years →</text><text x="34.0" y="17" font-size="11" font-style="italic" fill="#7a869a" text-anchor="middle">↑ balance ($)</text></svg></div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> The gap starts small and keeps widening. Over 30 years, the two balances in the graph end almost $3,000 apart.</p></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>$800 is invested at 5% interest for 2 years.</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; With simple interest, how much interest is earned?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">$80</button><button class="choice-btn" data-correct="false">$40</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> I = Prt = 800(0.05)(2) = $80. $40 is just one year of interest; the money is invested for 2 years.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; With interest compounded yearly, what is the balance?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">$882</button><button class="choice-btn" data-correct="false">$880</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> A = 800(1.05)<sup>2</sup> = 800(1.1025) = $882. That's $2 more than with simple interest ($880), because in year 2 the first year's $40 earns interest too.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">The math behind every money decision</h1>
+<p>Savings accounts, student loans, car loans, and credit cards all run on these two formulas. Knowing which kind of interest you're dealing with &mdash; and how often it compounds &mdash; tells you whether time is working for you or against you.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Choosing a savings account by its rate and how often it compounds.</li><li>Understanding why paying off a credit card early saves so much.</li><li>Comparing loan offers before borrowing.</li></ul>
+<p style="font-size:14px;color:#555;">That's every lesson in Unit 6. Next: the Unit 6 Review.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the simple interest on $1,500 at 4% for 5 years?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">$300</button><button class="quiz-opt" data-correct="false">$60</button><button class="quiz-opt" data-correct="false">$1,800</button><button class="quiz-opt" data-correct="false">$30,000</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> I = Prt = 1500(0.04)(5) = $300. $1,800 is the final balance (principal plus interest), not the interest.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">$1,000 is invested at 6% compounded yearly. Which expression gives the balance after 10 years?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">1000(1.6)<sup>10</sup></button><button class="quiz-opt" data-correct="false">1000(0.06)<sup>10</sup></button><button class="quiz-opt" data-correct="false">1000 + 0.06(10)</button><button class="quiz-opt" data-correct="true">1000(1.06)<sup>10</sup></button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Compounded yearly, A = P(1 + r)<sup>t</sup> = 1000(1 + 0.06)<sup>10</sup>. Using 0.06 alone as the factor would shrink the money; the factor must be 1 + r.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">In A = P(1 + r/n)<sup>nt</sup>, what is n when interest is compounded monthly?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">365</button><button class="quiz-opt" data-correct="true">12</button><button class="quiz-opt" data-correct="false">4</button><button class="quiz-opt" data-correct="false">1</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> n is the number of times interest is added each year. Monthly means 12 times; quarterly would be 4, and daily would be 365.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Why does simple interest produce a linear graph?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">The balance is multiplied by the same factor every year</button><button class="quiz-opt" data-correct="true">The same amount of interest is added every year</button><button class="quiz-opt" data-correct="false">The interest rate gets smaller over time</button><button class="quiz-opt" data-correct="false">Simple interest only lasts one year</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Simple interest adds Pr dollars every year &mdash; a constant rate of change, which is what makes a function linear. Multiplying by the same factor each year is what compound interest does.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">$2,000 earns 5% interest compounded yearly. How much is in the account after 3 years?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">$2,250.00</button><button class="quiz-opt" data-correct="false">$2,300.00</button><button class="quiz-opt" data-correct="false">$2,100.00</button><button class="quiz-opt" data-correct="true">$2,315.25</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> A = 2000(1.05)<sup>3</sup> = 2000(1.157625) = $2,315.25. Simple interest would give $2,300; the extra $15.25 is interest earned on earlier interest.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can calculate simple interest with I = Prt.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can calculate compound interest with A = P(1 + r/n)<sup>nt</sup>.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain why simple interest is linear and compound interest is exponential.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Principal</span><span class="term-pill">Simple Interest</span><span class="term-pill">Compound Interest</span><span class="term-pill">Compounding Period</span></div>
+<div class="next-box"><strong>Unit 6 complete!</strong> You can use the exponent rules, evaluate rational exponents, classify, write, and graph exponential functions, and calculate simple and compound interest. <strong>Next up: the Unit 6 Review</strong> &mdash; one session that pulls the whole unit together, with a cheat sheet and a practice test.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="unit-6-review.html">Unit 6 Review &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'FL.3.2',
+        lesson: '6.6: Simple & Compound Interest',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

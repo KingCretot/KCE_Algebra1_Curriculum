@@ -45,7 +45,7 @@ to self-report it.
 
 ## Build status
 
-Units 1–5 are built (22 lessons). Units 6–10 not yet started; the locked
+Units 1–6 are built (28 lessons). Units 7–10 not yet started; the locked
 standard sequence for them is in `KCE_Algebra1_10Unit_Scope_v1.2.html`.
 Standing build rule: one full unit at a time, verified before the next begins.
 
@@ -59,6 +59,8 @@ Standing build rule: one full unit at a time, verified before the next begins.
   cheaper-gym conclusion (5.1).
 - Added 27 graphs and number lines to the worked examples in Units 2–5,
   which previously described every graph in words only.
+
+**Unit 6 (Oct 2026):** Exponential Functions & Financial Literacy, 6 lessons — 6.1 Properties of Exponents (NSO.1.2), 6.2 Rational Exponents (NSO.1.1), 6.3 Growth & Decay (AR.5.3), 6.4 Writing Exponential Functions (AR.5.4), 6.5 Graphing Exponential Functions (AR.5.6), 6.6 Simple & Compound Interest (FL.3.2 + FL.3.4), plus `unit-6-review.html`.
 
 **Unit reviews (Oct 2026):** every unit ends with `unit-N-review.html` in its folder: key ideas from each lesson, common mistakes, a printable one-page cheat sheet, and a 10-question mixed practice test that reports to Formspree as `Unit N Review`. The last lesson of each unit links to its review, and the review links on to the next unit. New units ship with their review.
 

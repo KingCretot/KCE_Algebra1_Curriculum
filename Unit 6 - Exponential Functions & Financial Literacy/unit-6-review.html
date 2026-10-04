@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Unit 6 Review: Exponential Functions & Financial Literacy</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 6: Exponential Functions &amp; Financial Literacy</div></div></div><div class="lesson-tag">Unit 6 Review</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 8</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Unit Review</p><h1 class="slide-title">Unit 6: Exponential Functions &amp; Financial Literacy — the whole unit in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Unit 6 moved the variable into the exponent. You learned the rules for working with powers, gave meaning to fraction exponents, and then used exponential functions to model growth, decay, and money.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">6.1</span><span>Properties of Exponents</span></li><li><span class="num">6.2</span><span>Rational Exponents</span></li><li><span class="num">6.3</span><span>Exponential Growth &amp; Decay</span></li><li><span class="num">6.4</span><span>Writing Exponential Functions</span></li><li><span class="num">6.5</span><span>Graphing Exponential Functions</span></li><li><span class="num">6.6</span><span>Simple &amp; Compound Interest</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real unit test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lessons 6.1–6.2</p><h1 class="slide-title">The rules for powers</h1>
+<div class="rc"><div class="tagl">Lesson 6.1</div><h3>Five exponent rules</h3><p>Multiply same bases → add exponents. Divide → subtract. Power of a power → multiply. An outside exponent applies to every factor. a<sup>0</sup> = 1 and a<sup>−n</sup> = 1/a<sup>n</sup>.</p><div class="ex"><strong>Example:</strong> (2x<sup>3</sup>)<sup>2</sup> · x<sup>4</sup> = 4x<sup>6</sup> · x<sup>4</sup> = 4x<sup>10</sup>. And 12x<sup>2</sup> ÷ 4x<sup>6</sup> = 3x<sup>−4</sup> = 3/x<sup>4</sup>.</div></div><div class="rc"><div class="tagl">Lesson 6.2</div><h3>Fraction exponents are roots</h3><p>a<sup>m/n</sup> = (ⁿ√a)<sup>m</sup>: the denominator is the root, the numerator is the power. A negative exponent means one over.</p><div class="ex"><strong>Example:</strong> 8<sup>2/3</sup> = (∛8)<sup>2</sup> = 2<sup>2</sup> = 4, and 25<sup>−3/2</sup> = 1/(√25)<sup>3</sup> = 1/125.</div></div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 6.3–6.5</p><h1 class="slide-title">Exponential functions</h1>
+<div class="rc"><div class="tagl">Lesson 6.3</div><h3>Growth or decay?</h3><p>In y = a(b)<sup>x</sup>, a is the starting value and b is the factor. b &gt; 1 is growth with rate b − 1; 0 &lt; b &lt; 1 is decay with rate 1 − b.</p><div class="ex"><strong>Example:</strong> A car losing 15% a year: V = 24000(0.85)<sup>t</sup>, decay. A culture growing 15% an hour: C = 200(1.15)<sup>t</sup>, growth.</div></div><div class="rc"><div class="tagl">Lesson 6.4</div><h3>Writing the function</h3><p>Find a (the value at x = 0) and b (the constant ratio between consecutive outputs). Divide by b to step back to x = 0 if needed.</p><div class="ex"><strong>Example:</strong> x: 1, 2, 3 and y: 10, 20, 40 → b = 2, a = 10 ÷ 2 = 5, so y = 5(2)<sup>x</sup>.</div></div><div class="rc"><div class="tagl">Lesson 6.5</div><h3>Key features of the graph</h3><p>y-intercept (0, a). Horizontal asymptote y = 0. Domain all real numbers; range y &gt; 0 when a &gt; 0. Increasing if b &gt; 1, decreasing if 0 &lt; b &lt; 1. No x-intercept.</p><div class="ex"><strong>Example:</strong> y = 2<sup>x</sup> passes through (0, 1), (1, 2), (2, 4) and approaches y = 0 on the left.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Growth vs. decay: both approach y = 0, on opposite sides</div><svg width="270" height="354" viewBox="0 0 270 354" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="65.4" y1="14" x2="65.4" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="96.9" y1="14" x2="96.9" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="128.3" y1="14" x2="128.3" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="159.7" y1="14" x2="159.7" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="191.1" y1="14" x2="191.1" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="222.6" y1="14" x2="222.6" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="254.0" y1="14" x2="254.0" y2="328" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="328.0" x2="254" y2="328.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="296.6" x2="254" y2="296.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="265.2" x2="254" y2="265.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="233.8" x2="254" y2="233.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="202.4" x2="254" y2="202.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="171.0" x2="254" y2="171.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="139.6" x2="254" y2="139.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="108.2" x2="254" y2="108.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="76.8" x2="254" y2="76.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="45.4" x2="254" y2="45.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="254" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="34.0,292.7 34.9,292.6 35.8,292.5 36.8,292.4 37.7,292.3 38.6,292.3 39.5,292.2 40.4,292.1 41.3,292.0 42.3,291.9 43.2,291.8 44.1,291.7 45.0,291.6 45.9,291.5 46.8,291.4 47.8,291.3 48.7,291.2 49.6,291.1 50.5,291.0 51.4,290.8 52.3,290.7 53.2,290.6 54.2,290.5 55.1,290.4 56.0,290.2 56.9,290.1 57.8,290.0 58.8,289.8 59.7,289.7 60.6,289.5 61.5,289.4 62.4,289.3 63.3,289.1 64.2,289.0 65.2,288.8 66.1,288.6 67.0,288.5 67.9,288.3 68.8,288.1 69.8,288.0 70.7,287.8 71.6,287.6 72.5,287.4 73.4,287.2 74.3,287.0 75.2,286.9 76.2,286.7 77.1,286.4 78.0,286.2 78.9,286.0 79.8,285.8 80.8,285.6 81.7,285.4 82.6,285.1 83.5,284.9 84.4,284.7 85.3,284.4 86.2,284.2 87.2,283.9 88.1,283.7 89.0,283.4 89.9,283.1 90.8,282.9 91.8,282.6 92.7,282.3 93.6,282.0 94.5,281.7 95.4,281.4 96.3,281.1 97.2,280.8 98.2,280.4 99.1,280.1 100.0,279.8 100.9,279.4 101.8,279.1 102.8,278.7 103.7,278.4 104.6,278.0 105.5,277.6 106.4,277.2 107.3,276.8 108.2,276.4 109.2,276.0 110.1,275.6 111.0,275.2 111.9,274.7 112.8,274.3 113.8,273.8 114.7,273.3 115.6,272.9 116.5,272.4 117.4,271.9 118.3,271.4 119.2,270.9 120.2,270.3 121.1,269.8 122.0,269.3 122.9,268.7 123.8,268.1 124.8,267.6 125.7,267.0 126.6,266.4 127.5,265.7 128.4,265.1 129.3,264.5 130.2,263.8 131.2,263.1 132.1,262.5 133.0,261.8 133.9,261.0 134.8,260.3 135.8,259.6 136.7,258.8 137.6,258.1 138.5,257.3 139.4,256.5 140.3,255.6 141.2,254.8 142.2,254.0 143.1,253.1 144.0,252.2 144.9,251.3 145.8,250.4 146.8,249.4 147.7,248.5 148.6,247.5 149.5,246.5 150.4,245.4 151.3,244.4 152.2,243.3 153.2,242.2 154.1,241.1 155.0,240.0 155.9,238.8 156.8,237.7 157.8,236.5 158.7,235.2 159.6,234.0 160.5,232.7 161.4,231.4 162.3,230.1 163.2,228.7 164.2,227.3 165.1,225.9 166.0,224.5 166.9,223.0 167.8,221.5 168.7,220.0 169.7,218.4 170.6,216.8 171.5,215.2 172.4,213.5 173.3,211.8 174.3,210.1 175.2,208.3 176.1,206.5 177.0,204.7 177.9,202.8 178.8,200.9 179.8,198.9 180.7,196.9 181.6,194.9 182.5,192.8 183.4,190.7 184.3,188.5 185.2,186.3 186.2,184.1 187.1,181.8 188.0,179.4 188.9,177.0 189.8,174.6 190.8,172.1 191.7,169.5 192.6,166.9 193.5,164.3 194.4,161.6 195.3,158.8 196.2,156.0 197.2,153.2 198.1,150.2 199.0,147.2 199.9,144.2 200.8,141.1 201.8,137.9 202.7,134.7 203.6,131.3 204.5,128.0 205.4,124.5 206.3,121.0 207.2,117.4 208.2,113.8 209.1,110.0 210.0,106.2 210.9,102.3 211.8,98.4 212.8,94.3 213.7,90.2 214.6,86.0 215.5,81.7 216.4,77.3 217.3,72.8 218.2,68.2 219.2,63.6 220.1,58.8 221.0,54.0 221.9,49.0 222.8,43.9 223.7,38.8 224.7,33.5 225.6,28.1 226.5,22.7 227.4,17.1" fill="none" stroke="#0047BA" stroke-width="2.5"/><polyline points="123.8,19.5 124.8,25.0 125.7,30.5 126.6,35.8 127.5,41.0 128.4,46.1 129.3,51.1 130.2,56.1 131.2,60.9 132.1,65.6 133.0,70.2 133.9,74.7 134.8,79.2 135.8,83.5 136.7,87.8 137.6,92.0 138.5,96.1 139.4,100.1 140.3,104.0 141.2,107.9 142.2,111.6 143.1,115.3 144.0,119.0 144.9,122.5 145.8,126.0 146.8,129.4 147.7,132.8 148.6,136.1 149.5,139.3 150.4,142.4 151.3,145.5 152.2,148.5 153.2,151.5 154.1,154.4 155.0,157.2 155.9,160.0 156.8,162.8 157.8,165.4 158.7,168.1 159.6,170.6 160.5,173.2 161.4,175.6 162.3,178.0 163.2,180.4 164.2,182.7 165.1,185.0 166.0,187.3 166.9,189.4 167.8,191.6 168.7,193.7 169.7,195.8 170.6,197.8 171.5,199.7 172.4,201.7 173.3,203.6 174.3,205.4 175.2,207.3 176.1,209.1 177.0,210.8 177.9,212.5 178.8,214.2 179.8,215.9 180.7,217.5 181.6,219.1 182.5,220.6 183.4,222.1 184.3,223.6 185.2,225.1 186.2,226.5 187.1,227.9 188.0,229.3 188.9,230.6 189.8,232.0 190.8,233.3 191.7,234.5 192.6,235.8 193.5,237.0 194.4,238.2 195.3,239.3 196.2,240.5 197.2,241.6 198.1,242.7 199.0,243.8 199.9,244.8 200.8,245.9 201.8,246.9 202.7,247.9 203.6,248.9 204.5,249.8 205.4,250.8 206.3,251.7 207.2,252.6 208.2,253.5 209.1,254.3 210.0,255.2 210.9,256.0 211.8,256.8 212.8,257.6 213.7,258.4 214.6,259.2 215.5,259.9 216.4,260.6 217.3,261.4 218.2,262.1 219.2,262.8 220.1,263.4 221.0,264.1 221.9,264.7 222.8,265.4 223.7,266.0 224.7,266.6 225.6,267.2 226.5,267.8 227.4,268.4 228.3,268.9 229.3,269.5 230.2,270.0 231.1,270.6 232.0,271.1 232.9,271.6 233.8,272.1 234.8,272.6 235.7,273.1 236.6,273.5 237.5,274.0 238.4,274.5 239.3,274.9 240.2,275.3 241.2,275.8 242.1,276.2 243.0,276.6 243.9,277.0 244.8,277.4 245.8,277.8 246.7,278.1 247.6,278.5 248.5,278.9 249.4,279.2 250.3,279.6 251.2,279.9 252.2,280.3 253.1,280.6 254.0,280.9" fill="none" stroke="#DB2F30" stroke-width="2.5"/><circle cx="128.3" cy="265.2" r="4.5" fill="#0047BA" stroke="#0047BA" stroke-width="2"/><text x="136.3" y="263.2" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, 1)</text><circle cx="128.3" cy="45.4" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="136.3" y="49.4" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, 8)</text><text x="210.0" y="183.6" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">y = 2ˣ</text><text x="40.3" y="92.5" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="start">y = 8(0.5)ˣ</text><line x1="34" y1="296.6" x2="254" y2="296.6" stroke="#7a869a" stroke-width="1.6"/><line x1="128.3" y1="14" x2="128.3" y2="328" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="65.4" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="96.9" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="159.7" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="191.1" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="222.6" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="254.0" y="310.6" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="123.3" y="331.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="123.3" y="268.7" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="123.3" y="237.3" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="123.3" y="205.9" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="123.3" y="174.5" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="123.3" y="143.1" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="123.3" y="111.7" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="123.3" y="80.3" font-size="10" fill="#7a869a" text-anchor="end">7</text><text x="123.3" y="48.9" font-size="10" fill="#7a869a" text-anchor="end">8</text><text x="123.3" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">9</text><text x="123.3" y="309.6" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="254" y="291.6" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="133.3" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Key Ideas &middot; Lesson 6.6</p><h1 class="slide-title">Interest</h1>
+<div class="rc"><div class="tagl">Lesson 6.6</div><h3>Simple interest is linear</h3><p>I = Prt. The balance grows by the same amount, Pr, every year &mdash; a line with slope Pr.</p><div class="ex"><strong>Example:</strong> $2,500 at 3% for 4 years: I = 2500(0.03)(4) = $300, so the balance is $2,800.</div></div><div class="rc"><div class="tagl">Lesson 6.6</div><h3>Compound interest is exponential</h3><p>A = P(1 + r/n)<sup>nt</sup>, where n is the number of compounding periods per year. Interest earns interest, so the balance multiplies by a constant factor.</p><div class="ex"><strong>Example:</strong> $800 at 5% compounded yearly for 2 years: 800(1.05)<sup>2</sup> = $882, versus $880 with simple interest.</div></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Adding exponents when raising a power to a power: (x<sup>4</sup>)<sup>3</sup> → x<sup>7</sup></td><td>A power of a power multiplies: (x<sup>4</sup>)<sup>3</sup> = x<sup>12</sup>.</td></tr><tr><td>Forgetting the coefficient: (3x)<sup>2</sup> → 3x<sup>2</sup></td><td>The exponent applies to every factor: (3x)<sup>2</sup> = 9x<sup>2</sup>.</td></tr><tr><td>Treating a negative exponent as a negative number: 4<sup>−2</sup> → −16</td><td>Negative exponent means one over: 4<sup>−2</sup> = 1/16.</td></tr><tr><td>Multiplying by a fraction exponent: 27<sup>2/3</sup> → 18</td><td>Root, then power: ∛27 = 3, then 3<sup>2</sup> = 9.</td></tr><tr><td>Using the rate as the factor: 3% decay → b = 0.03</td><td>The factor is what's kept: b = 1 − 0.03 = 0.97.</td></tr><tr><td>Thinking 2<sup>0</sup> = 0 or 2<sup>0</sup> = 2</td><td>Any nonzero base to the zero power is 1, so the y-intercept of a(b)<sup>x</sup> is (0, a).</td></tr><tr><td>Using a difference instead of a ratio in a table</td><td>Exponential tables have a constant ratio: divide, don't subtract.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a unit test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="6"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this unit on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Algebra 1 &middot; Unit 6: Exponential Functions &amp; Financial Literacy</h2><div class="csub">KingCretot Experience &middot; Unit 6 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Product / quotient</td><td>Add / subtract exponents with the same base</td><td>x<sup>5</sup> · x<sup>3</sup> = x<sup>8</sup>; x<sup>7</sup> ÷ x<sup>3</sup> = x<sup>4</sup></td></tr><tr><td>Power rules</td><td>(a<sup>m</sup>)<sup>n</sup> = a<sup>mn</sup>; (ab)<sup>n</sup> = a<sup>n</sup>b<sup>n</sup></td><td>(3a<sup>2</sup>)<sup>3</sup> = 27a<sup>6</sup></td></tr><tr><td>Zero / negative</td><td>a<sup>0</sup> = 1; a<sup>−n</sup> = 1/a<sup>n</sup></td><td>5<sup>−2</sup> = 1/25</td></tr><tr><td>Rational exponent</td><td>a<sup>m/n</sup> = (ⁿ√a)<sup>m</sup></td><td>16<sup>3/4</sup> = 2<sup>3</sup> = 8</td></tr><tr><td>Exponential function</td><td>y = a(b)<sup>x</sup>: a = start, b = factor</td><td>y = 500(1.04)<sup>x</sup></td></tr><tr><td>Growth / decay</td><td>b &gt; 1: rate b − 1. 0 &lt; b &lt; 1: rate 1 − b</td><td>0.85 → 15% decay</td></tr><tr><td>Writing from a table</td><td>b = constant ratio; a = value at x = 0</td><td>6, 18, 54 → y = 6(3)<sup>x</sup></td></tr><tr><td>Graph features</td><td>(0, a); asymptote y = 0; range y &gt; 0; no x-intercept</td><td>y = 8(0.5)<sup>x</sup> decreases</td></tr><tr><td>Simple interest</td><td>I = Prt (linear)</td><td>1500(0.04)(5) = $300</td></tr><tr><td>Compound interest</td><td>A = P(1 + r/n)<sup>nt</sup> (exponential)</td><td>2000(1.05)<sup>3</sup> = $2,315.25</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Simplify (2x<sup>5</sup>)<sup>3</sup>.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">2x<sup>15</sup></button><button class="quiz-opt" data-correct="false">8x<sup>8</sup></button><button class="quiz-opt" data-correct="true">8x<sup>15</sup></button><button class="quiz-opt" data-correct="false">6x<sup>8</sup></button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> Cube both factors: 2<sup>3</sup> = 8 and (x<sup>5</sup>)<sup>3</sup> = x<sup>15</sup>. 2x<sup>15</sup> forgets to cube the 2, and x<sup>8</sup> adds the exponents instead of multiplying.</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Simplify 20a<sup>3</sup>b<sup>4</sup> ÷ 5a<sup>5</sup>b.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">4b<sup>4</sup>/a<sup>2</sup></button><button class="quiz-opt" data-correct="false">4a<sup>2</sup>b<sup>3</sup></button><button class="quiz-opt" data-correct="true">4b<sup>3</sup>/a<sup>2</sup></button><button class="quiz-opt" data-correct="false">15b<sup>3</sup>/a<sup>2</sup></button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> 20 ÷ 5 = 4, a<sup>3−5</sup> = a<sup>−2</sup>, and b<sup>4−1</sup> = b<sup>3</sup>. The negative exponent moves a<sup>2</sup> to the bottom: 4b<sup>3</sup>/a<sup>2</sup>.</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Evaluate 81<sup>3/4</sup>.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">12</button><button class="quiz-opt" data-correct="true">27</button><button class="quiz-opt" data-correct="false">60.75</button><button class="quiz-opt" data-correct="false">9</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> Fourth root first: ⁴√81 = 3. Then cube: 3<sup>3</sup> = 27. 60.75 multiplies 81 by 3/4, which isn't what a fraction exponent means.</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Evaluate 9<sup>−1/2</sup>.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">−1/3</button><button class="quiz-opt" data-correct="false">−3</button><button class="quiz-opt" data-correct="true">1/3</button><button class="quiz-opt" data-correct="false">3</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> The negative means one over, and 1/2 means square root: 9<sup>−1/2</sup> = 1/√9 = 1/3. The answer is positive.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Which function shows 12% growth?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">y = 50(1.12)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 50(0.88)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 50(0.12)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 1.12(50)<sup>x</sup></button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> Growth of 12% means b = 1 + 0.12 = 1.12, with the starting value in front. 0.88 is 12% decay, and 0.12 would shrink the value to 12% each step.</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">A table has x: 0, 1, 2, 3 and y: 400, 200, 100, 50. Which function fits?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">y = 400(0.5)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 50(2)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 400 − 200x</button><button class="quiz-opt" data-correct="false">y = 400(2)<sup>x</sup></button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> Each output is half the one before, so b = 0.5, and y = 400 at x = 0. 400 − 200x matches only the first two values.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">A graph of an exponential function passes through (0, 5) and (1, 15). Which is its equation?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">y = 5(3)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 5(10)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 3(5)<sup>x</sup></button><button class="quiz-opt" data-correct="false">y = 15(3)<sup>x</sup></button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> a is the y-intercept, 5, and b = 15 ÷ 5 = 3. 5(10)<sup>x</sup> uses the difference 10 instead of the ratio.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">Which statement about y = 3(0.4)<sup>x</sup> is true?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Its range is y &gt; 0</button><button class="quiz-opt" data-correct="false">It is increasing</button><button class="quiz-opt" data-correct="false">It crosses the x-axis once</button><button class="quiz-opt" data-correct="false">Its y-intercept is (0, 0.4)</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> The outputs are always positive, so the range is y &gt; 0. b = 0.4 &lt; 1 makes it decreasing, the y-intercept is (0, 3), and it never reaches the x-axis.</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">What is the simple interest on $3,000 at 5% for 4 years?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">$600</button><button class="quiz-opt" data-correct="false">$646.52</button><button class="quiz-opt" data-correct="false">$3,600</button><button class="quiz-opt" data-correct="false">$150</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> I = Prt = 3000(0.05)(4) = $600. $3,600 is the balance, and $646.52 is the interest you'd earn if it were compounded yearly.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">$1,000 is invested at 8% compounded quarterly. Which expression gives the balance after 5 years?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">1000(1.02)<sup>5</sup></button><button class="quiz-opt" data-correct="false">1000(1.08)<sup>20</sup></button><button class="quiz-opt" data-correct="false">1000(1.32)<sup>5</sup></button><button class="quiz-opt" data-correct="true">1000(1.02)<sup>20</sup></button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> r/n = 0.08/4 = 0.02 and nt = 4 · 5 = 20, so A = 1000(1.02)<sup>20</sup>. Each choice that's off uses the yearly rate per quarter or the wrong number of periods.</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="8"><p class="eyebrow">Debrief</p><h1 class="slide-title">Unit 6, reviewed</h1>
+<p>You can work with exponent rules and rational exponents, classify, write, and graph exponential functions, and calculate simple and compound interest. That's Unit 6 &mdash; and the exponent rules carry straight into Unit 7, where polynomials are built from powers.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole unit.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../index.html">Back to Course Home &rarr;</a><a class="end-btn secondary" href="../KCE_Algebra1_Unit6.html">Back to Unit 6</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'Unit 6 Review',
+        lesson: 'Unit 6 Review: Exponential Functions & Financial Literacy',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>
