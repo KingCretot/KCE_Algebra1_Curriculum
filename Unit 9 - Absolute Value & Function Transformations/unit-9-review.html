@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Unit 9 Review: Absolute Value & Function Transformations</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 9: Absolute Value &amp; Function Transformations</div></div></div><div class="lesson-tag">Unit 9 Review</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 7</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Unit Review</p><h1 class="slide-title">Unit 9: Absolute Value &amp; Function Transformations — the whole unit in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Unit 9 introduced absolute value as distance, solved absolute value equations, and graphed the V-shaped absolute value function. Then it showed how one set of rules shifts, stretches, and reflects every function family you know.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">9.1</span><span>Solving Absolute Value Equations</span></li><li><span class="num">9.2</span><span>Graphing Absolute Value Functions</span></li><li><span class="num">9.3</span><span>Shifting Functions</span></li><li><span class="num">9.4</span><span>Stretches, Compressions &amp; Reflections</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real unit test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lessons 9.1–9.2</p><h1 class="slide-title">Absolute value</h1>
+<div class="rc"><div class="tagl">Lesson 9.1</div><h3>Isolate, check, split</h3><p>Get the absolute value alone. If it equals a negative number, there's no solution. Otherwise split into two equations: inside = b or inside = −b.</p><div class="ex"><strong>Example:</strong> −3|x + 2| + 10 = 1 → |x + 2| = 3 → x = 1 or x = −5</div></div><div class="rc"><div class="tagl">Lesson 9.2</div><h3>The V-graph</h3><p>y = a|x − h| + k has vertex (h, k), axis of symmetry x = h, and slopes a and −a. a &gt; 0 opens up (minimum); a &lt; 0 opens down (maximum).</p><div class="ex"><strong>Example:</strong> y = |x − 2| − 3: vertex (2, −3), range y ≥ −3, zeros −1 and 5.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">y = |x − 2| − 3</div><svg width="260" height="229" viewBox="0 0 260 229" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="55.0" y1="14" x2="55.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="76.0" y1="14" x2="76.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="97.0" y1="14" x2="97.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="118.0" y1="14" x2="118.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="139.0" y1="14" x2="139.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="160.0" y1="14" x2="160.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="181.0" y1="14" x2="181.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="202.0" y1="14" x2="202.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="223.0" y1="14" x2="223.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="244.0" y1="14" x2="244.0" y2="203" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="203.0" x2="244" y2="203.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="182.0" x2="244" y2="182.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="161.0" x2="244" y2="161.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="140.0" x2="244" y2="140.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="119.0" x2="244" y2="119.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="98.0" x2="244" y2="98.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="77.0" x2="244" y2="77.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="56.0" x2="244" y2="56.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="35.0" x2="244" y2="35.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="244" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><line x1="139.0" y1="203.0" x2="139.0" y2="14.0" stroke="#C9A84C" stroke-width="2.5" stroke-dasharray="7,5"/><polyline points="34.0,77.0 34.9,77.9 35.8,78.8 36.6,79.6 37.5,80.5 38.4,81.4 39.2,82.2 40.1,83.1 41.0,84.0 41.9,84.9 42.8,85.7 43.6,86.6 44.5,87.5 45.4,88.4 46.2,89.3 47.1,90.1 48.0,91.0 48.9,91.9 49.8,92.8 50.6,93.6 51.5,94.5 52.4,95.4 53.2,96.2 54.1,97.1 55.0,98.0 55.9,98.9 56.8,99.7 57.6,100.6 58.5,101.5 59.4,102.4 60.2,103.2 61.1,104.1 62.0,105.0 62.9,105.9 63.8,106.8 64.6,107.6 65.5,108.5 66.4,109.4 67.2,110.2 68.1,111.1 69.0,112.0 69.9,112.9 70.8,113.8 71.6,114.6 72.5,115.5 73.4,116.4 74.2,117.2 75.1,118.1 76.0,119.0 76.9,119.9 77.8,120.8 78.6,121.6 79.5,122.5 80.4,123.4 81.2,124.2 82.1,125.1 83.0,126.0 83.9,126.9 84.8,127.7 85.6,128.6 86.5,129.5 87.4,130.4 88.2,131.2 89.1,132.1 90.0,133.0 90.9,133.9 91.8,134.8 92.6,135.6 93.5,136.5 94.4,137.4 95.2,138.2 96.1,139.1 97.0,140.0 97.9,140.9 98.8,141.8 99.6,142.6 100.5,143.5 101.4,144.4 102.2,145.2 103.1,146.1 104.0,147.0 104.9,147.9 105.8,148.8 106.6,149.6 107.5,150.5 108.4,151.4 109.2,152.2 110.1,153.1 111.0,154.0 111.9,154.9 112.8,155.8 113.6,156.6 114.5,157.5 115.4,158.4 116.2,159.2 117.1,160.1 118.0,161.0 118.9,161.9 119.8,162.8 120.6,163.6 121.5,164.5 122.4,165.4 123.2,166.2 124.1,167.1 125.0,168.0 125.9,168.9 126.8,169.8 127.6,170.6 128.5,171.5 129.4,172.4 130.2,173.2 131.1,174.1 132.0,175.0 132.9,175.9 133.8,176.8 134.6,177.6 135.5,178.5 136.4,179.4 137.2,180.2 138.1,181.1 139.0,182.0 139.9,181.1 140.8,180.2 141.6,179.4 142.5,178.5 143.4,177.6 144.2,176.8 145.1,175.9 146.0,175.0 146.9,174.1 147.8,173.2 148.6,172.4 149.5,171.5 150.4,170.6 151.2,169.8 152.1,168.9 153.0,168.0 153.9,167.1 154.8,166.2 155.6,165.4 156.5,164.5 157.4,163.6 158.2,162.8 159.1,161.9 160.0,161.0 160.9,160.1 161.8,159.3 162.6,158.4 163.5,157.5 164.4,156.6 165.2,155.8 166.1,154.9 167.0,154.0 167.9,153.1 168.8,152.2 169.6,151.4 170.5,150.5 171.4,149.6 172.2,148.8 173.1,147.9 174.0,147.0 174.9,146.1 175.8,145.2 176.6,144.4 177.5,143.5 178.4,142.6 179.2,141.8 180.1,140.9 181.0,140.0 181.9,139.1 182.7,138.2 183.6,137.4 184.5,136.5 185.4,135.6 186.2,134.8 187.1,133.9 188.0,133.0 188.9,132.1 189.8,131.2 190.6,130.4 191.5,129.5 192.4,128.6 193.2,127.8 194.1,126.9 195.0,126.0 195.9,125.1 196.8,124.2 197.6,123.4 198.5,122.5 199.4,121.6 200.3,120.7 201.1,119.9 202.0,119.0 202.9,118.1 203.8,117.2 204.6,116.4 205.5,115.5 206.4,114.6 207.2,113.8 208.1,112.9 209.0,112.0 209.9,111.1 210.7,110.3 211.6,109.4 212.5,108.5 213.4,107.6 214.2,106.7 215.1,105.9 216.0,105.0 216.9,104.1 217.8,103.2 218.6,102.4 219.5,101.5 220.4,100.6 221.2,99.8 222.1,98.9 223.0,98.0 223.9,97.1 224.8,96.2 225.6,95.4 226.5,94.5 227.4,93.6 228.2,92.8 229.1,91.9 230.0,91.0 230.9,90.1 231.8,89.3 232.6,88.4 233.5,87.5 234.4,86.6 235.2,85.7 236.1,84.9 237.0,84.0 237.9,83.1 238.8,82.2 239.6,81.4 240.5,80.5 241.4,79.6 242.2,78.8 243.1,77.9 244.0,77.0" fill="none" stroke="#0047BA" stroke-width="2.5"/><circle cx="139.0" cy="182.0" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="147.0" y="192.0" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(2, −3)</text><circle cx="76.0" cy="119.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><circle cx="202.0" cy="119.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><line x1="34" y1="119.0" x2="244" y2="119.0" stroke="#7a869a" stroke-width="1.6"/><line x1="97.0" y1="14" x2="97.0" y2="203" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="55.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="76.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="118.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="139.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="160.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="181.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="202.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="223.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">6</text><text x="244.0" y="133.0" font-size="10" fill="#7a869a" text-anchor="middle">7</text><text x="92.0" y="206.5" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="92.0" y="185.5" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="92.0" y="164.5" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="92.0" y="143.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="92.0" y="101.5" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="92.0" y="80.5" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="92.0" y="59.5" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="92.0" y="38.5" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="92.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="92.0" y="132.0" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="244" y="114.0" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="102.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 9.3–9.4</p><h1 class="slide-title">Transformations</h1>
+<div class="rc"><div class="tagl">Lesson 9.3</div><h3>Shifts</h3><p>f(x) + k moves up (k &gt; 0) or down (k &lt; 0). f(x + k) moves left (k &gt; 0) or right (k &lt; 0) &mdash; the opposite of what the sign suggests.</p><div class="ex"><strong>Example:</strong> (x − 4)² − 1 is x² moved right 4 and down 1.</div></div><div class="rc"><div class="tagl">Lesson 9.4</div><h3>Stretches and reflections</h3><p>k·f(x) stretches (|k| &gt; 1) or compresses (|k| &lt; 1) vertically. f(kx) compresses (|k| &gt; 1) or stretches (|k| &lt; 1) horizontally. A negative k reflects: outside over the x-axis, inside over the y-axis.</p><div class="ex"><strong>Example:</strong> −3|x| is |x| stretched by 3 and flipped upside down.</div></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Splitting before isolating: 3|x + 1| − 4 = 8 → 3(x + 1) − 4 = ±8</td><td>Isolate first: |x + 1| = 4, then split.</td></tr><tr><td>Solving |x| = −4 as x = ±4</td><td>An absolute value can't be negative: no solution.</td></tr><tr><td>Wrong sign on the vertex: |x + 3| + 1 → vertex (3, 1)</td><td>x + 3 means h = −3: vertex (−3, 1).</td></tr><tr><td>Shifting the wrong way: f(x + 2) → right 2</td><td>Inside shifts go the opposite way: f(x + 2) moves left 2.</td></tr><tr><td>Mixing up inside and outside</td><td>Outside changes outputs (vertical); inside changes inputs (horizontal).</td></tr><tr><td>Confusing −f(x) with f(−x)</td><td>−f(x) reflects over the x-axis; f(−x) reflects over the y-axis.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a unit test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="5"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this unit on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Algebra 1 &middot; Unit 9: Absolute Value &amp; Function Transformations</h2><div class="csub">KingCretot Experience &middot; Unit 9 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Absolute value</td><td>Distance from 0; never negative</td><td>|−7| = 7</td></tr><tr><td>Equations</td><td>Isolate, then inside = ±b; none if b &lt; 0</td><td>|2x − 3| = 7 → 5, −2</td></tr><tr><td>V-graph</td><td>y = a|x − h| + k → vertex (h, k)</td><td>|x + 3| + 1 → (−3, 1)</td></tr><tr><td>Direction</td><td>a &gt; 0 opens up; a &lt; 0 opens down</td><td>−2|x + 1| + 4 opens down</td></tr><tr><td>f(x) + k</td><td>Up k (or down if k &lt; 0)</td><td>x² + 3: up 3</td></tr><tr><td>f(x + k)</td><td>Left k (or right if k &lt; 0)</td><td>(x − 4)²: right 4</td></tr><tr><td>k·f(x)</td><td>Vertical stretch if |k| &gt; 1, compression if |k| &lt; 1</td><td>2x² is narrower</td></tr><tr><td>f(kx)</td><td>Horizontal compression if |k| &gt; 1, stretch if |k| &lt; 1</td><td>(2x)²: zeros move halfway in</td></tr><tr><td>−f(x)</td><td>Reflect over the x-axis</td><td>−|x| opens down</td></tr><tr><td>f(−x)</td><td>Reflect over the y-axis</td><td>f(x) = x + 1 → −x + 1</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Solve: |x − 3| = 8.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">x = 11 or x = −5</button><button class="quiz-opt" data-correct="false">x = −11 or x = 5</button><button class="quiz-opt" data-correct="false">x = 11 or x = 5</button><button class="quiz-opt" data-correct="false">x = 11</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> x − 3 = 8 gives 11, and x − 3 = −8 gives −5.</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Solve: 2|x + 1| = 10.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x = 9 or x = −11</button><button class="quiz-opt" data-correct="true">x = 4 or x = −6</button><button class="quiz-opt" data-correct="false">x = 4 or x = −4</button><button class="quiz-opt" data-correct="false">x = 4</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> Divide by 2: |x + 1| = 5. Then x + 1 = 5 gives 4, and x + 1 = −5 gives −6.</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Solve: |2x| + 7 = 3.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">No solution</button><button class="quiz-opt" data-correct="false">x = 5 or x = −5</button><button class="quiz-opt" data-correct="false">x = −2</button><button class="quiz-opt" data-correct="false">x = 2 or x = −2</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> Subtract 7: |2x| = −4. An absolute value can't be negative, so there's no solution.</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">What is the vertex of y = −|x − 1| + 6?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(6, 1)</button><button class="quiz-opt" data-correct="false">(1, −6)</button><button class="quiz-opt" data-correct="false">(−1, 6)</button><button class="quiz-opt" data-correct="true">(1, 6)</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> a|x − h| + k has vertex (h, k): here h = 1 and k = 6. Since a &lt; 0, it's a maximum.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">What is the range of y = 2|x| − 5?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y ≤ −5</button><button class="quiz-opt" data-correct="false">All real numbers</button><button class="quiz-opt" data-correct="false">y ≥ 2</button><button class="quiz-opt" data-correct="true">y ≥ −5</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> a = 2 &gt; 0, so the vertex (0, −5) is the minimum and every output is at least −5.</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">What are the x-intercepts of y = |x − 2| − 3?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">x = 5 and x = −1</button><button class="quiz-opt" data-correct="false">x = 2 and x = 3</button><button class="quiz-opt" data-correct="false">x = 3 only</button><button class="quiz-opt" data-correct="false">x = −5 and x = 1</button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> Set y = 0: |x − 2| = 3, so x − 2 = 3 or x − 2 = −3. That gives x = 5 and x = −1.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">How does f(x − 6) compare with f(x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Shifted up 6</button><button class="quiz-opt" data-correct="false">Shifted left 6</button><button class="quiz-opt" data-correct="false">Shifted down 6</button><button class="quiz-opt" data-correct="true">Shifted right 6</button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> A change inside the function shifts horizontally, opposite the sign: − 6 moves the graph right 6.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">Which equation is y = x² shifted left 2 and down 7?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y = (x + 2)² + 7</button><button class="quiz-opt" data-correct="false">y = (x − 2)² − 7</button><button class="quiz-opt" data-correct="true">y = (x + 2)² − 7</button><button class="quiz-opt" data-correct="false">y = (x + 7)² − 2</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> Left 2 means x + 2 inside; down 7 means − 7 outside.</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">How does g(x) = −2f(x) compare with f(x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Compressed horizontally by 2</button><button class="quiz-opt" data-correct="false">Reflected over the y-axis and stretched vertically by 2</button><button class="quiz-opt" data-correct="true">Reflected over the x-axis and stretched vertically by 2</button><button class="quiz-opt" data-correct="false">Shifted down 2</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> The −2 is outside, so it acts on the outputs: the 2 stretches vertically and the negative reflects over the x-axis.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">The point (4, −2) is on the graph of f. Which point must be on y = f(2x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(8, −2)</button><button class="quiz-opt" data-correct="false">(2, −4)</button><button class="quiz-opt" data-correct="false">(4, −4)</button><button class="quiz-opt" data-correct="true">(2, −2)</button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> f(2x) gives f's outputs at half the x-value: at x = 2, f(2 · 2) = f(4) = −2. So (2, −2).</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Debrief</p><h1 class="slide-title">Unit 9, reviewed</h1>
+<p>You can solve absolute value equations, graph absolute value functions, and describe any shift, stretch, or reflection of a linear, quadratic, or absolute value function. One unit to go: statistics and data.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole unit.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../index.html">Back to Course Home &rarr;</a><a class="end-btn secondary" href="../KCE_Algebra1_Unit9.html">Back to Unit 9</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'Unit 9 Review',
+        lesson: 'Unit 9 Review: Absolute Value & Function Transformations',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

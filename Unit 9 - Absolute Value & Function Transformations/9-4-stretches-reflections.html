@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 9.4: Stretches, Compressions & Reflections</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 9: Absolute Value &amp; Transformations</div></div></div><div class="lesson-tag">Lesson 9.4 &middot; Stretches &amp; Reflections</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Steeper, flatter, flipped</h1>
+<div class="card warm"><p style="margin-bottom:0;">Multiply every output of y = |x| by 3 and the V gets three times as steep. Multiply by −1 and it flips upside down. Multiply the input instead and the graph squeezes or stretches sideways. One number, several possible effects &mdash; today you'll learn to tell them apart.</p></div>
+<p>Today you'll identify vertical and horizontal stretches, compressions, and reflections from equations, graphs, and tables.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Describe the effect of k·f(x): vertical stretch, compression, or reflection</span></li><li><span class="num">2</span><span>Describe the effect of f(kx): horizontal compression, stretch, or reflection</span></li><li><span class="num">3</span><span>Identify a transformation from an equation, a graph, or a table</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">Multiplying outside versus inside</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Vertical Stretch or Compression</span></div><div class="vocab-body"><p class="vocab-def">k·f(x) multiplies every output by k. If |k| &gt; 1 the graph stretches away from the x-axis; if 0 &lt; |k| &lt; 1 it compresses toward it. If k &lt; 0 it also reflects over the x-axis.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> 3x² is narrower than x², ½x² is wider, and −x² opens down.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Horizontal Stretch or Compression</span></div><div class="vocab-body"><p class="vocab-def">f(kx) multiplies every input by k. If |k| &gt; 1 the graph compresses toward the y-axis; if 0 &lt; |k| &lt; 1 it stretches away. If k &lt; 0 it also reflects over the y-axis.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> (2x)² reaches each output at half the x-value that x² needs.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Outside changes outputs; inside changes inputs</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Outside → vertical</div>k·f(x) changes the outputs: multiply every y-value by k.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Inside → horizontal</div>f(kx) changes the inputs, and acts the opposite way: k = 2 squeezes the graph to half its width.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">A negative k reflects</div>−f(x) flips the graph over the x-axis. f(−x) flips it over the y-axis.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Check with a point</div>(2, 4) on y = x² becomes (2, 12) on y = 3x², and (1, 4) on y = (2x)².</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> For |x| and lines through the origin, a vertical stretch and a horizontal compression can look identical: |2x| = 2|x|. For most functions they're different.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Changes in rate or scale</h1>
+<p>Stretches model changes in rate or scale: a faster traveler's distance graph is steeper, and a scale model shrinks every measurement by the same factor.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> Walking at 3 mph, you've gone d(t) = 3t miles after t hours. Biking at 4 times that speed gives 4 · d(t) = 12t &mdash; the same line stretched vertically by a factor of 4.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Vertical</p><h1 class="slide-title">Comparing y = x², y = 2x², y = ½x², and y = −x²</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Describe each graph compared with y = x².</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = 2x²</div>Every output doubles: (1, 1) becomes (1, 2). The graph is narrower.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = ½x²</div>Every output is halved: (2, 4) becomes (2, 2). The graph is wider.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = −x²</div>Every output changes sign: the graph reflects over the x-axis and opens down.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Gray: x². Blue: 2x². Green: ½x². Red: −x².</div><svg width="280" height="442" viewBox="0 0 280 442" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="62.8" y1="14" x2="62.8" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="91.5" y1="14" x2="91.5" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="120.2" y1="14" x2="120.2" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="149.0" y1="14" x2="149.0" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="177.8" y1="14" x2="177.8" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="206.5" y1="14" x2="206.5" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="235.2" y1="14" x2="235.2" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="264.0" y1="14" x2="264.0" y2="416" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="416.0" x2="264" y2="416.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="387.3" x2="264" y2="387.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="358.6" x2="264" y2="358.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="329.9" x2="264" y2="329.9" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="301.1" x2="264" y2="301.1" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="272.4" x2="264" y2="272.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="243.7" x2="264" y2="243.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="215.0" x2="264" y2="215.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="186.3" x2="264" y2="186.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="157.6" x2="264" y2="157.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="128.9" x2="264" y2="128.9" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="100.1" x2="264" y2="100.1" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="71.4" x2="264" y2="71.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="42.7" x2="264" y2="42.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="264" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="68.5,18.6 69.5,23.9 70.4,29.2 71.4,34.4 72.3,39.5 73.3,44.6 74.2,49.6 75.2,54.6 76.2,59.4 77.1,64.2 78.1,69.0 79.0,73.7 80.0,78.3 81.0,82.9 81.9,87.4 82.9,91.8 83.8,96.2 84.8,100.5 85.8,104.7 86.7,108.9 87.7,113.0 88.6,117.1 89.6,121.1 90.5,125.0 91.5,128.9 92.5,132.7 93.4,136.4 94.4,140.1 95.3,143.7 96.3,147.2 97.2,150.7 98.2,154.1 99.2,157.4 100.1,160.7 101.1,164.0 102.0,167.1 103.0,170.2 104.0,173.2 104.9,176.2 105.9,179.1 106.8,181.9 107.8,184.7 108.8,187.4 109.7,190.1 110.7,192.7 111.6,195.2 112.6,197.6 113.5,200.0 114.5,202.4 115.5,204.6 116.4,206.8 117.4,209.0 118.3,211.0 119.3,213.1 120.2,215.0 121.2,216.9 122.2,218.7 123.1,220.5 124.1,222.1 125.0,223.8 126.0,225.3 127.0,226.8 127.9,228.3 128.9,229.6 129.8,231.0 130.8,232.2 131.8,233.4 132.7,234.5 133.7,235.5 134.6,236.5 135.6,237.5 136.5,238.3 137.5,239.1 138.5,239.9 139.4,240.5 140.4,241.1 141.3,241.7 142.3,242.2 143.2,242.6 144.2,242.9 145.2,243.2 146.1,243.4 147.1,243.6 148.0,243.7 149.0,243.7 150.0,243.7 150.9,243.6 151.9,243.4 152.8,243.2 153.8,242.9 154.8,242.6 155.7,242.2 156.7,241.7 157.6,241.1 158.6,240.5 159.5,239.9 160.5,239.1 161.5,238.3 162.4,237.5 163.4,236.5 164.3,235.5 165.3,234.5 166.2,233.4 167.2,232.2 168.2,231.0 169.1,229.6 170.1,228.3 171.0,226.8 172.0,225.3 173.0,223.8 173.9,222.1 174.9,220.5 175.8,218.7 176.8,216.9 177.8,215.0 178.7,213.1 179.7,211.0 180.6,209.0 181.6,206.8 182.5,204.6 183.5,202.4 184.5,200.0 185.4,197.6 186.4,195.2 187.3,192.7 188.3,190.1 189.2,187.4 190.2,184.7 191.2,181.9 192.1,179.1 193.1,176.2 194.0,173.2 195.0,170.2 196.0,167.1 196.9,164.0 197.9,160.7 198.8,157.4 199.8,154.1 200.8,150.7 201.7,147.2 202.7,143.7 203.6,140.1 204.6,136.4 205.5,132.7 206.5,128.9 207.5,125.0 208.4,121.1 209.4,117.1 210.3,113.0 211.3,108.9 212.2,104.7 213.2,100.5 214.2,96.2 215.1,91.8 216.1,87.4 217.0,82.9 218.0,78.3 219.0,73.7 219.9,69.0 220.9,64.2 221.8,59.4 222.8,54.6 223.8,49.6 224.7,44.6 225.7,39.5 226.6,34.4 227.6,29.2 228.5,23.9 229.5,18.6" fill="none" stroke="#8a94a3" stroke-width="2.5"/><polyline points="91.5,14.0 92.5,21.6 93.4,29.1 94.4,36.4 95.3,43.6 96.3,50.7 97.2,57.6 98.2,64.5 99.2,71.2 100.1,77.7 101.1,84.2 102.0,90.5 103.0,96.7 104.0,102.8 104.9,108.7 105.9,114.5 106.8,120.2 107.8,125.7 108.8,131.2 109.7,136.5 110.7,141.6 111.6,146.7 112.6,151.6 113.5,156.4 114.5,161.0 115.5,165.5 116.4,170.0 117.4,174.2 118.3,178.4 119.3,182.4 120.2,186.3 121.2,190.1 122.2,193.7 123.1,197.2 124.1,200.6 125.0,203.8 126.0,207.0 127.0,210.0 127.9,212.8 128.9,215.6 129.8,218.2 130.8,220.7 131.8,223.0 132.7,225.3 133.7,227.4 134.6,229.4 135.6,231.2 136.5,232.9 137.5,234.5 138.5,236.0 139.4,237.3 140.4,238.5 141.3,239.6 142.3,240.6 143.2,241.4 144.2,242.1 145.2,242.7 146.1,243.1 147.1,243.5 148.0,243.7 149.0,243.7 150.0,243.7 150.9,243.5 151.9,243.1 152.8,242.7 153.8,242.1 154.8,241.4 155.7,240.6 156.7,239.6 157.6,238.5 158.6,237.3 159.5,236.0 160.5,234.5 161.5,232.9 162.4,231.2 163.4,229.4 164.3,227.4 165.3,225.3 166.2,223.0 167.2,220.7 168.2,218.2 169.1,215.6 170.1,212.8 171.0,210.0 172.0,207.0 173.0,203.8 173.9,200.6 174.9,197.2 175.8,193.7 176.8,190.1 177.8,186.3 178.7,182.4 179.7,178.4 180.6,174.2 181.6,170.0 182.5,165.5 183.5,161.0 184.5,156.4 185.4,151.6 186.4,146.7 187.3,141.6 188.3,136.5 189.2,131.2 190.2,125.7 191.2,120.2 192.1,114.5 193.1,108.7 194.0,102.8 195.0,96.7 196.0,90.5 196.9,84.2 197.9,77.7 198.8,71.2 199.8,64.5 200.8,57.6 201.7,50.7 202.7,43.6 203.6,36.4 204.6,29.1 205.5,21.6 206.5,14.0" fill="none" stroke="#0047BA" stroke-width="2.5"/><polyline points="34.0,14.0 35.0,17.8 35.9,21.6 36.9,25.3 37.8,29.1 38.8,32.7 39.8,36.4 40.7,40.0 41.7,43.6 42.6,47.2 43.6,50.7 44.5,54.2 45.5,57.6 46.5,61.1 47.4,64.5 48.4,67.8 49.3,71.2 50.3,74.5 51.2,77.7 52.2,81.0 53.2,84.2 54.1,87.4 55.1,90.5 56.0,93.6 57.0,96.7 58.0,99.7 58.9,102.8 59.9,105.7 60.8,108.7 61.8,111.6 62.8,114.5 63.7,117.4 64.7,120.2 65.6,123.0 66.6,125.7 67.5,128.5 68.5,131.2 69.5,133.8 70.4,136.5 71.4,139.1 72.3,141.6 73.3,144.2 74.2,146.7 75.2,149.1 76.2,151.6 77.1,154.0 78.1,156.4 79.0,158.7 80.0,161.0 81.0,163.3 81.9,165.5 82.9,167.8 83.8,170.0 84.8,172.1 85.8,174.2 86.7,176.3 87.7,178.4 88.6,180.4 89.6,182.4 90.5,184.4 91.5,186.3 92.5,188.2 93.4,190.1 94.4,191.9 95.3,193.7 96.3,195.5 97.2,197.2 98.2,198.9 99.2,200.6 100.1,202.2 101.1,203.8 102.0,205.4 103.0,207.0 104.0,208.5 104.9,210.0 105.9,211.4 106.8,212.8 107.8,214.2 108.8,215.6 109.7,216.9 110.7,218.2 111.6,219.5 112.6,220.7 113.5,221.9 114.5,223.0 115.5,224.2 116.4,225.3 117.4,226.3 118.3,227.4 119.3,228.4 120.2,229.4 121.2,230.3 122.2,231.2 123.1,232.1 124.1,232.9 125.0,233.7 126.0,234.5 127.0,235.3 127.9,236.0 128.9,236.7 129.8,237.3 130.8,238.0 131.8,238.5 132.7,239.1 133.7,239.6 134.6,240.1 135.6,240.6 136.5,241.0 137.5,241.4 138.5,241.8 139.4,242.1 140.4,242.4 141.3,242.7 142.3,242.9 143.2,243.1 144.2,243.3 145.2,243.5 146.1,243.6 147.1,243.7 148.0,243.7 149.0,243.7 150.0,243.7 150.9,243.7 151.9,243.6 152.8,243.5 153.8,243.3 154.8,243.1 155.7,242.9 156.7,242.7 157.6,242.4 158.6,242.1 159.5,241.8 160.5,241.4 161.5,241.0 162.4,240.6 163.4,240.1 164.3,239.6 165.3,239.1 166.2,238.5 167.2,238.0 168.2,237.3 169.1,236.7 170.1,236.0 171.0,235.3 172.0,234.5 173.0,233.7 173.9,232.9 174.9,232.1 175.8,231.2 176.8,230.3 177.8,229.4 178.7,228.4 179.7,227.4 180.6,226.3 181.6,225.3 182.5,224.2 183.5,223.0 184.5,221.9 185.4,220.7 186.4,219.5 187.3,218.2 188.3,216.9 189.2,215.6 190.2,214.2 191.2,212.8 192.1,211.4 193.1,210.0 194.0,208.5 195.0,207.0 196.0,205.4 196.9,203.8 197.9,202.2 198.8,200.6 199.8,198.9 200.8,197.2 201.7,195.5 202.7,193.7 203.6,191.9 204.6,190.1 205.5,188.2 206.5,186.3 207.5,184.4 208.4,182.4 209.4,180.4 210.3,178.4 211.3,176.3 212.2,174.2 213.2,172.1 214.2,170.0 215.1,167.8 216.1,165.5 217.0,163.3 218.0,161.0 219.0,158.7 219.9,156.4 220.9,154.0 221.8,151.6 222.8,149.1 223.8,146.7 224.7,144.2 225.7,141.6 226.6,139.1 227.6,136.5 228.5,133.8 229.5,131.2 230.5,128.5 231.4,125.7 232.4,123.0 233.3,120.2 234.3,117.4 235.2,114.5 236.2,111.6 237.2,108.7 238.1,105.7 239.1,102.8 240.0,99.7 241.0,96.7 242.0,93.6 242.9,90.5 243.9,87.4 244.8,84.2 245.8,81.0 246.8,77.7 247.7,74.5 248.7,71.2 249.6,67.8 250.6,64.5 251.5,61.1 252.5,57.6 253.5,54.2 254.4,50.7 255.4,47.2 256.3,43.6 257.3,40.0 258.2,36.4 259.2,32.7 260.2,29.1 261.1,25.3 262.1,21.6 263.0,17.8 264.0,14.0" fill="none" stroke="#1a7a3c" stroke-width="2.5"/><polyline points="79.0,413.7 80.0,409.1 81.0,404.5 81.9,400.0 82.9,395.6 83.8,391.2 84.8,386.9 85.8,382.7 86.7,378.5 87.7,374.4 88.6,370.3 89.6,366.4 90.5,362.4 91.5,358.6 92.5,354.8 93.4,351.0 94.4,347.4 95.3,343.8 96.3,340.2 97.2,336.7 98.2,333.3 99.2,330.0 100.1,326.7 101.1,323.5 102.0,320.3 103.0,317.2 104.0,314.2 104.9,311.2 105.9,308.3 106.8,305.5 107.8,302.7 108.8,300.0 109.7,297.3 110.7,294.8 111.6,292.2 112.6,289.8 113.5,287.4 114.5,285.1 115.5,282.8 116.4,280.6 117.4,278.5 118.3,276.4 119.3,274.4 120.2,272.4 121.2,270.5 122.2,268.7 123.1,267.0 124.1,265.3 125.0,263.7 126.0,262.1 127.0,260.6 127.9,259.2 128.9,257.8 129.8,256.5 130.8,255.2 131.8,254.1 132.7,252.9 133.7,251.9 134.6,250.9 135.6,250.0 136.5,249.1 137.5,248.3 138.5,247.6 139.4,246.9 140.4,246.3 141.3,245.8 142.3,245.3 143.2,244.9 144.2,244.5 145.2,244.2 146.1,244.0 147.1,243.8 148.0,243.7 149.0,243.7 150.0,243.7 150.9,243.8 151.9,244.0 152.8,244.2 153.8,244.5 154.8,244.9 155.7,245.3 156.7,245.8 157.6,246.3 158.6,246.9 159.5,247.6 160.5,248.3 161.5,249.1 162.4,250.0 163.4,250.9 164.3,251.9 165.3,252.9 166.2,254.1 167.2,255.2 168.2,256.5 169.1,257.8 170.1,259.2 171.0,260.6 172.0,262.1 173.0,263.7 173.9,265.3 174.9,267.0 175.8,268.7 176.8,270.5 177.8,272.4 178.7,274.4 179.7,276.4 180.6,278.5 181.6,280.6 182.5,282.8 183.5,285.1 184.5,287.4 185.4,289.8 186.4,292.2 187.3,294.8 188.3,297.3 189.2,300.0 190.2,302.7 191.2,305.5 192.1,308.3 193.1,311.2 194.0,314.2 195.0,317.2 196.0,320.3 196.9,323.5 197.9,326.7 198.8,330.0 199.8,333.3 200.8,336.7 201.7,340.2 202.7,343.8 203.6,347.4 204.6,351.0 205.5,354.8 206.5,358.6 207.5,362.4 208.4,366.4 209.4,370.3 210.3,374.4 211.3,378.5 212.2,382.7 213.2,386.9 214.2,391.2 215.1,395.6 216.1,400.0 217.0,404.5 218.0,409.1 219.0,413.7" fill="none" stroke="#DB2F30" stroke-width="2.5"/><line x1="34" y1="243.7" x2="264" y2="243.7" stroke="#7a869a" stroke-width="1.6"/><line x1="149.0" y1="14" x2="149.0" y2="416" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">−4</text><text x="62.8" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="91.5" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="120.2" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="177.8" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="206.5" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="235.2" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="264.0" y="257.7" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="144.0" y="419.5" font-size="10" fill="#7a869a" text-anchor="end">−6</text><text x="144.0" y="390.8" font-size="10" fill="#7a869a" text-anchor="end">−5</text><text x="144.0" y="362.1" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="144.0" y="333.4" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="144.0" y="304.6" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="144.0" y="275.9" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="144.0" y="218.5" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="144.0" y="189.8" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="144.0" y="161.1" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="144.0" y="132.4" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="144.0" y="103.6" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="144.0" y="74.9" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="144.0" y="46.2" font-size="10" fill="#7a869a" text-anchor="end">7</text><text x="144.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">8</text><text x="144.0" y="256.7" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="264" y="238.7" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="154.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Horizontal</p><h1 class="slide-title">Comparing f(x) = x² − 4 and f(2x) = 4x² − 4</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Describe how replacing x with 2x changes the graph.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">Write f(2x)</div>f(2x) = (2x)² − 4 = 4x² − 4</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Compare the zeros</div>f has zeros at x = ±2; f(2x) has zeros at x = ±1. Every point moves halfway to the y-axis.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">The y-intercept stays put</div>Both pass through (0, −4): points on the y-axis don't move in a horizontal stretch or compression.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Gray: f(x) = x² − 4. Blue: f(2x) = 4x² − 4.</div><svg width="280" height="356" viewBox="0 0 280 356" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="62.8" y1="14" x2="62.8" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="91.5" y1="14" x2="91.5" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="120.2" y1="14" x2="120.2" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="149.0" y1="14" x2="149.0" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="177.8" y1="14" x2="177.8" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="206.5" y1="14" x2="206.5" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="235.2" y1="14" x2="235.2" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="264.0" y1="14" x2="264.0" y2="330" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="330.0" x2="264" y2="330.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="301.3" x2="264" y2="301.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="272.5" x2="264" y2="272.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="243.8" x2="264" y2="243.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="215.1" x2="264" y2="215.1" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="186.4" x2="264" y2="186.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="157.6" x2="264" y2="157.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="128.9" x2="264" y2="128.9" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="100.2" x2="264" y2="100.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="71.5" x2="264" y2="71.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="42.7" x2="264" y2="42.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="264" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="58.9,19.2 59.9,25.2 60.8,31.1 61.8,36.9 62.8,42.7 63.7,48.4 64.7,54.1 65.6,59.7 66.6,65.2 67.5,70.7 68.5,76.1 69.5,81.4 70.4,86.6 71.4,91.9 72.3,97.0 73.3,102.1 74.2,107.1 75.2,112.0 76.2,116.9 77.1,121.7 78.1,126.5 79.0,131.2 80.0,135.8 81.0,140.4 81.9,144.9 82.9,149.3 83.8,153.7 84.8,158.0 85.8,162.2 86.7,166.4 87.7,170.5 88.6,174.6 89.6,178.6 90.5,182.5 91.5,186.4 92.5,190.2 93.4,193.9 94.4,197.6 95.3,201.2 96.3,204.7 97.2,208.2 98.2,211.6 99.2,215.0 100.1,218.3 101.1,221.5 102.0,224.6 103.0,227.7 104.0,230.8 104.9,233.7 105.9,236.6 106.8,239.5 107.8,242.3 108.8,245.0 109.7,247.6 110.7,250.2 111.6,252.7 112.6,255.2 113.5,257.6 114.5,259.9 115.5,262.2 116.4,264.4 117.4,266.5 118.3,268.6 119.3,270.6 120.2,272.5 121.2,274.4 122.2,276.2 123.1,278.0 124.1,279.7 125.0,281.3 126.0,282.9 127.0,284.4 127.9,285.8 128.9,287.2 129.8,288.5 130.8,289.7 131.8,290.9 132.7,292.0 133.7,293.1 134.6,294.1 135.6,295.0 136.5,295.9 137.5,296.7 138.5,297.4 139.4,298.1 140.4,298.7 141.3,299.2 142.3,299.7 143.2,300.1 144.2,300.5 145.2,300.8 146.1,301.0 147.1,301.1 148.0,301.2 149.0,301.3 150.0,301.2 150.9,301.1 151.9,301.0 152.8,300.8 153.8,300.5 154.8,300.1 155.7,299.7 156.7,299.2 157.6,298.7 158.6,298.1 159.5,297.4 160.5,296.7 161.5,295.9 162.4,295.0 163.4,294.1 164.3,293.1 165.3,292.0 166.2,290.9 167.2,289.7 168.2,288.5 169.1,287.2 170.1,285.8 171.0,284.4 172.0,282.9 173.0,281.3 173.9,279.7 174.9,278.0 175.8,276.2 176.8,274.4 177.8,272.5 178.7,270.6 179.7,268.6 180.6,266.5 181.6,264.4 182.5,262.2 183.5,259.9 184.5,257.6 185.4,255.2 186.4,252.7 187.3,250.2 188.3,247.6 189.2,245.0 190.2,242.3 191.2,239.5 192.1,236.6 193.1,233.7 194.0,230.8 195.0,227.7 196.0,224.6 196.9,221.5 197.9,218.3 198.8,215.0 199.8,211.6 200.8,208.2 201.7,204.7 202.7,201.2 203.6,197.6 204.6,193.9 205.5,190.2 206.5,186.4 207.5,182.5 208.4,178.6 209.4,174.6 210.3,170.5 211.3,166.4 212.2,162.2 213.2,158.0 214.2,153.7 215.1,149.3 216.1,144.9 217.0,140.4 218.0,135.8 219.0,131.2 219.9,126.5 220.9,121.7 221.8,116.9 222.8,112.0 223.8,107.1 224.7,102.1 225.7,97.0 226.6,91.9 227.6,86.6 228.5,81.4 229.5,76.1 230.5,70.7 231.4,65.2 232.4,59.7 233.3,54.1 234.3,48.4 235.2,42.7 236.2,36.9 237.2,31.1 238.1,25.2 239.1,19.2" fill="none" stroke="#8a94a3" stroke-width="2.5"/><polyline points="104.0,19.2 104.9,31.1 105.9,42.7 106.8,54.1 107.8,65.2 108.8,76.1 109.7,86.6 110.7,97.0 111.6,107.1 112.6,116.9 113.5,126.5 114.5,135.8 115.5,144.9 116.4,153.7 117.4,162.2 118.3,170.5 119.3,178.6 120.2,186.4 121.2,193.9 122.2,201.2 123.1,208.2 124.1,215.0 125.0,221.5 126.0,227.7 127.0,233.7 127.9,239.5 128.9,245.0 129.8,250.2 130.8,255.2 131.8,259.9 132.7,264.4 133.7,268.6 134.6,272.5 135.6,276.2 136.5,279.7 137.5,282.9 138.5,285.8 139.4,288.5 140.4,290.9 141.3,293.1 142.3,295.0 143.2,296.7 144.2,298.1 145.2,299.2 146.1,300.1 147.1,300.8 148.0,301.1 149.0,301.3 150.0,301.1 150.9,300.8 151.9,300.1 152.8,299.2 153.8,298.1 154.8,296.7 155.7,295.0 156.7,293.1 157.6,290.9 158.6,288.5 159.5,285.8 160.5,282.9 161.5,279.7 162.4,276.2 163.4,272.5 164.3,268.6 165.3,264.4 166.2,259.9 167.2,255.2 168.2,250.2 169.1,245.0 170.1,239.5 171.0,233.7 172.0,227.7 173.0,221.5 173.9,215.0 174.9,208.2 175.8,201.2 176.8,193.9 177.8,186.4 178.7,178.6 179.7,170.5 180.6,162.2 181.6,153.7 182.5,144.9 183.5,135.8 184.5,126.5 185.4,116.9 186.4,107.1 187.3,97.0 188.3,86.6 189.2,76.1 190.2,65.2 191.2,54.1 192.1,42.7 193.1,31.1 194.0,19.2" fill="none" stroke="#0047BA" stroke-width="2.5"/><circle cx="91.5" cy="186.4" r="4.5" fill="#8a94a3" stroke="#8a94a3" stroke-width="2"/><circle cx="206.5" cy="186.4" r="4.5" fill="#8a94a3" stroke="#8a94a3" stroke-width="2"/><text x="212.5" y="178.4" font-size="11.5" font-weight="700" fill="#8a94a3" stroke="#fff" stroke-width="3.5" paint-order="stroke">(2, 0)</text><circle cx="120.2" cy="186.4" r="4.5" fill="#0047BA" stroke="#0047BA" stroke-width="2"/><circle cx="177.8" cy="186.4" r="4.5" fill="#0047BA" stroke="#0047BA" stroke-width="2"/><circle cx="149.0" cy="301.3" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="157.0" y="305.3" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, −4)</text><line x1="34" y1="186.4" x2="264" y2="186.4" stroke="#7a869a" stroke-width="1.6"/><line x1="149.0" y1="14" x2="149.0" y2="330" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">−4</text><text x="62.8" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="91.5" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="120.2" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="177.8" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="206.5" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="235.2" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="264.0" y="200.4" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="144.0" y="333.5" font-size="10" fill="#7a869a" text-anchor="end">−5</text><text x="144.0" y="304.8" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="144.0" y="276.0" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="144.0" y="247.3" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="144.0" y="218.6" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="144.0" y="161.1" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="144.0" y="132.4" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="144.0" y="103.7" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="144.0" y="75.0" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="144.0" y="46.2" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="144.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="144.0" y="199.4" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="264" y="181.4" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="154.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>f(x) = |x|. Describe g(x) = −3f(x).</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; What does the 3 do?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">Stretches the graph vertically by a factor of 3</button><button class="choice-btn" data-correct="false">Compresses the graph horizontally by a factor of 3</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> The 3 multiplies the outputs, outside the function, so it's a vertical stretch: g is three times as steep.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What does the negative sign do?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">Reflects the graph over the x-axis</button><button class="choice-btn" data-correct="false">Reflects the graph over the y-axis</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> A negative outside the function flips the outputs, so the V opens down. A negative inside, f(−x), would reflect over the y-axis.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">Sketch any graph from its parent</h1>
+<p>With shifts, stretches, and reflections together, you can read any vertex-form equation as a set of moves on a parent graph &mdash; and sketch it without making a table.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Sketching y = −2(x − 3)² + 5 from y = x² in three moves.</li><li>Comparing rates in linear models.</li><li>Recognizing transformations from a graph or table on the EOC.</li></ul>
+<p style="font-size:14px;color:#555;">That's every lesson in Unit 9. Next: the Unit 9 Review.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">How does y = 4x² compare with y = x²?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Vertical compression (wider)</button><button class="quiz-opt" data-correct="false">Shifted right 4</button><button class="quiz-opt" data-correct="true">Vertical stretch by a factor of 4 (narrower)</button><button class="quiz-opt" data-correct="false">Shifted up 4</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The 4 multiplies every output, so the graph stretches vertically and looks narrower.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">How does y = −|x| compare with y = |x|?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Compressed vertically</button><button class="quiz-opt" data-correct="false">Shifted down 1</button><button class="quiz-opt" data-correct="true">Reflected over the x-axis</button><button class="quiz-opt" data-correct="false">Reflected over the y-axis</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> The negative outside flips every output, so the V opens down. Reflecting |x| over the y-axis would leave it unchanged.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">f(x) = x². What is f(3x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(x + 3)²</button><button class="quiz-opt" data-correct="true">9x²</button><button class="quiz-opt" data-correct="false">3x²</button><button class="quiz-opt" data-correct="false">x² + 3</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Replace x with 3x: (3x)² = 9x². 3x² is 3f(x), a different expression.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">The point (2, 6) is on the graph of f. Which point must be on y = ½f(x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(2, 3)</button><button class="quiz-opt" data-correct="false">(4, 6)</button><button class="quiz-opt" data-correct="false">(1, 6)</button><button class="quiz-opt" data-correct="false">(2, 12)</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> ½f(x) halves every output: (2, 6) → (2, 3). (4, 6) would be on f(½x), a horizontal stretch.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Which equation is y = |x| reflected over the x-axis and shifted up 3?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y = |−x| + 3</button><button class="quiz-opt" data-correct="false">y = −|x + 3|</button><button class="quiz-opt" data-correct="true">y = −|x| + 3</button><button class="quiz-opt" data-correct="false">y = |x| − 3</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> The negative outside reflects over the x-axis, and + 3 outside shifts up. |−x| equals |x|, so it doesn't reflect anything.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can describe the effect of k·f(x).</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can describe the effect of f(kx).</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can identify a transformation from an equation, graph, or table.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Vertical Stretch</span><span class="term-pill">Vertical Compression</span><span class="term-pill">Horizontal Stretch</span><span class="term-pill">Horizontal Compression</span><span class="term-pill">Reflection</span></div>
+<div class="next-box"><strong>Unit 9 complete!</strong> You can solve absolute value equations, graph absolute value functions, and describe shifts, stretches, and reflections of any function family. <strong>Next up: the Unit 9 Review.</strong></div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="unit-9-review.html">Unit 9 Review &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'F.2.1',
+        lesson: '9.4: Stretches, Compressions & Reflections',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 9.2: Graphing Absolute Value Functions</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 9: Absolute Value &amp; Transformations</div></div></div><div class="lesson-tag">Lesson 9.2 &middot; Graphing Absolute Value</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">A V instead of a U</h1>
+<div class="card warm"><p style="margin-bottom:0;">Graph y = |x| and you get a sharp V: the outputs for −3 and 3 are both 3, and for −1 and 1 both 1. It's symmetric like a parabola, but with straight sides and a pointed vertex, because absolute value turns every negative output positive.</p></div>
+<p>Today you'll graph absolute value functions and describe their key features, using the same vocabulary you used for parabolas in Unit 8.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Graph an absolute value function from a table</span></li><li><span class="num">2</span><span>Identify the vertex, axis of symmetry, intercepts, domain, and range</span></li><li><span class="num">3</span><span>Read the vertex from y = a|x − h| + k</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">The V and its turning point</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Absolute Value Function</span></div><div class="vocab-body"><p class="vocab-def">f(x) = a|x − h| + k. Its graph is a V with vertex (h, k).</p><div class="vocab-hook"><span>&#128161;</span><span><b>Parent function:</b> y = |x| has its vertex at (0, 0) and sides with slopes 1 and −1.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Vertex of a V</span></div><div class="vocab-body"><p class="vocab-def">The point where the graph changes direction. It's a minimum if a &gt; 0 and a maximum if a &lt; 0.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> y = −|x| + 4 has a maximum at (0, 4).</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Vertex first, then two rays</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Find the vertex</div>In y = a|x − h| + k, the vertex is (h, k).</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Make a table around it</div>Choose x-values on both sides of h; the outputs mirror each other.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Draw two rays</div>From the vertex, draw straight lines through the points on each side. The slopes are a and −a.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Name the features</div>Domain: all real numbers. Range: y ≥ k if a &gt; 0, y ≤ k if a &lt; 0. Axis of symmetry: x = h.</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> a controls the steepness: y = 2|x| is twice as steep as y = |x|, with slopes 2 and −2.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">Distance over time</h1>
+<p>V-shaped graphs model distance from a fixed point over time: as you travel toward a landmark, your distance shrinks, hits zero, then grows again.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A car traveling at 60 mph passes a toll booth at t = 2 hours. Its distance from the booth is d(t) = 60|t − 2| miles: 120 miles at t = 0, 0 at t = 2, and 60 miles at t = 3.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Opens Up</p><h1 class="slide-title">Graphing f(x) = |x − 2| − 3</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Graph the function and name its key features.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Vertex</div>(2, −3), a minimum because a = 1 &gt; 0</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Table</div>x = 0, 1, 2, 3, 4 → y = −1, −2, −3, −2, −1</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Features</div>Axis x = 2. Range y ≥ −3. x-intercepts where |x − 2| = 3: x = −1 and x = 5. y-intercept (0, −1). Decreasing for x &lt; 2, increasing for x &gt; 2.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">f(x) = |x − 2| − 3</div><svg width="300" height="265" viewBox="0 0 300 265" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="59.0" y1="14" x2="59.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="84.0" y1="14" x2="84.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="109.0" y1="14" x2="109.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="134.0" y1="14" x2="134.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="159.0" y1="14" x2="159.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="184.0" y1="14" x2="184.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="209.0" y1="14" x2="209.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="234.0" y1="14" x2="234.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="259.0" y1="14" x2="259.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="284.0" y1="14" x2="284.0" y2="239" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="239.0" x2="284" y2="239.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="214.0" x2="284" y2="214.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="189.0" x2="284" y2="189.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="164.0" x2="284" y2="164.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="139.0" x2="284" y2="139.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="114.0" x2="284" y2="114.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="89.0" x2="284" y2="89.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="64.0" x2="284" y2="64.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="39.0" x2="284" y2="39.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="284" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><line x1="159.0" y1="239.0" x2="159.0" y2="14.0" stroke="#C9A84C" stroke-width="2.5" stroke-dasharray="7,5"/><polyline points="34.0,89.0 35.0,90.0 36.1,91.1 37.1,92.1 38.2,93.2 39.2,94.2 40.2,95.2 41.3,96.3 42.3,97.3 43.4,98.4 44.4,99.4 45.5,100.5 46.5,101.5 47.5,102.5 48.6,103.6 49.6,104.6 50.7,105.7 51.7,106.7 52.8,107.8 53.8,108.8 54.8,109.8 55.9,110.9 56.9,111.9 58.0,113.0 59.0,114.0 60.0,115.0 61.1,116.1 62.1,117.1 63.2,118.2 64.2,119.2 65.2,120.2 66.3,121.3 67.3,122.3 68.4,123.4 69.4,124.4 70.5,125.5 71.5,126.5 72.5,127.5 73.6,128.6 74.6,129.6 75.7,130.7 76.7,131.7 77.8,132.8 78.8,133.8 79.8,134.8 80.9,135.9 81.9,136.9 83.0,138.0 84.0,139.0 85.0,140.0 86.1,141.1 87.1,142.1 88.2,143.2 89.2,144.2 90.2,145.2 91.3,146.3 92.3,147.3 93.4,148.4 94.4,149.4 95.5,150.5 96.5,151.5 97.5,152.5 98.6,153.6 99.6,154.6 100.7,155.7 101.7,156.7 102.8,157.8 103.8,158.8 104.8,159.8 105.9,160.9 106.9,161.9 108.0,163.0 109.0,164.0 110.0,165.0 111.1,166.1 112.1,167.1 113.2,168.2 114.2,169.2 115.2,170.2 116.3,171.3 117.3,172.3 118.4,173.4 119.4,174.4 120.5,175.5 121.5,176.5 122.5,177.5 123.6,178.6 124.6,179.6 125.7,180.7 126.7,181.7 127.8,182.8 128.8,183.8 129.8,184.8 130.9,185.9 131.9,186.9 133.0,188.0 134.0,189.0 135.0,190.0 136.1,191.1 137.1,192.1 138.2,193.2 139.2,194.2 140.2,195.2 141.3,196.3 142.3,197.3 143.4,198.4 144.4,199.4 145.5,200.5 146.5,201.5 147.5,202.5 148.6,203.6 149.6,204.6 150.7,205.7 151.7,206.7 152.8,207.8 153.8,208.8 154.8,209.8 155.9,210.9 156.9,211.9 158.0,213.0 159.0,214.0 160.0,213.0 161.1,211.9 162.1,210.9 163.2,209.8 164.2,208.8 165.2,207.8 166.3,206.7 167.3,205.7 168.4,204.6 169.4,203.6 170.5,202.5 171.5,201.5 172.5,200.5 173.6,199.4 174.6,198.4 175.7,197.3 176.7,196.3 177.8,195.2 178.8,194.2 179.8,193.2 180.9,192.1 181.9,191.1 183.0,190.0 184.0,189.0 185.0,188.0 186.1,186.9 187.1,185.9 188.2,184.8 189.2,183.8 190.2,182.8 191.3,181.7 192.3,180.7 193.4,179.6 194.4,178.6 195.5,177.5 196.5,176.5 197.5,175.5 198.6,174.4 199.6,173.4 200.7,172.3 201.7,171.3 202.8,170.2 203.8,169.2 204.8,168.2 205.9,167.1 206.9,166.1 208.0,165.0 209.0,164.0 210.0,163.0 211.1,161.9 212.1,160.9 213.2,159.8 214.2,158.8 215.2,157.8 216.3,156.7 217.3,155.7 218.4,154.6 219.4,153.6 220.5,152.5 221.5,151.5 222.5,150.5 223.6,149.4 224.6,148.4 225.7,147.3 226.7,146.3 227.8,145.2 228.8,144.2 229.8,143.2 230.9,142.1 231.9,141.1 233.0,140.0 234.0,139.0 235.0,138.0 236.1,136.9 237.1,135.9 238.2,134.8 239.2,133.8 240.2,132.8 241.3,131.7 242.3,130.7 243.4,129.6 244.4,128.6 245.5,127.5 246.5,126.5 247.5,125.5 248.6,124.4 249.6,123.4 250.7,122.3 251.7,121.3 252.8,120.2 253.8,119.2 254.8,118.2 255.9,117.1 256.9,116.1 258.0,115.0 259.0,114.0 260.0,113.0 261.1,111.9 262.1,110.9 263.2,109.8 264.2,108.8 265.2,107.8 266.3,106.7 267.3,105.7 268.4,104.6 269.4,103.6 270.5,102.5 271.5,101.5 272.5,100.5 273.6,99.4 274.6,98.4 275.7,97.3 276.7,96.3 277.8,95.2 278.8,94.2 279.8,93.2 280.9,92.1 281.9,91.1 283.0,90.0 284.0,89.0" fill="none" stroke="#0047BA" stroke-width="2.5"/><circle cx="159.0" cy="214.0" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="167.0" y="224.0" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(2, −3)</text><circle cx="84.0" cy="139.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="38.0" y="131.0" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="end">(−1, 0)</text><circle cx="234.0" cy="139.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="240.0" y="131.0" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(5, 0)</text><circle cx="109.0" cy="164.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="59.0" y="172.0" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="end">(0, −1)</text><line x1="34" y1="139.0" x2="284" y2="139.0" stroke="#7a869a" stroke-width="1.6"/><line x1="109.0" y1="14" x2="109.0" y2="239" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="59.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="84.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="134.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="159.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="184.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="209.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="234.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="259.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">6</text><text x="284.0" y="153.0" font-size="10" fill="#7a869a" text-anchor="middle">7</text><text x="104.0" y="242.5" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="104.0" y="217.5" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="104.0" y="192.5" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="104.0" y="167.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="104.0" y="117.5" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="104.0" y="92.5" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="104.0" y="67.5" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="104.0" y="42.5" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="104.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="104.0" y="152.0" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="284" y="134.0" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="114.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Opens Down</p><h1 class="slide-title">Graphing g(x) = −2|x + 1| + 4</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Graph the function and name its key features.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Vertex</div>(−1, 4), a maximum because a = −2 &lt; 0</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Table</div>x = −3, −2, −1, 0, 1 → y = 0, 2, 4, 2, 0</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Features</div>Axis x = −1. Range y ≤ 4. x-intercepts (−3, 0) and (1, 0). y-intercept (0, 2). Increasing for x &lt; −1, decreasing for x &gt; −1.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">g(x) = −2|x + 1| + 4</div><svg width="280" height="298" viewBox="0 0 280 298" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="62.8" y1="14" x2="62.8" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="91.5" y1="14" x2="91.5" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="120.2" y1="14" x2="120.2" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="149.0" y1="14" x2="149.0" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="177.8" y1="14" x2="177.8" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="206.5" y1="14" x2="206.5" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="235.2" y1="14" x2="235.2" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="264.0" y1="14" x2="264.0" y2="272" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="272.0" x2="264" y2="272.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="243.3" x2="264" y2="243.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="214.7" x2="264" y2="214.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="186.0" x2="264" y2="186.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="157.3" x2="264" y2="157.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="128.7" x2="264" y2="128.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="100.0" x2="264" y2="100.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="71.3" x2="264" y2="71.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="42.7" x2="264" y2="42.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="264" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><line x1="149.0" y1="272.0" x2="149.0" y2="14.0" stroke="#C9A84C" stroke-width="2.5" stroke-dasharray="7,5"/><polyline points="34.0,272.0 35.0,270.1 35.9,268.2 36.9,266.3 37.8,264.4 38.8,262.4 39.8,260.5 40.7,258.6 41.7,256.7 42.6,254.8 43.6,252.9 44.5,251.0 45.5,249.1 46.5,247.2 47.4,245.2 48.4,243.3 49.3,241.4 50.3,239.5 51.2,237.6 52.2,235.7 53.2,233.8 54.1,231.9 55.1,230.0 56.0,228.0 57.0,226.1 58.0,224.2 58.9,222.3 59.9,220.4 60.8,218.5 61.8,216.6 62.8,214.7 63.7,212.8 64.7,210.8 65.6,208.9 66.6,207.0 67.5,205.1 68.5,203.2 69.5,201.3 70.4,199.4 71.4,197.5 72.3,195.6 73.3,193.6 74.2,191.7 75.2,189.8 76.2,187.9 77.1,186.0 78.1,184.1 79.0,182.2 80.0,180.3 81.0,178.4 81.9,176.4 82.9,174.5 83.8,172.6 84.8,170.7 85.8,168.8 86.7,166.9 87.7,165.0 88.6,163.1 89.6,161.2 90.5,159.2 91.5,157.3 92.5,155.4 93.4,153.5 94.4,151.6 95.3,149.7 96.3,147.8 97.2,145.9 98.2,144.0 99.2,142.0 100.1,140.1 101.1,138.2 102.0,136.3 103.0,134.4 104.0,132.5 104.9,130.6 105.9,128.7 106.8,126.8 107.8,124.8 108.8,122.9 109.7,121.0 110.7,119.1 111.6,117.2 112.6,115.3 113.5,113.4 114.5,111.5 115.5,109.6 116.4,107.6 117.4,105.7 118.3,103.8 119.3,101.9 120.2,100.0 121.2,98.1 122.2,96.2 123.1,94.3 124.1,92.4 125.0,90.4 126.0,88.5 127.0,86.6 127.9,84.7 128.9,82.8 129.8,80.9 130.8,79.0 131.8,77.1 132.7,75.2 133.7,73.2 134.6,71.3 135.6,69.4 136.5,67.5 137.5,65.6 138.5,63.7 139.4,61.8 140.4,59.9 141.3,58.0 142.3,56.0 143.2,54.1 144.2,52.2 145.2,50.3 146.1,48.4 147.1,46.5 148.0,44.6 149.0,42.7 150.0,44.6 150.9,46.5 151.9,48.4 152.8,50.3 153.8,52.2 154.8,54.1 155.7,56.0 156.7,58.0 157.6,59.9 158.6,61.8 159.5,63.7 160.5,65.6 161.5,67.5 162.4,69.4 163.4,71.3 164.3,73.2 165.3,75.2 166.2,77.1 167.2,79.0 168.2,80.9 169.1,82.8 170.1,84.7 171.0,86.6 172.0,88.5 173.0,90.4 173.9,92.4 174.9,94.3 175.8,96.2 176.8,98.1 177.8,100.0 178.7,101.9 179.7,103.8 180.6,105.7 181.6,107.6 182.5,109.6 183.5,111.5 184.5,113.4 185.4,115.3 186.4,117.2 187.3,119.1 188.3,121.0 189.2,122.9 190.2,124.8 191.2,126.8 192.1,128.7 193.1,130.6 194.0,132.5 195.0,134.4 196.0,136.3 196.9,138.2 197.9,140.1 198.8,142.0 199.8,144.0 200.8,145.9 201.7,147.8 202.7,149.7 203.6,151.6 204.6,153.5 205.5,155.4 206.5,157.3 207.5,159.2 208.4,161.2 209.4,163.1 210.3,165.0 211.3,166.9 212.2,168.8 213.2,170.7 214.2,172.6 215.1,174.5 216.1,176.4 217.0,178.4 218.0,180.3 219.0,182.2 219.9,184.1 220.9,186.0 221.8,187.9 222.8,189.8 223.8,191.7 224.7,193.6 225.7,195.6 226.6,197.5 227.6,199.4 228.5,201.3 229.5,203.2 230.5,205.1 231.4,207.0 232.4,208.9 233.3,210.8 234.3,212.8 235.2,214.7 236.2,216.6 237.2,218.5 238.1,220.4 239.1,222.3 240.0,224.2 241.0,226.1 242.0,228.0 242.9,230.0 243.9,231.9 244.8,233.8 245.8,235.7 246.8,237.6 247.7,239.5 248.7,241.4 249.6,243.3 250.6,245.2 251.5,247.2 252.5,249.1 253.5,251.0 254.4,252.9 255.4,254.8 256.3,256.7 257.3,258.6 258.2,260.5 259.2,262.4 260.2,264.4 261.1,266.3 262.1,268.2 263.0,270.1 264.0,272.0" fill="none" stroke="#DB2F30" stroke-width="2.5"/><circle cx="149.0" cy="42.7" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="157.0" y="38.7" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(−1, 4)</text><circle cx="91.5" cy="157.3" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="43.5" y="149.3" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke" text-anchor="end">(−3, 0)</text><circle cx="206.5" cy="157.3" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="212.5" y="149.3" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(1, 0)</text><circle cx="177.8" cy="100.0" r="4.5" fill="#0A1F3D" stroke="#0A1F3D" stroke-width="2"/><text x="185.8" y="104.0" font-size="11.5" font-weight="700" fill="#0A1F3D" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, 2)</text><line x1="34" y1="157.3" x2="264" y2="157.3" stroke="#7a869a" stroke-width="1.6"/><line x1="177.8" y1="14" x2="177.8" y2="272" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">−5</text><text x="62.8" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">−4</text><text x="91.5" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="120.2" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="149.0" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="206.5" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="235.2" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="264.0" y="171.3" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="172.8" y="275.5" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="172.8" y="246.8" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="172.8" y="218.2" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="172.8" y="189.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="172.8" y="132.2" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="172.8" y="103.5" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="172.8" y="74.8" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="172.8" y="46.2" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="172.8" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="172.8" y="170.3" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="264" y="152.3" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="182.8" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>f(x) = |x + 3| + 1</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the vertex?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">(−3, 1)</button><button class="choice-btn" data-correct="false">(3, 1)</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> In a|x − h| + k, x + 3 means h = −3, and k = 1. So the vertex is (−3, 1).</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the range?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">y ≥ 1</button><button class="choice-btn" data-correct="false">All real numbers</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> a = 1 &gt; 0, so the V opens up and the vertex (−3, 1) is the lowest point: y ≥ 1.</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">The third family</h1>
+<p>The absolute value function joins lines and parabolas as the third function family in your toolkit. Next lesson, you'll see that all three shift by exactly the same rules.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Distance from a point over time.</li><li>Graphs of error or tolerance.</li><li>Anything that falls to a minimum, then rises at the same rate.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: shifting graphs up, down, left, and right.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">What is the vertex of y = |x − 4| + 6?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(4, −6)</button><button class="quiz-opt" data-correct="false">(−4, 6)</button><button class="quiz-opt" data-correct="false">(6, 4)</button><button class="quiz-opt" data-correct="true">(4, 6)</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> y = a|x − h| + k has vertex (h, k): here h = 4 and k = 6.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Which describes y = −|x| + 5?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Opens up, with a minimum at (0, 5)</button><button class="quiz-opt" data-correct="false">Opens up, with a minimum at (0, −5)</button><button class="quiz-opt" data-correct="false">Opens down, with a maximum at (5, 0)</button><button class="quiz-opt" data-correct="true">Opens down, with a maximum at (0, 5)</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> a = −1 &lt; 0, so the V opens down. The vertex is (0, 5), and it's a maximum.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">What is the range of y = 3|x + 2| − 1?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">y ≥ −1</button><button class="quiz-opt" data-correct="false">y ≥ 3</button><button class="quiz-opt" data-correct="false">y ≤ −1</button><button class="quiz-opt" data-correct="false">All real numbers</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> a = 3 &gt; 0, so the vertex (−2, −1) is the lowest point. Every output is at least −1.</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">What are the x-intercepts of y = |x| − 4?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(4, 0) only</button><button class="quiz-opt" data-correct="false">(0, −4) only</button><button class="quiz-opt" data-correct="true">(4, 0) and (−4, 0)</button><button class="quiz-opt" data-correct="false">None</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Set y = 0: |x| = 4, so x = ±4. (0, −4) is the y-intercept, not an x-intercept.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">What are the slopes of the two sides of y = 2|x − 1|?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">2 and 2</button><button class="quiz-opt" data-correct="false">1 and −2</button><button class="quiz-opt" data-correct="false">1 and −1</button><button class="quiz-opt" data-correct="true">2 and −2</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> The a-value sets the steepness: the right side has slope 2 and the left side has slope −2.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can graph an absolute value function from a table.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can name its vertex, axis of symmetry, intercepts, domain, and range.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can read the vertex from y = a|x − h| + k.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Absolute Value Function</span><span class="term-pill">Vertex</span><span class="term-pill">Axis of Symmetry</span><span class="term-pill">Parent Function</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 9.3: Shifting Functions.</strong> Move the whole graph.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="9-3-shifting-functions.html">Next Lesson: 9.3 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'AR.4.3',
+        lesson: '9.2: Graphing Absolute Value Functions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

@@ -45,7 +45,7 @@ to self-report it.
 
 ## Build status
 
-Units 1–8 are built (42 lessons). Units 9–10 not yet started; the locked
+Units 1–9 are built (46 lessons). Unit 10 not yet started; the locked
 standard sequence for them is in `KCE_Algebra1_10Unit_Scope_v1.2.html`.
 Standing build rule: one full unit at a time, verified before the next begins.
 
@@ -65,6 +65,8 @@ Standing build rule: one full unit at a time, verified before the next begins.
 **Unit 7 (Oct 2026):** Polynomials, Radicals & Factoring, 7 lessons — 7.1 Adding & Subtracting Polynomials and 7.2 Multiplying Polynomials (AR.1.3), 7.3 Dividing by a Monomial (AR.1.4), 7.4 GCF & Grouping, 7.5 Factoring Trinomials, 7.6 Special Patterns (AR.1.7), 7.7 Operations with Radicals (NSO.1.4), plus `unit-7-review.html`.
 
 **Unit 8 (Oct 2026):** Quadratic Functions & Equations, 7 lessons — 8.1 Graphing (AR.3.7), 8.2 Vertex & Zeros (AR.3.6), 8.3 Factoring & Square Roots, 8.4 Completing the Square, 8.5 Quadratic Formula (AR.3.1), 8.6 Writing Quadratics (AR.3.4 + AR.3.5), 8.7 Quadratics in Context (AR.3.8), plus `unit-8-review.html`.
+
+**Unit 9 (Oct 2026):** Absolute Value & Function Transformations, 4 lessons — 9.1 Absolute Value Equations (AR.4.1), 9.2 Graphing Absolute Value (AR.4.3), 9.3 Shifts and 9.4 Stretches & Reflections (F.2.1), plus `unit-9-review.html`.
 
 **Unit reviews (Oct 2026):** every unit ends with `unit-N-review.html` in its folder: key ideas from each lesson, common mistakes, a printable one-page cheat sheet, and a 10-question mixed practice test that reports to Formspree as `Unit N Review`. The last lesson of each unit links to its review, and the review links on to the next unit. New units ship with their review.
 

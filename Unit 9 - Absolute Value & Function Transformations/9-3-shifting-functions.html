@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Lesson 9.3: Shifting Functions</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 9: Absolute Value &amp; Transformations</div></div></div><div class="lesson-tag">Lesson 9.3 &middot; Shifts</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 10</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Let's Begin</p><h1 class="slide-title">Move the whole graph</h1>
+<div class="card warm"><p style="margin-bottom:0;">Add 3 to every output of a function and the whole graph slides up 3. Add 3 to the input instead, and the graph slides left 3 &mdash; the direction that surprises almost everyone. Today is about making that surprise make sense.</p></div>
+<p>Today you'll shift linear, quadratic, and absolute value graphs vertically and horizontally, and see the same changes in their tables.</p>
+<h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+<ul class="obj-list"><li><span class="num">1</span><span>Describe the effect of f(x) + k on a graph and a table</span></li><li><span class="num">2</span><span>Describe the effect of f(x + k) on a graph and a table</span></li><li><span class="num">3</span><span>Apply shifts to linear, quadratic, and absolute value functions</span></li></ul>
+  <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Vocabulary</p><h1 class="slide-title">Two kinds of shift</h1>
+<div class="vocab-grid">
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Vertical Shift</span></div><div class="vocab-body"><p class="vocab-def">f(x) + k moves the graph up k units if k &gt; 0 and down if k &lt; 0. Every output changes by k.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> x² + 3 is x² moved up 3.</span></div></div></div>
+<div class="vocab-card"><div class="vocab-head"><svg class="icon" width="26" height="26" viewBox="0 0 26 26"><rect x="5" y="5" width="16" height="16" fill="none" stroke="#C9A84C" stroke-width="2"/></svg><span class="term">Horizontal Shift</span></div><div class="vocab-body"><p class="vocab-def">f(x + k) moves the graph left k units if k &gt; 0 and right if k &lt; 0.</p><div class="vocab-hook"><span>&#128161;</span><span><b>Example:</b> (x + 3)² is x² moved left 3; (x − 3)² is x² moved right 3.</span></div></div></div>
+</div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">How It Works</p><h1 class="slide-title">Outside goes up and down; inside goes the opposite way</h1>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label">Outside the function → vertical</div>f(x) + k changes the output: up for +, down for −.</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label">Inside the function → horizontal</div>f(x + k) changes the input, and it moves the opposite way you'd guess: + goes left, − goes right.</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Why the opposite direction?</div>For f(x + 3) to give f's old output at 0, x must be −3. Every point arrives 3 units earlier &mdash; to the left.</div></div>
+<div class="step"><div class="badge">4</div><div class="content"><div class="label">Combine shifts</div>|x − 2| + 5 is |x| moved right 2 and up 5. The vertex moves from (0, 0) to (2, 5).</div></div>
+<div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Notice:</strong> In a table, f(x) + k adds k to the output column. f(x + k) keeps the same outputs but pairs them with different inputs.</p></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Real-World Context</p><h1 class="slide-title">A new starting point</h1>
+<p>Shifts model a change in starting point: a flat fee added to every price, a race started 10 meters ahead, or a timer started later.</p>
+<div class="card warm"><p style="margin-bottom:0;"><strong>Example:</strong> A phone plan costs C(m) = 0.1m dollars for m minutes. Adding a $20 monthly fee gives C(m) + 20 &mdash; the same line, shifted up 20.</p></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Worked Example &middot; Vertical</p><h1 class="slide-title">Comparing y = x², y = x² + 3, and y = x² − 2</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Describe how each graph moves.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = x² + 3</div>Every output goes up 3, so the vertex moves to (0, 3).</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = x² − 2</div>Every output goes down 2, so the vertex moves to (0, −2).</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Same shape</div>The width and direction don't change &mdash; only the position does.</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Gray: y = x². Blue: up 3. Red: down 2.</div><svg width="280" height="385" viewBox="0 0 280 385" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="62.8" y1="14" x2="62.8" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="91.5" y1="14" x2="91.5" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="120.2" y1="14" x2="120.2" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="149.0" y1="14" x2="149.0" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="177.8" y1="14" x2="177.8" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="206.5" y1="14" x2="206.5" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="235.2" y1="14" x2="235.2" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="264.0" y1="14" x2="264.0" y2="359" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="359.0" x2="264" y2="359.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="330.2" x2="264" y2="330.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="301.5" x2="264" y2="301.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="272.8" x2="264" y2="272.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="244.0" x2="264" y2="244.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="215.2" x2="264" y2="215.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="186.5" x2="264" y2="186.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="157.8" x2="264" y2="157.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="129.0" x2="264" y2="129.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="100.2" x2="264" y2="100.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="71.5" x2="264" y2="71.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="42.8" x2="264" y2="42.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="264" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="62.8,14.0 63.7,19.7 64.7,25.4 65.6,31.0 66.6,36.5 67.5,42.0 68.5,47.4 69.5,52.7 70.4,58.0 71.4,63.2 72.3,68.3 73.3,73.4 74.2,78.4 75.2,83.4 76.2,88.2 77.1,93.1 78.1,97.8 79.0,102.5 80.0,107.2 81.0,111.7 81.9,116.2 82.9,120.7 83.8,125.0 84.8,129.4 85.8,133.6 86.7,137.8 87.7,141.9 88.6,146.0 89.6,150.0 90.5,153.9 91.5,157.8 92.5,161.6 93.4,165.3 94.4,169.0 95.3,172.6 96.3,176.1 97.2,179.6 98.2,183.0 99.2,186.4 100.1,189.7 101.1,192.9 102.0,196.1 103.0,199.1 104.0,202.2 104.9,205.2 105.9,208.1 106.8,210.9 107.8,213.7 108.8,216.4 109.7,219.1 110.7,221.6 111.6,224.2 112.6,226.6 113.5,229.0 114.5,231.3 115.5,233.6 116.4,235.8 117.4,238.0 118.3,240.0 119.3,242.1 120.2,244.0 121.2,245.9 122.2,247.7 123.1,249.5 124.1,251.2 125.0,252.8 126.0,254.3 127.0,255.9 127.9,257.3 128.9,258.7 129.8,260.0 130.8,261.2 131.8,262.4 132.7,263.5 133.7,264.6 134.6,265.6 135.6,266.5 136.5,267.4 137.5,268.1 138.5,268.9 139.4,269.6 140.4,270.2 141.3,270.7 142.3,271.2 143.2,271.6 144.2,272.0 145.2,272.2 146.1,272.5 147.1,272.6 148.0,272.7 149.0,272.8 150.0,272.7 150.9,272.6 151.9,272.5 152.8,272.2 153.8,272.0 154.8,271.6 155.7,271.2 156.7,270.7 157.6,270.2 158.6,269.6 159.5,268.9 160.5,268.1 161.5,267.4 162.4,266.5 163.4,265.6 164.3,264.6 165.3,263.5 166.2,262.4 167.2,261.2 168.2,260.0 169.1,258.7 170.1,257.3 171.0,255.9 172.0,254.3 173.0,252.8 173.9,251.2 174.9,249.5 175.8,247.7 176.8,245.9 177.8,244.0 178.7,242.1 179.7,240.0 180.6,238.0 181.6,235.8 182.5,233.6 183.5,231.3 184.5,229.0 185.4,226.6 186.4,224.2 187.3,221.6 188.3,219.1 189.2,216.4 190.2,213.7 191.2,210.9 192.1,208.1 193.1,205.2 194.0,202.2 195.0,199.2 196.0,196.1 196.9,192.9 197.9,189.7 198.8,186.4 199.8,183.0 200.8,179.6 201.7,176.1 202.7,172.6 203.6,169.0 204.6,165.3 205.5,161.6 206.5,157.8 207.5,153.9 208.4,150.0 209.4,146.0 210.3,141.9 211.3,137.8 212.2,133.6 213.2,129.4 214.2,125.0 215.1,120.7 216.1,116.2 217.0,111.7 218.0,107.1 219.0,102.5 219.9,97.8 220.9,93.1 221.8,88.2 222.8,83.4 223.8,78.4 224.7,73.4 225.7,68.3 226.6,63.2 227.6,58.0 228.5,52.7 229.5,47.4 230.5,42.0 231.4,36.5 232.4,31.0 233.3,25.4 234.3,19.7 235.2,14.0" fill="none" stroke="#8a94a3" stroke-width="2.5"/><polyline points="79.0,16.3 80.0,20.9 81.0,25.5 81.9,30.0 82.9,34.4 83.8,38.8 84.8,43.1 85.8,47.3 86.7,51.5 87.7,55.7 88.6,59.7 89.6,63.7 90.5,67.6 91.5,71.5 92.5,75.3 93.4,79.0 94.4,82.7 95.3,86.3 96.3,89.9 97.2,93.4 98.2,96.8 99.2,100.1 100.1,103.4 101.1,106.6 102.0,109.8 103.0,112.9 104.0,115.9 104.9,118.9 105.9,121.8 106.8,124.7 107.8,127.4 108.8,130.2 109.7,132.8 110.7,135.4 111.6,137.9 112.6,140.4 113.5,142.8 114.5,145.1 115.5,147.4 116.4,149.6 117.4,151.7 118.3,153.8 119.3,155.8 120.2,157.8 121.2,159.6 122.2,161.5 123.1,163.2 124.1,164.9 125.0,166.5 126.0,168.1 127.0,169.6 127.9,171.0 128.9,172.4 129.8,173.7 130.8,175.0 131.8,176.1 132.7,177.3 133.7,178.3 134.6,179.3 135.6,180.2 136.5,181.1 137.5,181.9 138.5,182.6 139.4,183.3 140.4,183.9 141.3,184.5 142.3,184.9 143.2,185.3 144.2,185.7 145.2,186.0 146.1,186.2 147.1,186.4 148.0,186.5 149.0,186.5 150.0,186.5 150.9,186.4 151.9,186.2 152.8,186.0 153.8,185.7 154.8,185.3 155.7,184.9 156.7,184.5 157.6,183.9 158.6,183.3 159.5,182.6 160.5,181.9 161.5,181.1 162.4,180.2 163.4,179.3 164.3,178.3 165.3,177.3 166.2,176.2 167.2,175.0 168.2,173.7 169.1,172.4 170.1,171.0 171.0,169.6 172.0,168.1 173.0,166.5 173.9,164.9 174.9,163.2 175.8,161.5 176.8,159.6 177.8,157.8 178.7,155.8 179.7,153.8 180.6,151.7 181.6,149.6 182.5,147.4 183.5,145.1 184.5,142.8 185.4,140.4 186.4,137.9 187.3,135.4 188.3,132.8 189.2,130.1 190.2,127.4 191.2,124.7 192.1,121.8 193.1,118.9 194.0,115.9 195.0,112.9 196.0,109.8 196.9,106.6 197.9,103.4 198.8,100.1 199.8,96.8 200.8,93.4 201.7,89.9 202.7,86.3 203.6,82.7 204.6,79.0 205.5,75.3 206.5,71.5 207.5,67.6 208.4,63.7 209.4,59.7 210.3,55.7 211.3,51.5 212.2,47.3 213.2,43.1 214.2,38.8 215.1,34.4 216.1,30.0 217.0,25.5 218.0,20.9 219.0,16.3" fill="none" stroke="#0047BA" stroke-width="2.5"/><polyline points="54.1,17.2 55.1,23.5 56.0,29.7 57.0,35.8 58.0,42.0 58.9,48.0 59.9,54.0 60.8,59.9 61.8,65.7 62.8,71.5 63.7,77.2 64.7,82.9 65.6,88.5 66.6,94.0 67.5,99.5 68.5,104.9 69.5,110.2 70.4,115.5 71.4,120.7 72.3,125.8 73.3,130.9 74.2,135.9 75.2,140.9 76.2,145.7 77.1,150.6 78.1,155.3 79.0,160.0 80.0,164.7 81.0,169.2 81.9,173.7 82.9,178.2 83.8,182.5 84.8,186.9 85.8,191.1 86.7,195.3 87.7,199.4 88.6,203.5 89.6,207.5 90.5,211.4 91.5,215.2 92.5,219.1 93.4,222.8 94.4,226.5 95.3,230.1 96.3,233.6 97.2,237.1 98.2,240.5 99.2,243.9 100.1,247.2 101.1,250.4 102.0,253.6 103.0,256.6 104.0,259.7 104.9,262.7 105.9,265.6 106.8,268.4 107.8,271.2 108.8,273.9 109.7,276.6 110.7,279.1 111.6,281.7 112.6,284.1 113.5,286.5 114.5,288.8 115.5,291.1 116.4,293.3 117.4,295.5 118.3,297.5 119.3,299.6 120.2,301.5 121.2,303.4 122.2,305.2 123.1,307.0 124.1,308.7 125.0,310.3 126.0,311.8 127.0,313.4 127.9,314.8 128.9,316.2 129.8,317.5 130.8,318.7 131.8,319.9 132.7,321.0 133.7,322.1 134.6,323.1 135.6,324.0 136.5,324.9 137.5,325.6 138.5,326.4 139.4,327.1 140.4,327.7 141.3,328.2 142.3,328.7 143.2,329.1 144.2,329.5 145.2,329.7 146.1,330.0 147.1,330.1 148.0,330.2 149.0,330.2 150.0,330.2 150.9,330.1 151.9,330.0 152.8,329.7 153.8,329.5 154.8,329.1 155.7,328.7 156.7,328.2 157.6,327.7 158.6,327.1 159.5,326.4 160.5,325.6 161.5,324.9 162.4,324.0 163.4,323.1 164.3,322.1 165.3,321.0 166.2,319.9 167.2,318.7 168.2,317.5 169.1,316.2 170.1,314.8 171.0,313.4 172.0,311.8 173.0,310.3 173.9,308.7 174.9,307.0 175.8,305.2 176.8,303.4 177.8,301.5 178.7,299.6 179.7,297.5 180.6,295.5 181.6,293.3 182.5,291.1 183.5,288.8 184.5,286.5 185.4,284.1 186.4,281.7 187.3,279.1 188.3,276.6 189.2,273.9 190.2,271.2 191.2,268.4 192.1,265.6 193.1,262.7 194.0,259.7 195.0,256.7 196.0,253.6 196.9,250.4 197.9,247.2 198.8,243.9 199.8,240.5 200.8,237.1 201.7,233.6 202.7,230.1 203.6,226.5 204.6,222.8 205.5,219.1 206.5,215.2 207.5,211.4 208.4,207.5 209.4,203.5 210.3,199.4 211.3,195.3 212.2,191.1 213.2,186.9 214.2,182.5 215.1,178.2 216.1,173.7 217.0,169.2 218.0,164.6 219.0,160.0 219.9,155.3 220.9,150.6 221.8,145.7 222.8,140.9 223.8,135.9 224.7,130.9 225.7,125.8 226.6,120.7 227.6,115.5 228.5,110.2 229.5,104.9 230.5,99.5 231.4,94.0 232.4,88.5 233.3,82.9 234.3,77.2 235.2,71.5 236.2,65.7 237.2,59.9 238.1,54.0 239.1,48.0 240.0,42.0 241.0,35.8 242.0,29.7 242.9,23.5 243.9,17.2" fill="none" stroke="#DB2F30" stroke-width="2.5"/><circle cx="149.0" cy="186.5" r="4.5" fill="#0047BA" stroke="#0047BA" stroke-width="2"/><text x="157.0" y="182.5" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, 3)</text><circle cx="149.0" cy="272.8" r="4.5" fill="#8a94a3" stroke="#8a94a3" stroke-width="2"/><circle cx="149.0" cy="330.2" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="157.0" y="342.2" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, −2)</text><line x1="34" y1="272.8" x2="264" y2="272.8" stroke="#7a869a" stroke-width="1.6"/><line x1="149.0" y1="14" x2="149.0" y2="359" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">−4</text><text x="62.8" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="91.5" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="120.2" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="177.8" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="206.5" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="235.2" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="264.0" y="286.8" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="144.0" y="362.5" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="144.0" y="333.8" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="144.0" y="305.0" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="144.0" y="247.5" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="144.0" y="218.8" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="144.0" y="190.0" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="144.0" y="161.2" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="144.0" y="132.5" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="144.0" y="103.8" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="144.0" y="75.0" font-size="10" fill="#7a869a" text-anchor="end">7</text><text x="144.0" y="46.2" font-size="10" fill="#7a869a" text-anchor="end">8</text><text x="144.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">9</text><text x="144.0" y="285.8" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="264" y="267.8" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="154.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Worked Example &middot; Horizontal</p><h1 class="slide-title">Comparing y = |x|, y = |x + 3|, and y = |x − 2|</h1>
+<div class="card blue"><p style="margin-bottom:0;"><strong>Goal:</strong> Describe how each graph moves.</p></div>
+<div class="step"><div class="badge">1</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = |x + 3|</div>Moves left 3: the vertex moves to (−3, 0).</div></div>
+<div class="step"><div class="badge">2</div><div class="content"><div class="label" style="text-transform:none;letter-spacing:0.3px;font-size:14px;">y = |x − 2|</div>Moves right 2: the vertex moves to (2, 0).</div></div>
+<div class="step"><div class="badge">3</div><div class="content"><div class="label">Check one point</div>For y = |x + 3|, the output 0 now happens at x = −3, because |−3 + 3| = 0 ✓</div></div>
+<div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Gray: y = |x|. Blue: left 3. Red: right 2.</div><svg width="300" height="199" viewBox="0 0 300 199" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="56.7" y1="14" x2="56.7" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="79.5" y1="14" x2="79.5" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="102.2" y1="14" x2="102.2" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="124.9" y1="14" x2="124.9" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="147.6" y1="14" x2="147.6" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="170.4" y1="14" x2="170.4" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="193.1" y1="14" x2="193.1" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="215.8" y1="14" x2="215.8" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="238.5" y1="14" x2="238.5" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="261.3" y1="14" x2="261.3" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="284.0" y1="14" x2="284.0" y2="173" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="173.0" x2="284" y2="173.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="150.3" x2="284" y2="150.3" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="127.6" x2="284" y2="127.6" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="104.9" x2="284" y2="104.9" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="82.1" x2="284" y2="82.1" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="59.4" x2="284" y2="59.4" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="36.7" x2="284" y2="36.7" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="284" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polyline points="34.0,14.0 35.0,15.0 36.1,16.1 37.1,17.1 38.2,18.2 39.2,19.2 40.3,20.2 41.3,21.3 42.3,22.3 43.4,23.4 44.4,24.4 45.5,25.5 46.5,26.5 47.5,27.5 48.6,28.6 49.6,29.6 50.7,30.7 51.7,31.7 52.8,32.7 53.8,33.8 54.8,34.8 55.9,35.9 56.9,36.9 58.0,37.9 59.0,39.0 60.0,40.0 61.1,41.1 62.1,42.1 63.2,43.1 64.2,44.2 65.2,45.2 66.3,46.3 67.3,47.3 68.4,48.4 69.4,49.4 70.5,50.4 71.5,51.5 72.5,52.5 73.6,53.6 74.6,54.6 75.7,55.6 76.7,56.7 77.8,57.7 78.8,58.8 79.8,59.8 80.9,60.8 81.9,61.9 83.0,62.9 84.0,64.0 85.0,65.0 86.1,66.1 87.1,67.1 88.2,68.1 89.2,69.2 90.2,70.2 91.3,71.3 92.3,72.3 93.4,73.3 94.4,74.4 95.5,75.4 96.5,76.5 97.5,77.5 98.6,78.5 99.6,79.6 100.7,80.6 101.7,81.7 102.7,82.7 103.8,83.8 104.8,84.8 105.9,85.8 106.9,86.9 108.0,87.9 109.0,89.0 110.0,90.0 111.1,91.0 112.1,92.1 113.2,93.1 114.2,94.2 115.2,95.2 116.3,96.2 117.3,97.3 118.4,98.3 119.4,99.4 120.5,100.4 121.5,101.5 122.5,102.5 123.6,103.5 124.6,104.6 125.7,105.6 126.7,106.7 127.8,107.7 128.8,108.7 129.8,109.8 130.9,110.8 131.9,111.9 133.0,112.9 134.0,113.9 135.0,115.0 136.1,116.0 137.1,117.1 138.2,118.1 139.2,119.1 140.2,120.2 141.3,121.2 142.3,122.3 143.4,123.3 144.4,124.4 145.5,125.4 146.5,126.4 147.5,127.5 148.6,128.5 149.6,129.6 150.7,130.6 151.7,131.6 152.8,132.7 153.8,133.7 154.8,134.8 155.9,135.8 156.9,136.8 158.0,137.9 159.0,138.9 160.0,140.0 161.1,141.0 162.1,142.1 163.2,143.1 164.2,144.1 165.2,145.2 166.3,146.2 167.3,147.3 168.4,148.3 169.4,149.3 170.5,150.2 171.5,149.2 172.5,148.1 173.6,147.1 174.6,146.0 175.7,145.0 176.7,143.9 177.8,142.9 178.8,141.9 179.8,140.8 180.9,139.8 181.9,138.7 183.0,137.7 184.0,136.7 185.0,135.6 186.1,134.6 187.1,133.5 188.2,132.5 189.2,131.5 190.2,130.4 191.3,129.4 192.3,128.3 193.4,127.3 194.4,126.2 195.5,125.2 196.5,124.2 197.5,123.1 198.6,122.1 199.6,121.0 200.7,120.0 201.7,119.0 202.7,117.9 203.8,116.9 204.8,115.8 205.9,114.8 206.9,113.8 208.0,112.7 209.0,111.7 210.0,110.6 211.1,109.6 212.1,108.5 213.2,107.5 214.2,106.5 215.2,105.4 216.3,104.4 217.3,103.3 218.4,102.3 219.4,101.3 220.5,100.2 221.5,99.2 222.5,98.1 223.6,97.1 224.6,96.1 225.7,95.0 226.7,94.0 227.8,92.9 228.8,91.9 229.8,90.8 230.9,89.8 231.9,88.8 233.0,87.7 234.0,86.7 235.0,85.6 236.1,84.6 237.1,83.6 238.2,82.5 239.2,81.5 240.2,80.4 241.3,79.4 242.3,78.4 243.4,77.3 244.4,76.3 245.5,75.2 246.5,74.2 247.5,73.2 248.6,72.1 249.6,71.1 250.7,70.0 251.7,69.0 252.8,67.9 253.8,66.9 254.8,65.9 255.9,64.8 256.9,63.8 258.0,62.7 259.0,61.7 260.0,60.7 261.1,59.6 262.1,58.6 263.2,57.5 264.2,56.5 265.2,55.5 266.3,54.4 267.3,53.4 268.4,52.3 269.4,51.3 270.5,50.2 271.5,49.2 272.5,48.2 273.6,47.1 274.6,46.1 275.7,45.0 276.7,44.0 277.8,43.0 278.8,41.9 279.8,40.9 280.9,39.8 281.9,38.8 283.0,37.8 284.0,36.7" fill="none" stroke="#8a94a3" stroke-width="2.5"/><polyline points="34.0,82.1 35.0,83.2 36.1,84.2 37.1,85.3 38.2,86.3 39.2,87.3 40.3,88.4 41.3,89.4 42.3,90.5 43.4,91.5 44.4,92.6 45.5,93.6 46.5,94.6 47.5,95.7 48.6,96.7 49.6,97.8 50.7,98.8 51.7,99.8 52.8,100.9 53.8,101.9 54.8,103.0 55.9,104.0 56.9,105.0 58.0,106.1 59.0,107.1 60.0,108.2 61.1,109.2 62.1,110.3 63.2,111.3 64.2,112.3 65.2,113.4 66.3,114.4 67.3,115.5 68.4,116.5 69.4,117.5 70.5,118.6 71.5,119.6 72.5,120.7 73.6,121.7 74.6,122.7 75.7,123.8 76.7,124.8 77.8,125.9 78.8,126.9 79.8,128.0 80.9,129.0 81.9,130.0 83.0,131.1 84.0,132.1 85.0,133.2 86.1,134.2 87.1,135.2 88.2,136.3 89.2,137.3 90.2,138.4 91.3,139.4 92.3,140.4 93.4,141.5 94.4,142.5 95.5,143.6 96.5,144.6 97.5,145.6 98.6,146.7 99.6,147.7 100.7,148.8 101.7,149.8 102.7,149.7 103.8,148.7 104.8,147.6 105.9,146.6 106.9,145.6 108.0,144.5 109.0,143.5 110.0,142.4 111.1,141.4 112.1,140.3 113.2,139.3 114.2,138.3 115.2,137.2 116.3,136.2 117.3,135.1 118.4,134.1 119.4,133.1 120.5,132.0 121.5,131.0 122.5,129.9 123.6,128.9 124.6,127.9 125.7,126.8 126.7,125.8 127.8,124.7 128.8,123.7 129.8,122.7 130.9,121.6 131.9,120.6 133.0,119.5 134.0,118.5 135.0,117.4 136.1,116.4 137.1,115.4 138.2,114.3 139.2,113.3 140.2,112.2 141.3,111.2 142.3,110.2 143.4,109.1 144.4,108.1 145.5,107.0 146.5,106.0 147.5,105.0 148.6,103.9 149.6,102.9 150.7,101.8 151.7,100.8 152.8,99.7 153.8,98.7 154.8,97.7 155.9,96.6 156.9,95.6 158.0,94.5 159.0,93.5 160.0,92.5 161.1,91.4 162.1,90.4 163.2,89.3 164.2,88.3 165.2,87.3 166.3,86.2 167.3,85.2 168.4,84.1 169.4,83.1 170.5,82.0 171.5,81.0 172.5,80.0 173.6,78.9 174.6,77.9 175.7,76.8 176.7,75.8 177.8,74.8 178.8,73.7 179.8,72.7 180.9,71.6 181.9,70.6 183.0,69.6 184.0,68.5 185.0,67.5 186.1,66.4 187.1,65.4 188.2,64.4 189.2,63.3 190.2,62.3 191.3,61.2 192.3,60.2 193.4,59.1 194.4,58.1 195.5,57.1 196.5,56.0 197.5,55.0 198.6,53.9 199.6,52.9 200.7,51.9 201.7,50.8 202.7,49.8 203.8,48.7 204.8,47.7 205.9,46.7 206.9,45.6 208.0,44.6 209.0,43.5 210.0,42.5 211.1,41.4 212.1,40.4 213.2,39.4 214.2,38.3 215.2,37.3 216.3,36.2 217.3,35.2 218.4,34.2 219.4,33.1 220.5,32.1 221.5,31.0 222.5,30.0 223.6,29.0 224.6,27.9 225.7,26.9 226.7,25.8 227.8,24.8 228.8,23.7 229.8,22.7 230.9,21.7 231.9,20.6 233.0,19.6 234.0,18.5 235.0,17.5 236.1,16.5 237.1,15.4 238.2,14.4" fill="none" stroke="#0047BA" stroke-width="2.5"/><polyline points="79.8,14.4 80.9,15.4 81.9,16.5 83.0,17.5 84.0,18.5 85.0,19.6 86.1,20.6 87.1,21.7 88.2,22.7 89.2,23.7 90.2,24.8 91.3,25.8 92.3,26.9 93.4,27.9 94.4,29.0 95.5,30.0 96.5,31.0 97.5,32.1 98.6,33.1 99.6,34.2 100.7,35.2 101.7,36.2 102.7,37.3 103.8,38.3 104.8,39.4 105.9,40.4 106.9,41.4 108.0,42.5 109.0,43.5 110.0,44.6 111.1,45.6 112.1,46.7 113.2,47.7 114.2,48.7 115.2,49.8 116.3,50.8 117.3,51.9 118.4,52.9 119.4,53.9 120.5,55.0 121.5,56.0 122.5,57.1 123.6,58.1 124.6,59.1 125.7,60.2 126.7,61.2 127.8,62.3 128.8,63.3 129.8,64.4 130.9,65.4 131.9,66.4 133.0,67.5 134.0,68.5 135.0,69.6 136.1,70.6 137.1,71.6 138.2,72.7 139.2,73.7 140.2,74.8 141.3,75.8 142.3,76.8 143.4,77.9 144.4,78.9 145.5,80.0 146.5,81.0 147.5,82.0 148.6,83.1 149.6,84.1 150.7,85.2 151.7,86.2 152.8,87.3 153.8,88.3 154.8,89.3 155.9,90.4 156.9,91.4 158.0,92.5 159.0,93.5 160.0,94.5 161.1,95.6 162.1,96.6 163.2,97.7 164.2,98.7 165.2,99.7 166.3,100.8 167.3,101.8 168.4,102.9 169.4,103.9 170.5,105.0 171.5,106.0 172.5,107.0 173.6,108.1 174.6,109.1 175.7,110.2 176.7,111.2 177.8,112.2 178.8,113.3 179.8,114.3 180.9,115.4 181.9,116.4 183.0,117.4 184.0,118.5 185.0,119.5 186.1,120.6 187.1,121.6 188.2,122.7 189.2,123.7 190.2,124.7 191.3,125.8 192.3,126.8 193.4,127.9 194.4,128.9 195.5,129.9 196.5,131.0 197.5,132.0 198.6,133.1 199.6,134.1 200.7,135.1 201.7,136.2 202.7,137.2 203.8,138.3 204.8,139.3 205.9,140.3 206.9,141.4 208.0,142.4 209.0,143.5 210.0,144.5 211.1,145.6 212.1,146.6 213.2,147.6 214.2,148.7 215.2,149.7 216.3,149.8 217.3,148.8 218.4,147.7 219.4,146.7 220.5,145.6 221.5,144.6 222.5,143.6 223.6,142.5 224.6,141.5 225.7,140.4 226.7,139.4 227.8,138.4 228.8,137.3 229.8,136.3 230.9,135.2 231.9,134.2 233.0,133.2 234.0,132.1 235.0,131.1 236.1,130.0 237.1,129.0 238.2,128.0 239.2,126.9 240.2,125.9 241.3,124.8 242.3,123.8 243.4,122.7 244.4,121.7 245.5,120.7 246.5,119.6 247.5,118.6 248.6,117.5 249.6,116.5 250.7,115.5 251.7,114.4 252.8,113.4 253.8,112.3 254.8,111.3 255.9,110.3 256.9,109.2 258.0,108.2 259.0,107.1 260.0,106.1 261.1,105.0 262.1,104.0 263.2,103.0 264.2,101.9 265.2,100.9 266.3,99.8 267.3,98.8 268.4,97.8 269.4,96.7 270.5,95.7 271.5,94.6 272.5,93.6 273.6,92.6 274.6,91.5 275.7,90.5 276.7,89.4 277.8,88.4 278.8,87.3 279.8,86.3 280.9,85.3 281.9,84.2 283.0,83.2 284.0,82.1" fill="none" stroke="#DB2F30" stroke-width="2.5"/><circle cx="102.2" cy="150.3" r="4.5" fill="#0047BA" stroke="#0047BA" stroke-width="2"/><circle cx="215.8" cy="150.3" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><line x1="34" y1="150.3" x2="284" y2="150.3" stroke="#7a869a" stroke-width="1.6"/><line x1="170.4" y1="14" x2="170.4" y2="173" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">−6</text><text x="56.7" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">−5</text><text x="79.5" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">−4</text><text x="102.2" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="124.9" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="147.6" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="193.1" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="215.8" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="238.5" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="261.3" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="284.0" y="164.3" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="165.4" y="176.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="165.4" y="131.1" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="165.4" y="108.4" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="165.4" y="85.6" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="165.4" y="62.9" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="165.4" y="40.2" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="165.4" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="165.4" y="163.3" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="284" y="145.3" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="175.4" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Your Turn &mdash; Guided Practice</p><h1 class="slide-title">Now you try, with me right here</h1>
+<div class="gp-box"><p class="gp-prompt"><strong>Start with f(x) = x². Write g(x), the graph moved right 4 and down 1.</strong></p>
+<p style="font-weight:600;font-size:15px;">Question 1 &mdash; Which change moves the graph right 4?</p>
+<div class="choice-row" data-q="gp1"><button class="choice-btn" data-correct="true">Replace x with x − 4</button><button class="choice-btn" data-correct="false">Replace x with x + 4</button></div><p class="feedback" id="fb-gp1"></p>
+<div class="explain-box" id="ex-gp1"><b>Here's why:</b> f(x − 4) moves the graph right 4. x + 4 would move it left, because the input shift goes the opposite way.</div>
+<p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is g(x)?</p>
+<div class="choice-row" data-q="gp2"><button class="choice-btn" data-correct="true">g(x) = (x − 4)² − 1</button><button class="choice-btn" data-correct="false">g(x) = (x + 4)² − 1</button></div><p class="feedback" id="fb-gp2"></p>
+<div class="explain-box" id="ex-gp2"><b>Here's why:</b> Right 4 gives (x − 4)², and down 1 subtracts 1 outside: g(x) = (x − 4)² − 1, with vertex (4, −1).</div>
+</div></section>
+<section class="slide" data-slide="8"><p class="eyebrow">Why This Matters</p><h1 class="slide-title">One rule moves every family</h1>
+<p>Once you know how shifts work, you don't need separate rules for lines, parabolas, and absolute value graphs. One rule moves them all &mdash; and it explains why vertex form works.</p>
+<h2 class="sub-title" style="margin-top:20px;">This shows up everywhere</h2>
+<ul><li>Reading vertex form for parabolas and V-graphs.</li><li>Adjusting a model for a new starting point.</li><li>Adding a flat fee to a linear cost function.</li></ul>
+<p style="font-size:14px;color:#555;">Next lesson: stretches, compressions, and reflections.</p>
+</section>
+<section class="slide" data-slide="9"><p class="eyebrow">Mini Knowledge Test</p><h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+<div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">How does g(x) = f(x) − 5 compare with f(x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Shifted down 5</button><button class="quiz-opt" data-correct="false">Shifted left 5</button><button class="quiz-opt" data-correct="false">Shifted right 5</button><button class="quiz-opt" data-correct="false">Shifted up 5</button></div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Subtracting 5 outside the function lowers every output by 5, so the graph moves down 5.</div>
+      </div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">How does g(x) = f(x + 2) compare with f(x)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Shifted up 2</button><button class="quiz-opt" data-correct="true">Shifted left 2</button><button class="quiz-opt" data-correct="false">Shifted right 2</button><button class="quiz-opt" data-correct="false">Shifted down 2</button></div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Adding inside the function shifts horizontally, in the opposite direction: + 2 moves the graph left 2.</div>
+      </div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">The vertex of y = x² is (0, 0). What is the vertex of y = (x + 1)² + 4?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(1, 4)</button><button class="quiz-opt" data-correct="true">(−1, 4)</button><button class="quiz-opt" data-correct="false">(−1, −4)</button><button class="quiz-opt" data-correct="false">(4, −1)</button></div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> x + 1 inside moves the graph left 1, and + 4 outside moves it up 4: the vertex moves to (−1, 4).</div>
+      </div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Which equation is y = |x| moved right 3 and up 2?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y = |x + 3| − 2</button><button class="quiz-opt" data-correct="false">y = |x + 3| + 2</button><button class="quiz-opt" data-correct="false">y = |x − 2| + 3</button><button class="quiz-opt" data-correct="true">y = |x − 3| + 2</button></div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Right 3 means x − 3 inside; up 2 means + 2 outside.</div>
+      </div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">f(x) = 2x + 1. Which expression equals f(x) + 4?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">8x + 4</button><button class="quiz-opt" data-correct="false">2(x + 4) + 1</button><button class="quiz-opt" data-correct="true">2x + 5</button><button class="quiz-opt" data-correct="false">2x + 4</button></div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> f(x) + 4 adds 4 to the output: 2x + 1 + 4 = 2x + 5. 2(x + 4) + 1 is f(x + 4), a horizontal shift.</div>
+      </div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="10"><p class="eyebrow">Debrief</p><h1 class="slide-title">What we learned today</h1>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can describe the effect of f(x) + k.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can describe the effect of f(x + k), including its direction.</div>
+<div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can shift linear, quadratic, and absolute value functions.</div>
+<h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+<div><span class="term-pill">Transformation</span><span class="term-pill">Vertical Shift</span><span class="term-pill">Horizontal Shift</span><span class="term-pill">Parent Function</span></div>
+<div class="next-box"><strong>Next &mdash; Lesson 9.4: Stretches &amp; Reflections.</strong> Steeper, flatter, flipped.</div>
+<div class="end-actions"><a class="end-btn primary next-lesson-link" href="9-4-stretches-reflections.html">Next Lesson: 9.4 &rarr;</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'F.2.1',
+        lesson: '9.3: Shifting Functions',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>
