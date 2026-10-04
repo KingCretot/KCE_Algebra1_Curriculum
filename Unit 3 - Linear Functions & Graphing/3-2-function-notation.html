@@ -559,8 +559,9 @@
         <div class="qtext">What does f(x) mean?</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="false">f multiplied by x</button>
-          <button class="quiz-opt" data-correct="true">The output of function f when the input is x</button>
           <button class="quiz-opt" data-correct="false">A coordinate point</button>
+          <button class="quiz-opt" data-correct="false">The slope of the line</button>
+          <button class="quiz-opt" data-correct="true">The output of function f when the input is x</button>
         </div>
       
         <div class="explain-box" id="ex-q1"><b>Here's why:</b> f(x) doesn't mean f times x &mdash; that's the single most common function-notation mix-up. f(x) means 'the output the function f produces when you feed it the input x,' the same way a vending machine code produces a specific snack, not a multiplication problem.</div>
@@ -570,21 +571,23 @@
         <div class="qnum">Question 2</div>
         <div class="qtext">For f(x) = 5x &minus; 2, what is f(4)?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="false">18</button>
-          <button class="quiz-opt" data-correct="true">18</button>
           <button class="quiz-opt" data-correct="false">22</button>
+          <button class="quiz-opt" data-correct="false">20</button>
+          <button class="quiz-opt" data-correct="true">18</button>
+          <button class="quiz-opt" data-correct="false">3</button>
         </div>
       
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> f(x) = 4x + 6 at x = 3: f(3) = 4(3) + 6 = 12 + 6 = 18. Plug the input directly in for every x in the formula, then do the arithmetic in order &mdash; multiply before you add.</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Replace x with 4: f(4) = 5(4) − 2 = 20 − 2 = 18. 22 adds the 2 instead of subtracting it, and 20 forgets the − 2 entirely.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
         <div class="qtext">If f(5) = 30 for a cost function f(x) in dollars, what does that mean?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">When x = 5, the cost is $30</button>
-          <button class="quiz-opt" data-correct="false">The cost is always $5</button>
           <button class="quiz-opt" data-correct="false">x must equal 30</button>
+          <button class="quiz-opt" data-correct="false">The cost is always $5</button>
+          <button class="quiz-opt" data-correct="false">The input is 30 when the cost is $5</button>
+          <button class="quiz-opt" data-correct="true">When x = 5, the cost is $30</button>
         </div>
       
         <div class="explain-box" id="ex-q3"><b>Here's why:</b> If f(5) = 30 in a cost formula, that reads as 'when the input is 5, the cost comes out to $30' &mdash; the 5 went IN, the 30 came OUT. Mixing up which number is the input and which is the output is an easy trap.</div>
@@ -594,9 +597,10 @@
         <div class="qnum">Question 4</div>
         <div class="qtext">What is the domain of a function?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="false">The set of all possible outputs</button>
-          <button class="quiz-opt" data-correct="true">The set of all allowed inputs</button>
           <button class="quiz-opt" data-correct="false">The name of the function</button>
+          <button class="quiz-opt" data-correct="true">The set of all allowed inputs</button>
+          <button class="quiz-opt" data-correct="false">The highest point on the graph</button>
+          <button class="quiz-opt" data-correct="false">The set of all possible outputs</button>
         </div>
       
         <div class="explain-box" id="ex-q4"><b>Here's why:</b> Domain is the complete list of inputs you're ALLOWED to put into a function &mdash; think of it as the list of valid sizes at a coffee shop. You can't order a size that isn't on the menu, and you can't plug in an x-value that isn't in the domain.</div>
@@ -606,12 +610,13 @@
         <div class="qnum">Question 5</div>
         <div class="qtext">For g(x) = &minus;2x + 1, what is g(&minus;3)?</div>
         <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">5</button>
+          <button class="quiz-opt" data-correct="false">&minus;7</button>
           <button class="quiz-opt" data-correct="true">7</button>
           <button class="quiz-opt" data-correct="false">&minus;5</button>
-          <button class="quiz-opt" data-correct="false">&minus;7</button>
         </div>
       
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> If f(x) = 2x &minus; 3 and f(x) = 11, set 2x &minus; 3 = 11, then solve: add 3 to both sides (2x = 14), divide by 2 (x = 7). This flips the usual direction &mdash; instead of finding the output from a given input, you're working backward from the output to find the input.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Replace x with −3: g(−3) = −2(−3) + 1 = 6 + 1 = 7. A negative times a negative is positive, so −2 × −3 = +6. −5 comes from treating −2 × −3 as −6.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

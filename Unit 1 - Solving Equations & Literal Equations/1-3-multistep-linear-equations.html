@@ -535,7 +535,7 @@
           <button class="choice-btn" data-correct="true">x = 5</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> 7x &minus; 8 = 27: add 8 to both sides to get 7x = 35, then divide both sides by 7 to get x = 5. If you stop after adding 8 and forget to divide, you'd wrongly land on x = 3 (which is actually 35/7 rounded wrong, or a division slip) &mdash; always finish both inverse operations.</div>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> 7x − 8 = 27: add 8 to both sides to get 7x = 35, then divide both sides by 7 to get x = 5. Check: 7(5) − 8 = 35 − 8 = 27 ✓. Try x = 3 instead: 7(3) − 8 = 13, not 27, so 3 can't be right.</div>
       </div>
     </section>
 
@@ -563,6 +563,7 @@
         <div class="qtext">In a multi-step equation, what should you usually do first?</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="true">Distribute, to clear any parentheses</button>
+          <button class="quiz-opt" data-correct="false">Combine the numbers on the right side only</button>
           <button class="quiz-opt" data-correct="false">Divide both sides by the coefficient</button>
           <button class="quiz-opt" data-correct="false">Guess and check</button>
         </div>
@@ -574,8 +575,9 @@
         <div class="qnum">Question 2</div>
         <div class="qtext">Which pair are like terms?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="false">5x and 5</button>
           <button class="quiz-opt" data-correct="true">7y and 2y</button>
+          <button class="quiz-opt" data-correct="false">5x and 5</button>
+          <button class="quiz-opt" data-correct="false">4x and 4y</button>
           <button class="quiz-opt" data-correct="false">3x and 3x&sup2;</button>
         </div>
       
@@ -586,24 +588,26 @@
         <div class="qnum">Question 3</div>
         <div class="qtext">Solve: 2(x + 3) = 16</div>
         <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">x = 11</button>
           <button class="quiz-opt" data-correct="true">x = 5</button>
           <button class="quiz-opt" data-correct="false">x = 8</button>
-          <button class="quiz-opt" data-correct="false">x = 11</button>
+          <button class="quiz-opt" data-correct="false">x = 6.5</button>
         </div>
       
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Working it through: 4(x&minus;2)+3x=27 &rarr; 4x&minus;8+3x=27 &rarr; 7x&minus;8=27 &rarr; 7x=35 &rarr; x=5. Each step undoes exactly one operation at a time &mdash; distribute, combine, add, divide.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Divide both sides by 2 first: x + 3 = 8. Then subtract 3: x = 5. (Distributing works too: 2x + 6 = 16, 2x = 10, x = 5.) Check: 2(5 + 3) = 2(8) = 16 ✓. x = 8 forgets to subtract the 3, and x = 6.5 comes from forgetting to multiply the 3 by 2.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
         <div class="qtext">A plumber charges P = 60 + 45h, where h is hours worked. If the total bill was $195, which equation finds h?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">60 + 45h = 195</button>
           <button class="quiz-opt" data-correct="false">60h + 45 = 195</button>
+          <button class="quiz-opt" data-correct="true">60 + 45h = 195</button>
           <button class="quiz-opt" data-correct="false">45h &minus; 60 = 195</button>
+          <button class="quiz-opt" data-correct="false">60 + 45 = 195h</button>
         </div>
       
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A rideshare with a $60 flat pickup fee plus $45 per hour, totaling $195, translates piece by piece: 60 (flat fee, no variable) + 45h (rate times hours) = 195 (the total). The order matters for READING it correctly, even though addition can be written either way &mdash; matching each number to its real-world job is the actual skill being tested.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> The $60 is a flat call-out fee &mdash; you pay it no matter how long the job takes, so it stands alone. The $45 is charged for every hour, so it multiplies h. Set the total equal to the bill: 60 + 45h = 195 (which works out to h = 3 hours). The other choices give each number the wrong job.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -612,10 +616,11 @@
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="true">Subtract 9 from both sides</button>
           <button class="quiz-opt" data-correct="false">Divide both sides by 5 first</button>
+          <button class="quiz-opt" data-correct="false">Subtract 5 from both sides</button>
           <button class="quiz-opt" data-correct="false">Add 9 to both sides</button>
         </div>
       
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> 5x + 9 = 24 type problems: your first move should undo whatever is NOT attached to x by multiplication &mdash; that's the +9, so subtract 9 from both sides first. Dividing by 5 too early would divide the 9 as well, which breaks the equation.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> To get 5x alone, undo the +9 first by subtracting 9 from both sides: 5x = 30. Then divide by 5: x = 6. Dividing by 5 first isn't illegal, but you'd have to divide the 9 too and end up with fractions &mdash; undo addition and subtraction first, then multiplication and division.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

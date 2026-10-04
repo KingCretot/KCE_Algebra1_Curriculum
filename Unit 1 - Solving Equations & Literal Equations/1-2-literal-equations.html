@@ -439,7 +439,7 @@
       <p>You'll meet literal equations most often in formulas for <strong>temperature, perimeter, area, volume,</strong> and <strong>interest</strong>. The reason to rearrange one is always the same: you know some of the letters, you need a different one, and you don't want to rebuild the formula from scratch every time.</p>
 
       <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Example:</strong> The Celsius-to-Fahrenheit formula is F&nbsp;=&nbsp;(9/5)C&nbsp;+&nbsp;32. A recipe gives you an oven temperature in Celsius, but your oven only shows Fahrenheit. Rearranging this formula for C once means you can convert <em>any</em> Celsius reading to Fahrenheit forever after &mdash; not just this one recipe.</p>
+        <p style="margin-bottom:0;"><strong>Example:</strong> The Celsius-to-Fahrenheit formula is F&nbsp;=&nbsp;(9/5)C&nbsp;+&nbsp;32. That formula is built to turn Celsius into Fahrenheit. But a friend in France asks what 77&deg;F is in Celsius &mdash; now you need it the other way around. Rearranging the formula for C once means you can convert <em>any</em> Fahrenheit reading to Celsius forever after &mdash; not just this one.</p>
       </div>
 
       <p>This is genuinely useful, not just a textbook exercise: engineers, nurses, chefs, and scientists rearrange formulas like this constantly, because the formula they're handed is rarely already solved for the exact thing they need.</p>
@@ -543,7 +543,7 @@
           <button class="choice-btn" data-correct="false">h = A / 2b</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Once you're at 2A = bh, h is still stuck being multiplied by b. To free it, divide both sides by b &mdash; that's the inverse operation of multiplication. h = A / 2b is a trap: it comes from dividing only part of the 2A instead of the whole thing.</div>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Once you're at 2A = bh, h is still being multiplied by b. Divide both sides by b to get h = 2A / b. Check it with real numbers: a triangle with area 12 and base 4 must have height 6. 2(12) ÷ 4 = 6 works, but 12 ÷ (2 × 4) = 1.5 doesn't &mdash; that version divided by 2 when it should have multiplied.</div>
       </div>
     </section>
 
@@ -572,6 +572,7 @@
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="false">An equation with only one variable</button>
           <button class="quiz-opt" data-correct="true">An equation with two or more variables, like a formula</button>
+          <button class="quiz-opt" data-correct="false">An equation that contains only numbers</button>
           <button class="quiz-opt" data-correct="false">An equation with no solution</button>
         </div>
       
@@ -583,6 +584,7 @@
         <div class="qtext">To isolate a variable in a literal equation, you should:</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="false">Only move numbers, never letters</button>
+          <button class="quiz-opt" data-correct="false">Divide every term by the variable you want</button>
           <button class="quiz-opt" data-correct="true">Treat every other letter like a number, using inverse operations</button>
           <button class="quiz-opt" data-correct="false">Substitute in a value first</button>
         </div>
@@ -594,9 +596,10 @@
         <div class="qnum">Question 3</div>
         <div class="qtext">Solve d = rt for t.</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="false">t = dr</button>
-          <button class="quiz-opt" data-correct="true">t = d / r</button>
+          <button class="quiz-opt" data-correct="false">t = d − r</button>
           <button class="quiz-opt" data-correct="false">t = r / d</button>
+          <button class="quiz-opt" data-correct="true">t = d / r</button>
+          <button class="quiz-opt" data-correct="false">t = dr</button>
         </div>
       
         <div class="explain-box" id="ex-q3"><b>Here's why:</b> Starting from d = rt and solving for t: divide both sides by r (the thing multiplying t) to isolate it, giving t = d / r &mdash; which matches your everyday sense that time = distance &divide; speed.</div>
@@ -609,6 +612,7 @@
           <button class="quiz-opt" data-correct="false">w = P &minus; 2l</button>
           <button class="quiz-opt" data-correct="true">w = (P &minus; 2l) / 2</button>
           <button class="quiz-opt" data-correct="false">w = P / 2 &minus; l</button>
+          <button class="quiz-opt" data-correct="false">w = P − l</button>
         </div>
       
         <div class="explain-box" id="ex-q4"><b>Here's why:</b> Perimeter of a rectangle is P = 2l + 2w. To isolate w: first subtract 2l from both sides (P &minus; 2l = 2w), then divide everything by 2 &mdash; not just part of it. w = (P &minus; 2l) / 2 divides the WHOLE left side by 2, which is the move that keeps the equation balanced.</div>
@@ -618,9 +622,10 @@
         <div class="qnum">Question 5</div>
         <div class="qtext">Why do we rearrange a formula instead of just solving it fresh every time?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Once solved for the variable you need, you can just plug in numbers going forward</button>
-          <button class="quiz-opt" data-correct="false">Because the original formula is always wrong</button>
           <button class="quiz-opt" data-correct="false">It isn't useful &mdash; it's just practice</button>
+          <button class="quiz-opt" data-correct="false">Rearranged formulas give different answers than the original</button>
+          <button class="quiz-opt" data-correct="false">Because the original formula is always wrong</button>
+          <button class="quiz-opt" data-correct="true">Once solved for the variable you need, you can just plug in numbers going forward</button>
         </div>
       
         <div class="explain-box" id="ex-q5"><b>Here's why:</b> This is the entire point of solving a literal equation once: after you've done the algebra to isolate w = (P &minus; 2l)/2, you never have to repeat those steps again &mdash; you just drop in numbers for P and l every time and get an answer instantly. That's why formulas exist.</div>

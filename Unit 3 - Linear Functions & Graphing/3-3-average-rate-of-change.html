@@ -545,9 +545,10 @@
         <div class="qnum">Question 1</div>
         <div class="qtext">What is the formula for average rate of change from x = a to x = b?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">[f(b) &minus; f(a)] / (b &minus; a)</button>
+          <button class="quiz-opt" data-correct="false">f(b) − f(a)</button>
           <button class="quiz-opt" data-correct="false">f(b) + f(a)</button>
           <button class="quiz-opt" data-correct="false">(b &minus; a) / [f(b) &minus; f(a)]</button>
+          <button class="quiz-opt" data-correct="true">[f(b) &minus; f(a)] / (b &minus; a)</button>
         </div>
       
         <div class="explain-box" id="ex-q1"><b>Here's why:</b> The average rate of change formula is [f(b) &minus; f(a)] / (b &minus; a) &mdash; change in output over change in input, exactly like calculating a car's average speed: (ending mile marker &minus; starting mile marker) &divide; (ending time &minus; starting time).</div>
@@ -557,20 +558,22 @@
         <div class="qnum">Question 2</div>
         <div class="qtext">If f(2) = 10 and f(6) = 30, what is the average rate of change from 2 to 6?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">5</button>
+          <button class="quiz-opt" data-correct="false">4</button>
           <button class="quiz-opt" data-correct="false">20</button>
           <button class="quiz-opt" data-correct="false">10</button>
+          <button class="quiz-opt" data-correct="true">5</button>
         </div>
       
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> If a plant grows from 3 inches to 13 inches over 2 weeks: (13&minus;3)/2 = 10/2 = 5 inches per week &mdash; that's the average rate of change, treating the whole 2-week stretch as one steady climb even if some days it may have grown more or less.</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Average rate of change = (30 − 10) ÷ (6 − 2) = 20 ÷ 4 = 5. The output rose 20 while the input rose 4, so on average the output went up 5 for every 1 unit of input. 20 is the change in output, but it still has to be divided by the change in input.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
         <div class="qtext">For a linear function, how does average rate of change behave across different intervals?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">It's always the same value &mdash; the slope</button>
           <button class="quiz-opt" data-correct="false">It's always different on every interval</button>
+          <button class="quiz-opt" data-correct="false">It's always zero</button>
+          <button class="quiz-opt" data-correct="true">It's always the same value &mdash; the slope</button>
           <button class="quiz-opt" data-correct="false">It can't be calculated for linear functions</button>
         </div>
       
@@ -581,9 +584,10 @@
         <div class="qnum">Question 4</div>
         <div class="qtext">If the average rate of change is different on two different intervals of the same function, what does that tell you?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">The function is not linear</button>
           <button class="quiz-opt" data-correct="false">You made an arithmetic error</button>
+          <button class="quiz-opt" data-correct="true">The function is not linear</button>
           <button class="quiz-opt" data-correct="false">The function has no domain</button>
+          <button class="quiz-opt" data-correct="false">The function is decreasing</button>
         </div>
       
         <div class="explain-box" id="ex-q4"><b>Here's why:</b> If you calculate the rate of change over two different intervals of the SAME function and get two different answers, that's actually a clue the function ISN'T linear &mdash; a true straight line gives you the identical rate everywhere, so differing rates mean the graph is curving.</div>
@@ -591,14 +595,15 @@
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5</div>
-        <div class="qtext">A pool's water level function gives w(0) = 2 ft and w(4) = 10 ft. What's the average rate of change, with units?</div>
+        <div class="qtext">A pool is being filled. Its water level after t hours is w(t) feet, with w(0) = 2 and w(4) = 10. What's the average rate of change, with units?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">2 feet per hour</button>
-          <button class="quiz-opt" data-correct="false">8 feet per hour</button>
           <button class="quiz-opt" data-correct="false">2 hours per foot</button>
+          <button class="quiz-opt" data-correct="false">10 feet per hour</button>
+          <button class="quiz-opt" data-correct="false">8 feet per hour</button>
+          <button class="quiz-opt" data-correct="true">2 feet per hour</button>
         </div>
       
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> A pool draining from 24 feet deep to 8 feet deep over 8 hours: (8&minus;24)/8 = &minus;16/8 = &minus;2 feet per hour. The negative sign matters &mdash; it's telling you the depth is DECREASING, 2 feet lost every hour, not gained.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> (10 − 2) ÷ (4 − 0) = 8 ÷ 4 = 2 feet per hour. The water rose 8 feet over 4 hours, so on average it rose 2 feet each hour. 8 feet per hour forgets to divide by the time, and 'hours per foot' turns the fraction upside down.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

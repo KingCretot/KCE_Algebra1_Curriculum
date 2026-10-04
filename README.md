@@ -45,18 +45,20 @@ to self-report it.
 
 ## Build status
 
-Units 1–4 are built. Units 1–3 (11 lessons total) were fully audited in
-September 2026: two-attempt answer logic, real-world explanations, and
-Formspree progress tracking were added to every lesson (previously, wrong
-answers revealed instantly with no explanation, and no score data left the
-browser). Unit 4 exists and is content-complete but has **not yet** had this
-same audit pass — it still uses the older single-attempt, no-tracking
-mechanics and should get the same treatment before being handed to a
-student. Units 5–10 not yet started. Standing build rule: one full unit at a
-time, verified before the next begins.
+Units 1–5 are built (22 lessons). Units 6–10 not yet started; the locked
+standard sequence for them is in `KCE_Algebra1_10Unit_Scope_v1.2.html`.
+Standing build rule: one full unit at a time, verified before the next begins.
 
-**Progress-tracking note:** lesson submissions currently post to the
-existing "Math Foundations Progress" Formspree endpoint as a stopgap (tagged
-`program: "KCE Algebra 1"` so they're identifiable in the inbox). A
-dedicated Algebra 1 Formspree endpoint should replace this — swap is a
-one-line change per file once the new endpoint ID exists.
+**October 2026 audit (Units 1–5):**
+- Every quiz question now has four answer choices (was three), with the
+  correct answer's position varied so it can't be guessed from placement.
+- Rewrote 25 "Here's why" explanations that described a different problem
+  than the one asked (Units 1–3), and fixed a duplicate answer choice in 3.2.
+- Fixed teaching errors: Celsius/Fahrenheit direction (1.2), a parallel-line
+  example whose point sat on the original line (4.2), and a reversed
+  cheaper-gym conclusion (5.1).
+- Added 27 graphs and number lines to the worked examples in Units 2–5,
+  which previously described every graph in words only.
+
+Lesson quiz scores post to the dedicated Algebra 1 Formspree endpoint
+(`xrpbqdra`), tagged `program: "KCE Algebra 1"`.
