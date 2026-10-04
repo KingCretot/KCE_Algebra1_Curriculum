@@ -60,5 +60,7 @@ Standing build rule: one full unit at a time, verified before the next begins.
 - Added 27 graphs and number lines to the worked examples in Units 2–5,
   which previously described every graph in words only.
 
+**Unit reviews (Oct 2026):** every unit ends with `unit-N-review.html` in its folder: key ideas from each lesson, common mistakes, a printable one-page cheat sheet, and a 10-question mixed practice test that reports to Formspree as `Unit N Review`. The last lesson of each unit links to its review, and the review links on to the next unit. New units ship with their review.
+
 Lesson quiz scores post to the dedicated Algebra 1 Formspree endpoint
 (`xrpbqdra`), tagged `program: "KCE Algebra 1"`.

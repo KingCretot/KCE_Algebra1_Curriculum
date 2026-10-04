@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Unit 3 Review: Linear Functions & Graphing</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 3: Linear Functions &amp; Graphing</div></div></div><div class="lesson-tag">Unit 3 Review</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 7</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Unit Review</p><h1 class="slide-title">Unit 3: Linear Functions &amp; Graphing — the whole unit in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Unit 3 introduced functions: how to tell them apart, how to write and evaluate them, how fast they change, and how to graph and apply linear functions.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">3.1</span><span>Classifying Functions</span></li><li><span class="num">3.2</span><span>Function Notation</span></li><li><span class="num">3.3</span><span>Average Rate of Change</span></li><li><span class="num">3.4</span><span>Graphing Linear Functions</span></li><li><span class="num">3.5</span><span>Real-World Linear Applications</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real unit test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lessons 3.1–3.2</p><h1 class="slide-title">Functions and how we write them</h1>
+<div class="rc"><div class="tagl">Lesson 3.1</div><h3>What makes a function</h3><p>Each input has exactly one output. On a graph, no vertical line crosses the graph more than once.</p><div class="ex"><strong>Example:</strong> {(1, 4), (2, 4), (3, 7)} is a function &mdash; two inputs sharing an output is fine. {(1, 4), (1, 6)} is not, because input 1 has two outputs.</div></div><div class="rc"><div class="tagl">Lesson 3.1</div><h3>Classify from a table</h3><p>With evenly spaced x-values: constant first differences → linear; constant second differences → quadratic; constant ratio → exponential.</p><div class="ex"><strong>Example:</strong> y = 5, 8, 11, 14 has differences of 3 → linear. y = 2, 6, 18, 54 has a ratio of 3 → exponential.</div></div><div class="rc"><div class="tagl">Lesson 3.2</div><h3>Function notation</h3><p>f(x) is the output when the input is x. To evaluate, replace every x with the input.</p><div class="ex"><strong>Example:</strong> f(x) = 3x − 4: f(5) = 3(5) − 4 = 11, so the point (5, 11) is on the graph.</div></div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 3.3–3.5</p><h1 class="slide-title">Rate of change, graphs, and real situations</h1>
+<div class="rc"><div class="tagl">Lesson 3.3</div><h3>Average rate of change</h3><p>[f(b) − f(a)] ÷ (b − a): change in output over change in input. For a linear function, it is the same on every interval &mdash; the slope.</p><div class="ex"><strong>Example:</strong> h(1) = 4 cm and h(5) = 20 cm: (20 − 4) ÷ (5 − 1) = 4 cm per week.</div></div><div class="rc"><div class="tagl">Lesson 3.4</div><h3>Key features of a line</h3><p>y-intercept: set x = 0. x-intercept: set y = 0 and solve. Rate of change: the coefficient of x. Domain and range: all real numbers unless the context limits them.</p><div class="ex"><strong>Example:</strong> f(x) = −2x + 6 has y-intercept (0, 6), x-intercept (3, 0), and rate of change −2.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">f(x) = −2x + 6</div><svg width="260" height="355" viewBox="0 0 260 355" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="60.2" y1="14" x2="60.2" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="86.5" y1="14" x2="86.5" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="112.8" y1="14" x2="112.8" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="139.0" y1="14" x2="139.0" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="165.2" y1="14" x2="165.2" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="191.5" y1="14" x2="191.5" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="217.8" y1="14" x2="217.8" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="244.0" y1="14" x2="244.0" y2="329" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="329.0" x2="244" y2="329.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="302.8" x2="244" y2="302.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="276.5" x2="244" y2="276.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="250.2" x2="244" y2="250.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="224.0" x2="244" y2="224.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="197.8" x2="244" y2="197.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="171.5" x2="244" y2="171.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="145.2" x2="244" y2="145.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="119.0" x2="244" y2="119.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="92.8" x2="244" y2="92.8" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="66.5" x2="244" y2="66.5" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="40.2" x2="244" y2="40.2" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="244" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><line x1="60.2" y1="14.0" x2="217.8" y2="329.0" stroke="#0047BA" stroke-width="2.5"/><circle cx="86.5" cy="66.5" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="94.5" y="64.5" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(0, 6)</text><circle cx="165.2" cy="224.0" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="172.2" y="216.0" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">(3, 0)</text><line x1="34" y1="224.0" x2="244" y2="224.0" stroke="#7a869a" stroke-width="1.6"/><line x1="86.5" y1="14" x2="86.5" y2="329" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="60.2" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="112.8" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="139.0" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="165.2" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="191.5" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="217.8" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="244.0" y="238.0" font-size="10" fill="#7a869a" text-anchor="middle">6</text><text x="81.5" y="332.5" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="81.5" y="306.2" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="81.5" y="280.0" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="81.5" y="253.8" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="81.5" y="201.2" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="81.5" y="175.0" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="81.5" y="148.8" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="81.5" y="122.5" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="81.5" y="96.2" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="81.5" y="70.0" font-size="10" fill="#7a869a" text-anchor="end">6</text><text x="81.5" y="43.8" font-size="10" fill="#7a869a" text-anchor="end">7</text><text x="81.5" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">8</text><text x="81.5" y="237.0" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="244" y="219.0" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="91.5" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div><div class="rc"><div class="tagl">Lesson 3.5</div><h3>Real-world models need constraints</h3><p>Starting value + rate × input builds the model. Then restrict the domain to inputs that make sense.</p><div class="ex"><strong>Example:</strong> A 500-gallon tank drains 25 gallons per minute: V(t) = 500 − 25t. It's empty at t = 20, so the realistic domain is 0 ≤ t ≤ 20.</div></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Reading f(x) as "f times x"</td><td>f(x) means "the output of f at x." It's a name, not multiplication.</td></tr><tr><td>Calling a relation "not a function" because two inputs share an output</td><td>Sharing an output is fine. One input with two different outputs is what breaks a function.</td></tr><tr><td>Forgetting to divide by the change in x</td><td>Rate of change is a fraction: change in output ÷ change in input.</td></tr><tr><td>Writing intercepts backward</td><td>The y-intercept is always (0, y) and the x-intercept is always (x, 0).</td></tr><tr><td>Sign slips with negative inputs</td><td>Use parentheses when you substitute: f(−3) = −2(−3) + 1 = 6 + 1 = 7.</td></tr><tr><td>Reporting answers outside the realistic domain</td><td>If a model predicts negative gallons or negative hours, the input is outside where the model applies.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a unit test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="5"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this unit on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Algebra 1 &middot; Unit 3: Linear Functions &amp; Graphing</h2><div class="csub">KingCretot Experience &middot; Unit 3 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Function</td><td>Exactly one output for every input</td><td>Vertical line test</td></tr><tr><td>Function type</td><td>Constant 1st differences: linear · 2nd differences: quadratic · ratio: exponential</td><td>3, 6, 12, 24 → exponential</td></tr><tr><td>Function notation</td><td>f(a): replace x with a</td><td>f(x) = x² + 1 → f(3) = 10</td></tr><tr><td>Avg. rate of change</td><td>[f(b) − f(a)] ÷ (b − a)</td><td>f(0) = 2, f(4) = 10 → 2</td></tr><tr><td>Intercepts</td><td>y-int: set x = 0 · x-int: set y = 0</td><td>y = 4x − 8 → (0, −8) and (2, 0)</td></tr><tr><td>Domain / range</td><td>Allowed inputs / resulting outputs</td><td>Hours worked: h ≥ 0</td></tr><tr><td>Real-world model</td><td>start + rate × input, then add constraints</td><td>V(t) = 500 − 25t, 0 ≤ t ≤ 20</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Which relation is NOT a function?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">{(−1, 6), (0, 6), (5, 0)}</button><button class="quiz-opt" data-correct="true">{(2, 5), (3, 7), (2, 9)}</button><button class="quiz-opt" data-correct="false">{(1, 4), (2, 4), (3, 4)}</button><button class="quiz-opt" data-correct="false">{(0, 1), (1, 2), (2, 3)}</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> In {(2, 5), (3, 7), (2, 9)}, the input 2 goes to two different outputs, 5 and 9. That breaks the rule. The other sets only repeat outputs, which is allowed.</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">A table has x: 0, 1, 2, 3 and y: 1, 4, 9, 16. Which type of function is it?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Exponential</button><button class="quiz-opt" data-correct="false">Not a function</button><button class="quiz-opt" data-correct="true">Quadratic</button><button class="quiz-opt" data-correct="false">Linear</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> First differences are 3, 5, 7 &mdash; not constant, so it isn't linear. Second differences are 2, 2 &mdash; constant, so it's quadratic.</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">A table has x: 0, 1, 2, 3 and y: 400, 200, 100, 50. Which type of function is it?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Exponential</button><button class="quiz-opt" data-correct="false">Linear</button><button class="quiz-opt" data-correct="false">Cannot be determined</button><button class="quiz-opt" data-correct="false">Quadratic</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> Each y-value is half the one before, a constant ratio of ½. A constant ratio means exponential (here, decay).</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">If h(x) = x² − 3x, what is h(−2)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">2</button><button class="quiz-opt" data-correct="false">−2</button><button class="quiz-opt" data-correct="false">−10</button><button class="quiz-opt" data-correct="true">10</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> Substitute with parentheses: h(−2) = (−2)² − 3(−2) = 4 + 6 = 10. Squaring a negative gives a positive, and −3 times −2 is +6.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">C(n) = 12n + 30 gives the cost in dollars of n concert tickets, including a booking fee. What does C(4) = 78 mean?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">The booking fee is $78</button><button class="quiz-opt" data-correct="true">4 tickets cost $78 in total</button><button class="quiz-opt" data-correct="false">78 tickets cost $4</button><button class="quiz-opt" data-correct="false">Each ticket costs $78</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> The input (4) is the number of tickets and the output (78) is the total cost: 12(4) + 30 = 48 + 30 = 78 ✓</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">A phone battery is at 90% at 1 p.m. and 54% at 5 p.m. What is the average rate of change?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">−9 percentage points per hour</button><button class="quiz-opt" data-correct="false">9 percentage points per hour</button><button class="quiz-opt" data-correct="false">−36 percentage points per hour</button><button class="quiz-opt" data-correct="false">−0.11 hours per percentage point</button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> (54 − 90) ÷ (5 − 1) = −36 ÷ 4 = −9. The battery dropped an average of 9 points each hour; the negative sign shows it is decreasing. −36 is the total change, not the rate.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">What is the x-intercept of y = 5x − 15?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(−3, 0)</button><button class="quiz-opt" data-correct="false">(15, 0)</button><button class="quiz-opt" data-correct="true">(3, 0)</button><button class="quiz-opt" data-correct="false">(0, −15)</button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> Set y = 0: 0 = 5x − 15, so 5x = 15 and x = 3. The x-intercept is (3, 0); (0, −15) is the y-intercept.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">Which statement about f(x) = −4x + 2 is true?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">It falls 4 units for every 1 unit to the right</button><button class="quiz-opt" data-correct="false">Its y-intercept is (0, −4)</button><button class="quiz-opt" data-correct="false">Its x-intercept is (2, 0)</button><button class="quiz-opt" data-correct="false">It rises 4 units for every 1 unit to the right</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> The rate of change is −4, so the line drops 4 for every step right. Its y-intercept is (0, 2), and its x-intercept is (0.5, 0) since −4x + 2 = 0 gives x = 0.5.</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">A delivery driver earns P(h) = 18h for h hours, and shifts last at most 10 hours. What is the realistic domain?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">0 ≤ h ≤ 180</button><button class="quiz-opt" data-correct="false">h ≥ 10</button><button class="quiz-opt" data-correct="false">All real numbers</button><button class="quiz-opt" data-correct="true">0 ≤ h ≤ 10</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> Hours can't be negative, and a shift tops out at 10 hours, so 0 ≤ h ≤ 10. The 180 is the most the driver can earn &mdash; that's the range, not the domain.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">A 30 cm candle burns 2.5 cm per hour. Which model gives its height after t hours, and when does it burn out?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">H(t) = 30 + 2.5t; never</button><button class="quiz-opt" data-correct="false">H(t) = 30 − 2.5t; after 75 hours</button><button class="quiz-opt" data-correct="false">H(t) = 2.5t − 30; after 12 hours</button><button class="quiz-opt" data-correct="true">H(t) = 30 − 2.5t; after 12 hours</button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> Start at 30 and subtract 2.5 every hour: H(t) = 30 − 2.5t. Burned out means H(t) = 0: 2.5t = 30, so t = 12 hours.</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Debrief</p><h1 class="slide-title">Unit 3, reviewed</h1>
+<p>You can identify function types, use function notation, measure rate of change, graph lines with their key features, and build realistic models. Unit 4 flips the direction: you'll write the equations yourself.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole unit.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../Unit%204%20-%20Writing%20Linear%20Equations/4-1-writing-linear-equations.html">Start Unit 4 &rarr;</a><a class="end-btn secondary" href="../KCE_Algebra1_Unit3.html">Back to Unit 3</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'Unit 3 Review',
+        lesson: 'Unit 3 Review: Linear Functions & Graphing',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

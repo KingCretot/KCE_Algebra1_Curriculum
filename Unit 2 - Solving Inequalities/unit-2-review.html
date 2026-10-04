@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Algebra 1 — Unit 2 Review: Solving Inequalities</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+.masthead{background:var(--navy);padding:18px 28px 14px;}
+.mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;}
+.kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+.kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+.wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+.course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+.lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+.tricolor{height:5px;display:flex;}.tricolor div{flex:1;}
+.tri-b{background:var(--blue);}.tri-g{background:var(--gold);}.tri-r{background:var(--red);}
+.progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+.progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+.progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+.progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+.stage{flex:1;padding:34px 34px 20px;}
+.slide{display:none;animation:fadeIn .3s ease;}.slide.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+p{margin:0 0 14px;font-size:16px;}ul{margin:0 0 14px;padding-left:22px;}li{margin-bottom:8px;font-size:16px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+.card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+.card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+.card.think{background:#fff;border:2px dashed var(--gold);}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:14px;}
+.vocab-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;flex:1 1 100%;}
+@media(min-width:640px){.vocab-card{flex:1 1 calc(50% - 7px);}}
+.vocab-card.wide{flex-basis:100%;}
+.vocab-head{background:var(--navy);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;}
+.vocab-head .icon{width:26px;height:26px;flex:none;}
+.vocab-head .term{font-weight:700;font-size:16px;letter-spacing:.3px;}
+.vocab-body{padding:14px 16px;}.vocab-def{font-size:15px;margin-bottom:8px;}
+.vocab-hook{font-size:13.5px;color:var(--navy);background:#fdf8ec;border-radius:8px;padding:8px 10px;display:flex;gap:6px;align-items:flex-start;}
+.vocab-hook b{color:var(--blue);}
+.obj-list{list-style:none;margin:0;padding:0;}
+.obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+.obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+.step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+.step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+.gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+.gp-prompt{font-size:16px;margin-bottom:14px;}
+.choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+.choice-btn:hover{border-color:var(--blue);}
+.choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+.feedback.ok{color:var(--green);}.feedback.bad{color:var(--red);}
+.quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+.quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+.quiz-opts{display:flex;flex-direction:column;gap:8px;}
+.quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;}
+.quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+.quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+.quiz-note{font-size:13px;color:#555;margin-top:8px;display:none;}.quiz-note.show{display:block;}
+.quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+.quiz-score.show{display:block;}.quiz-score .gold{color:var(--gold);}
+.recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+.recap-check svg{flex:none;}
+.term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+.next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+.end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+.end-btn.primary{background:var(--navy);color:#fff;}.end-btn.secondary{background:#fff;color:var(--navy);}
+svg.icon{display:block;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+.nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+.nav button.ghost{background:#fff;color:var(--navy);}.nav button:disabled{opacity:.35;cursor:default;}
+.nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+.nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+.nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+.footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+.toast.show{opacity:1;transform:translate(-50%,0);}
+@media(max-width:520px){.stage{padding:22px 18px 14px;}h1.slide-title{font-size:21px;}.nav{padding:14px 16px 18px;}.nav .dots{display:none;}}
+
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+.diagram-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:16px 0 6px;}.diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px 10px;text-align:center;max-width:100%;}.diagram-panel svg{display:block;margin:0 auto;}.diagram-cap{font-size:13px;color:var(--navy);font-weight:600;margin:0 auto 8px;max-width:300px;line-height:1.35;}
+
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="masthead"><div class="mast-row"><div class="brand"><div class="kc"><span class="inner">KC</span></div><div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Algebra 1 &middot; Unit 2: Solving Inequalities</div></div></div><div class="lesson-tag">Unit 2 Review</div></div></div>
+<div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+<div class="progress-wrap"><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div class="progress-label" id="progressLabel">Slide 1 of 7</div></div>
+<div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Unit Review</p><h1 class="slide-title">Unit 2: Solving Inequalities — the whole unit in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Unit 2 took everything from equation solving and applied it to inequalities, where the answer is a whole range of values instead of a single number.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">2.1</span><span>One-Variable &amp; Compound Inequalities</span></li><li><span class="num">2.2</span><span>Writing Two-Variable Inequalities</span></li><li><span class="num">2.3</span><span>Graphing Two-Variable Inequalities</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real unit test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lesson 2.1</p><h1 class="slide-title">One-variable and compound inequalities</h1>
+<div class="rc"><div class="tagl">Lesson 2.1</div><h3>Solve like an equation, with one new rule</h3><p>Use the same inverse operations. If you multiply or divide both sides by a <strong>negative</strong> number, flip the inequality symbol.</p><div class="ex"><strong>Example:</strong> −2x + 1 ≥ 9 → −2x ≥ 8 → x ≤ −4 (flipped because you divided by −2).</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">x ≤ −4: closed circle, shaded left</div><svg width="360" height="64" viewBox="0 0 360 64" style="max-width:100%;height:auto"><line x1="10" y1="30" x2="350" y2="30" stroke="#7a869a" stroke-width="1.8"/><polygon points="354,30 346,25 346,35" fill="#7a869a"/><polygon points="6,30 14,25 14,35" fill="#7a869a"/><line x1="22.0" y1="25" x2="22.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="22.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−7</text><line x1="57.1" y1="25" x2="57.1" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="57.1" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−6</text><line x1="92.2" y1="25" x2="92.2" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="92.2" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−5</text><line x1="127.3" y1="25" x2="127.3" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="127.3" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−4</text><line x1="162.4" y1="25" x2="162.4" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="162.4" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−3</text><line x1="197.6" y1="25" x2="197.6" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="197.6" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−2</text><line x1="232.7" y1="25" x2="232.7" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="232.7" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−1</text><line x1="267.8" y1="25" x2="267.8" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="267.8" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">0</text><line x1="302.9" y1="25" x2="302.9" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="302.9" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">1</text><line x1="338.0" y1="25" x2="338.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="338.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">2</text><line x1="127.3" y1="30" x2="8" y2="30" stroke="#0047BA" stroke-width="5"/><polygon points="4,30 14,23 14,37" fill="#0047BA"/><circle cx="127.3" cy="30" r="6" fill="#0047BA" stroke="#0047BA" stroke-width="2.5"/></svg></div></div><div class="rc"><div class="tagl">Lesson 2.1</div><h3>Compound inequalities</h3><p>Do the same step to all three parts at once. Use an open circle for &lt; or &gt; and a closed circle for ≤ or ≥.</p><div class="ex"><strong>Example:</strong> 3 &lt; 2x + 5 ≤ 11 → −2 &lt; 2x ≤ 6 → −1 &lt; x ≤ 3.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">−1 &lt; x ≤ 3</div><svg width="360" height="64" viewBox="0 0 360 64" style="max-width:100%;height:auto"><line x1="10" y1="30" x2="350" y2="30" stroke="#7a869a" stroke-width="1.8"/><polygon points="354,30 346,25 346,35" fill="#7a869a"/><polygon points="6,30 14,25 14,35" fill="#7a869a"/><line x1="22.0" y1="25" x2="22.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="22.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−3</text><line x1="61.5" y1="25" x2="61.5" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="61.5" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−2</text><line x1="101.0" y1="25" x2="101.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="101.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">−1</text><line x1="140.5" y1="25" x2="140.5" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="140.5" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">0</text><line x1="180.0" y1="25" x2="180.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="180.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">1</text><line x1="219.5" y1="25" x2="219.5" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="219.5" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">2</text><line x1="259.0" y1="25" x2="259.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="259.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">3</text><line x1="298.5" y1="25" x2="298.5" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="298.5" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">4</text><line x1="338.0" y1="25" x2="338.0" y2="35" stroke="#7a869a" stroke-width="1.3"/><text x="338.0" y="50" font-size="10.5" fill="#7a869a" text-anchor="middle">5</text><line x1="101.0" y1="30" x2="259.0" y2="30" stroke="#0047BA" stroke-width="5"/><circle cx="101.0" cy="30" r="6" fill="#fff" stroke="#0047BA" stroke-width="2.5"/><circle cx="259.0" cy="30" r="6" fill="#0047BA" stroke="#0047BA" stroke-width="2.5"/></svg></div></div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 2.2–2.3</p><h1 class="slide-title">Two-variable inequalities</h1>
+<div class="rc"><div class="tagl">Lesson 2.2</div><h3>Writing from words</h3><p>Build the expression, then translate the limit: <em>at most / no more than</em> → ≤; <em>at least / minimum</em> → ≥; <em>less than / fewer than</em> → &lt;; <em>more than</em> → &gt;.</p><div class="ex"><strong>Example:</strong> Tacos cost $3 and burritos $7, and you can spend at most $42: 3t + 7b ≤ 42.</div></div><div class="rc"><div class="tagl">Lesson 2.2</div><h3>Writing from a graph</h3><p>Read the boundary line's slope and y-intercept. A solid line means ≤ or ≥; a dashed line means &lt; or &gt;. Shading above means y is greater; shading below means y is less.</p><div class="ex"><strong>Example:</strong> Dashed line, y-intercept 3, slope −1, shaded below: y &lt; −x + 3.</div></div><div class="rc"><div class="tagl">Lesson 2.3</div><h3>Graphing: boundary, test point, shade</h3><p>Graph the boundary (solid or dashed), test a point that isn't on it (usually (0, 0)), and shade the side where the test gives a true statement.</p><div class="ex"><strong>Example:</strong> y ≥ ½x − 2: solid line. Test (0, 0): 0 ≥ −2 is true, so shade the side containing the origin.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">y ≥ ½x − 2: solid boundary, shaded on the origin’s side</div><svg width="280" height="270" viewBox="0 0 280 270" style="max-width:100%;height:auto"><line x1="34.0" y1="14" x2="34.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="57.0" y1="14" x2="57.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="80.0" y1="14" x2="80.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="103.0" y1="14" x2="103.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="126.0" y1="14" x2="126.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="149.0" y1="14" x2="149.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="172.0" y1="14" x2="172.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="195.0" y1="14" x2="195.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="218.0" y1="14" x2="218.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="241.0" y1="14" x2="241.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="264.0" y1="14" x2="264.0" y2="244" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="244.0" x2="264" y2="244.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="221.0" x2="264" y2="221.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="198.0" x2="264" y2="198.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="175.0" x2="264" y2="175.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="152.0" x2="264" y2="152.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="129.0" x2="264" y2="129.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="106.0" x2="264" y2="106.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="83.0" x2="264" y2="83.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="60.0" x2="264" y2="60.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="37.0" x2="264" y2="37.0" stroke="#e3e8f0" stroke-width="1"/><line x1="34" y1="14.0" x2="264" y2="14.0" stroke="#e3e8f0" stroke-width="1"/><polygon points="264.0,117.5 264.0,14.0 34.0,14.0 34.0,232.5" fill="#0047BA" fill-opacity="0.16" stroke="none"/><line x1="34.0" y1="232.5" x2="264.0" y2="117.5" stroke="#0047BA" stroke-width="2.5"/><text x="205.6" y="165.7" font-size="11.5" font-weight="700" fill="#0047BA" stroke="#fff" stroke-width="3.5" paint-order="stroke">y = ½x − 2</text><circle cx="149.0" cy="129.0" r="4.5" fill="#DB2F30" stroke="#DB2F30" stroke-width="2"/><text x="159.0" y="119.0" font-size="11.5" font-weight="700" fill="#DB2F30" stroke="#fff" stroke-width="3.5" paint-order="stroke">test (0, 0)</text><line x1="34" y1="129.0" x2="264" y2="129.0" stroke="#7a869a" stroke-width="1.6"/><line x1="149.0" y1="14" x2="149.0" y2="244" stroke="#7a869a" stroke-width="1.6"/><text x="34.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">−5</text><text x="57.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">−4</text><text x="80.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">−3</text><text x="103.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">−2</text><text x="126.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">−1</text><text x="172.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">1</text><text x="195.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">2</text><text x="218.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">3</text><text x="241.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">4</text><text x="264.0" y="143.0" font-size="10" fill="#7a869a" text-anchor="middle">5</text><text x="144.0" y="247.5" font-size="10" fill="#7a869a" text-anchor="end">−5</text><text x="144.0" y="224.5" font-size="10" fill="#7a869a" text-anchor="end">−4</text><text x="144.0" y="201.5" font-size="10" fill="#7a869a" text-anchor="end">−3</text><text x="144.0" y="178.5" font-size="10" fill="#7a869a" text-anchor="end">−2</text><text x="144.0" y="155.5" font-size="10" fill="#7a869a" text-anchor="end">−1</text><text x="144.0" y="109.5" font-size="10" fill="#7a869a" text-anchor="end">1</text><text x="144.0" y="86.5" font-size="10" fill="#7a869a" text-anchor="end">2</text><text x="144.0" y="63.5" font-size="10" fill="#7a869a" text-anchor="end">3</text><text x="144.0" y="40.5" font-size="10" fill="#7a869a" text-anchor="end">4</text><text x="144.0" y="17.5" font-size="10" fill="#7a869a" text-anchor="end">5</text><text x="144.0" y="142.0" font-size="10" fill="#7a869a" text-anchor="end">0</text><text x="264" y="124.0" font-size="11" font-style="italic" fill="#7a869a" text-anchor="end" stroke="#fff" stroke-width="3" paint-order="stroke">x</text><text x="154.0" y="23" font-size="11" font-style="italic" fill="#7a869a" stroke="#fff" stroke-width="3" paint-order="stroke">y</text></svg></div></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Forgetting to flip when dividing by a negative</td><td>Any time you multiply or divide both sides by a negative, flip the symbol. Check with a number from your answer.</td></tr><tr><td>Flipping after adding or subtracting</td><td>Adding and subtracting never flip the symbol, even when the numbers are negative.</td></tr><tr><td>Mixing up open and closed circles</td><td>Open circle for &lt; and &gt; (not included). Closed circle for ≤ and ≥ (included).</td></tr><tr><td>Mixing up solid and dashed boundaries</td><td>Solid for ≤ and ≥, dashed for &lt; and &gt; &mdash; the same idea as the circles.</td></tr><tr><td>Treating a false test point as "no solution"</td><td>False just means the test point is on the wrong side. Shade the other side.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a unit test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="5"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this unit on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Algebra 1 &middot; Unit 2: Solving Inequalities</h2><div class="csub">KingCretot Experience &middot; Unit 2 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Flip rule</td><td>Multiply or divide by a negative → flip the symbol</td><td>−3x &lt; 12 → x &gt; −4</td></tr><tr><td>Number line</td><td>Open circle: &lt;, &gt; · Closed circle: ≤, ≥</td><td>x ≥ 2: closed at 2, shade right</td></tr><tr><td>Compound</td><td>Same step to all three parts</td><td>1 ≤ x + 4 &lt; 6 → −3 ≤ x &lt; 2</td></tr><tr><td>Key phrases</td><td>at most ≤ · at least ≥ · less than &lt; · more than &gt;</td><td>"at least 18" → a ≥ 18</td></tr><tr><td>Boundary line</td><td>Solid: ≤, ≥ · Dashed: &lt;, &gt;</td><td>y &lt; 2x + 1 → dashed</td></tr><tr><td>Shading</td><td>Test (0, 0) unless the line passes through it; true → shade that side</td><td>y &gt; x + 3: 0 &gt; 3 is false → shade away from (0, 0)</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="6"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Solve: −4x + 7 &gt; 19</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x &gt; −3</button><button class="quiz-opt" data-correct="true">x &lt; −3</button><button class="quiz-opt" data-correct="false">x &gt; 3</button><button class="quiz-opt" data-correct="false">x &lt; 3</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> Subtract 7: −4x &gt; 12. Divide by −4 and flip: x &lt; −3. Check x = −4: −4(−4) + 7 = 23, and 23 &gt; 19 ✓</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Solve: x/3 − 2 ≤ 4</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">x ≤ 6</button><button class="quiz-opt" data-correct="false">x ≤ 2</button><button class="quiz-opt" data-correct="true">x ≤ 18</button><button class="quiz-opt" data-correct="false">x ≥ 18</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> Add 2: x/3 ≤ 6. Multiply by 3 (positive, so no flip): x ≤ 18. The choice x ≤ 6 stops before multiplying by 3.</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Solve: −5 ≤ 3x + 4 &lt; 13</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">−3 &lt; x ≤ 3</button><button class="quiz-opt" data-correct="false">−9 ≤ x &lt; 9</button><button class="quiz-opt" data-correct="true">−3 ≤ x &lt; 3</button><button class="quiz-opt" data-correct="false">−1/3 ≤ x &lt; 17/3</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> Subtract 4 from all three parts: −9 ≤ 3x &lt; 9. Divide all three by 3: −3 ≤ x &lt; 3. Each end keeps its own symbol, so −3 is included and 3 is not.</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Which number line shows x &lt; 2?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Closed circle at 2, shaded left</button><button class="quiz-opt" data-correct="false">Open circle at 2, shaded right</button><button class="quiz-opt" data-correct="false">Closed circle at 2, shaded right</button><button class="quiz-opt" data-correct="true">Open circle at 2, shaded left</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> &lt; doesn't include 2, so the circle is open. "Less than" means smaller numbers, which are to the left.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">A ride requires riders to be at least 42 inches tall. Which inequality fits height h?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">h ≥ 42</button><button class="quiz-opt" data-correct="false">h &gt; 42</button><button class="quiz-opt" data-correct="false">h &lt; 42</button><button class="quiz-opt" data-correct="false">h ≤ 42</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> "At least 42" means 42 inches is allowed, and anything taller too: h ≥ 42.</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">Notebooks cost $4 and binders cost $6. You can spend no more than $50. Which inequality fits (n notebooks, b binders)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">4n + 6b ≤ 50</button><button class="quiz-opt" data-correct="false">4n + 6b &lt; 50</button><button class="quiz-opt" data-correct="false">4n + 6b ≥ 50</button><button class="quiz-opt" data-correct="false">6n + 4b ≤ 50</button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> Notebooks cost 4n and binders cost 6b, so the total is 4n + 6b. "No more than $50" allows exactly $50, so the symbol is ≤.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">A graph shows a dashed line through (0, 1) with slope 3, shaded above the line. What's the inequality?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">y ≥ 3x + 1</button><button class="quiz-opt" data-correct="false">y &gt; x + 3</button><button class="quiz-opt" data-correct="false">y &lt; 3x + 1</button><button class="quiz-opt" data-correct="true">y &gt; 3x + 1</button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> The boundary is y = 3x + 1. Dashed means the line isn't included (&lt; or &gt;), and shading above means y-values greater than the line: y &gt; 3x + 1.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">For y ≤ −2x + 5, which test-point result is correct?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(0, 0) can't be used because the line passes through it</button><button class="quiz-opt" data-correct="false">(0, 0): 0 ≤ 5 is false, so shade away from the origin</button><button class="quiz-opt" data-correct="false">(0, 0): 0 ≤ −2 is false, so shade away from the origin</button><button class="quiz-opt" data-correct="true">(0, 0): 0 ≤ 5 is true, so shade the side containing the origin</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> Substitute x = 0 and y = 0: 0 ≤ −2(0) + 5 becomes 0 ≤ 5, which is true. The line crosses the y-axis at 5, not at the origin, so (0, 0) is a fine test point.</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">Is (2, 1) a solution of 3x − y &gt; 4?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">No — 3(2) − 1 = 5, and 5 is not greater than 4</button><button class="quiz-opt" data-correct="true">Yes — 3(2) − 1 = 5, and 5 &gt; 4</button><button class="quiz-opt" data-correct="false">Yes — 3(2) + 1 = 7, and 7 &gt; 4</button><button class="quiz-opt" data-correct="false">No — a point with y = 1 can't be a solution</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> Substitute: 3(2) − 1 = 6 − 1 = 5. Since 5 &gt; 4 is true, (2, 1) is in the solution region.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">A student subtracts 6 from both sides of x + 6 &gt; −2. Should the symbol flip?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">Only if the answer is negative</button><button class="quiz-opt" data-correct="false">Yes — subtracting always flips it</button><button class="quiz-opt" data-correct="true">No — only multiplying or dividing by a negative flips it</button><button class="quiz-opt" data-correct="false">Yes — the right side is negative</button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> Subtracting 6 shifts both sides by the same amount, so their order doesn't change: x &gt; −8. Only multiplying or dividing by a negative number reverses the order.</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Debrief</p><h1 class="slide-title">Unit 2, reviewed</h1>
+<p>You can solve one-variable and compound inequalities, write two-variable inequalities from words or graphs, and graph their solution regions. Unit 3 turns to functions, starting with how to tell them apart.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole unit.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../Unit%203%20-%20Linear%20Functions%20%26%20Graphing/3-1-classifying-functions.html">Start Unit 3 &rarr;</a><a class="end-btn secondary" href="../KCE_Algebra1_Unit2.html">Back to Unit 2</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section></div>
+<div class="nav"><button class="ghost" id="prevBtn">&larr; Back</button><div class="dots" id="dots"></div><button id="nextBtn">Next &rarr;</button></div>
+<div class="footer-brand">KINGCRETOT EXPERIENCE &middot; ALGEBRA 1 CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var total = document.querySelectorAll('.slide').length;
+var current = 1;
+var dotsEl = document.getElementById('dots');
+for (var i = 1; i <= total; i++) { var d = document.createElement('div'); d.className = 'dot' + (i === 1 ? ' active' : ''); dotsEl.appendChild(d); }
+function goTo(n) {
+  if (n < 1 || n > total) return;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+  document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+  current = n;
+  document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+  document.querySelectorAll('.dot')[current - 1].classList.add('active');
+  document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+  document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+  document.getElementById('prevBtn').disabled = current === 1;
+  var nb = document.getElementById('nextBtn');
+  if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('prevBtn').disabled = true;
+document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+function showToast(msg){ var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(window._toastTimer); window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200); }
+document.querySelectorAll('[data-action="restart"]').forEach(function(btn){ btn.addEventListener('click', function(){ showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!'); goTo(1); }); });
+document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          fb.textContent = '\u2713 Correct!';
+          fb.className = 'feedback ok';
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (attempts >= 2) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.';
+            fb.className = 'feedback bad';
+            if (exBox) exBox.classList.add('show');
+          } else {
+            fb.textContent = 'Not quite \u2014 give it one more try.';
+            fb.className = 'feedback bad';
+          }
+        }
+      });
+    });
+  });
+var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          if (quizAttempts[qid] >= 2) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/xrpbqdra', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Algebra 1',
+        student: studentName,
+        module: 'Unit 2 Review',
+        lesson: 'Unit 2 Review: Solving Inequalities',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>
