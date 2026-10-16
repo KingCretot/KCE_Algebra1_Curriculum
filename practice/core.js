@@ -262,7 +262,7 @@
       t += '<text x="' + (ay - 6).toFixed(1) + '" y="' + (Y(lyv) + 4).toFixed(1) + '" text-anchor="end" font-size="11" fill="#333">' + esc(fly(K.round(lyv, 6))) + '</text>';
     }
     if (x0 >= 0 && y0 >= 0) t += '<text x="' + (ay - 6) + '" y="' + (ax + 15) + '" text-anchor="end" font-size="11" fill="#333">0</text>';
-    s += t;
+    var tickLabels = t;
     if (o.xlab) s += '<text x="' + (padL + pw / 2) + '" y="' + (H - 6) + '" text-anchor="middle" font-size="12" font-weight="bold" fill="#0A1F3D">' + esc(o.xlab) + '</text>';
     if (o.ylab) s += '<text transform="translate(13,' + (pad + ph / 2) + ') rotate(-90)" text-anchor="middle" font-size="12" font-weight="bold" fill="#0A1F3D">' + esc(o.ylab) + '</text>';
     if (!o.noXY) {
@@ -302,7 +302,7 @@
       c += '<line x1="' + X(S.x1).toFixed(1) + '" y1="' + Y(S.y1).toFixed(1) + '" x2="' + X(S.x2).toFixed(1) + '" y2="' + Y(S.y2).toFixed(1) + '" stroke="' + (S.color || COL.blue) + '" stroke-width="' + (S.w || 2.4) + '"' + (S.dash ? ' stroke-dasharray="6 4"' : '') + ' stroke-linecap="round"/>';
     });
     c += '</g>';
-    s += c + lineLabs;
+    s += c + tickLabels + lineLabs;
     (o.pts || []).forEach(function (P) {
       var col = P.color || COL.navy;
       s += '<circle cx="' + X(P.x).toFixed(1) + '" cy="' + Y(P.y).toFixed(1) + '" r="' + (P.r || 4.2) + '" fill="' + (P.open ? '#fff' : col) + '" stroke="' + col + '" stroke-width="2"/>';

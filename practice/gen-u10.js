@@ -1,5 +1,6 @@
 /* Unit 10 — Statistics & Data Analysis */
 (function (K) {
+  function corr(D) { var n = D.length, mx = 0, my = 0, sxy = 0, sxx = 0, syy = 0; D.forEach(function (p) { mx += p[0] / n; my += p[1] / n; }); D.forEach(function (p) { sxy += (p[0] - mx) * (p[1] - my); sxx += (p[0] - mx) * (p[0] - mx); syy += (p[1] - my) * (p[1] - my); }); return sxx && syy ? sxy / Math.sqrt(sxx * syy) : 0; }
   var ri = K.ri, rnz = K.rnz, pick = K.pick, n = K.n, P = K.poly, X = K.x, Y = K.y, Q = K.Q, mc = K.mc, M = K.MINUS, m = K.m, fr = K.frx, R = K.R;
   function sorted(a) { return a.slice().sort(function (p, q) { return p - q; }); }
   function median(a) { var s = sorted(a), L = s.length; return L % 2 ? s[(L - 1) / 2] : (s[L / 2 - 1] + s[L / 2]) / 2; }
@@ -163,7 +164,9 @@
     [
       function () {
         var dir = pick(['pos', 'neg', 'none']);
-        var pts = dir === 'none' ? (function () { var a = []; for (var i = 0; i < 12; i++) a.push([ri(1, 10), ri(1, 10)]); return a; })() : scatterData(dir === 'pos' ? 0.8 : -0.8, dir === 'pos' ? 1 : 9.5, 1.2, 12, 1, 10);
+        var pts, rr, tries = 0;
+        do { pts = dir === 'none' ? (function () { var a = []; for (var i = 0; i < 12; i++) a.push([ri(1, 10), ri(1, 10)]); return a; })() : scatterData(dir === 'pos' ? 0.8 : -0.8, dir === 'pos' ? 1 : 9.5, 1.2, 12, 1, 10); rr = corr(pts); }
+        while (tries++ < 60 && (dir === 'none' ? Math.abs(rr) > 0.2 : Math.abs(rr) < 0.75));
         var g = K.plane({ x: [0, 11], y: [0, 11], firstQuadrant: true, pts: pts.map(function (p) { return { x: p[0], y: p[1], r: 3.6, color: K.COL.blue }; }) });
         var name = { pos: 'Positive association', neg: 'Negative association', none: 'No association' }[dir];
         return Q({ q: 'What type of association does the scatter plot show?', graph: g, mc: mc(name, ['Positive association', 'Negative association', 'No association', 'Exponential association'].filter(function (z) { return z !== name; })), why: [dir === 'pos' ? 'As ' + X + ' increases, ' + Y + ' tends to increase: positive.' : dir === 'neg' ? 'As ' + X + ' increases, ' + Y + ' tends to decrease: negative.' : 'The points show no clear upward or downward trend: no association.'] });
@@ -229,7 +232,7 @@
       },
       function () {
         var good = K.coin();
-        var rs = []; for (var q = 0; q < 6; q++) { rs.push(ri(3, 16) / 10); rs.push(-ri(3, 16) / 10); } rs = K.shuffle(rs); var pts = []; for (var i = 0; i < 12; i++) { var x = i + 1; var y = good ? rs[i] : K.round(0.12 * (x - 6.5) * (x - 6.5) - 1.8 + ri(-3, 3) / 10, 1); pts.push({ x: x, y: y, r: 3.6, color: K.COL.blue }); }
+        var rs, tr = 0; do { rs = []; for (var q = 0; q < 6; q++) { rs.push(ri(3, 16) / 10); rs.push(-ri(3, 16) / 10); } rs = K.shuffle(rs); var D1 = rs.map(function (v, i) { return [(i + 1 - 6.5) * (i + 1 - 6.5), v]; }), D2 = rs.map(function (v, i) { return [i + 1, v]; }); } while (tr++ < 60 && (Math.abs(corr(D1)) > 0.35 || Math.abs(corr(D2)) > 0.35)); var pts = []; for (var i = 0; i < 12; i++) { var x = i + 1; var y = good ? rs[i] : K.round(0.12 * (x - 6.5) * (x - 6.5) - 1.8 + ri(-3, 3) / 10, 1); pts.push({ x: x, y: y, r: 3.6, color: K.COL.blue }); }
         var g = K.plane({ x: [0, 13], y: [-4, 4], pts: pts, lines: [{ m: 0, b: 0, color: K.COL.gray, dash: true }], xlab: 'x', ylab: 'Residual', noXY: true });
         return Q({ q: 'A residual plot for a linear model is shown. Is a linear model a good fit?', graph: g, mc: mc(good ? 'Yes; the residuals are scattered randomly around 0' : 'No; the residuals show a curved pattern', [good ? 'No; the residuals show a curved pattern' : 'Yes; the residuals are scattered randomly around 0', 'Yes; some residuals are negative', 'No; residuals should all be positive']), why: [good ? 'Random scatter above and below 0 with no pattern means the line captures the trend well.' : 'A U-shaped (curved) pattern means the data bends, so a nonlinear model would fit better.'] });
       }

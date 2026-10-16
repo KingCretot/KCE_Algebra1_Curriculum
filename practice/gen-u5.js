@@ -187,7 +187,7 @@
       },
       function () {
         var mm = pick(SL), b = ri(-5, 5), kind = K.coin() ? 'none' : 'inf';
-        var b2 = kind === 'none' ? b + rnz(-4, 4) : b;
+        var b2 = kind === 'none' ? b + rnz(-4, 4) : b, mv = K.R(mm).val(); if (kind === 'none' && (Math.max(mv * -6 + b2, mv * 6 + b2) < -5 || Math.min(mv * -6 + b2, mv * 6 + b2) > 5)) b2 = b + (b2 > b ? -2 : 2);
         var g = K.plane({ x: [-6, 6], y: [-6, 6], lines: [{ m: mm, b: b }, { m: mm, b: b2, color: kind === 'inf' ? K.COL.red : K.COL.red, dash: kind === 'inf' }] });
         var right = kind === 'none' ? 'No solution, because the lines are parallel' : 'Infinitely many solutions, because the lines are the same';
         return Q({ q: 'The graph shows both equations of a system' + (kind === 'inf' ? ' (one line is drawn dashed on top of the other)' : '') + '. How many solutions are there?', graph: g, mc: mc(right, [kind === 'none' ? 'Infinitely many solutions, because the lines are the same' : 'No solution, because the lines are parallel', 'Exactly one solution, at the ' + Y + '-intercept', 'Exactly two solutions']), why: [kind === 'none' ? 'The lines have the same slope but never touch: no solution.' : 'Both equations graph as the same line, so every point on it is a solution.'] });
