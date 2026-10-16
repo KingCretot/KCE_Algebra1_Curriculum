@@ -43,6 +43,10 @@ h1.chapter-title{color:var(--navy);font-size:34px;margin:0 0 10px;line-height:1.
 .unit-nav-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;}
 .unit-nav-row .unit-nav{flex:1 1 260px;margin-top:0;}
 .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px;margin-top:auto;}
+.lesson-item{display:flex;flex-direction:column;}
+.lesson-item .lesson-card{flex:1;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.practice-link{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:10px 14px;background:#C9A84C;color:#0A1F3D;border:1px solid #C9A84C;border-top:none;border-radius:0 0 12px 12px;transition:background .15s ease;}
+.practice-link:hover{background:#b8963c;}
 </style>
 </head>
 <body>
@@ -56,14 +60,30 @@ h1.chapter-title{color:var(--navy);font-size:34px;margin:0 0 10px;line-height:1.
 </div>
 <div class="stage">
 <div class="lesson-grid">
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-1-graphing-quadratic-functions.html"><div class="lesson-num">8.1</div><div class="lesson-body"><div class="lesson-title">Graphing Quadratic Functions</div><div class="lesson-desc">Vertex, axis of symmetry, intercepts, domain, range, end behavior</div><div class="standard-tag">MA.912.AR.3.7</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-2-vertex-and-zeros.html"><div class="lesson-num">8.2</div><div class="lesson-body"><div class="lesson-title">Vertex &amp; Zeros from the Equation</div><div class="lesson-desc">Vertex form, factored form, and x = −b/(2a)</div><div class="standard-tag">MA.912.AR.3.6</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-3-solving-by-factoring-square-roots.html"><div class="lesson-num">8.3</div><div class="lesson-body"><div class="lesson-title">Solving by Factoring &amp; Square Roots</div><div class="lesson-desc">The Zero Product Property and the square root method</div><div class="standard-tag">MA.912.AR.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-4-completing-the-square.html"><div class="lesson-num">8.4</div><div class="lesson-body"><div class="lesson-title">Completing the Square</div><div class="lesson-desc">Solve any quadratic and rewrite it in vertex form</div><div class="standard-tag">MA.912.AR.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-5-quadratic-formula.html"><div class="lesson-num">8.5</div><div class="lesson-body"><div class="lesson-title">The Quadratic Formula</div><div class="lesson-desc">Solve any quadratic; use the discriminant to count solutions</div><div class="standard-tag">MA.912.AR.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-6-writing-quadratic-functions.html"><div class="lesson-num">8.6</div><div class="lesson-body"><div class="lesson-title">Writing Quadratic Functions</div><div class="lesson-desc">From a vertex, from x-intercepts, from a table or description</div><div class="standard-tag">MA.912.AR.3.4 &middot; AR.3.5</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-7-quadratics-in-context.html"><div class="lesson-num">8.7</div><div class="lesson-body"><div class="lesson-title">Quadratics in Context</div><div class="lesson-desc">Projectiles, area, and profit: interpret features and constraints</div><div class="standard-tag">MA.912.AR.3.8</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/unit-8-review.html" style="border-left:5px solid var(--gold);"><div class="lesson-num">&#9733;</div><div class="lesson-body"><div class="lesson-title">Unit 8 Review</div><div class="lesson-desc">Key ideas, common mistakes, a printable cheat sheet, and a 10-question practice test</div><div class="standard-tag">All Unit 8 standards</div></div><div class="lesson-arrow">&rarr;</div></a>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-1-graphing-quadratic-functions.html"><div class="lesson-num">8.1</div><div class="lesson-body"><div class="lesson-title">Graphing Quadratic Functions</div><div class="lesson-desc">Vertex, axis of symmetry, intercepts, domain, range, end behavior</div><div class="standard-tag">MA.912.AR.3.7</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-1.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-2-vertex-and-zeros.html"><div class="lesson-num">8.2</div><div class="lesson-body"><div class="lesson-title">Vertex &amp; Zeros from the Equation</div><div class="lesson-desc">Vertex form, factored form, and x = −b/(2a)</div><div class="standard-tag">MA.912.AR.3.6</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-2.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-3-solving-by-factoring-square-roots.html"><div class="lesson-num">8.3</div><div class="lesson-body"><div class="lesson-title">Solving by Factoring &amp; Square Roots</div><div class="lesson-desc">The Zero Product Property and the square root method</div><div class="standard-tag">MA.912.AR.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-3.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-4-completing-the-square.html"><div class="lesson-num">8.4</div><div class="lesson-body"><div class="lesson-title">Completing the Square</div><div class="lesson-desc">Solve any quadratic and rewrite it in vertex form</div><div class="standard-tag">MA.912.AR.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-4.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-5-quadratic-formula.html"><div class="lesson-num">8.5</div><div class="lesson-body"><div class="lesson-title">The Quadratic Formula</div><div class="lesson-desc">Solve any quadratic; use the discriminant to count solutions</div><div class="standard-tag">MA.912.AR.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-5.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-6-writing-quadratic-functions.html"><div class="lesson-num">8.6</div><div class="lesson-body"><div class="lesson-title">Writing Quadratic Functions</div><div class="lesson-desc">From a vertex, from x-intercepts, from a table or description</div><div class="standard-tag">MA.912.AR.3.4 &middot; AR.3.5</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-6.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/8-7-quadratics-in-context.html"><div class="lesson-num">8.7</div><div class="lesson-body"><div class="lesson-title">Quadratics in Context</div><div class="lesson-desc">Projectiles, area, and profit: interpret features and constraints</div><div class="standard-tag">MA.912.AR.3.8</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/8-7.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%208%20-%20Quadratic%20Functions%20%26%20Equations/unit-8-review.html" style="border-left:5px solid var(--gold);"><div class="lesson-num">&#9733;</div><div class="lesson-body"><div class="lesson-title">Unit 8 Review</div><div class="lesson-desc">Key ideas, common mistakes, a printable cheat sheet, and a 10-question practice test</div><div class="standard-tag">All Unit 8 standards</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/unit-8-review.html">Practice questions: Unit review &rarr;</a>
+      </div>
 </div>
 <div class="unit-nav-row">
 <a class="unit-nav back" href="KCE_Algebra1_Unit7.html"><div class="un-arrow">&larr;</div><div style="text-align:right;"><div class="un-label">Back To</div><div class="un-title">Unit 7: Polynomials, Radicals &amp; Factoring</div></div></a>

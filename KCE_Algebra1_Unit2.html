@@ -97,6 +97,10 @@
   @media(max-width:640px){
     .lesson-grid{grid-template-columns:1fr;}
   }
+  .lesson-item{display:flex;flex-direction:column;}
+  .lesson-item .lesson-card{flex:1;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+  .practice-link{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:10px 14px;background:var(--gold);color:var(--navy);border:1px solid var(--gold);border-top:none;border-radius:0 0 12px 12px;transition:background .15s ease;}
+  .practice-link:hover{background:#b8963c;}
   .lesson-card{
     display:flex;
     align-items:flex-start;
@@ -204,7 +208,7 @@
   <div class="stage">
     <div class="lesson-grid">
 
-      <a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/2-1-one-variable-compound-inequalities.html">
+      <div class="lesson-item"><a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/2-1-one-variable-compound-inequalities.html">
         <div class="lesson-num">2.1</div>
         <div class="lesson-body">
           <div class="lesson-title">One-Variable &amp; Compound Inequalities</div>
@@ -213,8 +217,10 @@
         </div>
         <div class="lesson-arrow">&rarr;</div>
       </a>
+        <a class="practice-link" href="practice/2-1.html">Practice questions &rarr;</a>
+      </div>
 
-      <a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/2-2-writing-two-variable-inequalities.html">
+      <div class="lesson-item"><a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/2-2-writing-two-variable-inequalities.html">
         <div class="lesson-num">2.2</div>
         <div class="lesson-body">
           <div class="lesson-title">Writing Two-Variable Inequalities</div>
@@ -223,8 +229,10 @@
         </div>
         <div class="lesson-arrow">&rarr;</div>
       </a>
+        <a class="practice-link" href="practice/2-2.html">Practice questions &rarr;</a>
+      </div>
 
-      <a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/2-3-graphing-two-variable-inequalities.html">
+      <div class="lesson-item"><a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/2-3-graphing-two-variable-inequalities.html">
         <div class="lesson-num">2.3</div>
         <div class="lesson-body">
           <div class="lesson-title">Graphing Two-Variable Inequalities</div>
@@ -233,7 +241,9 @@
         </div>
         <div class="lesson-arrow">&rarr;</div>
       </a>
-      <a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/unit-2-review.html" style="border-left:5px solid var(--gold);">
+        <a class="practice-link" href="practice/2-3.html">Practice questions &rarr;</a>
+      </div>
+      <div class="lesson-item"><a class="lesson-card" href="Unit%202%20-%20Solving%20Inequalities/unit-2-review.html" style="border-left:5px solid var(--gold);">
         <div class="lesson-num">&#9733;</div>
         <div class="lesson-body">
           <div class="lesson-title">Unit 2 Review</div>
@@ -242,6 +252,8 @@
         </div>
         <div class="lesson-arrow">&rarr;</div>
       </a>
+        <a class="practice-link" href="practice/unit-2-review.html">Practice questions: Unit review &rarr;</a>
+      </div>
 
     </div>
 

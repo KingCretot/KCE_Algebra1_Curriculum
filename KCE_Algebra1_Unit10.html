@@ -43,6 +43,10 @@ h1.chapter-title{color:var(--navy);font-size:34px;margin:0 0 10px;line-height:1.
 .unit-nav-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;}
 .unit-nav-row .unit-nav{flex:1 1 260px;margin-top:0;}
 .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px;margin-top:auto;}
+.lesson-item{display:flex;flex-direction:column;}
+.lesson-item .lesson-card{flex:1;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.practice-link{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:10px 14px;background:#C9A84C;color:#0A1F3D;border:1px solid #C9A84C;border-top:none;border-radius:0 0 12px 12px;transition:background .15s ease;}
+.practice-link:hover{background:#b8963c;}
 </style>
 </head>
 <body>
@@ -56,14 +60,30 @@ h1.chapter-title{color:var(--navy);font-size:34px;margin:0 0 10px;line-height:1.
 </div>
 <div class="stage">
 <div class="lesson-grid">
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-1-representing-data.html"><div class="lesson-num">10.1</div><div class="lesson-body"><div class="lesson-title">Representing Data</div><div class="lesson-desc">Numerical or categorical, univariate or bivariate, and the display that fits</div><div class="standard-tag">MA.912.DP.1.1</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-2-interpreting-distributions.html"><div class="lesson-num">10.2</div><div class="lesson-body"><div class="lesson-title">Interpreting Distributions</div><div class="lesson-desc">Center, spread, shape, and outliers in histograms and box plots</div><div class="standard-tag">MA.912.DP.1.2</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-3-two-way-tables.html"><div class="lesson-num">10.3</div><div class="lesson-body"><div class="lesson-title">Two-Way Frequency Tables</div><div class="lesson-desc">Joint, marginal, and conditional relative frequencies; association</div><div class="standard-tag">MA.912.DP.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-4-scatter-plots-lines-of-fit.html"><div class="lesson-num">10.4</div><div class="lesson-body"><div class="lesson-title">Scatter Plots &amp; Lines of Fit</div><div class="lesson-desc">Fit a linear model to bivariate data; interpret slope and intercept</div><div class="standard-tag">MA.912.DP.2.4</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-5-correlation-residuals.html"><div class="lesson-num">10.5</div><div class="lesson-body"><div class="lesson-title">Correlation &amp; Residuals</div><div class="lesson-desc">Direction and strength, the correlation coefficient r, residual plots</div><div class="standard-tag">MA.912.DP.2.6</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-6-correlation-vs-causation.html"><div class="lesson-num">10.6</div><div class="lesson-body"><div class="lesson-title">Correlation vs. Causation</div><div class="lesson-desc">Lurking variables, and what kind of study can show cause</div><div class="standard-tag">MA.912.DP.1.3</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-7-sampling-margin-of-error.html"><div class="lesson-num">10.7</div><div class="lesson-body"><div class="lesson-title">Sampling &amp; Margin of Error</div><div class="lesson-desc">Estimate from a random sample; build a margin of error by simulation</div><div class="standard-tag">MA.912.DP.1.4</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/unit-10-review.html" style="border-left:5px solid var(--gold);"><div class="lesson-num">&#9733;</div><div class="lesson-body"><div class="lesson-title">Unit 10 Review</div><div class="lesson-desc">Key ideas, common mistakes, a printable cheat sheet, and a 10-question practice test</div><div class="standard-tag">All Unit 10 standards</div></div><div class="lesson-arrow">&rarr;</div></a>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-1-representing-data.html"><div class="lesson-num">10.1</div><div class="lesson-body"><div class="lesson-title">Representing Data</div><div class="lesson-desc">Numerical or categorical, univariate or bivariate, and the display that fits</div><div class="standard-tag">MA.912.DP.1.1</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-1.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-2-interpreting-distributions.html"><div class="lesson-num">10.2</div><div class="lesson-body"><div class="lesson-title">Interpreting Distributions</div><div class="lesson-desc">Center, spread, shape, and outliers in histograms and box plots</div><div class="standard-tag">MA.912.DP.1.2</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-2.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-3-two-way-tables.html"><div class="lesson-num">10.3</div><div class="lesson-body"><div class="lesson-title">Two-Way Frequency Tables</div><div class="lesson-desc">Joint, marginal, and conditional relative frequencies; association</div><div class="standard-tag">MA.912.DP.3.1</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-3.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-4-scatter-plots-lines-of-fit.html"><div class="lesson-num">10.4</div><div class="lesson-body"><div class="lesson-title">Scatter Plots &amp; Lines of Fit</div><div class="lesson-desc">Fit a linear model to bivariate data; interpret slope and intercept</div><div class="standard-tag">MA.912.DP.2.4</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-4.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-5-correlation-residuals.html"><div class="lesson-num">10.5</div><div class="lesson-body"><div class="lesson-title">Correlation &amp; Residuals</div><div class="lesson-desc">Direction and strength, the correlation coefficient r, residual plots</div><div class="standard-tag">MA.912.DP.2.6</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-5.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-6-correlation-vs-causation.html"><div class="lesson-num">10.6</div><div class="lesson-body"><div class="lesson-title">Correlation vs. Causation</div><div class="lesson-desc">Lurking variables, and what kind of study can show cause</div><div class="standard-tag">MA.912.DP.1.3</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-6.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/10-7-sampling-margin-of-error.html"><div class="lesson-num">10.7</div><div class="lesson-body"><div class="lesson-title">Sampling &amp; Margin of Error</div><div class="lesson-desc">Estimate from a random sample; build a margin of error by simulation</div><div class="standard-tag">MA.912.DP.1.4</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/10-7.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%2010%20-%20Statistics%20%26%20Data%20Analysis/unit-10-review.html" style="border-left:5px solid var(--gold);"><div class="lesson-num">&#9733;</div><div class="lesson-body"><div class="lesson-title">Unit 10 Review</div><div class="lesson-desc">Key ideas, common mistakes, a printable cheat sheet, and a 10-question practice test</div><div class="standard-tag">All Unit 10 standards</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/unit-10-review.html">Practice questions: Unit review &rarr;</a>
+      </div>
 </div>
 <div class="unit-nav-row">
 <a class="unit-nav back" href="KCE_Algebra1_Unit9.html"><div class="un-arrow">&larr;</div><div style="text-align:right;"><div class="un-label">Back To</div><div class="un-title">Unit 9: Absolute Value &amp; Function Transformations</div></div></a>

@@ -43,6 +43,10 @@ h1.chapter-title{color:var(--navy);font-size:34px;margin:0 0 10px;line-height:1.
 .unit-nav-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;}
 .unit-nav-row .unit-nav{flex:1 1 260px;margin-top:0;}
 .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px;margin-top:auto;}
+.lesson-item{display:flex;flex-direction:column;}
+.lesson-item .lesson-card{flex:1;border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.practice-link{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:10px 14px;background:#C9A84C;color:#0A1F3D;border:1px solid #C9A84C;border-top:none;border-radius:0 0 12px 12px;transition:background .15s ease;}
+.practice-link:hover{background:#b8963c;}
 </style>
 </head>
 <body>
@@ -56,13 +60,27 @@ h1.chapter-title{color:var(--navy);font-size:34px;margin:0 0 10px;line-height:1.
 </div>
 <div class="stage">
 <div class="lesson-grid">
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-1-properties-of-exponents.html"><div class="lesson-num">6.1</div><div class="lesson-body"><div class="lesson-title">Properties of Exponents</div><div class="lesson-desc">Product, quotient, power, zero and negative exponent rules</div><div class="standard-tag">MA.912.NSO.1.2</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-2-rational-exponents.html"><div class="lesson-num">6.2</div><div class="lesson-body"><div class="lesson-title">Rational Exponents</div><div class="lesson-desc">Fraction exponents as roots; evaluating numerical expressions</div><div class="standard-tag">MA.912.NSO.1.1</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-3-exponential-growth-decay.html"><div class="lesson-num">6.3</div><div class="lesson-body"><div class="lesson-title">Exponential Growth &amp; Decay</div><div class="lesson-desc">Initial value, growth or decay factor, percent rate of change</div><div class="standard-tag">MA.912.AR.5.3</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-4-writing-exponential-functions.html"><div class="lesson-num">6.4</div><div class="lesson-body"><div class="lesson-title">Writing Exponential Functions</div><div class="lesson-desc">From a table, a graph, or a written description</div><div class="standard-tag">MA.912.AR.5.4</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-5-graphing-exponential-functions.html"><div class="lesson-num">6.5</div><div class="lesson-body"><div class="lesson-title">Graphing Exponential Functions</div><div class="lesson-desc">Intercept, asymptote, domain and range, end behavior</div><div class="standard-tag">MA.912.AR.5.6</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-6-simple-compound-interest.html"><div class="lesson-num">6.6</div><div class="lesson-body"><div class="lesson-title">Simple &amp; Compound Interest</div><div class="lesson-desc">I = Prt, A = P(1 + r/n)<sup>nt</sup>, and linear vs. exponential growth</div><div class="standard-tag">MA.912.FL.3.2 &middot; FL.3.4</div></div><div class="lesson-arrow">&rarr;</div></a>
-<a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/unit-6-review.html" style="border-left:5px solid var(--gold);"><div class="lesson-num">&#9733;</div><div class="lesson-body"><div class="lesson-title">Unit 6 Review</div><div class="lesson-desc">Key ideas, common mistakes, a printable cheat sheet, and a 10-question practice test</div><div class="standard-tag">All Unit 6 standards</div></div><div class="lesson-arrow">&rarr;</div></a>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-1-properties-of-exponents.html"><div class="lesson-num">6.1</div><div class="lesson-body"><div class="lesson-title">Properties of Exponents</div><div class="lesson-desc">Product, quotient, power, zero and negative exponent rules</div><div class="standard-tag">MA.912.NSO.1.2</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/6-1.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-2-rational-exponents.html"><div class="lesson-num">6.2</div><div class="lesson-body"><div class="lesson-title">Rational Exponents</div><div class="lesson-desc">Fraction exponents as roots; evaluating numerical expressions</div><div class="standard-tag">MA.912.NSO.1.1</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/6-2.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-3-exponential-growth-decay.html"><div class="lesson-num">6.3</div><div class="lesson-body"><div class="lesson-title">Exponential Growth &amp; Decay</div><div class="lesson-desc">Initial value, growth or decay factor, percent rate of change</div><div class="standard-tag">MA.912.AR.5.3</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/6-3.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-4-writing-exponential-functions.html"><div class="lesson-num">6.4</div><div class="lesson-body"><div class="lesson-title">Writing Exponential Functions</div><div class="lesson-desc">From a table, a graph, or a written description</div><div class="standard-tag">MA.912.AR.5.4</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/6-4.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-5-graphing-exponential-functions.html"><div class="lesson-num">6.5</div><div class="lesson-body"><div class="lesson-title">Graphing Exponential Functions</div><div class="lesson-desc">Intercept, asymptote, domain and range, end behavior</div><div class="standard-tag">MA.912.AR.5.6</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/6-5.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/6-6-simple-compound-interest.html"><div class="lesson-num">6.6</div><div class="lesson-body"><div class="lesson-title">Simple &amp; Compound Interest</div><div class="lesson-desc">I = Prt, A = P(1 + r/n)<sup>nt</sup>, and linear vs. exponential growth</div><div class="standard-tag">MA.912.FL.3.2 &middot; FL.3.4</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/6-6.html">Practice questions &rarr;</a>
+      </div>
+<div class="lesson-item"><a class="lesson-card" href="Unit%206%20-%20Exponential%20Functions%20%26%20Financial%20Literacy/unit-6-review.html" style="border-left:5px solid var(--gold);"><div class="lesson-num">&#9733;</div><div class="lesson-body"><div class="lesson-title">Unit 6 Review</div><div class="lesson-desc">Key ideas, common mistakes, a printable cheat sheet, and a 10-question practice test</div><div class="standard-tag">All Unit 6 standards</div></div><div class="lesson-arrow">&rarr;</div></a>
+        <a class="practice-link" href="practice/unit-6-review.html">Practice questions: Unit review &rarr;</a>
+      </div>
 </div>
 <div class="unit-nav-row">
 <a class="unit-nav back" href="KCE_Algebra1_Unit5.html"><div class="un-arrow">&larr;</div><div style="text-align:right;"><div class="un-label">Back To</div><div class="un-title">Unit 5: Systems of Equations &amp; Inequalities</div></div></a>
