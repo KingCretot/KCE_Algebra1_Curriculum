@@ -143,6 +143,27 @@
 
   /* ---------- multiple-choice builder ---------- */
   K.strip = function (h) { return String(h).replace(/<span class="nu">(.*?)<\/span><span class="de">(.*?)<\/span>/g, '[$1]/[$2]').replace(/<sup[^>]*>(.*?)<\/sup>/g, '^$1').replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim(); };
+  // Plain-text version for reports: fractions as a/b, exponents as ^.
+  K.plain = function (h) {
+    return K.strip(String(h).replace(/<\/li>/g, ' ').replace(/<\/tr>/g, ' ; ').replace(/<br\s*\/?>/g, ' ; ').replace(/<div[^>]*>/g, ' ').replace(/<\/div>/g, ' ').replace(/<\/t[dh]>/g, ' ')).replace(/\[([^\]]+)\]\/\[([^\]]+)\]/g, function (m, a, b) { var w = function (t) { return /[\s+\u2212-]/.test(t.trim().replace(/^\u2212/, '')) ? '(' + t + ')' : t; }; return w(a) + '/' + w(b); });
+  };
+  function dropMath(h) {   // replace every <span class="mth">…</span> (nested spans allowed) with an ellipsis
+    var out = '', i = 0, tag = '<span class="mth">';
+    while (i < h.length) {
+      var j = h.indexOf(tag, i); if (j < 0) { out += h.slice(i); break; }
+      out += h.slice(i, j) + ' … '; var depth = 0, k = j;
+      while (k < h.length) { var o = h.indexOf('<span', k), c = h.indexOf('</span>', k); if (c < 0) { k = h.length; break; } if (o >= 0 && o < c) { depth++; k = o + 5; } else { depth--; k = c + 7; if (depth === 0) break; } }
+      i = k;
+    }
+    return out;
+  }
+  K.skillOf = function (q) {
+    var t = K.strip(dropMath(String(q)).replace(/<table[\s\S]*?<\/table>/g, ' ').replace(/<div class="center">[\s\S]*?<\/div>/g, ' '));
+    t = t.replace(/\$?\d[\d,.]*%?/g, '…').replace(/(… ?)+/g, '… ').replace(/\s+/g, ' ').trim();
+    t = t.replace(/[\u2212-] ?…/g, '…').replace(/\([^()]*…[^()]*\)/g, '(…)').replace(/\[[^\]]*\]\/\[[^\]]*\]/g, '…').replace(/[a-z]\^…/g, '…').replace(/(… ?)+/g, '… ').replace(/ … ?([,.?:;])/g, ' …$1').replace(/\s+/g, ' ').trim();
+    var m = t.match(/^[^?]*\?/); if (m && m[0].length < 140) t = m[0];
+    return t.length > 140 ? t.slice(0, 137) + '…' : t;
+  };
   // correct: html; wrong: array of html; extra(): returns more candidate wrong answers if needed
   K.mc = function (correct, wrong, extra) {
     var seen = {}, list = [];
@@ -217,7 +238,19 @@
      o.shade: [{a,b,c, color}]   region a*x+b*y<=c (several = intersection when grouped via o.shadeAll)
      o.segs: [{x1,y1,x2,y2,color,dash}]
      o.firstQuadrant: true → only show axes from 0 */
+  K._gd = [];
+  function describePlane(o) {
+    var v = function (x) { return K.n(K.round(K.R(x).val(), 2)); }, out = [];
+    (o.lines || []).forEach(function (L) { out.push(L.vx !== undefined ? 'line x = ' + v(L.vx) : K.plain(K.lineEq(K.R(L.m), K.R(L.b))) + (L.dash ? ' (dashed)' : ' (solid)') + (L.color === COL.gray ? ' [gray guide]' : '')); });
+    if ((o.fns || []).length) out.push((o.fns.length === 1 ? 'a curve' : o.fns.length + ' curves') + ((o.fns || []).some(function (F) { return F.dash; }) ? ' (dashed one is the parent graph)' : ''));
+    var key = (o.pts || []).filter(function (P) { return !P.r && P.color !== COL.gray; }), data = (o.pts || []).filter(function (P) { return P.r || P.color === COL.gray; });
+    if (key.length) out.push('marked point' + (key.length > 1 ? 's ' : ' ') + key.map(function (P) { return '(' + v(P.x) + ', ' + v(P.y) + ')'; }).join(', '));
+    if (data.length) out.push(data.length + ' data points: ' + data.map(function (P) { return '(' + v(P.x) + ', ' + v(P.y) + ')'; }).join(' '));
+    if ((o.shade || []).length) out.push('shaded region');
+    return 'graph: ' + out.join('; ');
+  }
   K.plane = function (o) {
+    try { K._gd.push(describePlane(o)); } catch (e) { }
     var x0 = o.x[0], x1 = o.x[1], y0 = o.y[0], y1 = o.y[1];
     var W = o.w || 320, H = o.h || 320, pad = o.pad || 30, padB = o.xlab ? 40 : pad, padL = o.ylab ? 44 : pad;
     var gx = o.stepX || o.step || 1, gy = o.stepY || o.step || 1;
@@ -322,6 +355,7 @@
 
   // number line: o.min,o.max,o.step; o.pts:[{x,open}]; o.rays:[{from,dir:+1/-1}], o.segs:[{a,b}]
   K.numberLine = function (o) {
+    try { K._gd.push('number line: ' + (o.pts || []).map(function (P) { return (P.open ? 'open' : 'closed') + ' dot at ' + K.n(K.R(P.x).val()); }).join(', ') + (o.rays || []).map(function (r) { return ', arrow pointing ' + (r.dir > 0 ? 'right' : 'left'); }).join('') + (o.segs || []).map(function (g) { return ', segment from ' + K.n(K.R(g.a !== undefined ? g.a : g[0]).val()) + ' to ' + K.n(K.R(g.b !== undefined ? g.b : g[1]).val()); }).join('')); } catch (e) { }
     var W = o.w || 420, H = 70, pad = 26, min = o.min, max = o.max, st = o.step || 1;
     var X = function (x) { return pad + (x - min) / (max - min) * (W - 2 * pad); };
     var yb = 30, col = COL.blue;
@@ -340,6 +374,7 @@
 
   // box plot: five = [min,q1,med,q3,max]; o.min,o.max,o.step, o.title
   K.boxPlot = function (o) {
+    K._gd.push('box plot' + (o.title ? ' (' + o.title + ')' : '') + ': min ' + o.five[0] + ', Q1 ' + o.five[1] + ', median ' + o.five[2] + ', Q3 ' + o.five[3] + ', max ' + o.five[4]);
     var W = 420, H = o.title ? 120 : 104, pad = 26, f = o.five, top = o.title ? 28 : 12;
     var X = function (x) { return pad + (x - o.min) / (o.max - o.min) * (W - 2 * pad); };
     var yb = top + 56, mid = top + 22;
@@ -359,6 +394,7 @@
 
   // dot plot: values array; o.min,o.max (integers)
   K.dotPlot = function (o) {
+    K._gd.push('dot plot' + (o.title ? ' (' + o.title + ')' : '') + ': ' + o.vals.slice().sort(function (a, b) { return a - b; }).join(', '));
     var counts = {}, maxc = 0;
     o.vals.forEach(function (v) { counts[v] = (counts[v] || 0) + 1; maxc = Math.max(maxc, counts[v]); });
     var W = 420, pad = 26, r = 7, H = 50 + maxc * 17 + (o.title ? 18 : 0), top = o.title ? 20 : 4;
@@ -376,6 +412,7 @@
 
   // bar/histogram: o.labels, o.vals, o.hist (touching bars), o.ymax, o.ystep, o.xlab, o.ylab
   K.bars = function (o) {
+    K._gd.push((o.hist ? 'histogram' : 'bar graph') + ': ' + o.labels.map(function (l, i) { return l + ' → ' + o.vals[i]; }).join(', '));
     var W = 420, H = 260, padL = 50, padR = 14, padT = 16, padB = o.xlab ? 50 : 34;
     var n = o.vals.length, pw = W - padL - padR, ph = H - padT - padB;
     var ymax = o.ymax, ys = o.ystep;
@@ -407,8 +444,10 @@
     recent = recent || [];
     var q, tries = 0;
     do {
-      var g = K.pick(gens);
+      var gi = K.ri(0, gens.length - 1), g = gens[gi];
+      K._gd = [];
       q = g();
+      q.gi = gi; q.gdesc = q.graph ? K._gd.slice(-((q.graph.match(/<svg/g) || []).length || 1)).join(' | ') : '';
       q.key = K.strip(q.q).slice(0, 160) + '|' + K.strip(q.ans);
       tries++;
     } while (recent.indexOf(q.key) >= 0 && tries < 25);

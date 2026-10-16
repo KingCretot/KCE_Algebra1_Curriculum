@@ -16,7 +16,7 @@
     var L = K.lessons[id];
     var S = {
       id: id, name: '', level: 1, unlocked: 1, cleared3: false, streak: 0, best: 0,
-      n: 0, recent: [], q: null, tries: 0, done: false, started: Date.now(),
+      n: 0, recent: [], log: [], picks: [], q: null, tries: 0, done: false, started: Date.now(),
       per: [{ a: 0, f: 0, s: 0, m: 0 }, { a: 0, f: 0, s: 0, m: 0 }, { a: 0, f: 0, s: 0, m: 0 }],
       dirty: false
     };
@@ -85,7 +85,7 @@
       var q;
       for (var t = 0; t < 6 && !q; t++) { try { q = K.make(id, S.level, S.recent); } catch (e) { if (window.console) console.error('KCEP generator error: ' + e.message + ' ' + (e.stack || '')); } }
       if (!q) { $('stage').innerHTML = '<p>Sorry, something went wrong loading a question. Please refresh the page.</p>'; return; }
-      S.q = q; S.tries = 0; S.n++;
+      S.q = q; S.tries = 0; S.n++; S.picks = [];
       S.recent.push(q.key); if (S.recent.length > 20) S.recent.shift();
       var h = '<div class="qhead"><div class="qnum">Question ' + S.n + '</div><div class="lvname">' + LV[S.level - 1] + '</div></div>' +
         '<div class="card"><div class="qtext">' + q.q + '</div>' + (q.graph ? '<div class="gwrap">' + q.graph + '</div>' : '') +
@@ -103,7 +103,7 @@
     function answer(i, btn) {
       if (S.qdone) return;
       var q = S.q, per = S.per[S.level - 1], fb = $('fb');
-      S.tries++; S.dirty = true;
+      S.tries++; S.dirty = true; S.picks.push(i);
       if (i === q.a) {
         btn.classList.add('right'); lockAll();
         Array.prototype.forEach.call(document.querySelectorAll('.ch'), function (b) { if (!b.classList.contains('right') && !b.classList.contains('wrong')) b.classList.add('dim'); });
@@ -126,7 +126,12 @@
         done();
       }
     }
+    function logQ() {
+      var q = S.q, res = S.tries === 1 && S.picks[0] === q.a ? 'right' : S.picks[S.picks.length - 1] === q.a ? 'second' : 'missed';
+      S.log.push({ n: S.n, lv: S.level, gi: q.gi, res: res, skill: K.skillOf(q.q), q: K.plain(q.q), g: q.gdesc || '', picks: S.picks.map(function (i) { return LETTERS[i] + ') ' + K.plain(q.ch[i]); }), right: LETTERS[q.a] + ') ' + K.plain(q.ans), why: K.plain(q.why) });
+    }
     function done() {
+      logQ();
       S.qdone = true;
       bar();
       $('nr').classList.add('show');
@@ -186,8 +191,32 @@
         levelReached: reached,
         byLevel: perTxt,
         bestStreak: S.best,
-        minutes: Math.max(1, Math.round((Date.now() - S.started) / 60000))
+        minutes: Math.max(1, Math.round((Date.now() - S.started) / 60000)),
+        needsReview: review(),
+        missedQuestions: missedTxt(),
+        questionLog: S.log.map(function (e) { return 'Q' + e.n + ' (L' + e.lv + ') ' + (e.res === 'right' ? '✓' : e.res === 'second' ? '2nd try' : '✗ missed'); }).join(', ') || 'none'
       };
+    }
+    // Skills the student struggled with, grouped by question type.
+    function review() {
+      var g = {}, order = [];
+      S.log.forEach(function (e) { var k = e.lv + ':' + e.skill; if (!g[k]) { g[k] = { lv: e.lv, skill: e.skill, tot: 0, bad: 0, miss: 0 }; order.push(k); } g[k].tot++; if (e.res !== 'right') g[k].bad++; if (e.res === 'missed') g[k].miss++; });
+      var out = order.map(function (k) { return g[k]; }).filter(function (x) { return x.bad; }).sort(function (a, b) { return b.bad / b.tot - a.bad / a.tot || b.bad - a.bad; });
+      if (!out.length) return S.log.length ? 'Nothing to reteach — every question was right on the first try.' : 'No questions answered yet.';
+      return out.map(function (x) { return '• Level ' + x.lv + ' — ' + x.skill + ' — not right on 1st try ' + x.bad + ' of ' + x.tot + (x.miss ? ' (' + x.miss + ' missed both tries)' : ''); }).join('\n');
+    }
+    // Every question that was not right on the first try, with what the student chose.
+    function missedTxt() {
+      var bad = S.log.filter(function (e) { return e.res !== 'right'; });
+      if (!bad.length) return 'None.';
+      var shown = bad.slice(-25), out = shown.map(function (e) {
+        return 'Q' + e.n + ' (Level ' + e.lv + ', ' + (e.res === 'second' ? 'correct on 2nd try' : 'MISSED both tries') + ')\n' +
+          'Question: ' + e.q + (e.g ? '\n' + e.g.charAt(0).toUpperCase() + e.g.slice(1) : '') + '\n' +
+          'Student chose: ' + e.picks.join('  then  ') + '\n' +
+          'Correct answer: ' + e.right + '\n' +
+          'Logic shown: ' + e.why;
+      });
+      return (bad.length > shown.length ? '(Showing the last ' + shown.length + ' of ' + bad.length + ')\n\n' : '') + out.join('\n\n');
     }
     function send(event, user) {
       var st = $('sendst');
