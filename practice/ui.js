@@ -3,7 +3,7 @@
   'use strict';
   var K = window.KCEP;
   var FORM = 'https://formspree.io/f/xrpbqdra';
-  var NEED = 5; // first-try correct answers in a row to unlock the next level
+  var NEED = 5; // first-try correct answers in a row to clear a level (all levels are open; Jonathan, Oct 28 2026)
   var LV = ['Level 1 · Warm-Up', 'Level 2 · Building', 'Level 3 · SAT Challenge'];
   var LVS = ['Warm-Up', 'Building', 'SAT Challenge'];
   var LETTERS = ['A', 'B', 'C', 'D'];
@@ -15,7 +15,7 @@
   K.start = function (id) {
     var L = K.lessons[id];
     var S = {
-      id: id, name: '', level: 1, unlocked: 1, cleared3: false, streak: 0, best: 0,
+      id: id, name: '', level: 1, unlocked: 3, cl: {}, cleared3: false, streak: 0, best: 0,
       n: 0, recent: [], log: [], picks: [], q: null, tries: 0, done: false, started: Date.now(),
       per: [{ a: 0, f: 0, s: 0, m: 0 }, { a: 0, f: 0, s: 0, m: 0 }, { a: 0, f: 0, s: 0, m: 0 }],
       dirty: false
@@ -41,7 +41,8 @@
         '<div class="std">' + esc(L.std) + '</div>' +
         '<div class="card warm"><p style="margin-bottom:8px"><b>How practice works</b></p><ul class="how">' +
         '<li>Questions start easy and get harder, like the SAT.</li>' +
-        '<li>Get <b>' + NEED + ' in a row right on your first try</b> to unlock the next level.</li>' +
+        '<li>All three levels are open. Start with Level 1 and move up when you are ready.</li>' +
+        '<li>Get <b>' + NEED + ' in a row right on your first try</b> to clear a level.</li>' +
         '<li>You get <b>2 tries</b> on every question. If you miss it twice, you’ll see the correct answer and the logic behind it.</li>' +
         '<li>Your results are sent to KingCretot Experience so your progress can be followed.</li></ul>' +
         '<div class="levels-preview">' + [0, 1, 2].map(function (i) { return '<div class="lvp"><b>Level ' + (i + 1) + '</b><span>' + LVS[i] + '</span></div>'; }).join('') + '</div></div>' +
@@ -58,7 +59,7 @@
         if (!ok()) { $('nmerr').textContent = 'Please type your name before you start.'; nm.focus(); return; }
         S.name = nm.value.trim().replace(/\s+/g, ' ');
         var saved = store('kcep:' + id + ':' + S.name.toLowerCase());
-        if (saved) { S.unlocked = Math.max(1, Math.min(3, saved.u || 1)); S.cleared3 = !!saved.c; S.level = S.unlocked; }
+        if (saved) { S.level = Math.max(1, Math.min(3, saved.u || 1)); S.cleared3 = !!saved.c; S.cl = saved.k || {}; if (S.cleared3) S.cl[3] = 1; }
         bar(); next();
       }
       setTimeout(function () { nm.focus(); }, 50);
@@ -68,7 +69,7 @@
     function bar() {
       var p = $('pbar'); p.style.display = 'flex';
       var tabs = [1, 2, 3].map(function (l) {
-        var locked = l > S.unlocked, done = l < S.unlocked || (l === 3 && S.cleared3);
+        var locked = false, done = !!S.cl[l] || (l === 3 && S.cleared3);
         return '<button class="tab' + (l === S.level ? ' on' : '') + (locked ? ' locked' : '') + '" data-l="' + l + '"' + (locked ? ' disabled title="Locked: get ' + NEED + ' in a row on Level ' + (l - 1) + '"' : '') + '>' + (locked ? '<span class="lock">🔒</span> ' : '') + 'Level ' + l + (done ? ' <span class="ck">✓</span>' : '') + '</button>';
       }).join('');
       var dots = ''; for (var i = 0; i < NEED; i++) dots += '<span class="dot' + (i < Math.min(S.streak, NEED) ? ' f' : '') + '"></span>';
@@ -76,7 +77,7 @@
       p.innerHTML = '<div class="who">Practicing: <b>' + esc(S.name) + '</b></div><div class="tabs">' + tabs + '</div>' +
         '<div class="streak">Streak <span class="dots">' + dots + '</span></div><div class="stats">' + ft + ' of ' + tot + ' right on 1st try</div>';
       Array.prototype.forEach.call(p.querySelectorAll('.tab'), function (t) {
-        t.addEventListener('click', function () { var l = +t.getAttribute('data-l'); if (l <= S.unlocked && l !== S.level) { S.level = l; S.streak = 0; bar(); next(); } });
+        t.addEventListener('click', function () { var l = +t.getAttribute('data-l'); if (l !== S.level) { S.level = l; S.streak = 0; save(); bar(); next(); } });
       });
     }
 
@@ -141,23 +142,23 @@
       S.qdone = false;
       if (S.streak >= NEED) {
         S.streak = 0;
-        if (S.level < 3 && S.level === S.unlocked) {
-          S.unlocked++; save(); send('Level ' + S.unlocked + ' unlocked');
-          return celebrate(S.unlocked);
+        if (S.level < 3 && !S.cl[S.level]) {
+          S.cl[S.level] = 1; save(); send('Level ' + S.level + ' cleared');
+          return celebrate(S.level + 1);
         }
         if (S.level === 3 && !S.cleared3) {
-          S.cleared3 = true; save(); send('Mastered (Level 3 cleared)');
+          S.cleared3 = true; S.cl[3] = 1; save(); send('Mastered (Level 3 cleared)');
           return mastered();
         }
       }
       next();
     }
-    function save() { store('kcep:' + id + ':' + S.name.toLowerCase(), { u: S.unlocked, c: S.cleared3 }); }
+    function save() { store('kcep:' + id + ':' + S.name.toLowerCase(), { u: S.level, c: S.cleared3, k: S.cl }); }
 
     function celebrate(l) {
       bar();
-      $('stage').innerHTML = '<div class="card banner"><div class="big">🔓</div><h2>Level ' + l + ' unlocked!</h2><p>You got ' + NEED + ' in a row right on the first try. Nice work, ' + esc(S.name.split(' ')[0]) + '.</p><p><b>' + LV[l - 1] + '</b> is next, and the questions get harder.</p><div class="row" style="justify-content:center;margin-top:10px"><button class="btn go" id="gol">Start Level ' + l + ' →</button><button class="btn ghost" id="stay">Keep practicing Level ' + (l - 1) + '</button></div></div>' + finishRow();
-      $('gol').addEventListener('click', function () { S.level = l; bar(); next(); });
+      $('stage').innerHTML = '<div class="card banner"><div class="big">🔓</div><h2>Level ' + (l - 1) + ' cleared!</h2><p>You got ' + NEED + ' in a row right on the first try. Nice work, ' + esc(S.name.split(' ')[0]) + '.</p><p><b>' + LV[l - 1] + '</b> is next, and the questions get harder.</p><div class="row" style="justify-content:center;margin-top:10px"><button class="btn go" id="gol">Start Level ' + l + ' →</button><button class="btn ghost" id="stay">Keep practicing Level ' + (l - 1) + '</button></div></div>' + finishRow();
+      $('gol').addEventListener('click', function () { S.level = l; S.streak = 0; save(); bar(); next(); });
       $('stay').addEventListener('click', function () { next(); });
       $('finb').addEventListener('click', finish);
     }
@@ -178,7 +179,8 @@
       var tot = 0, ft = 0;
       S.per.forEach(function (p) { tot += p.a; ft += p.f; });
       var perTxt = S.per.map(function (p, i) { return 'Level ' + (i + 1) + ': ' + p.a + ' answered, ' + p.f + ' right on 1st try, ' + p.s + ' on 2nd try, ' + p.m + ' missed'; }).join(' | ');
-      var reached = S.cleared3 ? 'Level 3 cleared' : 'Level ' + S.unlocked;
+      var worked = [1, 2, 3].filter(function (l) { return S.per[l - 1].a > 0; }), clr = [1, 2, 3].filter(function (l) { return S.cl[l] || (l === 3 && S.cleared3); });
+      var reached = 'Levels worked: ' + (worked.join(', ') || 'none') + ' | Cleared: ' + (clr.join(', ') || 'none');
       return {
         program: 'KCE Algebra 1 Practice',
         student: S.name,
