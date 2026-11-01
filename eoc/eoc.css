@@ -1,0 +1,32 @@
+/* EOC Prep additions on top of ../practice/practice.css */
+.rv{columns:2;column-gap:28px}
+.rv li{break-inside:avoid;font-size:14.5px}
+.rv a{color:var(--blue)}
+@media(max-width:620px){.rv{columns:1}}
+.done-note{background:#eef6f0;border-left:5px solid var(--green);font-size:15px}
+.qdots{display:flex;flex-wrap:wrap;gap:4px;max-width:420px}
+.qd{width:13px;height:13px;border-radius:50%;border:2px solid var(--gold);background:#fff}
+.qd.right{background:var(--green);border-color:var(--green)}
+.qd.second{background:var(--gold)}
+.qd.missed{background:var(--red);border-color:var(--red)}
+.qd.cur{border-color:var(--navy)}
+.ch.sel{border-color:var(--navy);background:#eaf0fb;box-shadow:inset 0 0 0 1px var(--navy)}
+.ch.sel .lt{background:var(--gold);color:var(--navy)}
+.pal{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.pq{width:34px;height:34px;border-radius:8px;border:1.5px solid #cfc7b0;background:#fff;color:var(--navy);font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+.pq.ans{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pq.cur{outline:3px solid var(--gold);outline-offset:1px}
+.tnav{display:flex;justify-content:space-between;gap:12px;margin-top:4px}
+.tnav .btn:disabled{opacity:.4;cursor:default}
+.tnav2{text-align:right;margin-top:10px}
+.linkish{background:none;border:none;color:var(--blue);text-decoration:underline;cursor:pointer;font:inherit;font-size:14px;padding:0}
+.jump{font-weight:700;font-size:16px}
+.confirm{border-left:5px solid var(--gold);width:100%;margin:0}
+table.cat{width:100%;border-collapse:collapse;font-size:15px}
+table.cat th,table.cat td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
+table.cat th{color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:1px}
+table.cat a{color:var(--blue)}
+.tutor{margin-top:26px;text-align:right}
+.tutor .card{text-align:left;margin-top:10px}
+.tutor label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px}
+.tutor input{display:block;width:100%;padding:9px 10px;border:1.5px solid #cfc7b0;border-radius:8px;font-size:15px;margin-top:4px;font-family:inherit}
